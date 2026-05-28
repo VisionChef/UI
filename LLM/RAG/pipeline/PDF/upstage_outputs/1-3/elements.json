@@ -1,0 +1,9942 @@
+[
+  {
+    "category": "heading1",
+    "content": {
+      "html": "<h1 id='0' style='font-size:14px'>대표적인 고기요리로 얇게 썬 소고기와 채소를 양념해 볶아 먹는 음식이다. 소고기를 얇게 썰어<br>양념에 재워 맛을 들이는 게 포인트. 손님초대 요리로도 푸짐한 일상 요리로도 인기가 많다.</h1>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.0773,
+        "y": 0.0752
+      },
+      {
+        "x": 0.8884,
+        "y": 0.0752
+      },
+      {
+        "x": 0.8884,
+        "y": 0.1203
+      },
+      {
+        "x": 0.0773,
+        "y": 0.1203
+      }
+    ],
+    "id": 0,
+    "page": 1
+  },
+  {
+    "category": "paragraph",
+    "content": {
+      "html": "<p id='1' data-category='paragraph' style='font-size:18px'>불고기</p>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.1535,
+        "y": 0.7132
+      },
+      {
+        "x": 0.3897,
+        "y": 0.7132
+      },
+      {
+        "x": 0.3897,
+        "y": 0.777
+      },
+      {
+        "x": 0.1535,
+        "y": 0.777
+      }
+    ],
+    "id": 1,
+    "page": 1
+  },
+  {
+    "category": "figure",
+    "content": {
+      "html": "<figure id='2'><img alt=\"\" data-coord=\"top-left:(81,125); bottom-right:(293,335)\" /></figure>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.0755,
+        "y": 0.0823
+      },
+      {
+        "x": 0.2729,
+        "y": 0.0823
+      },
+      {
+        "x": 0.2729,
+        "y": 0.2208
+      },
+      {
+        "x": 0.0755,
+        "y": 0.2208
+      }
+    ],
+    "id": 2,
+    "page": 2
+  },
+  {
+    "category": "paragraph",
+    "content": {
+      "html": "<p id='3' data-category='paragraph' style='font-size:18px'>재료 (4인분)</p>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.1341,
+        "y": 0.2346
+      },
+      {
+        "x": 0.2122,
+        "y": 0.2346
+      },
+      {
+        "x": 0.2122,
+        "y": 0.2481
+      },
+      {
+        "x": 0.1341,
+        "y": 0.2481
+      }
+    ],
+    "id": 3,
+    "page": 2
+  },
+  {
+    "category": "paragraph",
+    "content": {
+      "html": "<p id='4' data-category='paragraph' style='font-size:14px'>소고기(등심) 500g<br>양파 120g<br>표고버섯 30g<br>대파 30g<br>홍고추 10g<br>설탕 21큰술<br>물엿 1큰술<br>간 양파 2큰술(20g)<br>간 마늘 1큰술<br>진간장 6큰술<br>후춧가루 약간<br>참기름 3큰술</p>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.0814,
+        "y": 0.2606
+      },
+      {
+        "x": 0.2728,
+        "y": 0.2606
+      },
+      {
+        "x": 0.2728,
+        "y": 0.4493
+      },
+      {
+        "x": 0.0814,
+        "y": 0.4493
+      }
+    ],
+    "id": 4,
+    "page": 2
+  },
+  {
+    "category": "figure",
+    "content": {
+      "html": "<figure id='5'><img style='font-size:14px' alt=\"Tip\" data-coord=\"top-left:(175,842); bottom-right:(292,923)\" /></figure>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.163,
+        "y": 0.5543
+      },
+      {
+        "x": 0.272,
+        "y": 0.5543
+      },
+      {
+        "x": 0.272,
+        "y": 0.6078
+      },
+      {
+        "x": 0.163,
+        "y": 0.6078
+      }
+    ],
+    "id": 5,
+    "page": 2
+  },
+  {
+    "category": "heading1",
+    "content": {
+      "html": "<br><h1 id='6' style='font-size:20px'>백종원의</h1>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.0853,
+        "y": 0.5886
+      },
+      {
+        "x": 0.1575,
+        "y": 0.5886
+      },
+      {
+        "x": 0.1575,
+        "y": 0.6068
+      },
+      {
+        "x": 0.0853,
+        "y": 0.6068
+      }
+    ],
+    "id": 6,
+    "page": 2
+  },
+  {
+    "category": "paragraph",
+    "content": {
+      "html": "<p id='7' data-category='paragraph' style='font-size:16px'>불고기는 식탁에서 직접 구워<br>가며 먹으면 더 맛있다. 휴대<br>용 가스레인지에 팬이나 고기<br>굽는 불판을 올리고 불고기를<br>적당히 덜어놓고 볶아가면서<br>먹으면 된다.<br>불고기를 맛있게 구우려면 강<br>불에서 재빨리, 소고기는 완<br>전히 익고 채소는 살짝만 익<br>을 정도로 구워야 한다. 채소<br>가 너무 익으면 물이 생겨 질<br>퍽이게 된다.<br>불고기용은 소고기의 등심부<br>위를 쓰면 된다.</p>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.084,
+        "y": 0.6199
+      },
+      {
+        "x": 0.2734,
+        "y": 0.6199
+      },
+      {
+        "x": 0.2734,
+        "y": 0.8325
+      },
+      {
+        "x": 0.084,
+        "y": 0.8325
+      }
+    ],
+    "id": 7,
+    "page": 2
+  },
+  {
+    "category": "heading1",
+    "content": {
+      "html": "<br><h1 id='8' style='font-size:14px'>참기름 1큰술을 넣고 다시 한 번 주물러 10<br>분 정도 둔다.</h1>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.371,
+        "y": 0.6135
+      },
+      {
+        "x": 0.6387,
+        "y": 0.6135
+      },
+      {
+        "x": 0.6387,
+        "y": 0.6413
+      },
+      {
+        "x": 0.371,
+        "y": 0.6413
+      }
+    ],
+    "id": 8,
+    "page": 2
+  },
+  {
+    "category": "figure",
+    "content": {
+      "html": "<br><figure id='9'><img alt=\"\" data-coord=\"top-left:(395,119); bottom-right:(680,321)\" /></figure>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.3678,
+        "y": 0.0783
+      },
+      {
+        "x": 0.6327,
+        "y": 0.0783
+      },
+      {
+        "x": 0.6327,
+        "y": 0.2116
+      },
+      {
+        "x": 0.3678,
+        "y": 0.2116
+      }
+    ],
+    "id": 9,
+    "page": 2
+  },
+  {
+    "category": "heading1",
+    "content": {
+      "html": "<br><h1 id='10' style='font-size:16px'>소고기는 불고깃감으로 얇게 썬 것으로 준비<br>해 설탕과 물엿을 넣는다.</h1>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.3677,
+        "y": 0.2168
+      },
+      {
+        "x": 0.6343,
+        "y": 0.2168
+      },
+      {
+        "x": 0.6343,
+        "y": 0.2445
+      },
+      {
+        "x": 0.3677,
+        "y": 0.2445
+      }
+    ],
+    "id": 10,
+    "page": 2
+  },
+  {
+    "category": "figure",
+    "content": {
+      "html": "<figure id='11'><img style='font-size:14px' alt=\"3\" data-coord=\"top-left:(397,421); bottom-right:(681,624)\" /></figure>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.3695,
+        "y": 0.2772
+      },
+      {
+        "x": 0.6343,
+        "y": 0.2772
+      },
+      {
+        "x": 0.6343,
+        "y": 0.411
+      },
+      {
+        "x": 0.3695,
+        "y": 0.411
+      }
+    ],
+    "id": 11,
+    "page": 2
+  },
+  {
+    "category": "heading1",
+    "content": {
+      "html": "<br><h1 id='12' style='font-size:16px'>소고기에 간 양파와 간 마늘, 진간장, 후춧<br>가루를 넣는다.</h1>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.3694,
+        "y": 0.4155
+      },
+      {
+        "x": 0.6366,
+        "y": 0.4155
+      },
+      {
+        "x": 0.6366,
+        "y": 0.4434
+      },
+      {
+        "x": 0.3694,
+        "y": 0.4434
+      }
+    ],
+    "id": 12,
+    "page": 2
+  },
+  {
+    "category": "figure",
+    "content": {
+      "html": "<br><figure id='13'><img style='font-size:16px' alt=\"2\" data-coord=\"top-left:(705,117); bottom-right:(989,320)\" /></figure>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.656,
+        "y": 0.0773
+      },
+      {
+        "x": 0.9202,
+        "y": 0.0773
+      },
+      {
+        "x": 0.9202,
+        "y": 0.2107
+      },
+      {
+        "x": 0.656,
+        "y": 0.2107
+      }
+    ],
+    "id": 13,
+    "page": 2
+  },
+  {
+    "category": "heading1",
+    "content": {
+      "html": "<br><h1 id='14' style='font-size:16px'>소고기를 주물러 20분간 잰다.</h1>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.6568,
+        "y": 0.2159
+      },
+      {
+        "x": 0.839,
+        "y": 0.2159
+      },
+      {
+        "x": 0.839,
+        "y": 0.2298
+      },
+      {
+        "x": 0.6568,
+        "y": 0.2298
+      }
+    ],
+    "id": 14,
+    "page": 2
+  },
+  {
+    "category": "figure",
+    "content": {
+      "html": "<figure id='15'><img style='font-size:14px' alt=\"4\" data-coord=\"top-left:(706,420); bottom-right:(991,621)\" /></figure>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.6572,
+        "y": 0.2767
+      },
+      {
+        "x": 0.9226,
+        "y": 0.2767
+      },
+      {
+        "x": 0.9226,
+        "y": 0.4091
+      },
+      {
+        "x": 0.6572,
+        "y": 0.4091
+      }
+    ],
+    "id": 15,
+    "page": 2
+  },
+  {
+    "category": "heading1",
+    "content": {
+      "html": "<br><h1 id='16' style='font-size:16px'>다시 주물러 소고기에 양념이 스며들게 한<br>다. 이렇게 해야 소고기가 부드러워지고 양<br>념이 배어 맛이 좋아진다.</h1>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.6573,
+        "y": 0.414
+      },
+      {
+        "x": 0.9249,
+        "y": 0.414
+      },
+      {
+        "x": 0.9249,
+        "y": 0.4551
+      },
+      {
+        "x": 0.6573,
+        "y": 0.4551
+      }
+    ],
+    "id": 16,
+    "page": 2
+  },
+  {
+    "category": "figure",
+    "content": {
+      "html": "<figure id='17'><img style='font-size:14px' alt=\"5\" data-coord=\"top-left:(399,722); bottom-right:(682,924)\" /></figure>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.3713,
+        "y": 0.4755
+      },
+      {
+        "x": 0.6353,
+        "y": 0.4755
+      },
+      {
+        "x": 0.6353,
+        "y": 0.6085
+      },
+      {
+        "x": 0.3713,
+        "y": 0.6085
+      }
+    ],
+    "id": 17,
+    "page": 2
+  },
+  {
+    "category": "figure",
+    "content": {
+      "html": "<br><figure id='18'><img style='font-size:14px' alt=\"6\" data-coord=\"top-left:(708,722); bottom-right:(992,923)\" /></figure>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.6591,
+        "y": 0.475
+      },
+      {
+        "x": 0.9234,
+        "y": 0.475
+      },
+      {
+        "x": 0.9234,
+        "y": 0.6075
+      },
+      {
+        "x": 0.6591,
+        "y": 0.6075
+      }
+    ],
+    "id": 18,
+    "page": 2
+  },
+  {
+    "category": "paragraph",
+    "content": {
+      "html": "<br><p id='19' data-category='paragraph' style='font-size:16px'>양파는 굵게 채 썰고, 표고버섯은 얇게 썬다.<br>대파와 홍고추는 어슷하게 썬다.</p>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.6593,
+        "y": 0.6123
+      },
+      {
+        "x": 0.926,
+        "y": 0.6123
+      },
+      {
+        "x": 0.926,
+        "y": 0.6399
+      },
+      {
+        "x": 0.6593,
+        "y": 0.6399
+      }
+    ],
+    "id": 19,
+    "page": 2
+  },
+  {
+    "category": "figure",
+    "content": {
+      "html": "<figure id='20'><img style='font-size:14px' alt=\"7\" data-coord=\"top-left:(400,1023); bottom-right:(685,1225)\" /></figure>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.3727,
+        "y": 0.6735
+      },
+      {
+        "x": 0.6374,
+        "y": 0.6735
+      },
+      {
+        "x": 0.6374,
+        "y": 0.8065
+      },
+      {
+        "x": 0.3727,
+        "y": 0.8065
+      }
+    ],
+    "id": 20,
+    "page": 2
+  },
+  {
+    "category": "paragraph",
+    "content": {
+      "html": "<br><p id='21' data-category='paragraph' style='font-size:16px'>소고기에 채소, 참기름 2큰술을 넣고 섞는다.</p>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.3737,
+        "y": 0.8112
+      },
+      {
+        "x": 0.638,
+        "y": 0.8112
+      },
+      {
+        "x": 0.638,
+        "y": 0.8257
+      },
+      {
+        "x": 0.3737,
+        "y": 0.8257
+      }
+    ],
+    "id": 21,
+    "page": 2
+  },
+  {
+    "category": "figure",
+    "content": {
+      "html": "<br><figure id='22'><img style='font-size:16px' alt=\"8\" data-coord=\"top-left:(710,1022); bottom-right:(995,1224)\" /></figure>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.6605,
+        "y": 0.6726
+      },
+      {
+        "x": 0.9256,
+        "y": 0.6726
+      },
+      {
+        "x": 0.9256,
+        "y": 0.8054
+      },
+      {
+        "x": 0.6605,
+        "y": 0.8054
+      }
+    ],
+    "id": 22,
+    "page": 2
+  },
+  {
+    "category": "paragraph",
+    "content": {
+      "html": "<br><p id='23' data-category='paragraph' style='font-size:14px'>팬을 뜨겁게 달군 뒤 소고기와 채소를 넣고<br>볶는다.</p>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.6607,
+        "y": 0.8104
+      },
+      {
+        "x": 0.928,
+        "y": 0.8104
+      },
+      {
+        "x": 0.928,
+        "y": 0.8384
+      },
+      {
+        "x": 0.6607,
+        "y": 0.8384
+      }
+    ],
+    "id": 23,
+    "page": 2
+  },
+  {
+    "category": "footer",
+    "content": {
+      "html": "<footer id='24' style='font-size:16px'>79</footer>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.9059,
+        "y": 0.9651
+      },
+      {
+        "x": 0.93,
+        "y": 0.9651
+      },
+      {
+        "x": 0.93,
+        "y": 0.9787
+      },
+      {
+        "x": 0.9059,
+        "y": 0.9787
+      }
+    ],
+    "id": 24,
+    "page": 2
+  },
+  {
+    "category": "footer",
+    "content": {
+      "html": "<br><footer id='25' style='font-size:22px'>1<br>집밥메뉴<br>52</footer>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.9509,
+        "y": 0.1178
+      },
+      {
+        "x": 0.9818,
+        "y": 0.1178
+      },
+      {
+        "x": 0.9818,
+        "y": 0.2339
+      },
+      {
+        "x": 0.9509,
+        "y": 0.2339
+      }
+    ],
+    "id": 25,
+    "page": 2
+  },
+  {
+    "category": "heading1",
+    "content": {
+      "html": "<h1 id='26' style='font-size:14px'>찜은 고기나 생선, 채소 등에 갖은 양념을 하여 국물이 거의 없어지게 끓이는 음식이다. 소꼬리찜은 한<br>국인이 특히 좋아하는 원기회복용 고급 보양요리로, 소꼬리와 채소가 어우러진 맛이 일품이다.</h1>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.0958,
+        "y": 0.075
+      },
+      {
+        "x": 0.9218,
+        "y": 0.075
+      },
+      {
+        "x": 0.9218,
+        "y": 0.1212
+      },
+      {
+        "x": 0.0958,
+        "y": 0.1212
+      }
+    ],
+    "id": 26,
+    "page": 3
+  },
+  {
+    "category": "paragraph",
+    "content": {
+      "html": "<p id='27' data-category='paragraph' style='font-size:18px'>소꼬리 찜</p>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.4342,
+        "y": 0.6813
+      },
+      {
+        "x": 0.7509,
+        "y": 0.6813
+      },
+      {
+        "x": 0.7509,
+        "y": 0.7445
+      },
+      {
+        "x": 0.4342,
+        "y": 0.7445
+      }
+    ],
+    "id": 27,
+    "page": 3
+  },
+  {
+    "category": "figure",
+    "content": {
+      "html": "<figure id='28'><img alt=\"\" data-coord=\"top-left:(93,119); bottom-right:(293,329)\" /></figure>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.0868,
+        "y": 0.0788
+      },
+      {
+        "x": 0.2727,
+        "y": 0.0788
+      },
+      {
+        "x": 0.2727,
+        "y": 0.217
+      },
+      {
+        "x": 0.0868,
+        "y": 0.217
+      }
+    ],
+    "id": 28,
+    "page": 4
+  },
+  {
+    "category": "paragraph",
+    "content": {
+      "html": "<p id='29' data-category='paragraph' style='font-size:18px'>재료 (4인분)</p>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.1397,
+        "y": 0.2301
+      },
+      {
+        "x": 0.2176,
+        "y": 0.2301
+      },
+      {
+        "x": 0.2176,
+        "y": 0.243
+      },
+      {
+        "x": 0.1397,
+        "y": 0.243
+      }
+    ],
+    "id": 29,
+    "page": 4
+  },
+  {
+    "category": "paragraph",
+    "content": {
+      "html": "<p id='30' data-category='paragraph' style='font-size:14px'>소꼬리 1kg<br>무 -200g<br>당근 90g<br>표고버섯 40g<br>양파 100g(+양파 1개)<br>마늘 ·20개(100g)<br>대추 5개(15g)<br>대파 100g(+ 대파 1대)<br>생강 30g<br>청양고추 20g<br>홍고추 20g<br>은행 5개(8g)<br>밤 4개(40g)<br>진간장 1컵(약180ml)<br>설탕 ·1컵(140g)<br>통깨 약간<br>후춧가루 약간<br>물 11-2컵(2,070ml)</p>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.0858,
+        "y": 0.2559
+      },
+      {
+        "x": 0.2776,
+        "y": 0.2559
+      },
+      {
+        "x": 0.2776,
+        "y": 0.5398
+      },
+      {
+        "x": 0.0858,
+        "y": 0.5398
+      }
+    ],
+    "id": 30,
+    "page": 4
+  },
+  {
+    "category": "figure",
+    "content": {
+      "html": "<br><figure id='31'><img style='font-size:18px' alt=\"2\" data-coord=\"top-left:(712,126); bottom-right:(995,326)\" /></figure>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.6626,
+        "y": 0.0831
+      },
+      {
+        "x": 0.9259,
+        "y": 0.0831
+      },
+      {
+        "x": 0.9259,
+        "y": 0.215
+      },
+      {
+        "x": 0.6626,
+        "y": 0.215
+      }
+    ],
+    "id": 31,
+    "page": 4
+  },
+  {
+    "category": "figure",
+    "content": {
+      "html": "<figure id='32'><img style='font-size:14px' alt=\"Tip\" data-coord=\"top-left:(176,874); bottom-right:(294,955)\" /></figure>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.164,
+        "y": 0.5751
+      },
+      {
+        "x": 0.2742,
+        "y": 0.5751
+      },
+      {
+        "x": 0.2742,
+        "y": 0.6286
+      },
+      {
+        "x": 0.164,
+        "y": 0.6286
+      }
+    ],
+    "id": 32,
+    "page": 4
+  },
+  {
+    "category": "paragraph",
+    "content": {
+      "html": "<br><p id='33' data-category='paragraph' style='font-size:20px'>백종원의</p>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.0871,
+        "y": 0.61
+      },
+      {
+        "x": 0.1824,
+        "y": 0.61
+      },
+      {
+        "x": 0.1824,
+        "y": 0.6277
+      },
+      {
+        "x": 0.0871,
+        "y": 0.6277
+      }
+    ],
+    "id": 33,
+    "page": 4
+  },
+  {
+    "category": "paragraph",
+    "content": {
+      "html": "<p id='34' data-category='paragraph' style='font-size:16px'>소꼬리찜은 오랜 시간 찜을<br>하기 때문에 채소가 너무 익<br>어 부서지기 쉽다. 무와 당근<br>은 모서리를 둥글게 다듬는다.<br>이렇게 하면 찜을 하는 동안<br>가장자리가 부서져 찜이 지저<br>분해지는 것을 막을 수 있다.</p>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.0852,
+        "y": 0.6401
+      },
+      {
+        "x": 0.2735,
+        "y": 0.6401
+      },
+      {
+        "x": 0.2735,
+        "y": 0.7452
+      },
+      {
+        "x": 0.0852,
+        "y": 0.7452
+      }
+    ],
+    "id": 34,
+    "page": 4
+  },
+  {
+    "category": "paragraph",
+    "content": {
+      "html": "<br><p id='35' data-category='paragraph' style='font-size:14px'>소꼬리찜이 끓기 시작해서 30분 정도 지나<br>면 생강을 건지고, 1시간 지나면 대파를 건<br>진다.</p>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.3726,
+        "y": 0.6174
+      },
+      {
+        "x": 0.6401,
+        "y": 0.6174
+      },
+      {
+        "x": 0.6401,
+        "y": 0.6574
+      },
+      {
+        "x": 0.3726,
+        "y": 0.6574
+      }
+    ],
+    "id": 35,
+    "page": 4
+  },
+  {
+    "category": "figure",
+    "content": {
+      "html": "<figure id='36'><img alt=\"\" data-coord=\"top-left:(91,1144); bottom-right:(295,1280)\" /></figure>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.0848,
+        "y": 0.7528
+      },
+      {
+        "x": 0.2749,
+        "y": 0.7528
+      },
+      {
+        "x": 0.2749,
+        "y": 0.8422
+      },
+      {
+        "x": 0.0848,
+        "y": 0.8422
+      }
+    ],
+    "id": 36,
+    "page": 4
+  },
+  {
+    "category": "figure",
+    "content": {
+      "html": "<br><figure id='37'><img style='font-size:14px' alt=\"1\" data-coord=\"top-left:(402,125); bottom-right:(687,327)\" /></figure>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.3745,
+        "y": 0.0822
+      },
+      {
+        "x": 0.6391,
+        "y": 0.0822
+      },
+      {
+        "x": 0.6391,
+        "y": 0.2154
+      },
+      {
+        "x": 0.3745,
+        "y": 0.2154
+      }
+    ],
+    "id": 37,
+    "page": 4
+  },
+  {
+    "category": "heading1",
+    "content": {
+      "html": "<br><h1 id='38' style='font-size:16px'>소꼬리는 깨끗이 씻은 뒤 물에 2시간 정도<br>담가 핏물을 뺀다. 핏물을 빼야 찜이 깔끔하<br>게 되고 양념이 잘 밴다.</h1>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.3732,
+        "y": 0.2208
+      },
+      {
+        "x": 0.6409,
+        "y": 0.2208
+      },
+      {
+        "x": 0.6409,
+        "y": 0.2616
+      },
+      {
+        "x": 0.3732,
+        "y": 0.2616
+      }
+    ],
+    "id": 38,
+    "page": 4
+  },
+  {
+    "category": "heading1",
+    "content": {
+      "html": "<br><h1 id='39' style='font-size:16px'>무는 3cm 두께의 삼각형으로 썰고, 당근도<br>3cm 두께로 썬다. 표고버섯과 양파는 6등분<br>한다. 대파, 청양고추와 홍고추는 큼직하게<br>토막내고 생강은 얇게 썬다.</h1>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.6617,
+        "y": 0.2209
+      },
+      {
+        "x": 0.9284,
+        "y": 0.2209
+      },
+      {
+        "x": 0.9284,
+        "y": 0.2744
+      },
+      {
+        "x": 0.6617,
+        "y": 0.2744
+      }
+    ],
+    "id": 39,
+    "page": 4
+  },
+  {
+    "category": "figure",
+    "content": {
+      "html": "<br><figure id='40'><img style='font-size:18px' alt=\"3\" data-coord=\"top-left:(401,426); bottom-right:(686,628)\" /></figure>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.3733,
+        "y": 0.2807
+      },
+      {
+        "x": 0.6383,
+        "y": 0.2807
+      },
+      {
+        "x": 0.6383,
+        "y": 0.4138
+      },
+      {
+        "x": 0.3733,
+        "y": 0.4138
+      }
+    ],
+    "id": 40,
+    "page": 4
+  },
+  {
+    "category": "heading1",
+    "content": {
+      "html": "<br><h1 id='41' style='font-size:16px'>소꼬리는 팔팔 끓는 물에 넣고 3~5분 정도<br>삶은 뒤 체로 건져 찬물에 헹군다. 소꼬리를<br>미리 삶아야 누린내가 나지 않는다.</h1>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.3729,
+        "y": 0.4193
+      },
+      {
+        "x": 0.6402,
+        "y": 0.4193
+      },
+      {
+        "x": 0.6402,
+        "y": 0.46
+      },
+      {
+        "x": 0.3729,
+        "y": 0.46
+      }
+    ],
+    "id": 41,
+    "page": 4
+  },
+  {
+    "category": "figure",
+    "content": {
+      "html": "<br><figure id='42'><img style='font-size:14px' alt=\"4\" data-coord=\"top-left:(711,427); bottom-right:(997,628)\" /></figure>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.662,
+        "y": 0.2811
+      },
+      {
+        "x": 0.9274,
+        "y": 0.2811
+      },
+      {
+        "x": 0.9274,
+        "y": 0.4138
+      },
+      {
+        "x": 0.662,
+        "y": 0.4138
+      }
+    ],
+    "id": 42,
+    "page": 4
+  },
+  {
+    "category": "paragraph",
+    "content": {
+      "html": "<br><p id='43' data-category='paragraph' style='font-size:16px'>냄비에 소꼬리를 담고 생강과 양파 1개, 남은<br>대파 1대를 넣고 진간장, 설탕, 후춧가루, 물<br>을 넣어 끓이기 시작한다.</p>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.6616,
+        "y": 0.4194
+      },
+      {
+        "x": 0.9275,
+        "y": 0.4194
+      },
+      {
+        "x": 0.9275,
+        "y": 0.4597
+      },
+      {
+        "x": 0.6616,
+        "y": 0.4597
+      }
+    ],
+    "id": 43,
+    "page": 4
+  },
+  {
+    "category": "figure",
+    "content": {
+      "html": "<figure id='44'><img style='font-size:18px' alt=\"5\" data-coord=\"top-left:(401,727); bottom-right:(685,929)\" /></figure>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.3736,
+        "y": 0.4787
+      },
+      {
+        "x": 0.638,
+        "y": 0.4787
+      },
+      {
+        "x": 0.638,
+        "y": 0.6116
+      },
+      {
+        "x": 0.3736,
+        "y": 0.6116
+      }
+    ],
+    "id": 44,
+    "page": 4
+  },
+  {
+    "category": "figure",
+    "content": {
+      "html": "<br><figure id='45'><img style='font-size:14px' alt=\"6\" data-coord=\"top-left:(712,729); bottom-right:(996,929)\" /></figure>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.6623,
+        "y": 0.4796
+      },
+      {
+        "x": 0.9265,
+        "y": 0.4796
+      },
+      {
+        "x": 0.9265,
+        "y": 0.6118
+      },
+      {
+        "x": 0.6623,
+        "y": 0.6118
+      }
+    ],
+    "id": 45,
+    "page": 4
+  },
+  {
+    "category": "paragraph",
+    "content": {
+      "html": "<br><p id='46' data-category='paragraph' style='font-size:16px'>무, 당근, 표고버섯, 마늘, 밤, 대추를 넣고<br>끓인다. 이때 불은 중불로 줄인다.</p>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.661,
+        "y": 0.6175
+      },
+      {
+        "x": 0.9275,
+        "y": 0.6175
+      },
+      {
+        "x": 0.9275,
+        "y": 0.6444
+      },
+      {
+        "x": 0.661,
+        "y": 0.6444
+      }
+    ],
+    "id": 46,
+    "page": 4
+  },
+  {
+    "category": "figure",
+    "content": {
+      "html": "<figure id='47'><img style='font-size:14px' alt=\"7\" data-coord=\"top-left:(403,1028); bottom-right:(686,1230)\" /></figure>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.3749,
+        "y": 0.6766
+      },
+      {
+        "x": 0.6381,
+        "y": 0.6766
+      },
+      {
+        "x": 0.6381,
+        "y": 0.8098
+      },
+      {
+        "x": 0.3749,
+        "y": 0.8098
+      }
+    ],
+    "id": 47,
+    "page": 4
+  },
+  {
+    "category": "paragraph",
+    "content": {
+      "html": "<br><p id='48' data-category='paragraph' style='font-size:16px'>밤이 반쯤 익으면 나머지 채소(양파, 대파,<br>청양고추, 홍고추, 은행)를 넣는다.</p>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.3729,
+        "y": 0.8153
+      },
+      {
+        "x": 0.6395,
+        "y": 0.8153
+      },
+      {
+        "x": 0.6395,
+        "y": 0.8423
+      },
+      {
+        "x": 0.3729,
+        "y": 0.8423
+      }
+    ],
+    "id": 48,
+    "page": 4
+  },
+  {
+    "category": "figure",
+    "content": {
+      "html": "<br><figure id='49'><img style='font-size:14px' alt=\"8\" data-coord=\"top-left:(711,1029); bottom-right:(996,1231)\" /></figure>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.6619,
+        "y": 0.6774
+      },
+      {
+        "x": 0.927,
+        "y": 0.6774
+      },
+      {
+        "x": 0.927,
+        "y": 0.8099
+      },
+      {
+        "x": 0.6619,
+        "y": 0.8099
+      }
+    ],
+    "id": 49,
+    "page": 4
+  },
+  {
+    "category": "paragraph",
+    "content": {
+      "html": "<br><p id='50' data-category='paragraph' style='font-size:16px'>채소가 반쯤 익으면 통깨를 섞고 불은 끈다.<br>④의 과정부터 완성까지 1시간 40분 정도 걸<br>린다.</p>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.6609,
+        "y": 0.8156
+      },
+      {
+        "x": 0.9274,
+        "y": 0.8156
+      },
+      {
+        "x": 0.9274,
+        "y": 0.8547
+      },
+      {
+        "x": 0.6609,
+        "y": 0.8547
+      }
+    ],
+    "id": 50,
+    "page": 4
+  },
+  {
+    "category": "footer",
+    "content": {
+      "html": "<footer id='51' style='font-size:14px'>81</footer>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.9044,
+        "y": 0.9704
+      },
+      {
+        "x": 0.9272,
+        "y": 0.9704
+      },
+      {
+        "x": 0.9272,
+        "y": 0.9838
+      },
+      {
+        "x": 0.9044,
+        "y": 0.9838
+      }
+    ],
+    "id": 51,
+    "page": 4
+  },
+  {
+    "category": "footer",
+    "content": {
+      "html": "<br><footer id='52' style='font-size:22px'>1<br>집밥메뉴<br>52</footer>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.9574,
+        "y": 0.1237
+      },
+      {
+        "x": 0.9866,
+        "y": 0.1237
+      },
+      {
+        "x": 0.9866,
+        "y": 0.2386
+      },
+      {
+        "x": 0.9574,
+        "y": 0.2386
+      }
+    ],
+    "id": 52,
+    "page": 4
+  },
+  {
+    "category": "heading1",
+    "content": {
+      "html": "<h1 id='53' style='font-size:14px'>명절날이면 빠지지 않고 상에 오르는 음식이 탕평채다. 탕평채는 '어느 한쪽으로 치우침 없이 고르<br>다' 는 뜻을 지닌 '탕탕평평'에서 유래한 이름으로, 흰색, 검은색, 초록색, 붉은색, 황색의 5가지 색의<br>재료가 골고루 들어가며 이는 오복을 상징한다.</h1>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.0853,
+        "y": 0.0797
+      },
+      {
+        "x": 0.9049,
+        "y": 0.0797
+      },
+      {
+        "x": 0.9049,
+        "y": 0.1428
+      },
+      {
+        "x": 0.0853,
+        "y": 0.1428
+      }
+    ],
+    "id": 53,
+    "page": 5
+  },
+  {
+    "category": "paragraph",
+    "content": {
+      "html": "<p id='54' data-category='paragraph' style='font-size:18px'>탕평 채</p>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.0852,
+        "y": 0.404
+      },
+      {
+        "x": 0.3228,
+        "y": 0.404
+      },
+      {
+        "x": 0.3228,
+        "y": 0.4691
+      },
+      {
+        "x": 0.0852,
+        "y": 0.4691
+      }
+    ],
+    "id": 54,
+    "page": 5
+  },
+  {
+    "category": "figure",
+    "content": {
+      "html": "<figure id='55'><img alt=\"\" data-coord=\"top-left:(90,111); bottom-right:(301,332)\" /></figure>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.0838,
+        "y": 0.0731
+      },
+      {
+        "x": 0.2801,
+        "y": 0.0731
+      },
+      {
+        "x": 0.2801,
+        "y": 0.219
+      },
+      {
+        "x": 0.0838,
+        "y": 0.219
+      }
+    ],
+    "id": 55,
+    "page": 6
+  },
+  {
+    "category": "heading1",
+    "content": {
+      "html": "<h1 id='56' style='font-size:14px'>달걀은 흰자와 노른자로 나눠 얇게 지단을<br>부친다. 지단이 완전히 식으면 4~5cm 길이<br>로 가늘게 채 썬다.</h1>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.372,
+        "y": 0.4175
+      },
+      {
+        "x": 0.6401,
+        "y": 0.4175
+      },
+      {
+        "x": 0.6401,
+        "y": 0.4585
+      },
+      {
+        "x": 0.372,
+        "y": 0.4585
+      }
+    ],
+    "id": 56,
+    "page": 6
+  },
+  {
+    "category": "paragraph",
+    "content": {
+      "html": "<br><p id='57' data-category='paragraph' style='font-size:16px'>재료 (4인분)</p>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.1397,
+        "y": 0.2284
+      },
+      {
+        "x": 0.2175,
+        "y": 0.2284
+      },
+      {
+        "x": 0.2175,
+        "y": 0.2418
+      },
+      {
+        "x": 0.1397,
+        "y": 0.2418
+      }
+    ],
+    "id": 57,
+    "page": 6
+  },
+  {
+    "category": "paragraph",
+    "content": {
+      "html": "<p id='58' data-category='paragraph' style='font-size:14px'>청포묵 ·1모(380g)<br>소고기 ·80g<br>(진간장 3큰술+간 마늘 용큰술+<br>설탕 12큰술+후춧가루 약간)<br>미나리 ·25g(4줄기)<br>당근 40g<br>달걀 2개<br>생김 1장<br>깨소금 1g큰술<br>참기름 1/2큰술</p>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.086,
+        "y": 0.254
+      },
+      {
+        "x": 0.2774,
+        "y": 0.254
+      },
+      {
+        "x": 0.2774,
+        "y": 0.412
+      },
+      {
+        "x": 0.086,
+        "y": 0.412
+      }
+    ],
+    "id": 58,
+    "page": 6
+  },
+  {
+    "category": "figure",
+    "content": {
+      "html": "<figure id='59'><img style='font-size:14px' alt=\"Tip\" data-coord=\"top-left:(174,886); bottom-right:(293,968)\" /></figure>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.1622,
+        "y": 0.5835
+      },
+      {
+        "x": 0.2726,
+        "y": 0.5835
+      },
+      {
+        "x": 0.2726,
+        "y": 0.6372
+      },
+      {
+        "x": 0.1622,
+        "y": 0.6372
+      }
+    ],
+    "id": 59,
+    "page": 6
+  },
+  {
+    "category": "heading1",
+    "content": {
+      "html": "<br><h1 id='60' style='font-size:20px'>백종원의</h1>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.0863,
+        "y": 0.6176
+      },
+      {
+        "x": 0.1583,
+        "y": 0.6176
+      },
+      {
+        "x": 0.1583,
+        "y": 0.635
+      },
+      {
+        "x": 0.0863,
+        "y": 0.635
+      }
+    ],
+    "id": 60,
+    "page": 6
+  },
+  {
+    "category": "paragraph",
+    "content": {
+      "html": "<p id='61' data-category='paragraph' style='font-size:14px'>청포묵은 녹두로 만든 묵으로<br>구입하면 굳어 있어서 데쳐서<br>사용해야 한다. 끓는 물에 넣<br>고 묵의 가장자리가 반투명이<br>될 정도로 3~5분 정도 데친<br>뒤 찬물에 헹궈 물기를 빼고<br>채 썬다.<br>묵이 말랑말랑해서 써는 것<br>이 어렵다면 미리 채 썬 뒤<br>끓는 물에 데쳐 찬물에 헹군<br>뒤 체에 밭쳐 물기를 빼고<br>써도 된다.</p>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.0838,
+        "y": 0.6505
+      },
+      {
+        "x": 0.2725,
+        "y": 0.6505
+      },
+      {
+        "x": 0.2725,
+        "y": 0.8328
+      },
+      {
+        "x": 0.0838,
+        "y": 0.8328
+      }
+    ],
+    "id": 61,
+    "page": 6
+  },
+  {
+    "category": "figure",
+    "content": {
+      "html": "<br><figure id='62'><img alt=\"\" data-coord=\"top-left:(414,122); bottom-right:(687,301)\" /></figure>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.3853,
+        "y": 0.0807
+      },
+      {
+        "x": 0.6399,
+        "y": 0.0807
+      },
+      {
+        "x": 0.6399,
+        "y": 0.1986
+      },
+      {
+        "x": 0.3853,
+        "y": 0.1986
+      }
+    ],
+    "id": 62,
+    "page": 6
+  },
+  {
+    "category": "paragraph",
+    "content": {
+      "html": "<br><p id='63' data-category='paragraph' style='font-size:14px'>1</p>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.374,
+        "y": 0.1993
+      },
+      {
+        "x": 0.3871,
+        "y": 0.1993
+      },
+      {
+        "x": 0.3871,
+        "y": 0.2143
+      },
+      {
+        "x": 0.374,
+        "y": 0.2143
+      }
+    ],
+    "id": 63,
+    "page": 6
+  },
+  {
+    "category": "heading1",
+    "content": {
+      "html": "<br><h1 id='64' style='font-size:14px'>당근은 4~5cm 길이로 가늘게 채 썬다.</h1>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.3738,
+        "y": 0.2193
+      },
+      {
+        "x": 0.6106,
+        "y": 0.2193
+      },
+      {
+        "x": 0.6106,
+        "y": 0.2339
+      },
+      {
+        "x": 0.3738,
+        "y": 0.2339
+      }
+    ],
+    "id": 64,
+    "page": 6
+  },
+  {
+    "category": "figure",
+    "content": {
+      "html": "<br><figure id='65'><img style='font-size:16px' alt=\"2\" data-coord=\"top-left:(711,124); bottom-right:(997,326)\" /></figure>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.662,
+        "y": 0.0818
+      },
+      {
+        "x": 0.9281,
+        "y": 0.0818
+      },
+      {
+        "x": 0.9281,
+        "y": 0.2148
+      },
+      {
+        "x": 0.662,
+        "y": 0.2148
+      }
+    ],
+    "id": 65,
+    "page": 6
+  },
+  {
+    "category": "heading1",
+    "content": {
+      "html": "<br><h1 id='66' style='font-size:14px'>미나리는 잎을 떼고 줄기만 끓는 물에<br>10~20초간 넣었다가 찬물에 헹군 뒤 물기<br>를 꼭 짜고 4~5cm 길이로 썬다.</h1>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.661,
+        "y": 0.2202
+      },
+      {
+        "x": 0.929,
+        "y": 0.2202
+      },
+      {
+        "x": 0.929,
+        "y": 0.2609
+      },
+      {
+        "x": 0.661,
+        "y": 0.2609
+      }
+    ],
+    "id": 66,
+    "page": 6
+  },
+  {
+    "category": "figure",
+    "content": {
+      "html": "<figure id='67'><img style='font-size:18px' alt=\"3\" data-coord=\"top-left:(402,425); bottom-right:(686,627)\" /></figure>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.374,
+        "y": 0.28
+      },
+      {
+        "x": 0.6384,
+        "y": 0.28
+      },
+      {
+        "x": 0.6384,
+        "y": 0.4126
+      },
+      {
+        "x": 0.374,
+        "y": 0.4126
+      }
+    ],
+    "id": 67,
+    "page": 6
+  },
+  {
+    "category": "figure",
+    "content": {
+      "html": "<br><figure id='68'><img alt=\"\" data-coord=\"top-left:(711,427); bottom-right:(995,627)\" /></figure>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.6615,
+        "y": 0.2811
+      },
+      {
+        "x": 0.9259,
+        "y": 0.2811
+      },
+      {
+        "x": 0.9259,
+        "y": 0.4125
+      },
+      {
+        "x": 0.6615,
+        "y": 0.4125
+      }
+    ],
+    "id": 68,
+    "page": 6
+  },
+  {
+    "category": "heading1",
+    "content": {
+      "html": "<br><h1 id='69' style='font-size:16px'>김은 구운 뒤 비닐봉지에 넣고 잘게 부순다.</h1>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.6614,
+        "y": 0.4182
+      },
+      {
+        "x": 0.9257,
+        "y": 0.4182
+      },
+      {
+        "x": 0.9257,
+        "y": 0.433
+      },
+      {
+        "x": 0.6614,
+        "y": 0.433
+      }
+    ],
+    "id": 69,
+    "page": 6
+  },
+  {
+    "category": "figure",
+    "content": {
+      "html": "<figure id='70'><img style='font-size:18px' alt=\"5\" data-coord=\"top-left:(400,726); bottom-right:(684,928)\" /></figure>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.3727,
+        "y": 0.478
+      },
+      {
+        "x": 0.6368,
+        "y": 0.478
+      },
+      {
+        "x": 0.6368,
+        "y": 0.6111
+      },
+      {
+        "x": 0.3727,
+        "y": 0.6111
+      }
+    ],
+    "id": 70,
+    "page": 6
+  },
+  {
+    "category": "heading1",
+    "content": {
+      "html": "<br><h1 id='71' style='font-size:14px'>소고기는 5~6cm 길이로 가늘게 채 썬 뒤<br>팬에 넣고 진간장, 간 마늘, 설탕, 후춧가루<br>를 넣어 볶는다.</h1>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.3718,
+        "y": 0.6165
+      },
+      {
+        "x": 0.6389,
+        "y": 0.6165
+      },
+      {
+        "x": 0.6389,
+        "y": 0.6568
+      },
+      {
+        "x": 0.3718,
+        "y": 0.6568
+      }
+    ],
+    "id": 71,
+    "page": 6
+  },
+  {
+    "category": "figure",
+    "content": {
+      "html": "<br><figure id='72'><img alt=\"\" data-coord=\"top-left:(710,728); bottom-right:(995,928)\" /></figure>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.661,
+        "y": 0.4789
+      },
+      {
+        "x": 0.9258,
+        "y": 0.4789
+      },
+      {
+        "x": 0.9258,
+        "y": 0.6111
+      },
+      {
+        "x": 0.661,
+        "y": 0.6111
+      }
+    ],
+    "id": 72,
+    "page": 6
+  },
+  {
+    "category": "paragraph",
+    "content": {
+      "html": "<br><p id='73' data-category='paragraph' style='font-size:14px'>청포묵은 끓는 물에 넣어 5분간 데친 뒤 찬<br>물에 헹궈 굵게 채 썬다.</p>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.6602,
+        "y": 0.6169
+      },
+      {
+        "x": 0.927,
+        "y": 0.6169
+      },
+      {
+        "x": 0.927,
+        "y": 0.6439
+      },
+      {
+        "x": 0.6602,
+        "y": 0.6439
+      }
+    ],
+    "id": 73,
+    "page": 6
+  },
+  {
+    "category": "figure",
+    "content": {
+      "html": "<figure id='74'><img style='font-size:16px' alt=\"7\" data-coord=\"top-left:(400,1028); bottom-right:(684,1229)\" /></figure>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.3725,
+        "y": 0.6764
+      },
+      {
+        "x": 0.6367,
+        "y": 0.6764
+      },
+      {
+        "x": 0.6367,
+        "y": 0.8089
+      },
+      {
+        "x": 0.3725,
+        "y": 0.8089
+      }
+    ],
+    "id": 74,
+    "page": 6
+  },
+  {
+    "category": "paragraph",
+    "content": {
+      "html": "<br><p id='75' data-category='paragraph' style='font-size:16px'>넓은 그릇에 청포묵, 당근, 미나리, 소고기를<br>담고 참기름을 넣는다.</p>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.3713,
+        "y": 0.8145
+      },
+      {
+        "x": 0.6377,
+        "y": 0.8145
+      },
+      {
+        "x": 0.6377,
+        "y": 0.8415
+      },
+      {
+        "x": 0.3713,
+        "y": 0.8415
+      }
+    ],
+    "id": 75,
+    "page": 6
+  },
+  {
+    "category": "figure",
+    "content": {
+      "html": "<br><figure id='76'><img style='font-size:14px' alt=\"8\" data-coord=\"top-left:(710,1028); bottom-right:(994,1230)\" /></figure>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.6607,
+        "y": 0.6768
+      },
+      {
+        "x": 0.925,
+        "y": 0.6768
+      },
+      {
+        "x": 0.925,
+        "y": 0.8098
+      },
+      {
+        "x": 0.6607,
+        "y": 0.8098
+      }
+    ],
+    "id": 76,
+    "page": 6
+  },
+  {
+    "category": "paragraph",
+    "content": {
+      "html": "<br><p id='77' data-category='paragraph' style='font-size:14px'>청포묵이 부서지지 않게 섞은 뒤 그릇에 담<br>고 달걀지단, 부순 김, 깨소금을 고명으로 올<br>린다.</p>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.6598,
+        "y": 0.8152
+      },
+      {
+        "x": 0.926,
+        "y": 0.8152
+      },
+      {
+        "x": 0.926,
+        "y": 0.8541
+      },
+      {
+        "x": 0.6598,
+        "y": 0.8541
+      }
+    ],
+    "id": 77,
+    "page": 6
+  },
+  {
+    "category": "footer",
+    "content": {
+      "html": "<footer id='78' style='font-size:14px'>83</footer>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.903,
+        "y": 0.9701
+      },
+      {
+        "x": 0.9267,
+        "y": 0.9701
+      },
+      {
+        "x": 0.9267,
+        "y": 0.9832
+      },
+      {
+        "x": 0.903,
+        "y": 0.9832
+      }
+    ],
+    "id": 78,
+    "page": 6
+  },
+  {
+    "category": "footer",
+    "content": {
+      "html": "<br><footer id='79' style='font-size:22px'>1<br>집밥메뉴<br>52</footer>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.9576,
+        "y": 0.1233
+      },
+      {
+        "x": 0.9867,
+        "y": 0.1233
+      },
+      {
+        "x": 0.9867,
+        "y": 0.2386
+      },
+      {
+        "x": 0.9576,
+        "y": 0.2386
+      }
+    ],
+    "id": 79,
+    "page": 6
+  },
+  {
+    "category": "heading1",
+    "content": {
+      "html": "<h1 id='80' style='font-size:14px'>잡채는 잔칫상, 손님초대상 등 즐거운 날에 빠지지 않는 단골메뉴이다. 고구마 전분으로 만든 당면에<br>여러 가지 채소와 고기를 볶아 간장, 참기름 등으로 맛있게 섞어내는 음식이다. 여러 가지 재료가 들<br>어가 색감이 화려하고 풍미가 좋으며, 영양도 풍부하다.</h1>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.0725,
+        "y": 0.0802
+      },
+      {
+        "x": 0.8914,
+        "y": 0.0802
+      },
+      {
+        "x": 0.8914,
+        "y": 0.1417
+      },
+      {
+        "x": 0.0725,
+        "y": 0.1417
+      }
+    ],
+    "id": 80,
+    "page": 7
+  },
+  {
+    "category": "paragraph",
+    "content": {
+      "html": "<p id='81' data-category='paragraph' style='font-size:18px'>잡채</p>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.0913,
+        "y": 0.383
+      },
+      {
+        "x": 0.2493,
+        "y": 0.383
+      },
+      {
+        "x": 0.2493,
+        "y": 0.4454
+      },
+      {
+        "x": 0.0913,
+        "y": 0.4454
+      }
+    ],
+    "id": 81,
+    "page": 7
+  },
+  {
+    "category": "figure",
+    "content": {
+      "html": "<figure id='82'><img alt=\"\" data-coord=\"top-left:(78,120); bottom-right:(303,310)\" /></figure>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.0727,
+        "y": 0.0795
+      },
+      {
+        "x": 0.2822,
+        "y": 0.0795
+      },
+      {
+        "x": 0.2822,
+        "y": 0.204
+      },
+      {
+        "x": 0.0727,
+        "y": 0.204
+      }
+    ],
+    "id": 82,
+    "page": 8
+  },
+  {
+    "category": "paragraph",
+    "content": {
+      "html": "<p id='83' data-category='paragraph' style='font-size:18px'>재료 (4인분)</p>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.1414,
+        "y": 0.2211
+      },
+      {
+        "x": 0.2183,
+        "y": 0.2211
+      },
+      {
+        "x": 0.2183,
+        "y": 0.2343
+      },
+      {
+        "x": 0.1414,
+        "y": 0.2343
+      }
+    ],
+    "id": 83,
+    "page": 8
+  },
+  {
+    "category": "paragraph",
+    "content": {
+      "html": "<p id='84' data-category='paragraph' style='font-size:14px'>당면 ·300g<br>표고버섯 ····· ·70g(식용유 2큰술)<br>당근 ·70g(식용유 1큰술)<br>양파 150g</p>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.0868,
+        "y": 0.2462
+      },
+      {
+        "x": 0.2768,
+        "y": 0.2462
+      },
+      {
+        "x": 0.2768,
+        "y": 0.308
+      },
+      {
+        "x": 0.0868,
+        "y": 0.308
+      }
+    ],
+    "id": 84,
+    "page": 8
+  },
+  {
+    "category": "paragraph",
+    "content": {
+      "html": "<br><p id='85' data-category='paragraph' style='font-size:18px'>(식용유 2큰술+후춧가루 약간)<br>대파 ·80g(식용유 1큰술)<br>돼지고기 ···130g<br>(식용유 2큰술+진간장 7큰술+간<br>마늘 2큰술+설탕 3큰술+캐러멜<br>1큰술+후춧가루 약간+참기름<br>1큰술)</p>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.0865,
+        "y": 0.3099
+      },
+      {
+        "x": 0.2793,
+        "y": 0.3099
+      },
+      {
+        "x": 0.2793,
+        "y": 0.4194
+      },
+      {
+        "x": 0.0865,
+        "y": 0.4194
+      }
+    ],
+    "id": 85,
+    "page": 8
+  },
+  {
+    "category": "paragraph",
+    "content": {
+      "html": "<br><p id='86' data-category='paragraph' style='font-size:16px'>시금치 120g<br>(물 1.5L+꽃소금 1,큰술)<br>참기름 2큰술<br>달걀지단 1개 분량<br>통깨 약간</p>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.086,
+        "y": 0.421
+      },
+      {
+        "x": 0.2783,
+        "y": 0.421
+      },
+      {
+        "x": 0.2783,
+        "y": 0.4987
+      },
+      {
+        "x": 0.086,
+        "y": 0.4987
+      }
+    ],
+    "id": 86,
+    "page": 8
+  },
+  {
+    "category": "figure",
+    "content": {
+      "html": "<br><figure id='87'><img alt=\"\" data-coord=\"top-left:(403,123); bottom-right:(688,325)\" /></figure>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.3755,
+        "y": 0.081
+      },
+      {
+        "x": 0.64,
+        "y": 0.081
+      },
+      {
+        "x": 0.64,
+        "y": 0.2142
+      },
+      {
+        "x": 0.3755,
+        "y": 0.2142
+      }
+    ],
+    "id": 87,
+    "page": 8
+  },
+  {
+    "category": "heading1",
+    "content": {
+      "html": "<br><h1 id='88' style='font-size:18px'>미지근한 물에 당면을 담가 30~40분 정도<br>불린다.</h1>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.3738,
+        "y": 0.2187
+      },
+      {
+        "x": 0.6411,
+        "y": 0.2187
+      },
+      {
+        "x": 0.6411,
+        "y": 0.2478
+      },
+      {
+        "x": 0.3738,
+        "y": 0.2478
+      }
+    ],
+    "id": 88,
+    "page": 8
+  },
+  {
+    "category": "figure",
+    "content": {
+      "html": "<br><figure id='89'><img style='font-size:20px' alt=\"2\" data-coord=\"top-left:(713,124); bottom-right:(996,325)\" /></figure>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.6637,
+        "y": 0.0821
+      },
+      {
+        "x": 0.9271,
+        "y": 0.0821
+      },
+      {
+        "x": 0.9271,
+        "y": 0.2142
+      },
+      {
+        "x": 0.6637,
+        "y": 0.2142
+      }
+    ],
+    "id": 89,
+    "page": 8
+  },
+  {
+    "category": "paragraph",
+    "content": {
+      "html": "<br><p id='90' data-category='paragraph' style='font-size:18px'>표고버섯은 얇게 썰고, 당근과 양파는 채 썬<br>다. 대파는 어슷하게 썬다.</p>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.6621,
+        "y": 0.2197
+      },
+      {
+        "x": 0.9287,
+        "y": 0.2197
+      },
+      {
+        "x": 0.9287,
+        "y": 0.2474
+      },
+      {
+        "x": 0.6621,
+        "y": 0.2474
+      }
+    ],
+    "id": 90,
+    "page": 8
+  },
+  {
+    "category": "figure",
+    "content": {
+      "html": "<figure id='91'><img style='font-size:16px' alt=\"3\" data-coord=\"top-left:(402,418); bottom-right:(686,620)\" /></figure>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.3747,
+        "y": 0.2755
+      },
+      {
+        "x": 0.6384,
+        "y": 0.2755
+      },
+      {
+        "x": 0.6384,
+        "y": 0.4084
+      },
+      {
+        "x": 0.3747,
+        "y": 0.4084
+      }
+    ],
+    "id": 91,
+    "page": 8
+  },
+  {
+    "category": "heading1",
+    "content": {
+      "html": "<br><h1 id='92' style='font-size:18px'>표고버섯은 달군 팬에 식용유 2큰술을 두르<br>고 볶는다.</h1>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.3733,
+        "y": 0.4134
+      },
+      {
+        "x": 0.6399,
+        "y": 0.4134
+      },
+      {
+        "x": 0.6399,
+        "y": 0.4409
+      },
+      {
+        "x": 0.3733,
+        "y": 0.4409
+      }
+    ],
+    "id": 92,
+    "page": 8
+  },
+  {
+    "category": "figure",
+    "content": {
+      "html": "<br><figure id='93'><img style='font-size:16px' alt=\"4\" data-coord=\"top-left:(711,419); bottom-right:(997,621)\" /></figure>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.6622,
+        "y": 0.2763
+      },
+      {
+        "x": 0.9275,
+        "y": 0.2763
+      },
+      {
+        "x": 0.9275,
+        "y": 0.4086
+      },
+      {
+        "x": 0.6622,
+        "y": 0.4086
+      }
+    ],
+    "id": 93,
+    "page": 8
+  },
+  {
+    "category": "paragraph",
+    "content": {
+      "html": "<br><p id='94' data-category='paragraph' style='font-size:18px'>당근은 식용유 1큰술을 두르고 살짝 볶는다.<br>대파도 식용유 1큰술을 두르고 같은 방법으<br>로 볶는다.</p>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.6615,
+        "y": 0.4141
+      },
+      {
+        "x": 0.9275,
+        "y": 0.4141
+      },
+      {
+        "x": 0.9275,
+        "y": 0.4543
+      },
+      {
+        "x": 0.6615,
+        "y": 0.4543
+      }
+    ],
+    "id": 94,
+    "page": 8
+  },
+  {
+    "category": "figure",
+    "content": {
+      "html": "<figure id='95'><img style='font-size:20px' alt=\"5\" data-coord=\"top-left:(402,722); bottom-right:(685,923)\" /></figure>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.3742,
+        "y": 0.4755
+      },
+      {
+        "x": 0.638,
+        "y": 0.4755
+      },
+      {
+        "x": 0.638,
+        "y": 0.6078
+      },
+      {
+        "x": 0.3742,
+        "y": 0.6078
+      }
+    ],
+    "id": 95,
+    "page": 8
+  },
+  {
+    "category": "paragraph",
+    "content": {
+      "html": "<br><p id='96' data-category='paragraph' style='font-size:18px'>양파는 식용유 2큰술을 두르고 후춧가루를<br>뿌려 반쯤 익게 볶는다.</p>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.3727,
+        "y": 0.613
+      },
+      {
+        "x": 0.6385,
+        "y": 0.613
+      },
+      {
+        "x": 0.6385,
+        "y": 0.6406
+      },
+      {
+        "x": 0.3727,
+        "y": 0.6406
+      }
+    ],
+    "id": 96,
+    "page": 8
+  },
+  {
+    "category": "figure",
+    "content": {
+      "html": "<br><figure id='97'><img alt=\"\" data-coord=\"top-left:(711,723); bottom-right:(995,924)\" /></figure>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.662,
+        "y": 0.4761
+      },
+      {
+        "x": 0.9262,
+        "y": 0.4761
+      },
+      {
+        "x": 0.9262,
+        "y": 0.608
+      },
+      {
+        "x": 0.662,
+        "y": 0.608
+      }
+    ],
+    "id": 97,
+    "page": 8
+  },
+  {
+    "category": "paragraph",
+    "content": {
+      "html": "<br><p id='98' data-category='paragraph' style='font-size:18px'>돼지고기는 가늘게 채 썰어 식용유 3큰술을<br>두른 팬에 볶는다.</p>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.6607,
+        "y": 0.6138
+      },
+      {
+        "x": 0.9263,
+        "y": 0.6138
+      },
+      {
+        "x": 0.9263,
+        "y": 0.6405
+      },
+      {
+        "x": 0.6607,
+        "y": 0.6405
+      }
+    ],
+    "id": 98,
+    "page": 8
+  },
+  {
+    "category": "figure",
+    "content": {
+      "html": "<figure id='99'><img style='font-size:18px' alt=\"7\" data-coord=\"top-left:(401,1025); bottom-right:(684,1226)\" /></figure>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.3731,
+        "y": 0.6745
+      },
+      {
+        "x": 0.6371,
+        "y": 0.6745
+      },
+      {
+        "x": 0.6371,
+        "y": 0.8069
+      },
+      {
+        "x": 0.3731,
+        "y": 0.8069
+      }
+    ],
+    "id": 99,
+    "page": 8
+  },
+  {
+    "category": "paragraph",
+    "content": {
+      "html": "<br><p id='100' data-category='paragraph' style='font-size:18px'>볶던 돼지고기에 진간장, 간 마늘, 설탕, 캐<br>러멜, 후춧가루를 넣고 국물이 졸아들고 갈<br>색이 나게 볶은 뒤 참기름 1큰술을 섞는다.</p>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.3716,
+        "y": 0.8125
+      },
+      {
+        "x": 0.639,
+        "y": 0.8125
+      },
+      {
+        "x": 0.639,
+        "y": 0.8534
+      },
+      {
+        "x": 0.3716,
+        "y": 0.8534
+      }
+    ],
+    "id": 100,
+    "page": 8
+  },
+  {
+    "category": "figure",
+    "content": {
+      "html": "<br><figure id='101'><img style='font-size:16px' alt=\"8\" data-coord=\"top-left:(710,1026); bottom-right:(995,1227)\" /></figure>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.6612,
+        "y": 0.6752
+      },
+      {
+        "x": 0.926,
+        "y": 0.6752
+      },
+      {
+        "x": 0.926,
+        "y": 0.8074
+      },
+      {
+        "x": 0.6612,
+        "y": 0.8074
+      }
+    ],
+    "id": 101,
+    "page": 8
+  },
+  {
+    "category": "paragraph",
+    "content": {
+      "html": "<br><p id='102' data-category='paragraph' style='font-size:18px'>끓는 물에 꽃소금을 넣고 시금치를 넣어<br>20~ 30초만 데친 뒤 찬물에 헹궈 물기를<br>짜고 3등분한다.</p>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.6599,
+        "y": 0.813
+      },
+      {
+        "x": 0.9266,
+        "y": 0.813
+      },
+      {
+        "x": 0.9266,
+        "y": 0.853
+      },
+      {
+        "x": 0.6599,
+        "y": 0.853
+      }
+    ],
+    "id": 102,
+    "page": 8
+  },
+  {
+    "category": "footer",
+    "content": {
+      "html": "<footer id='103' style='font-size:14px'>85</footer>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.9033,
+        "y": 0.9704
+      },
+      {
+        "x": 0.927,
+        "y": 0.9704
+      },
+      {
+        "x": 0.927,
+        "y": 0.9833
+      },
+      {
+        "x": 0.9033,
+        "y": 0.9833
+      }
+    ],
+    "id": 103,
+    "page": 8
+  },
+  {
+    "category": "footer",
+    "content": {
+      "html": "<br><footer id='104' style='font-size:22px'>1<br>집밥메뉴<br>52</footer>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.9584,
+        "y": 0.1235
+      },
+      {
+        "x": 0.9872,
+        "y": 0.1235
+      },
+      {
+        "x": 0.9872,
+        "y": 0.2384
+      },
+      {
+        "x": 0.9584,
+        "y": 0.2384
+      }
+    ],
+    "id": 104,
+    "page": 8
+  },
+  {
+    "category": "figure",
+    "content": {
+      "html": "<figure id='105'><img style='font-size:14px' alt=\"9\" data-coord=\"top-left:(385,124); bottom-right:(667,324)\" /></figure>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.3589,
+        "y": 0.082
+      },
+      {
+        "x": 0.6213,
+        "y": 0.082
+      },
+      {
+        "x": 0.6213,
+        "y": 0.2133
+      },
+      {
+        "x": 0.3589,
+        "y": 0.2133
+      }
+    ],
+    "id": 105,
+    "page": 9
+  },
+  {
+    "category": "paragraph",
+    "content": {
+      "html": "<br><p id='106' data-category='paragraph' style='font-size:18px'>볶은 채소는 접시에 담아 식히고, 볶은 돼지<br>고기는 국물과 함께 담아 놓고, 시금치도 준<br>비한다.</p>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.358,
+        "y": 0.2184
+      },
+      {
+        "x": 0.6259,
+        "y": 0.2184
+      },
+      {
+        "x": 0.6259,
+        "y": 0.2599
+      },
+      {
+        "x": 0.358,
+        "y": 0.2599
+      }
+    ],
+    "id": 106,
+    "page": 9
+  },
+  {
+    "category": "figure",
+    "content": {
+      "html": "<br><figure id='107'><img style='font-size:20px' alt=\"10\" data-coord=\"top-left:(694,121); bottom-right:(979,323)\" /></figure>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.6459,
+        "y": 0.0799
+      },
+      {
+        "x": 0.9115,
+        "y": 0.0799
+      },
+      {
+        "x": 0.9115,
+        "y": 0.2131
+      },
+      {
+        "x": 0.6459,
+        "y": 0.2131
+      }
+    ],
+    "id": 107,
+    "page": 9
+  },
+  {
+    "category": "paragraph",
+    "content": {
+      "html": "<br><p id='108' data-category='paragraph' style='font-size:18px'>불린 당면은 끓는 물에 넣고 6분간 삶은<br>뒤 체에 밭쳐 물기를 뺀다. 삶은 당면은 찬<br>물에 헹구지 않으며, 식으면 먹기 좋게<br>3~4번 잘라준다.</p>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.6459,
+        "y": 0.2183
+      },
+      {
+        "x": 0.9136,
+        "y": 0.2183
+      },
+      {
+        "x": 0.9136,
+        "y": 0.2718
+      },
+      {
+        "x": 0.6459,
+        "y": 0.2718
+      }
+    ],
+    "id": 108,
+    "page": 9
+  },
+  {
+    "category": "figure",
+    "content": {
+      "html": "<figure id='109'><img style='font-size:20px' alt=\"11\" data-coord=\"top-left:(386,445); bottom-right:(672,647)\" /></figure>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.3597,
+        "y": 0.2932
+      },
+      {
+        "x": 0.6251,
+        "y": 0.2932
+      },
+      {
+        "x": 0.6251,
+        "y": 0.4259
+      },
+      {
+        "x": 0.3597,
+        "y": 0.4259
+      }
+    ],
+    "id": 109,
+    "page": 9
+  },
+  {
+    "category": "paragraph",
+    "content": {
+      "html": "<br><p id='110' data-category='paragraph' style='font-size:18px'>넓은 그릇에 당면과 채소, 볶은 돼지고기를<br>담고 참기름을 넣고 섞는다.</p>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.3588,
+        "y": 0.4307
+      },
+      {
+        "x": 0.6255,
+        "y": 0.4307
+      },
+      {
+        "x": 0.6255,
+        "y": 0.4582
+      },
+      {
+        "x": 0.3588,
+        "y": 0.4582
+      }
+    ],
+    "id": 110,
+    "page": 9
+  },
+  {
+    "category": "figure",
+    "content": {
+      "html": "<br><figure id='111'><img style='font-size:20px' alt=\"12\" data-coord=\"top-left:(695,445); bottom-right:(979,646)\" /></figure>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.6465,
+        "y": 0.2928
+      },
+      {
+        "x": 0.9113,
+        "y": 0.2928
+      },
+      {
+        "x": 0.9113,
+        "y": 0.4251
+      },
+      {
+        "x": 0.6465,
+        "y": 0.4251
+      }
+    ],
+    "id": 111,
+    "page": 9
+  },
+  {
+    "category": "paragraph",
+    "content": {
+      "html": "<br><p id='112' data-category='paragraph' style='font-size:18px'>당면과 채소가 섞이면 그릇에 담고 달걀지<br>단, 통깨를 올린다.</p>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.647,
+        "y": 0.43
+      },
+      {
+        "x": 0.9136,
+        "y": 0.43
+      },
+      {
+        "x": 0.9136,
+        "y": 0.458
+      },
+      {
+        "x": 0.647,
+        "y": 0.458
+      }
+    ],
+    "id": 112,
+    "page": 9
+  },
+  {
+    "category": "figure",
+    "content": {
+      "html": "<figure id='113'><img style='font-size:20px' alt=\"백종원의 Tip\" data-coord=\"top-left:(779,1074); bottom-right:(980,1155)\" /></figure>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.7251,
+        "y": 0.707
+      },
+      {
+        "x": 0.9124,
+        "y": 0.707
+      },
+      {
+        "x": 0.9124,
+        "y": 0.7601
+      },
+      {
+        "x": 0.7251,
+        "y": 0.7601
+      }
+    ],
+    "id": 113,
+    "page": 9
+  },
+  {
+    "category": "paragraph",
+    "content": {
+      "html": "<p id='114' data-category='paragraph' style='font-size:18px'>잡채는 보통 돼지고기 밑간만 살짝 해서 볶은 뒤 나머지 재료와 함께 무칠 때, 간장과 참<br>기름 등의 양념을 넣는 것이 일반적이다. 여기에서는 돼지고기와 잡채에 필요한 양념을 모<br>두 넣고 조리듯이 볶아서 그것으로 잡채 전체의 양념이 되도록 했다.<br>돼지고기볶음을 할 때 보통 캐러멜로 색을 낸다.</p>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.3601,
+        "y": 0.7719
+      },
+      {
+        "x": 0.9143,
+        "y": 0.7719
+      },
+      {
+        "x": 0.9143,
+        "y": 0.8333
+      },
+      {
+        "x": 0.3601,
+        "y": 0.8333
+      }
+    ],
+    "id": 114,
+    "page": 9
+  },
+  {
+    "category": "footer",
+    "content": {
+      "html": "<footer id='115' style='font-size:16px'>86</footer>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.072,
+        "y": 0.9698
+      },
+      {
+        "x": 0.0951,
+        "y": 0.9698
+      },
+      {
+        "x": 0.0951,
+        "y": 0.9826
+      },
+      {
+        "x": 0.072,
+        "y": 0.9826
+      }
+    ],
+    "id": 115,
+    "page": 9
+  },
+  {
+    "category": "figure",
+    "content": {
+      "html": "<figure id='116'><img style='font-size:14px' alt=\"PaikgongWon\nThe Born\" data-coord=\"top-left:(233,113); bottom-right:(855,1041)\" /></figure>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.2175,
+        "y": 0.0748
+      },
+      {
+        "x": 0.8087,
+        "y": 0.0809
+      },
+      {
+        "x": 0.7962,
+        "y": 0.6851
+      },
+      {
+        "x": 0.205,
+        "y": 0.6791
+      }
+    ],
+    "id": 116,
+    "page": 10
+  },
+  {
+    "category": "footer",
+    "content": {
+      "html": "<br><footer id='117' style='font-size:20px'>집밥메뉴</footer>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.9615,
+        "y": 0.1231
+      },
+      {
+        "x": 0.9915,
+        "y": 0.1234
+      },
+      {
+        "x": 0.9891,
+        "y": 0.2411
+      },
+      {
+        "x": 0.9591,
+        "y": 0.2408
+      }
+    ],
+    "id": 117,
+    "page": 10
+  },
+  {
+    "category": "footer",
+    "content": {
+      "html": "<footer id='118' style='font-size:16px'>87</footer>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.9056,
+        "y": 0.971
+      },
+      {
+        "x": 0.9298,
+        "y": 0.9713
+      },
+      {
+        "x": 0.9294,
+        "y": 0.9857
+      },
+      {
+        "x": 0.9053,
+        "y": 0.9854
+      }
+    ],
+    "id": 118,
+    "page": 10
+  },
+  {
+    "category": "paragraph",
+    "content": {
+      "html": "<p id='119' data-category='paragraph' style='font-size:14px'>낚지볶음은 매운맛을 좋아하는 사람들이 즐겨먹는 요리로, 술안주로, 푸짐한 반찬으로 인기가 많다.<br>특히 낙지는 칼로리가 낮으면서 스태미너에 좋고, 콜레스테롤을 억제하는 건강식품인데, 채소를 더<br>해서 영양적으로도 훌륭한 요리이다.</p>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.0847,
+        "y": 0.0801
+      },
+      {
+        "x": 0.9062,
+        "y": 0.0801
+      },
+      {
+        "x": 0.9062,
+        "y": 0.1412
+      },
+      {
+        "x": 0.0847,
+        "y": 0.1412
+      }
+    ],
+    "id": 119,
+    "page": 11
+  },
+  {
+    "category": "paragraph",
+    "content": {
+      "html": "<p id='120' data-category='paragraph' style='font-size:18px'>낙지 볶음</p>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.0862,
+        "y": 0.7782
+      },
+      {
+        "x": 0.4037,
+        "y": 0.7782
+      },
+      {
+        "x": 0.4037,
+        "y": 0.8459
+      },
+      {
+        "x": 0.0862,
+        "y": 0.8459
+      }
+    ],
+    "id": 120,
+    "page": 11
+  },
+  {
+    "category": "figure",
+    "content": {
+      "html": "<figure id='121'><img alt=\"\" data-coord=\"top-left:(78,121); bottom-right:(289,323)\" /></figure>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.0726,
+        "y": 0.0799
+      },
+      {
+        "x": 0.269,
+        "y": 0.0799
+      },
+      {
+        "x": 0.269,
+        "y": 0.2129
+      },
+      {
+        "x": 0.0726,
+        "y": 0.2129
+      }
+    ],
+    "id": 121,
+    "page": 12
+  },
+  {
+    "category": "heading1",
+    "content": {
+      "html": "<h1 id='122' style='font-size:14px'>팬을 불에 올리고 식용유, 간 마늘을 넣어<br>볶아준다. 마늘향이 식용유에 배야 더 맛있<br>는 낙지볶음을 할 수 있다.</h1>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.368,
+        "y": 0.4109
+      },
+      {
+        "x": 0.6355,
+        "y": 0.4109
+      },
+      {
+        "x": 0.6355,
+        "y": 0.4514
+      },
+      {
+        "x": 0.368,
+        "y": 0.4514
+      }
+    ],
+    "id": 122,
+    "page": 12
+  },
+  {
+    "category": "paragraph",
+    "content": {
+      "html": "<br><p id='123' data-category='paragraph' style='font-size:16px'>재료 (4인분)</p>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.1336,
+        "y": 0.2271
+      },
+      {
+        "x": 0.2119,
+        "y": 0.2271
+      },
+      {
+        "x": 0.2119,
+        "y": 0.2406
+      },
+      {
+        "x": 0.1336,
+        "y": 0.2406
+      }
+    ],
+    "id": 123,
+    "page": 12
+  },
+  {
+    "category": "paragraph",
+    "content": {
+      "html": "<p id='124' data-category='paragraph' style='font-size:14px'>낙지 500g<br>주키니 호박(또는 애호박) ···140g<br>당근 60g<br>양파 140g<br>대파 120g<br>청양고추 40g<br>식용유 4큰술<br>간 마늘 2큰술<br>진간장 10큰술<br>설탕 4큰술<br>굵은 고춧가루 3큰술<br>고추장 1큰술<br>후춧가루 약간<br>물 컵(약60ml)<br>참기름 2큰술</p>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.0807,
+        "y": 0.2527
+      },
+      {
+        "x": 0.2721,
+        "y": 0.2527
+      },
+      {
+        "x": 0.2721,
+        "y": 0.4893
+      },
+      {
+        "x": 0.0807,
+        "y": 0.4893
+      }
+    ],
+    "id": 124,
+    "page": 12
+  },
+  {
+    "category": "figure",
+    "content": {
+      "html": "<figure id='125'><img style='font-size:14px' alt=\"Tip\" data-coord=\"top-left:(174,899); bottom-right:(290,981)\" /></figure>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.1625,
+        "y": 0.5918
+      },
+      {
+        "x": 0.27,
+        "y": 0.5918
+      },
+      {
+        "x": 0.27,
+        "y": 0.6455
+      },
+      {
+        "x": 0.1625,
+        "y": 0.6455
+      }
+    ],
+    "id": 125,
+    "page": 12
+  },
+  {
+    "category": "heading1",
+    "content": {
+      "html": "<br><h1 id='126' style='font-size:20px'>백종원의</h1>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.0834,
+        "y": 0.6255
+      },
+      {
+        "x": 0.1556,
+        "y": 0.6255
+      },
+      {
+        "x": 0.1556,
+        "y": 0.6436
+      },
+      {
+        "x": 0.0834,
+        "y": 0.6436
+      }
+    ],
+    "id": 126,
+    "page": 12
+  },
+  {
+    "category": "paragraph",
+    "content": {
+      "html": "<p id='127' data-category='paragraph' style='font-size:16px'>낙지는 손질이 중요하다. 우선<br>머리를 조심스럽게 뒤집어 먹<br>물주머니와 내장을 떼어낸다.<br>그릇에 담고 소금을 2~3큰술<br>뿌리고 거품이 일지 않을 때<br>까지 바락바락 주물러 씻고,<br>다리를 훑어내려 빨판의 불순<br>물까지 씻어낸다.<br>그런 다음 찬물에 여러 번 헹<br>군다. 손질할 때 소금 대신 밀<br>가루를 넣고 주물러 씻어도<br>된다.</p>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.0824,
+        "y": 0.6578
+      },
+      {
+        "x": 0.2715,
+        "y": 0.6578
+      },
+      {
+        "x": 0.2715,
+        "y": 0.8397
+      },
+      {
+        "x": 0.0824,
+        "y": 0.8397
+      }
+    ],
+    "id": 127,
+    "page": 12
+  },
+  {
+    "category": "heading1",
+    "content": {
+      "html": "<br><h1 id='128' style='font-size:16px'>마늘향이 나면 진간장, 설탕, 굵은 고춧가루,<br>고추장, 후춧가루, 물을 넣는다.</h1>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.6567,
+        "y": 0.4101
+      },
+      {
+        "x": 0.9228,
+        "y": 0.4101
+      },
+      {
+        "x": 0.9228,
+        "y": 0.4376
+      },
+      {
+        "x": 0.6567,
+        "y": 0.4376
+      }
+    ],
+    "id": 128,
+    "page": 12
+  },
+  {
+    "category": "figure",
+    "content": {
+      "html": "<br><figure id='129'><img alt=\"\" data-coord=\"top-left:(409,121); bottom-right:(676,315)\" /></figure>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.3812,
+        "y": 0.0797
+      },
+      {
+        "x": 0.6294,
+        "y": 0.0797
+      },
+      {
+        "x": 0.6294,
+        "y": 0.2074
+      },
+      {
+        "x": 0.3812,
+        "y": 0.2074
+      }
+    ],
+    "id": 129,
+    "page": 12
+  },
+  {
+    "category": "heading1",
+    "content": {
+      "html": "<h1 id='130' style='font-size:14px'>호박, 당근은 반달 모양으로 얇게 썰고, 양파<br>는 3×3cm 크기로 썬다. 대파는 3cm 길이<br>로 토막내고, 청양고추는 굵게 토막낸다.</h1>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.3673,
+        "y": 0.2166
+      },
+      {
+        "x": 0.6348,
+        "y": 0.2166
+      },
+      {
+        "x": 0.6348,
+        "y": 0.2574
+      },
+      {
+        "x": 0.3673,
+        "y": 0.2574
+      }
+    ],
+    "id": 130,
+    "page": 12
+  },
+  {
+    "category": "figure",
+    "content": {
+      "html": "<br><figure id='131'><img style='font-size:16px' alt=\"2\" data-coord=\"top-left:(704,117); bottom-right:(989,319)\" /></figure>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.6557,
+        "y": 0.0776
+      },
+      {
+        "x": 0.9207,
+        "y": 0.0776
+      },
+      {
+        "x": 0.9207,
+        "y": 0.2101
+      },
+      {
+        "x": 0.6557,
+        "y": 0.2101
+      }
+    ],
+    "id": 131,
+    "page": 12
+  },
+  {
+    "category": "heading1",
+    "content": {
+      "html": "<br><h1 id='132' style='font-size:14px'>낙지는 손질해 물에 헹군 뒤 6~7cm 길이로<br>썬다.</h1>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.6554,
+        "y": 0.216
+      },
+      {
+        "x": 0.922,
+        "y": 0.216
+      },
+      {
+        "x": 0.922,
+        "y": 0.2437
+      },
+      {
+        "x": 0.6554,
+        "y": 0.2437
+      }
+    ],
+    "id": 132,
+    "page": 12
+  },
+  {
+    "category": "figure",
+    "content": {
+      "html": "<figure id='133'><img style='font-size:14px' alt=\"3\" data-coord=\"top-left:(395,413); bottom-right:(680,617)\" /></figure>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.3682,
+        "y": 0.2722
+      },
+      {
+        "x": 0.6331,
+        "y": 0.2722
+      },
+      {
+        "x": 0.6331,
+        "y": 0.4059
+      },
+      {
+        "x": 0.3682,
+        "y": 0.4059
+      }
+    ],
+    "id": 133,
+    "page": 12
+  },
+  {
+    "category": "figure",
+    "content": {
+      "html": "<br><figure id='134'><img style='font-size:14px' alt=\"4\" data-coord=\"top-left:(705,413); bottom-right:(990,615)\" /></figure>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.6562,
+        "y": 0.2721
+      },
+      {
+        "x": 0.9214,
+        "y": 0.2721
+      },
+      {
+        "x": 0.9214,
+        "y": 0.4047
+      },
+      {
+        "x": 0.6562,
+        "y": 0.4047
+      }
+    ],
+    "id": 134,
+    "page": 12
+  },
+  {
+    "category": "figure",
+    "content": {
+      "html": "<figure id='135'><img style='font-size:18px' alt=\"5\" data-coord=\"top-left:(397,709); bottom-right:(681,911)\" /></figure>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.37,
+        "y": 0.4668
+      },
+      {
+        "x": 0.634,
+        "y": 0.4668
+      },
+      {
+        "x": 0.634,
+        "y": 0.5996
+      },
+      {
+        "x": 0.37,
+        "y": 0.5996
+      }
+    ],
+    "id": 135,
+    "page": 12
+  },
+  {
+    "category": "heading1",
+    "content": {
+      "html": "<br><h1 id='136' style='font-size:16px'>양념이 타지 않도록 중불에서 섞어가며 끓<br>인다.</h1>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.3693,
+        "y": 0.6049
+      },
+      {
+        "x": 0.6363,
+        "y": 0.6049
+      },
+      {
+        "x": 0.6363,
+        "y": 0.6325
+      },
+      {
+        "x": 0.3693,
+        "y": 0.6325
+      }
+    ],
+    "id": 136,
+    "page": 12
+  },
+  {
+    "category": "figure",
+    "content": {
+      "html": "<br><figure id='137'><img alt=\"\" data-coord=\"top-left:(707,709); bottom-right:(992,910)\" /></figure>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.6579,
+        "y": 0.4664
+      },
+      {
+        "x": 0.9228,
+        "y": 0.4664
+      },
+      {
+        "x": 0.9228,
+        "y": 0.599
+      },
+      {
+        "x": 0.6579,
+        "y": 0.599
+      }
+    ],
+    "id": 137,
+    "page": 12
+  },
+  {
+    "category": "paragraph",
+    "content": {
+      "html": "<br><p id='138' data-category='paragraph' style='font-size:14px'>양념에 호박, 당근, 양파, 대파, 청양고추를 모<br>두 넣고 재빨리 섞는다.</p>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.6576,
+        "y": 0.6044
+      },
+      {
+        "x": 0.9239,
+        "y": 0.6044
+      },
+      {
+        "x": 0.9239,
+        "y": 0.6313
+      },
+      {
+        "x": 0.6576,
+        "y": 0.6313
+      }
+    ],
+    "id": 138,
+    "page": 12
+  },
+  {
+    "category": "figure",
+    "content": {
+      "html": "<figure id='139'><img style='font-size:16px' alt=\"7\" data-coord=\"top-left:(398,1004); bottom-right:(683,1206)\" /></figure>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.3711,
+        "y": 0.661
+      },
+      {
+        "x": 0.6353,
+        "y": 0.661
+      },
+      {
+        "x": 0.6353,
+        "y": 0.7936
+      },
+      {
+        "x": 0.3711,
+        "y": 0.7936
+      }
+    ],
+    "id": 139,
+    "page": 12
+  },
+  {
+    "category": "paragraph",
+    "content": {
+      "html": "<br><p id='140' data-category='paragraph' style='font-size:16px'>낙지를 넣고 강불에서 빨리 볶는다. 오래 볶<br>으면 채소가 익어 물이 나오고 낙지가 질겨<br>지므로 낙지가 익을 정도로만 볶는다.</p>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.3704,
+        "y": 0.7989
+      },
+      {
+        "x": 0.6383,
+        "y": 0.7989
+      },
+      {
+        "x": 0.6383,
+        "y": 0.8391
+      },
+      {
+        "x": 0.3704,
+        "y": 0.8391
+      }
+    ],
+    "id": 140,
+    "page": 12
+  },
+  {
+    "category": "figure",
+    "content": {
+      "html": "<br><figure id='141'><img style='font-size:14px' alt=\"8\" data-coord=\"top-left:(707,1003); bottom-right:(993,1204)\" /></figure>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.6584,
+        "y": 0.6603
+      },
+      {
+        "x": 0.9243,
+        "y": 0.6603
+      },
+      {
+        "x": 0.9243,
+        "y": 0.7927
+      },
+      {
+        "x": 0.6584,
+        "y": 0.7927
+      }
+    ],
+    "id": 141,
+    "page": 12
+  },
+  {
+    "category": "paragraph",
+    "content": {
+      "html": "<br><p id='142' data-category='paragraph' style='font-size:16px'>낙지가 익으면 참기름을 섞고 불을 끈다.</p>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.6593,
+        "y": 0.7979
+      },
+      {
+        "x": 0.9059,
+        "y": 0.7979
+      },
+      {
+        "x": 0.9059,
+        "y": 0.8116
+      },
+      {
+        "x": 0.6593,
+        "y": 0.8116
+      }
+    ],
+    "id": 142,
+    "page": 12
+  },
+  {
+    "category": "footer",
+    "content": {
+      "html": "<footer id='143' style='font-size:16px'>89</footer>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.9033,
+        "y": 0.9653
+      },
+      {
+        "x": 0.9273,
+        "y": 0.9653
+      },
+      {
+        "x": 0.9273,
+        "y": 0.9786
+      },
+      {
+        "x": 0.9033,
+        "y": 0.9786
+      }
+    ],
+    "id": 143,
+    "page": 12
+  },
+  {
+    "category": "footer",
+    "content": {
+      "html": "<br><footer id='144' style='font-size:22px'>1<br>집밥메뉴<br>52</footer>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.9505,
+        "y": 0.1179
+      },
+      {
+        "x": 0.981,
+        "y": 0.1179
+      },
+      {
+        "x": 0.981,
+        "y": 0.2335
+      },
+      {
+        "x": 0.9505,
+        "y": 0.2335
+      }
+    ],
+    "id": 144,
+    "page": 12
+  },
+  {
+    "category": "paragraph",
+    "content": {
+      "html": "<p id='145' data-category='paragraph' style='font-size:14px'>도토리묵에 여러 가지 채소를 넣고 고춧가루, 설탕 등을 넣어 맵고, 단맛이 나게 섞어주는 요리다. 묵은<br>칼로리가 낮으면서 포만감을 주어 다이어트에도 좋고, 반찬이나 술안주로도 인기가 많다.</p>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.0774,
+        "y": 0.0762
+      },
+      {
+        "x": 0.9184,
+        "y": 0.0762
+      },
+      {
+        "x": 0.9184,
+        "y": 0.1201
+      },
+      {
+        "x": 0.0774,
+        "y": 0.1201
+      }
+    ],
+    "id": 145,
+    "page": 13
+  },
+  {
+    "category": "paragraph",
+    "content": {
+      "html": "<p id='146' data-category='paragraph' style='font-size:18px'>도토리 묵무침</p>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.0685,
+        "y": 0.7563
+      },
+      {
+        "x": 0.5466,
+        "y": 0.7563
+      },
+      {
+        "x": 0.5466,
+        "y": 0.8205
+      },
+      {
+        "x": 0.0685,
+        "y": 0.8205
+      }
+    ],
+    "id": 146,
+    "page": 13
+  },
+  {
+    "category": "figure",
+    "content": {
+      "html": "<figure id='147'><img alt=\"\" data-coord=\"top-left:(77,113); bottom-right:(314,326)\" /></figure>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.0721,
+        "y": 0.0743
+      },
+      {
+        "x": 0.2926,
+        "y": 0.0743
+      },
+      {
+        "x": 0.2926,
+        "y": 0.2147
+      },
+      {
+        "x": 0.0721,
+        "y": 0.2147
+      }
+    ],
+    "id": 147,
+    "page": 14
+  },
+  {
+    "category": "paragraph",
+    "content": {
+      "html": "<p id='148' data-category='paragraph' style='font-size:18px'>재료 (4인분)</p>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.1369,
+        "y": 0.2343
+      },
+      {
+        "x": 0.2138,
+        "y": 0.2343
+      },
+      {
+        "x": 0.2138,
+        "y": 0.2474
+      },
+      {
+        "x": 0.1369,
+        "y": 0.2474
+      }
+    ],
+    "id": 148,
+    "page": 14
+  },
+  {
+    "category": "paragraph",
+    "content": {
+      "html": "<p id='149' data-category='paragraph' style='font-size:14px'>도토리묵 1모(410g)<br>오이 80g<br>실파 18g<br>풋고추 10g<br>홍고추 10g<br>상추 20g<br>쑥갓 18g<br>깻잎 4g<br>간 마늘 1큰술<br>진간장 5큰술<br>설탕 1큰술<br>굵은 고춧가루 1큰술<br>깨소금 1큰술<br>참기름 2큰술</p>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.084,
+        "y": 0.26
+      },
+      {
+        "x": 0.275,
+        "y": 0.26
+      },
+      {
+        "x": 0.275,
+        "y": 0.4801
+      },
+      {
+        "x": 0.084,
+        "y": 0.4801
+      }
+    ],
+    "id": 149,
+    "page": 14
+  },
+  {
+    "category": "heading1",
+    "content": {
+      "html": "<br><h1 id='150' style='font-size:18px'>넓은 볼에 간 마늘, 진간장, 설탕, 굵은 고춧<br>가루, 깨소금을 담고, 섞어 양념장을 만든다.</h1>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.3716,
+        "y": 0.4149
+      },
+      {
+        "x": 0.6383,
+        "y": 0.4149
+      },
+      {
+        "x": 0.6383,
+        "y": 0.4428
+      },
+      {
+        "x": 0.3716,
+        "y": 0.4428
+      }
+    ],
+    "id": 150,
+    "page": 14
+  },
+  {
+    "category": "figure",
+    "content": {
+      "html": "<figure id='151'><img style='font-size:16px' alt=\"Tip\" data-coord=\"top-left:(175,887); bottom-right:(294,968)\" /></figure>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.1633,
+        "y": 0.5837
+      },
+      {
+        "x": 0.2735,
+        "y": 0.5837
+      },
+      {
+        "x": 0.2735,
+        "y": 0.6368
+      },
+      {
+        "x": 0.1633,
+        "y": 0.6368
+      }
+    ],
+    "id": 151,
+    "page": 14
+  },
+  {
+    "category": "heading1",
+    "content": {
+      "html": "<br><h1 id='152' style='font-size:20px'>백종원의</h1>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.0873,
+        "y": 0.6176
+      },
+      {
+        "x": 0.1593,
+        "y": 0.6176
+      },
+      {
+        "x": 0.1593,
+        "y": 0.635
+      },
+      {
+        "x": 0.0873,
+        "y": 0.635
+      }
+    ],
+    "id": 152,
+    "page": 14
+  },
+  {
+    "category": "paragraph",
+    "content": {
+      "html": "<p id='153' data-category='paragraph' style='font-size:18px'>도토리묵무침은 차게 먹는 음<br>식이지만, 묵이 너무 단단하게<br>굳었으면 끓는 물에 살짝 데<br>쳐 말랑해지면 찬물에 헹궈서<br>썬다.<br>도토리묵을 무칠 때는 식초를<br>넣어야 묵의 떫은 맛이 나지<br>않는다. 무칠 때는 양념장에<br>단단한 채소를 먼저 무친 뒤<br>부드러운 묵과 잎채소를 넣어<br>가볍게 버무려야 묵도 채소도<br>으깨지지 않는다.</p>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.0861,
+        "y": 0.6492
+      },
+      {
+        "x": 0.2744,
+        "y": 0.6492
+      },
+      {
+        "x": 0.2744,
+        "y": 0.8314
+      },
+      {
+        "x": 0.0861,
+        "y": 0.8314
+      }
+    ],
+    "id": 153,
+    "page": 14
+  },
+  {
+    "category": "figure",
+    "content": {
+      "html": "<br><figure id='154'><img alt=\"\" data-coord=\"top-left:(402,119); bottom-right:(682,302)\" /></figure>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.3746,
+        "y": 0.0784
+      },
+      {
+        "x": 0.6349,
+        "y": 0.0784
+      },
+      {
+        "x": 0.6349,
+        "y": 0.199
+      },
+      {
+        "x": 0.3746,
+        "y": 0.199
+      }
+    ],
+    "id": 154,
+    "page": 14
+  },
+  {
+    "category": "paragraph",
+    "content": {
+      "html": "<br><p id='155' data-category='paragraph' style='font-size:16px'>1</p>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.3703,
+        "y": 0.1972
+      },
+      {
+        "x": 0.3832,
+        "y": 0.1972
+      },
+      {
+        "x": 0.3832,
+        "y": 0.2124
+      },
+      {
+        "x": 0.3703,
+        "y": 0.2124
+      }
+    ],
+    "id": 155,
+    "page": 14
+  },
+  {
+    "category": "heading1",
+    "content": {
+      "html": "<br><h1 id='156' style='font-size:16px'>도토리묵은 길게 반으로 썰어 다시 4×5cm<br>크기, 1cm 두께로 썬다.</h1>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.3704,
+        "y": 0.2167
+      },
+      {
+        "x": 0.6382,
+        "y": 0.2167
+      },
+      {
+        "x": 0.6382,
+        "y": 0.2441
+      },
+      {
+        "x": 0.3704,
+        "y": 0.2441
+      }
+    ],
+    "id": 156,
+    "page": 14
+  },
+  {
+    "category": "figure",
+    "content": {
+      "html": "<br><figure id='157'><img style='font-size:18px' alt=\"2\" data-coord=\"top-left:(707,119); bottom-right:(991,320)\" /></figure>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.6585,
+        "y": 0.0783
+      },
+      {
+        "x": 0.9222,
+        "y": 0.0783
+      },
+      {
+        "x": 0.9222,
+        "y": 0.2109
+      },
+      {
+        "x": 0.6585,
+        "y": 0.2109
+      }
+    ],
+    "id": 157,
+    "page": 14
+  },
+  {
+    "category": "figure",
+    "content": {
+      "html": "<figure id='158'><img style='font-size:16px' alt=\"3\" data-coord=\"top-left:(399,420); bottom-right:(683,622)\" /></figure>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.3719,
+        "y": 0.2769
+      },
+      {
+        "x": 0.6355,
+        "y": 0.2769
+      },
+      {
+        "x": 0.6355,
+        "y": 0.4096
+      },
+      {
+        "x": 0.3719,
+        "y": 0.4096
+      }
+    ],
+    "id": 158,
+    "page": 14
+  },
+  {
+    "category": "heading1",
+    "content": {
+      "html": "<br><h1 id='159' style='font-size:16px'>오이는 길게 반 갈라 얇게 썰고, 실파는<br>4cm 길이로 썰고, 고추는 어슷하게 썬다. 상<br>추, 쑥갓, 깻잎은 2cm 폭으로 썬다.</h1>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.658,
+        "y": 0.2156
+      },
+      {
+        "x": 0.9261,
+        "y": 0.2156
+      },
+      {
+        "x": 0.9261,
+        "y": 0.2567
+      },
+      {
+        "x": 0.658,
+        "y": 0.2567
+      }
+    ],
+    "id": 159,
+    "page": 14
+  },
+  {
+    "category": "figure",
+    "content": {
+      "html": "<figure id='160'><img style='font-size:14px' alt=\"4\" data-coord=\"top-left:(708,420); bottom-right:(993,621)\" /></figure>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.6589,
+        "y": 0.2765
+      },
+      {
+        "x": 0.9246,
+        "y": 0.2765
+      },
+      {
+        "x": 0.9246,
+        "y": 0.4089
+      },
+      {
+        "x": 0.6589,
+        "y": 0.4089
+      }
+    ],
+    "id": 160,
+    "page": 14
+  },
+  {
+    "category": "heading1",
+    "content": {
+      "html": "<br><h1 id='161' style='font-size:18px'>양념장에 오이, 실파, 고추를 넣는다.</h1>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.6596,
+        "y": 0.4141
+      },
+      {
+        "x": 0.8799,
+        "y": 0.4141
+      },
+      {
+        "x": 0.8799,
+        "y": 0.4289
+      },
+      {
+        "x": 0.6596,
+        "y": 0.4289
+      }
+    ],
+    "id": 161,
+    "page": 14
+  },
+  {
+    "category": "figure",
+    "content": {
+      "html": "<figure id='162'><img style='font-size:18px' alt=\"5\" data-coord=\"top-left:(401,724); bottom-right:(685,925)\" /></figure>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.3731,
+        "y": 0.4766
+      },
+      {
+        "x": 0.6373,
+        "y": 0.4766
+      },
+      {
+        "x": 0.6373,
+        "y": 0.6089
+      },
+      {
+        "x": 0.3731,
+        "y": 0.6089
+      }
+    ],
+    "id": 162,
+    "page": 14
+  },
+  {
+    "category": "paragraph",
+    "content": {
+      "html": "<br><p id='163' data-category='paragraph' style='font-size:18px'>채소와 양념을 섞어서 채소에 양념이 묻게<br>한다.</p>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.3727,
+        "y": 0.6143
+      },
+      {
+        "x": 0.6394,
+        "y": 0.6143
+      },
+      {
+        "x": 0.6394,
+        "y": 0.642
+      },
+      {
+        "x": 0.3727,
+        "y": 0.642
+      }
+    ],
+    "id": 163,
+    "page": 14
+  },
+  {
+    "category": "figure",
+    "content": {
+      "html": "<br><figure id='164'><img alt=\"\" data-coord=\"top-left:(710,723); bottom-right:(995,924)\" /></figure>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.661,
+        "y": 0.4759
+      },
+      {
+        "x": 0.9257,
+        "y": 0.4759
+      },
+      {
+        "x": 0.9257,
+        "y": 0.6085
+      },
+      {
+        "x": 0.661,
+        "y": 0.6085
+      }
+    ],
+    "id": 164,
+    "page": 14
+  },
+  {
+    "category": "paragraph",
+    "content": {
+      "html": "<br><p id='165' data-category='paragraph' style='font-size:18px'>도토리묵과 상추, 쑥갓, 깻잎을 넣고 참기름<br>을 넣는다.</p>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.6607,
+        "y": 0.6138
+      },
+      {
+        "x": 0.9271,
+        "y": 0.6138
+      },
+      {
+        "x": 0.9271,
+        "y": 0.6407
+      },
+      {
+        "x": 0.6607,
+        "y": 0.6407
+      }
+    ],
+    "id": 165,
+    "page": 14
+  },
+  {
+    "category": "figure",
+    "content": {
+      "html": "<figure id='166'><img style='font-size:18px' alt=\"7\" data-coord=\"top-left:(402,1024); bottom-right:(686,1227)\" /></figure>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.3741,
+        "y": 0.6742
+      },
+      {
+        "x": 0.6386,
+        "y": 0.6742
+      },
+      {
+        "x": 0.6386,
+        "y": 0.8074
+      },
+      {
+        "x": 0.3741,
+        "y": 0.8074
+      }
+    ],
+    "id": 166,
+    "page": 14
+  },
+  {
+    "category": "paragraph",
+    "content": {
+      "html": "<br><p id='167' data-category='paragraph' style='font-size:18px'>도토리묵과 채소가 으깨지지 않게 섞는다.</p>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.3747,
+        "y": 0.8122
+      },
+      {
+        "x": 0.6288,
+        "y": 0.8122
+      },
+      {
+        "x": 0.6288,
+        "y": 0.8266
+      },
+      {
+        "x": 0.3747,
+        "y": 0.8266
+      }
+    ],
+    "id": 167,
+    "page": 14
+  },
+  {
+    "category": "footer",
+    "content": {
+      "html": "<footer id='168' style='font-size:16px'>91</footer>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.9072,
+        "y": 0.9651
+      },
+      {
+        "x": 0.9298,
+        "y": 0.9651
+      },
+      {
+        "x": 0.9298,
+        "y": 0.9788
+      },
+      {
+        "x": 0.9072,
+        "y": 0.9788
+      }
+    ],
+    "id": 168,
+    "page": 14
+  },
+  {
+    "category": "footer",
+    "content": {
+      "html": "<br><footer id='169' style='font-size:22px'>1<br>집밥메뉴<br>52</footer>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.9538,
+        "y": 0.1179
+      },
+      {
+        "x": 0.9833,
+        "y": 0.1179
+      },
+      {
+        "x": 0.9833,
+        "y": 0.2337
+      },
+      {
+        "x": 0.9538,
+        "y": 0.2337
+      }
+    ],
+    "id": 169,
+    "page": 14
+  },
+  {
+    "category": "heading1",
+    "content": {
+      "html": "<h1 id='170' style='font-size:14px'>두부김치는 김치와 돼지고기를 맵게 볶아 따뜻한 두부와 함께 먹는 요리인데, 매운맛과 담백한 맛이 잘<br>어울려 술안주로 인기가 많다. 돼지고기는 기름기가 많은 삼겹살이나 목살을 써서 김치에 돼지기름이<br>배게 볶아야 맛있다.</h1>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.0765,
+        "y": 0.0747
+      },
+      {
+        "x": 0.9163,
+        "y": 0.0747
+      },
+      {
+        "x": 0.9163,
+        "y": 0.1393
+      },
+      {
+        "x": 0.0765,
+        "y": 0.1393
+      }
+    ],
+    "id": 170,
+    "page": 15
+  },
+  {
+    "category": "paragraph",
+    "content": {
+      "html": "<p id='171' data-category='paragraph' style='font-size:18px'>두부김 치</p>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.4814,
+        "y": 0.7784
+      },
+      {
+        "x": 0.7981,
+        "y": 0.7784
+      },
+      {
+        "x": 0.7981,
+        "y": 0.8422
+      },
+      {
+        "x": 0.4814,
+        "y": 0.8422
+      }
+    ],
+    "id": 171,
+    "page": 15
+  },
+  {
+    "category": "figure",
+    "content": {
+      "html": "<figure id='172'><img alt=\"\" data-coord=\"top-left:(84,114); bottom-right:(294,320)\" /></figure>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.0788,
+        "y": 0.0755
+      },
+      {
+        "x": 0.2737,
+        "y": 0.0755
+      },
+      {
+        "x": 0.2737,
+        "y": 0.2107
+      },
+      {
+        "x": 0.0788,
+        "y": 0.2107
+      }
+    ],
+    "id": 172,
+    "page": 16
+  },
+  {
+    "category": "heading1",
+    "content": {
+      "html": "<h1 id='173' style='font-size:16px'>팬에 식용유를 두르고 삼겹살을 넣어 볶는다.<br>삼겹살이 하얗게 익고 기름이 배어나올 정도<br>로 볶는다.</h1>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.371,
+        "y": 0.4169
+      },
+      {
+        "x": 0.6382,
+        "y": 0.4169
+      },
+      {
+        "x": 0.6382,
+        "y": 0.4576
+      },
+      {
+        "x": 0.371,
+        "y": 0.4576
+      }
+    ],
+    "id": 173,
+    "page": 16
+  },
+  {
+    "category": "paragraph",
+    "content": {
+      "html": "<br><p id='174' data-category='paragraph' style='font-size:18px'>재료 (2인분)</p>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.1367,
+        "y": 0.2336
+      },
+      {
+        "x": 0.214,
+        "y": 0.2336
+      },
+      {
+        "x": 0.214,
+        "y": 0.2468
+      },
+      {
+        "x": 0.1367,
+        "y": 0.2468
+      }
+    ],
+    "id": 174,
+    "page": 16
+  },
+  {
+    "category": "paragraph",
+    "content": {
+      "html": "<p id='175' data-category='paragraph' style='font-size:16px'>두부 240g<br>신김치 330g<br>돼지고기(삼겹살) 160g<br>양파· 100g<br>대파 50g<br>풋고추 1개<br>홍고추 글개<br>간 마늘 1큰술<br>진간장 3큰술<br>식용유 3큰술<br>굵은 고춧가루 1큰술<br>참기름 1호큰술<br>설탕 11큰술<br>후춧가루 약간</p>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.0836,
+        "y": 0.2594
+      },
+      {
+        "x": 0.2745,
+        "y": 0.2594
+      },
+      {
+        "x": 0.2745,
+        "y": 0.4793
+      },
+      {
+        "x": 0.0836,
+        "y": 0.4793
+      }
+    ],
+    "id": 175,
+    "page": 16
+  },
+  {
+    "category": "figure",
+    "content": {
+      "html": "<figure id='176'><img style='font-size:14px' alt=\"Tip\" data-coord=\"top-left:(172,835); bottom-right:(295,916)\" /></figure>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.1606,
+        "y": 0.5495
+      },
+      {
+        "x": 0.2744,
+        "y": 0.5495
+      },
+      {
+        "x": 0.2744,
+        "y": 0.603
+      },
+      {
+        "x": 0.1606,
+        "y": 0.603
+      }
+    ],
+    "id": 176,
+    "page": 16
+  },
+  {
+    "category": "figure",
+    "content": {
+      "html": "<br><figure id='177'><img alt=\"\" data-coord=\"top-left:(398,117); bottom-right:(682,319)\" /></figure>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.3702,
+        "y": 0.0772
+      },
+      {
+        "x": 0.6347,
+        "y": 0.0772
+      },
+      {
+        "x": 0.6347,
+        "y": 0.21
+      },
+      {
+        "x": 0.3702,
+        "y": 0.21
+      }
+    ],
+    "id": 177,
+    "page": 16
+  },
+  {
+    "category": "heading1",
+    "content": {
+      "html": "<h1 id='178' style='font-size:20px'>백종원의</h1>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.0863,
+        "y": 0.5841
+      },
+      {
+        "x": 0.1593,
+        "y": 0.5841
+      },
+      {
+        "x": 0.1593,
+        "y": 0.6014
+      },
+      {
+        "x": 0.0863,
+        "y": 0.6014
+      }
+    ],
+    "id": 178,
+    "page": 16
+  },
+  {
+    "category": "paragraph",
+    "content": {
+      "html": "<p id='179' data-category='paragraph' style='font-size:16px'>두부김치는 따뜻하게 먹는 요<br>리이다. 두부는 끓는 물에 삶<br>기도 하지만, 납작하게 썰어<br>팬에 식용유를 두르고 부치면<br>더 고소하다. 두부를 부칠 때<br>는 키친타월에 두부를 올려<br>물기를 뺀 뒤 지져주면 기름<br>이 튀지 않는다.</p>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.0858,
+        "y": 0.6155
+      },
+      {
+        "x": 0.274,
+        "y": 0.6155
+      },
+      {
+        "x": 0.274,
+        "y": 0.7359
+      },
+      {
+        "x": 0.0858,
+        "y": 0.7359
+      }
+    ],
+    "id": 179,
+    "page": 16
+  },
+  {
+    "category": "heading1",
+    "content": {
+      "html": "<br><h1 id='180' style='font-size:16px'>삼겹살은 3~4cm 크기, 0.5cm 두께로 썬다.</h1>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.3703,
+        "y": 0.2151
+      },
+      {
+        "x": 0.6306,
+        "y": 0.2151
+      },
+      {
+        "x": 0.6306,
+        "y": 0.2305
+      },
+      {
+        "x": 0.3703,
+        "y": 0.2305
+      }
+    ],
+    "id": 180,
+    "page": 16
+  },
+  {
+    "category": "figure",
+    "content": {
+      "html": "<br><figure id='181'><img style='font-size:18px' alt=\"2\" data-coord=\"top-left:(707,116); bottom-right:(990,317)\" /></figure>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.6579,
+        "y": 0.0764
+      },
+      {
+        "x": 0.9217,
+        "y": 0.0764
+      },
+      {
+        "x": 0.9217,
+        "y": 0.2091
+      },
+      {
+        "x": 0.6579,
+        "y": 0.2091
+      }
+    ],
+    "id": 181,
+    "page": 16
+  },
+  {
+    "category": "figure",
+    "content": {
+      "html": "<figure id='182'><img style='font-size:16px' alt=\"3\" data-coord=\"top-left:(399,423); bottom-right:(683,626)\" /></figure>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.3715,
+        "y": 0.2788
+      },
+      {
+        "x": 0.6354,
+        "y": 0.2788
+      },
+      {
+        "x": 0.6354,
+        "y": 0.4122
+      },
+      {
+        "x": 0.3715,
+        "y": 0.4122
+      }
+    ],
+    "id": 182,
+    "page": 16
+  },
+  {
+    "category": "heading1",
+    "content": {
+      "html": "<br><h1 id='183' style='font-size:16px'>김치는 속을 털고 3cm 폭으로 썰고, 양파는<br>1cm 폭으로 채 썰고, 대파와 고추는 어슷하<br>게 썬다.</h1>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.6577,
+        "y": 0.2144
+      },
+      {
+        "x": 0.9251,
+        "y": 0.2144
+      },
+      {
+        "x": 0.9251,
+        "y": 0.2554
+      },
+      {
+        "x": 0.6577,
+        "y": 0.2554
+      }
+    ],
+    "id": 183,
+    "page": 16
+  },
+  {
+    "category": "figure",
+    "content": {
+      "html": "<figure id='184'><img style='font-size:14px' alt=\"4\" data-coord=\"top-left:(708,423); bottom-right:(993,624)\" /></figure>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.6588,
+        "y": 0.2783
+      },
+      {
+        "x": 0.9245,
+        "y": 0.2783
+      },
+      {
+        "x": 0.9245,
+        "y": 0.4111
+      },
+      {
+        "x": 0.6588,
+        "y": 0.4111
+      }
+    ],
+    "id": 184,
+    "page": 16
+  },
+  {
+    "category": "heading1",
+    "content": {
+      "html": "<br><h1 id='185' style='font-size:16px'>양파를 넣고 잠시 볶는다. 양파에 기름이 고<br>루 묻게 볶으면 된다.</h1>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.6592,
+        "y": 0.4145
+      },
+      {
+        "x": 0.9258,
+        "y": 0.4145
+      },
+      {
+        "x": 0.9258,
+        "y": 0.4418
+      },
+      {
+        "x": 0.6592,
+        "y": 0.4418
+      }
+    ],
+    "id": 185,
+    "page": 16
+  },
+  {
+    "category": "figure",
+    "content": {
+      "html": "<figure id='186'><img style='font-size:18px' alt=\"5\" data-coord=\"top-left:(400,725); bottom-right:(685,927)\" /></figure>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.3728,
+        "y": 0.477
+      },
+      {
+        "x": 0.6373,
+        "y": 0.477
+      },
+      {
+        "x": 0.6373,
+        "y": 0.6099
+      },
+      {
+        "x": 0.3728,
+        "y": 0.6099
+      }
+    ],
+    "id": 186,
+    "page": 16
+  },
+  {
+    "category": "heading1",
+    "content": {
+      "html": "<br><h1 id='187' style='font-size:16px'>김치와 간 마늘, 진간장, 굵은 고춧가루, 설<br>탕, 후춧가루를 넣고 강불에서 김치가 반쯤<br>익게 볶는다.</h1>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.3727,
+        "y": 0.6153
+      },
+      {
+        "x": 0.6401,
+        "y": 0.6153
+      },
+      {
+        "x": 0.6401,
+        "y": 0.6557
+      },
+      {
+        "x": 0.3727,
+        "y": 0.6557
+      }
+    ],
+    "id": 187,
+    "page": 16
+  },
+  {
+    "category": "figure",
+    "content": {
+      "html": "<br><figure id='188'><img alt=\"\" data-coord=\"top-left:(710,724); bottom-right:(995,925)\" /></figure>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.6609,
+        "y": 0.4763
+      },
+      {
+        "x": 0.9259,
+        "y": 0.4763
+      },
+      {
+        "x": 0.9259,
+        "y": 0.6091
+      },
+      {
+        "x": 0.6609,
+        "y": 0.6091
+      }
+    ],
+    "id": 188,
+    "page": 16
+  },
+  {
+    "category": "paragraph",
+    "content": {
+      "html": "<br><p id='189' data-category='paragraph' style='font-size:18px'>대파, 고추, 참기름을 넣고 섞은 후 잠시 더<br>볶다가 불을 끈다.</p>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.6612,
+        "y": 0.6141
+      },
+      {
+        "x": 0.9272,
+        "y": 0.6141
+      },
+      {
+        "x": 0.9272,
+        "y": 0.6413
+      },
+      {
+        "x": 0.6612,
+        "y": 0.6413
+      }
+    ],
+    "id": 189,
+    "page": 16
+  },
+  {
+    "category": "figure",
+    "content": {
+      "html": "<figure id='190'><img alt=\"\" data-coord=\"top-left:(93,1128); bottom-right:(295,1263)\" /></figure>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.0865,
+        "y": 0.7425
+      },
+      {
+        "x": 0.2751,
+        "y": 0.7425
+      },
+      {
+        "x": 0.2751,
+        "y": 0.8314
+      },
+      {
+        "x": 0.0865,
+        "y": 0.8314
+      }
+    ],
+    "id": 190,
+    "page": 16
+  },
+  {
+    "category": "figure",
+    "content": {
+      "html": "<br><figure id='191'><img style='font-size:18px' alt=\"7\" data-coord=\"top-left:(402,1026); bottom-right:(687,1228)\" /></figure>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.3747,
+        "y": 0.675
+      },
+      {
+        "x": 0.6392,
+        "y": 0.675
+      },
+      {
+        "x": 0.6392,
+        "y": 0.8082
+      },
+      {
+        "x": 0.3747,
+        "y": 0.8082
+      }
+    ],
+    "id": 191,
+    "page": 16
+  },
+  {
+    "category": "paragraph",
+    "content": {
+      "html": "<br><p id='192' data-category='paragraph' style='font-size:16px'>두부는 끓는 물에 넣어 3~5분 정도 삶아 건<br>진다.</p>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.3749,
+        "y": 0.8129
+      },
+      {
+        "x": 0.642,
+        "y": 0.8129
+      },
+      {
+        "x": 0.642,
+        "y": 0.8404
+      },
+      {
+        "x": 0.3749,
+        "y": 0.8404
+      }
+    ],
+    "id": 192,
+    "page": 16
+  },
+  {
+    "category": "figure",
+    "content": {
+      "html": "<br><figure id='193'><img style='font-size:16px' alt=\"8\" data-coord=\"top-left:(712,1024); bottom-right:(995,1224)\" /></figure>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.6627,
+        "y": 0.6743
+      },
+      {
+        "x": 0.9262,
+        "y": 0.6743
+      },
+      {
+        "x": 0.9262,
+        "y": 0.8059
+      },
+      {
+        "x": 0.6627,
+        "y": 0.8059
+      }
+    ],
+    "id": 193,
+    "page": 16
+  },
+  {
+    "category": "paragraph",
+    "content": {
+      "html": "<br><p id='194' data-category='paragraph' style='font-size:16px'>두부는 뜨거울 때 4×5cm 크기, 1cm 두께<br>로 썰어 접시에 담고, 가운데 김치삼겹살볶<br>음을 올린다.</p>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.6629,
+        "y": 0.8122
+      },
+      {
+        "x": 0.93,
+        "y": 0.8122
+      },
+      {
+        "x": 0.93,
+        "y": 0.8525
+      },
+      {
+        "x": 0.6629,
+        "y": 0.8525
+      }
+    ],
+    "id": 194,
+    "page": 16
+  },
+  {
+    "category": "footer",
+    "content": {
+      "html": "<footer id='195' style='font-size:18px'>93</footer>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.9077,
+        "y": 0.9641
+      },
+      {
+        "x": 0.9317,
+        "y": 0.9641
+      },
+      {
+        "x": 0.9317,
+        "y": 0.9775
+      },
+      {
+        "x": 0.9077,
+        "y": 0.9775
+      }
+    ],
+    "id": 195,
+    "page": 16
+  },
+  {
+    "category": "footer",
+    "content": {
+      "html": "<br><footer id='196' style='font-size:22px'>1<br>집밥메뉴<br>52</footer>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.9531,
+        "y": 0.1169
+      },
+      {
+        "x": 0.9829,
+        "y": 0.1169
+      },
+      {
+        "x": 0.9829,
+        "y": 0.2324
+      },
+      {
+        "x": 0.9531,
+        "y": 0.2324
+      }
+    ],
+    "id": 196,
+    "page": 16
+  },
+  {
+    "category": "heading1",
+    "content": {
+      "html": "<h1 id='197' style='font-size:14px'>서양의 샐러드가 우리의 입맛에 맞게 변형된 것이 감자샐러드다. 삶은 감자와 여러 가지 채소를 마요<br>네즈에 무치는 것인데, 감자를 으깨서 만들기도 하고 주사위 모양으로 썰어 만들기도 한다.</h1>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.0933,
+        "y": 0.074
+      },
+      {
+        "x": 0.9188,
+        "y": 0.074
+      },
+      {
+        "x": 0.9188,
+        "y": 0.1194
+      },
+      {
+        "x": 0.0933,
+        "y": 0.1194
+      }
+    ],
+    "id": 197,
+    "page": 17
+  },
+  {
+    "category": "paragraph",
+    "content": {
+      "html": "<p id='198' data-category='paragraph' style='font-size:18px'>감자샐러드</p>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.4675,
+        "y": 0.2738
+      },
+      {
+        "x": 0.8717,
+        "y": 0.2738
+      },
+      {
+        "x": 0.8717,
+        "y": 0.3384
+      },
+      {
+        "x": 0.4675,
+        "y": 0.3384
+      }
+    ],
+    "id": 198,
+    "page": 17
+  },
+  {
+    "category": "figure",
+    "content": {
+      "html": "<figure id='199'><img alt=\"\" data-coord=\"top-left:(80,129); bottom-right:(299,328)\" /></figure>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.0746,
+        "y": 0.0853
+      },
+      {
+        "x": 0.2788,
+        "y": 0.0853
+      },
+      {
+        "x": 0.2788,
+        "y": 0.2159
+      },
+      {
+        "x": 0.0746,
+        "y": 0.2159
+      }
+    ],
+    "id": 199,
+    "page": 18
+  },
+  {
+    "category": "paragraph",
+    "content": {
+      "html": "<p id='200' data-category='paragraph' style='font-size:18px'>재료 (4인분)</p>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.1329,
+        "y": 0.2351
+      },
+      {
+        "x": 0.2109,
+        "y": 0.2351
+      },
+      {
+        "x": 0.2109,
+        "y": 0.2488
+      },
+      {
+        "x": 0.1329,
+        "y": 0.2488
+      }
+    ],
+    "id": 200,
+    "page": 18
+  },
+  {
+    "category": "paragraph",
+    "content": {
+      "html": "<p id='201' data-category='paragraph' style='font-size:16px'>감자 340g<br>오이 80g<br>(꽃소금 용큰술)</p>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.0807,
+        "y": 0.2609
+      },
+      {
+        "x": 0.2721,
+        "y": 0.2609
+      },
+      {
+        "x": 0.2721,
+        "y": 0.3051
+      },
+      {
+        "x": 0.0807,
+        "y": 0.3051
+      }
+    ],
+    "id": 201,
+    "page": 18
+  },
+  {
+    "category": "paragraph",
+    "content": {
+      "html": "<br><p id='202' data-category='paragraph' style='font-size:14px'>당근 30g<br>양파 30g<br>셀러리 15g<br>달걀 2개<br>마요네즈 120g<br>생크림 2큰술<br>설탕 11큰술<br>백후춧가루 약간</p>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.0807,
+        "y": 0.3085
+      },
+      {
+        "x": 0.2709,
+        "y": 0.3085
+      },
+      {
+        "x": 0.2709,
+        "y": 0.4331
+      },
+      {
+        "x": 0.0807,
+        "y": 0.4331
+      }
+    ],
+    "id": 202,
+    "page": 18
+  },
+  {
+    "category": "figure",
+    "content": {
+      "html": "<br><figure id='203'><img style='font-size:16px' alt=\"3\" data-coord=\"top-left:(395,415); bottom-right:(680,618)\" /></figure>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.3681,
+        "y": 0.273
+      },
+      {
+        "x": 0.633,
+        "y": 0.273
+      },
+      {
+        "x": 0.633,
+        "y": 0.4066
+      },
+      {
+        "x": 0.3681,
+        "y": 0.4066
+      }
+    ],
+    "id": 203,
+    "page": 18
+  },
+  {
+    "category": "heading1",
+    "content": {
+      "html": "<br><h1 id='204' style='font-size:18px'>오이가 절여지면 찬물에 헹궈 물기를 꼭<br>짠다.</h1>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.3677,
+        "y": 0.4113
+      },
+      {
+        "x": 0.6353,
+        "y": 0.4113
+      },
+      {
+        "x": 0.6353,
+        "y": 0.4394
+      },
+      {
+        "x": 0.3677,
+        "y": 0.4394
+      }
+    ],
+    "id": 204,
+    "page": 18
+  },
+  {
+    "category": "figure",
+    "content": {
+      "html": "<br><figure id='205'><img style='font-size:14px' alt=\"1\" data-coord=\"top-left:(395,118); bottom-right:(679,320)\" /></figure>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.3675,
+        "y": 0.0782
+      },
+      {
+        "x": 0.6316,
+        "y": 0.0782
+      },
+      {
+        "x": 0.6316,
+        "y": 0.2109
+      },
+      {
+        "x": 0.3675,
+        "y": 0.2109
+      }
+    ],
+    "id": 205,
+    "page": 18
+  },
+  {
+    "category": "heading1",
+    "content": {
+      "html": "<br><h1 id='206' style='font-size:16px'>오이는 길이로 반 갈라 반달모양으로 0.4cm<br>두께로 얇게 썬다.</h1>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.3661,
+        "y": 0.2171
+      },
+      {
+        "x": 0.6344,
+        "y": 0.2171
+      },
+      {
+        "x": 0.6344,
+        "y": 0.2449
+      },
+      {
+        "x": 0.3661,
+        "y": 0.2449
+      }
+    ],
+    "id": 206,
+    "page": 18
+  },
+  {
+    "category": "figure",
+    "content": {
+      "html": "<br><figure id='207'><img style='font-size:20px' alt=\"2\" data-coord=\"top-left:(703,117); bottom-right:(989,320)\" /></figure>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.6547,
+        "y": 0.0776
+      },
+      {
+        "x": 0.9201,
+        "y": 0.0776
+      },
+      {
+        "x": 0.9201,
+        "y": 0.2106
+      },
+      {
+        "x": 0.6547,
+        "y": 0.2106
+      }
+    ],
+    "id": 207,
+    "page": 18
+  },
+  {
+    "category": "paragraph",
+    "content": {
+      "html": "<br><p id='208' data-category='paragraph' style='font-size:18px'>오이에 꽃소금 용큰술을 넣고 섞어서 40분<br>간 절인다.</p>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.6548,
+        "y": 0.2159
+      },
+      {
+        "x": 0.9211,
+        "y": 0.2159
+      },
+      {
+        "x": 0.9211,
+        "y": 0.2438
+      },
+      {
+        "x": 0.6548,
+        "y": 0.2438
+      }
+    ],
+    "id": 208,
+    "page": 18
+  },
+  {
+    "category": "figure",
+    "content": {
+      "html": "<figure id='209'><img alt=\"\" data-coord=\"top-left:(705,415); bottom-right:(990,616)\" /></figure>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.6563,
+        "y": 0.273
+      },
+      {
+        "x": 0.9211,
+        "y": 0.273
+      },
+      {
+        "x": 0.9211,
+        "y": 0.4053
+      },
+      {
+        "x": 0.6563,
+        "y": 0.4053
+      }
+    ],
+    "id": 209,
+    "page": 18
+  },
+  {
+    "category": "paragraph",
+    "content": {
+      "html": "<br><p id='210' data-category='paragraph' style='font-size:16px'>당근, 양파, 셀러리는 작은 크기로 썬다. 키<br>친타월에 감싸서 물기를 뺀다.</p>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.6566,
+        "y": 0.4101
+      },
+      {
+        "x": 0.923,
+        "y": 0.4101
+      },
+      {
+        "x": 0.923,
+        "y": 0.438
+      },
+      {
+        "x": 0.6566,
+        "y": 0.438
+      }
+    ],
+    "id": 210,
+    "page": 18
+  },
+  {
+    "category": "figure",
+    "content": {
+      "html": "<figure id='211'><img style='font-size:20px' alt=\"5\" data-coord=\"top-left:(398,710); bottom-right:(682,913)\" /></figure>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.3704,
+        "y": 0.4676
+      },
+      {
+        "x": 0.6345,
+        "y": 0.4676
+      },
+      {
+        "x": 0.6345,
+        "y": 0.6007
+      },
+      {
+        "x": 0.3704,
+        "y": 0.6007
+      }
+    ],
+    "id": 211,
+    "page": 18
+  },
+  {
+    "category": "paragraph",
+    "content": {
+      "html": "<br><p id='212' data-category='paragraph' style='font-size:16px'>달걀은 완숙으로 삶아 흰자와 노른자를 분리<br>한다. 흰자는 작은 크기로 썰고, 노른자는 따<br>로 둔다.</p>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.37,
+        "y": 0.6055
+      },
+      {
+        "x": 0.6378,
+        "y": 0.6055
+      },
+      {
+        "x": 0.6378,
+        "y": 0.6465
+      },
+      {
+        "x": 0.37,
+        "y": 0.6465
+      }
+    ],
+    "id": 212,
+    "page": 18
+  },
+  {
+    "category": "figure",
+    "content": {
+      "html": "<br><figure id='213'><img style='font-size:14px' alt=\"6\" data-coord=\"top-left:(707,709); bottom-right:(992,911)\" /></figure>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.658,
+        "y": 0.4667
+      },
+      {
+        "x": 0.923,
+        "y": 0.4667
+      },
+      {
+        "x": 0.923,
+        "y": 0.5996
+      },
+      {
+        "x": 0.658,
+        "y": 0.5996
+      }
+    ],
+    "id": 213,
+    "page": 18
+  },
+  {
+    "category": "paragraph",
+    "content": {
+      "html": "<br><p id='214' data-category='paragraph' style='font-size:18px'>감자는 주사위 모양으로 썬다.</p>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.6587,
+        "y": 0.6041
+      },
+      {
+        "x": 0.8407,
+        "y": 0.6041
+      },
+      {
+        "x": 0.8407,
+        "y": 0.6189
+      },
+      {
+        "x": 0.6587,
+        "y": 0.6189
+      }
+    ],
+    "id": 214,
+    "page": 18
+  },
+  {
+    "category": "figure",
+    "content": {
+      "html": "<figure id='215'><img style='font-size:20px' alt=\"백종원의 Tip\" data-coord=\"top-left:(791,1044); bottom-right:(996,1129)\" /></figure>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.7366,
+        "y": 0.6874
+      },
+      {
+        "x": 0.9271,
+        "y": 0.6874
+      },
+      {
+        "x": 0.9271,
+        "y": 0.7429
+      },
+      {
+        "x": 0.7366,
+        "y": 0.7429
+      }
+    ],
+    "id": 215,
+    "page": 18
+  },
+  {
+    "category": "paragraph",
+    "content": {
+      "html": "<p id='216' data-category='paragraph' style='font-size:18px'>감자샐러드를 할 때, 보통 마요네즈만 넣는데 생크림을 조금 넣어주면 고소한 맛이 좋아진<br>다. 마요네즈 대신 플레인요구르트를 넣으면 보다 상큼한 맛을 낼 수 있다. 감자샐러드는<br>채소에 수분이 있으면 나중에 물이 생기기 때문에 물기를 잘 빼주어야 한다. 키친타월에<br>채소를 올리고 감싸 수분을 빼주면 된다. 삶은 감자는 뜨거울 때 으깨야 잘 으깨지고, 으<br>깨면서 남은 수분이 날아간다.</p>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.3717,
+        "y": 0.7585
+      },
+      {
+        "x": 0.926,
+        "y": 0.7585
+      },
+      {
+        "x": 0.926,
+        "y": 0.8365
+      },
+      {
+        "x": 0.3717,
+        "y": 0.8365
+      }
+    ],
+    "id": 216,
+    "page": 18
+  },
+  {
+    "category": "footer",
+    "content": {
+      "html": "<footer id='217' style='font-size:16px'>95</footer>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.9055,
+        "y": 0.9653
+      },
+      {
+        "x": 0.9299,
+        "y": 0.9653
+      },
+      {
+        "x": 0.9299,
+        "y": 0.9791
+      },
+      {
+        "x": 0.9055,
+        "y": 0.9791
+      }
+    ],
+    "id": 217,
+    "page": 18
+  },
+  {
+    "category": "footer",
+    "content": {
+      "html": "<br><footer id='218' style='font-size:22px'>1<br>집밥메뉴<br>52</footer>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.9497,
+        "y": 0.118
+      },
+      {
+        "x": 0.9806,
+        "y": 0.118
+      },
+      {
+        "x": 0.9806,
+        "y": 0.2338
+      },
+      {
+        "x": 0.9497,
+        "y": 0.2338
+      }
+    ],
+    "id": 218,
+    "page": 18
+  },
+  {
+    "category": "heading1",
+    "content": {
+      "html": "<h1 id='219' style='font-size:22px'>백종원의</h1>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.0834,
+        "y": 0.109
+      },
+      {
+        "x": 0.1547,
+        "y": 0.109
+      },
+      {
+        "x": 0.1547,
+        "y": 0.1272
+      },
+      {
+        "x": 0.0834,
+        "y": 0.1272
+      }
+    ],
+    "id": 219,
+    "page": 19
+  },
+  {
+    "category": "paragraph",
+    "content": {
+      "html": "<p id='220' data-category='paragraph' style='font-size:16px'>감자샐러드를 만들 때, 채소<br>외에 사과, 단감, 귤이나 오렌<br>지 등의 과일을 넣으면 감자<br>과일샐러드가 된다.<br>감자샐러드는 간식으로 먹기<br>에도 좋고, 손님초대상에 입<br>맛을 돋우는 반찬으로 내도<br>좋다.<br>또한 감자를 으깨고 채소를<br>곱게 썰어 만든 감자샐러드는<br>식빵이나 모닝빵 사이에 넣어<br>샌드위치를 만들면 최고의<br>간식이 되고, 피크닉 도시락<br>이 되고, 간단한 한끼 식사가<br>된다.</p>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.0801,
+        "y": 0.1424
+      },
+      {
+        "x": 0.2694,
+        "y": 0.1424
+      },
+      {
+        "x": 0.2694,
+        "y": 0.3722
+      },
+      {
+        "x": 0.0801,
+        "y": 0.3722
+      }
+    ],
+    "id": 220,
+    "page": 19
+  },
+  {
+    "category": "figure",
+    "content": {
+      "html": "<br><figure id='221'><img style='font-size:14px' alt=\"Tip\" data-coord=\"top-left:(171,114); bottom-right:(290,198)\" /></figure>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.1598,
+        "y": 0.0753
+      },
+      {
+        "x": 0.2705,
+        "y": 0.0753
+      },
+      {
+        "x": 0.2705,
+        "y": 0.1307
+      },
+      {
+        "x": 0.1598,
+        "y": 0.1307
+      }
+    ],
+    "id": 221,
+    "page": 19
+  },
+  {
+    "category": "figure",
+    "content": {
+      "html": "<br><figure id='222'><img style='font-size:14px' alt=\"7\" data-coord=\"top-left:(396,119); bottom-right:(681,323)\" /></figure>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.3687,
+        "y": 0.0789
+      },
+      {
+        "x": 0.6338,
+        "y": 0.0789
+      },
+      {
+        "x": 0.6338,
+        "y": 0.2125
+      },
+      {
+        "x": 0.3687,
+        "y": 0.2125
+      }
+    ],
+    "id": 222,
+    "page": 19
+  },
+  {
+    "category": "heading1",
+    "content": {
+      "html": "<br><h1 id='223' style='font-size:16px'>끓는 물에 감자를 넣어 20분간 삶은 뒤 건<br>진다.</h1>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.3671,
+        "y": 0.2168
+      },
+      {
+        "x": 0.6351,
+        "y": 0.2168
+      },
+      {
+        "x": 0.6351,
+        "y": 0.245
+      },
+      {
+        "x": 0.3671,
+        "y": 0.245
+      }
+    ],
+    "id": 223,
+    "page": 19
+  },
+  {
+    "category": "paragraph",
+    "content": {
+      "html": "<br><p id='224' data-category='paragraph' style='font-size:16px'>삶은 감자는 체에 밭쳐 물기를 뺀다.</p>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.6565,
+        "y": 0.2185
+      },
+      {
+        "x": 0.8752,
+        "y": 0.2185
+      },
+      {
+        "x": 0.8752,
+        "y": 0.2333
+      },
+      {
+        "x": 0.6565,
+        "y": 0.2333
+      }
+    ],
+    "id": 224,
+    "page": 19
+  },
+  {
+    "category": "figure",
+    "content": {
+      "html": "<figure id='225'><img style='font-size:14px' alt=\"9\" data-coord=\"top-left:(395,415); bottom-right:(679,618)\" /></figure>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.3676,
+        "y": 0.2735
+      },
+      {
+        "x": 0.6321,
+        "y": 0.2735
+      },
+      {
+        "x": 0.6321,
+        "y": 0.407
+      },
+      {
+        "x": 0.3676,
+        "y": 0.407
+      }
+    ],
+    "id": 225,
+    "page": 19
+  },
+  {
+    "category": "paragraph",
+    "content": {
+      "html": "<br><p id='226' data-category='paragraph' style='font-size:16px'>감자의 물기가 빠지면 뜨거울 때 넓은 그릇<br>에 담는다.</p>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.3658,
+        "y": 0.4111
+      },
+      {
+        "x": 0.6335,
+        "y": 0.4111
+      },
+      {
+        "x": 0.6335,
+        "y": 0.4393
+      },
+      {
+        "x": 0.3658,
+        "y": 0.4393
+      }
+    ],
+    "id": 226,
+    "page": 19
+  },
+  {
+    "category": "paragraph",
+    "content": {
+      "html": "<p id='227' data-category='paragraph' style='font-size:16px'>으깬 감자에 당근, 양파, 셀러리, 달걀흰자와<br>오이를 넣는다.</p>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.3642,
+        "y": 0.605
+      },
+      {
+        "x": 0.6309,
+        "y": 0.605
+      },
+      {
+        "x": 0.6309,
+        "y": 0.6338
+      },
+      {
+        "x": 0.3642,
+        "y": 0.6338
+      }
+    ],
+    "id": 227,
+    "page": 19
+  },
+  {
+    "category": "figure",
+    "content": {
+      "html": "<figure id='228'><img style='font-size:20px' alt=\"13\" data-coord=\"top-left:(391,1005); bottom-right:(674,1207)\" /></figure>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.3642,
+        "y": 0.6614
+      },
+      {
+        "x": 0.6278,
+        "y": 0.6614
+      },
+      {
+        "x": 0.6278,
+        "y": 0.7944
+      },
+      {
+        "x": 0.3642,
+        "y": 0.7944
+      }
+    ],
+    "id": 228,
+    "page": 19
+  },
+  {
+    "category": "paragraph",
+    "content": {
+      "html": "<br><p id='229' data-category='paragraph' style='font-size:16px'>으깬 감자와 채소, 양념을 섞는다.</p>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.3627,
+        "y": 0.7987
+      },
+      {
+        "x": 0.5662,
+        "y": 0.7987
+      },
+      {
+        "x": 0.5662,
+        "y": 0.8141
+      },
+      {
+        "x": 0.3627,
+        "y": 0.8141
+      }
+    ],
+    "id": 229,
+    "page": 19
+  },
+  {
+    "category": "figure",
+    "content": {
+      "html": "<br><figure id='230'><img style='font-size:16px' alt=\"8\" data-coord=\"top-left:(706,123); bottom-right:(989,324)\" /></figure>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.6576,
+        "y": 0.0813
+      },
+      {
+        "x": 0.9207,
+        "y": 0.0813
+      },
+      {
+        "x": 0.9207,
+        "y": 0.2136
+      },
+      {
+        "x": 0.6576,
+        "y": 0.2136
+      }
+    ],
+    "id": 230,
+    "page": 19
+  },
+  {
+    "category": "figure",
+    "content": {
+      "html": "<figure id='231'><img style='font-size:20px' alt=\"12\" data-coord=\"top-left:(702,713); bottom-right:(986,914)\" /></figure>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.6531,
+        "y": 0.4694
+      },
+      {
+        "x": 0.9178,
+        "y": 0.4694
+      },
+      {
+        "x": 0.9178,
+        "y": 0.6018
+      },
+      {
+        "x": 0.6531,
+        "y": 0.6018
+      }
+    ],
+    "id": 231,
+    "page": 19
+  },
+  {
+    "category": "figure",
+    "content": {
+      "html": "<br><figure id='232'><img style='font-size:20px' alt=\"10\" data-coord=\"top-left:(703,418); bottom-right:(988,619)\" /></figure>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.6545,
+        "y": 0.2753
+      },
+      {
+        "x": 0.9193,
+        "y": 0.2753
+      },
+      {
+        "x": 0.9193,
+        "y": 0.4078
+      },
+      {
+        "x": 0.6545,
+        "y": 0.4078
+      }
+    ],
+    "id": 232,
+    "page": 19
+  },
+  {
+    "category": "paragraph",
+    "content": {
+      "html": "<br><p id='233' data-category='paragraph' style='font-size:18px'>감자는 숟가락으로 으깬다.</p>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.6543,
+        "y": 0.4128
+      },
+      {
+        "x": 0.8165,
+        "y": 0.4128
+      },
+      {
+        "x": 0.8165,
+        "y": 0.4269
+      },
+      {
+        "x": 0.6543,
+        "y": 0.4269
+      }
+    ],
+    "id": 233,
+    "page": 19
+  },
+  {
+    "category": "paragraph",
+    "content": {
+      "html": "<p id='234' data-category='paragraph' style='font-size:16px'>마요네즈와 생크림과 설탕, 백후춧가루를 넣<br>는다.</p>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.6513,
+        "y": 0.6067
+      },
+      {
+        "x": 0.9175,
+        "y": 0.6067
+      },
+      {
+        "x": 0.9175,
+        "y": 0.6351
+      },
+      {
+        "x": 0.6513,
+        "y": 0.6351
+      }
+    ],
+    "id": 234,
+    "page": 19
+  },
+  {
+    "category": "figure",
+    "content": {
+      "html": "<br><figure id='235'><img style='font-size:18px' alt=\"11\" data-coord=\"top-left:(393,710); bottom-right:(677,913)\" /></figure>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.3659,
+        "y": 0.4676
+      },
+      {
+        "x": 0.6298,
+        "y": 0.4676
+      },
+      {
+        "x": 0.6298,
+        "y": 0.6007
+      },
+      {
+        "x": 0.3659,
+        "y": 0.6007
+      }
+    ],
+    "id": 235,
+    "page": 19
+  },
+  {
+    "category": "figure",
+    "content": {
+      "html": "<figure id='236'><img style='font-size:20px' alt=\"14\" data-coord=\"top-left:(700,1007); bottom-right:(983,1209)\" /></figure>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.6514,
+        "y": 0.6631
+      },
+      {
+        "x": 0.9147,
+        "y": 0.6631
+      },
+      {
+        "x": 0.9147,
+        "y": 0.7956
+      },
+      {
+        "x": 0.6514,
+        "y": 0.7956
+      }
+    ],
+    "id": 236,
+    "page": 19
+  },
+  {
+    "category": "paragraph",
+    "content": {
+      "html": "<br><p id='237' data-category='paragraph' style='font-size:16px'>감자샐러드가 완성되면 그릇에 담고 위에 달<br>걀노른자를 체에 비벼 뿌린다.</p>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.6498,
+        "y": 0.8005
+      },
+      {
+        "x": 0.9163,
+        "y": 0.8005
+      },
+      {
+        "x": 0.9163,
+        "y": 0.8285
+      },
+      {
+        "x": 0.6498,
+        "y": 0.8285
+      }
+    ],
+    "id": 237,
+    "page": 19
+  },
+  {
+    "category": "footer",
+    "content": {
+      "html": "<footer id='238' style='font-size:16px'>96</footer>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.0713,
+        "y": 0.9649
+      },
+      {
+        "x": 0.0951,
+        "y": 0.9649
+      },
+      {
+        "x": 0.0951,
+        "y": 0.9786
+      },
+      {
+        "x": 0.0713,
+        "y": 0.9786
+      }
+    ],
+    "id": 238,
+    "page": 19
+  },
+  {
+    "category": "figure",
+    "content": {
+      "html": "<figure id='239'><img style='font-size:16px' alt=\"Paik gong Won\nThe Born\" data-coord=\"top-left:(230,123); bottom-right:(826,1031)\" /></figure>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.214,
+        "y": 0.0809
+      },
+      {
+        "x": 0.7685,
+        "y": 0.0809
+      },
+      {
+        "x": 0.7685,
+        "y": 0.6788
+      },
+      {
+        "x": 0.214,
+        "y": 0.6788
+      }
+    ],
+    "id": 239,
+    "page": 20
+  },
+  {
+    "category": "footer",
+    "content": {
+      "html": "<footer id='240' style='font-size:14px'>97</footer>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.9076,
+        "y": 0.9737
+      },
+      {
+        "x": 0.9318,
+        "y": 0.9737
+      },
+      {
+        "x": 0.9318,
+        "y": 0.9878
+      },
+      {
+        "x": 0.9076,
+        "y": 0.9878
+      }
+    ],
+    "id": 240,
+    "page": 20
+  },
+  {
+    "category": "footer",
+    "content": {
+      "html": "<br><footer id='241' style='font-size:20px'>집밥메뉴</footer>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.9593,
+        "y": 0.1225
+      },
+      {
+        "x": 0.9889,
+        "y": 0.1225
+      },
+      {
+        "x": 0.9889,
+        "y": 0.2394
+      },
+      {
+        "x": 0.9593,
+        "y": 0.2394
+      }
+    ],
+    "id": 241,
+    "page": 20
+  },
+  {
+    "category": "paragraph",
+    "content": {
+      "html": "<p id='242' data-category='paragraph' style='font-size:14px'>전은 고기, 해물, 채소 등의 재료를 얇게 썰어 밀가루, 달걀을 묻혀<br>팬에 기름을 두르고 납작하게 지진 음식이다. 해물파전은 쪽파에<br>해물을 올려 부친 전으로 해산물이 풍부하고, 쪽파가 많이 재배되<br>었던 부산에서 유래되어 동래파전이라고도 한다. 술안주로 인기가<br>많다.</p>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.3682,
+        "y": 0.0802
+      },
+      {
+        "x": 0.9129,
+        "y": 0.0802
+      },
+      {
+        "x": 0.9129,
+        "y": 0.1854
+      },
+      {
+        "x": 0.3682,
+        "y": 0.1854
+      }
+    ],
+    "id": 242,
+    "page": 21
+  },
+  {
+    "category": "paragraph",
+    "content": {
+      "html": "<br><p id='243' data-category='paragraph' style='font-size:18px'>해 물파전</p>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.3613,
+        "y": 0.2327
+      },
+      {
+        "x": 0.6801,
+        "y": 0.2327
+      },
+      {
+        "x": 0.6801,
+        "y": 0.2977
+      },
+      {
+        "x": 0.3613,
+        "y": 0.2977
+      }
+    ],
+    "id": 243,
+    "page": 21
+  },
+  {
+    "category": "figure",
+    "content": {
+      "html": "<figure id='244'><img alt=\"\" data-coord=\"top-left:(93,116); bottom-right:(308,331)\" /></figure>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.0872,
+        "y": 0.0765
+      },
+      {
+        "x": 0.2865,
+        "y": 0.0765
+      },
+      {
+        "x": 0.2865,
+        "y": 0.218
+      },
+      {
+        "x": 0.0872,
+        "y": 0.218
+      }
+    ],
+    "id": 244,
+    "page": 22
+  },
+  {
+    "category": "paragraph",
+    "content": {
+      "html": "<p id='245' data-category='paragraph' style='font-size:14px'>밀가루에 꽃소금과 설탕을 넣고 섞는다. 밀가<br>루에 미리 간을 해야 파전에 고르게 간이 된<br>다.</p>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.3717,
+        "y": 0.4184
+      },
+      {
+        "x": 0.6404,
+        "y": 0.4184
+      },
+      {
+        "x": 0.6404,
+        "y": 0.4595
+      },
+      {
+        "x": 0.3717,
+        "y": 0.4595
+      }
+    ],
+    "id": 245,
+    "page": 22
+  },
+  {
+    "category": "paragraph",
+    "content": {
+      "html": "<br><p id='246' data-category='paragraph' style='font-size:14px'>쪽파 또는 실파 50g<br>(밀가루 1/2큰술)<br>풋고추 10g<br>홍고추 10g<br>오징어 1-마리(75g)<br>새우살 30g<br>굴 50g<br>조갯살 30g<br>밀가루 70g<br>꽃소금 큰술<br>설탕 1/3큰술<br>물 융컵(약120ml)<br>식용유 6큰술<br>(처음 3큰술+중간 2큰술+마지<br>막 1큰술)<br>달걀 2개</p>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.0853,
+        "y": 0.2666
+      },
+      {
+        "x": 0.2777,
+        "y": 0.2666
+      },
+      {
+        "x": 0.2777,
+        "y": 0.5209
+      },
+      {
+        "x": 0.0853,
+        "y": 0.5209
+      }
+    ],
+    "id": 246,
+    "page": 22
+  },
+  {
+    "category": "paragraph",
+    "content": {
+      "html": "<br><p id='247' data-category='paragraph' style='font-size:18px'>재료 (4인분)</p>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.1398,
+        "y": 0.2423
+      },
+      {
+        "x": 0.2175,
+        "y": 0.2423
+      },
+      {
+        "x": 0.2175,
+        "y": 0.2559
+      },
+      {
+        "x": 0.1398,
+        "y": 0.2559
+      }
+    ],
+    "id": 247,
+    "page": 22
+  },
+  {
+    "category": "figure",
+    "content": {
+      "html": "<br><figure id='248'><img style='font-size:14px' alt=\"1\" data-coord=\"top-left:(405,125); bottom-right:(685,326)\" /></figure>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.3767,
+        "y": 0.0824
+      },
+      {
+        "x": 0.6377,
+        "y": 0.0824
+      },
+      {
+        "x": 0.6377,
+        "y": 0.2148
+      },
+      {
+        "x": 0.3767,
+        "y": 0.2148
+      }
+    ],
+    "id": 248,
+    "page": 22
+  },
+  {
+    "category": "heading1",
+    "content": {
+      "html": "<br><h1 id='249' style='font-size:16px'>파는 쪽파나 실파로 준비해 반으로 자르고,<br>풋고추와 홍고추는 동그랗고 얇게 썰어 씨를<br>턴다.</h1>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.3728,
+        "y": 0.2199
+      },
+      {
+        "x": 0.6406,
+        "y": 0.2199
+      },
+      {
+        "x": 0.6406,
+        "y": 0.2618
+      },
+      {
+        "x": 0.3728,
+        "y": 0.2618
+      }
+    ],
+    "id": 249,
+    "page": 22
+  },
+  {
+    "category": "figure",
+    "content": {
+      "html": "<br><figure id='250'><img style='font-size:16px' alt=\"2\" data-coord=\"top-left:(712,124); bottom-right:(996,327)\" /></figure>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.6631,
+        "y": 0.0821
+      },
+      {
+        "x": 0.9271,
+        "y": 0.0821
+      },
+      {
+        "x": 0.9271,
+        "y": 0.2153
+      },
+      {
+        "x": 0.6631,
+        "y": 0.2153
+      }
+    ],
+    "id": 250,
+    "page": 22
+  },
+  {
+    "category": "paragraph",
+    "content": {
+      "html": "<br><p id='251' data-category='paragraph' style='font-size:16px'>오징어는 가늘게 채 썰고, 새우살은 작은 새<br>우 껍질 벗긴 것으로 준비하고, 굴과 조갯살<br>은 소금물에 씻어 체에 밭쳐 물기를 뺀다.</p>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.6616,
+        "y": 0.2203
+      },
+      {
+        "x": 0.9286,
+        "y": 0.2203
+      },
+      {
+        "x": 0.9286,
+        "y": 0.2614
+      },
+      {
+        "x": 0.6616,
+        "y": 0.2614
+      }
+    ],
+    "id": 251,
+    "page": 22
+  },
+  {
+    "category": "figure",
+    "content": {
+      "html": "<figure id='252'><img style='font-size:14px' alt=\"3\" data-coord=\"top-left:(401,426); bottom-right:(686,628)\" /></figure>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.373,
+        "y": 0.2804
+      },
+      {
+        "x": 0.6385,
+        "y": 0.2804
+      },
+      {
+        "x": 0.6385,
+        "y": 0.4137
+      },
+      {
+        "x": 0.373,
+        "y": 0.4137
+      }
+    ],
+    "id": 252,
+    "page": 22
+  },
+  {
+    "category": "figure",
+    "content": {
+      "html": "<br><figure id='253'><img style='font-size:14px' alt=\"4\" data-coord=\"top-left:(711,427); bottom-right:(996,629)\" /></figure>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.6614,
+        "y": 0.2811
+      },
+      {
+        "x": 0.9266,
+        "y": 0.2811
+      },
+      {
+        "x": 0.9266,
+        "y": 0.4139
+      },
+      {
+        "x": 0.6614,
+        "y": 0.4139
+      }
+    ],
+    "id": 253,
+    "page": 22
+  },
+  {
+    "category": "paragraph",
+    "content": {
+      "html": "<br><p id='254' data-category='paragraph' style='font-size:16px'>밀가루에 물을 붓고 젓가락으로 저어 덩어리<br>없이 섞는다.</p>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.6609,
+        "y": 0.4188
+      },
+      {
+        "x": 0.9274,
+        "y": 0.4188
+      },
+      {
+        "x": 0.9274,
+        "y": 0.4463
+      },
+      {
+        "x": 0.6609,
+        "y": 0.4463
+      }
+    ],
+    "id": 254,
+    "page": 22
+  },
+  {
+    "category": "figure",
+    "content": {
+      "html": "<figure id='255'><img style='font-size:18px' alt=\"5\" data-coord=\"top-left:(400,721); bottom-right:(685,923)\" /></figure>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.3726,
+        "y": 0.4747
+      },
+      {
+        "x": 0.6376,
+        "y": 0.4747
+      },
+      {
+        "x": 0.6376,
+        "y": 0.6077
+      },
+      {
+        "x": 0.3726,
+        "y": 0.6077
+      }
+    ],
+    "id": 255,
+    "page": 22
+  },
+  {
+    "category": "paragraph",
+    "content": {
+      "html": "<br><p id='256' data-category='paragraph' style='font-size:16px'>파를 접시에 나란히 놓고 밀가루를 뿌린다.</p>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.3722,
+        "y": 0.6124
+      },
+      {
+        "x": 0.6347,
+        "y": 0.6124
+      },
+      {
+        "x": 0.6347,
+        "y": 0.627
+      },
+      {
+        "x": 0.3722,
+        "y": 0.627
+      }
+    ],
+    "id": 256,
+    "page": 22
+  },
+  {
+    "category": "figure",
+    "content": {
+      "html": "<br><figure id='257'><img style='font-size:14px' alt=\"6\" data-coord=\"top-left:(710,722); bottom-right:(995,924)\" /></figure>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.6611,
+        "y": 0.4751
+      },
+      {
+        "x": 0.9263,
+        "y": 0.4751
+      },
+      {
+        "x": 0.9263,
+        "y": 0.608
+      },
+      {
+        "x": 0.6611,
+        "y": 0.608
+      }
+    ],
+    "id": 257,
+    "page": 22
+  },
+  {
+    "category": "paragraph",
+    "content": {
+      "html": "<br><p id='258' data-category='paragraph' style='font-size:16px'>파에 밀가루를 묻힌다.</p>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.6608,
+        "y": 0.6128
+      },
+      {
+        "x": 0.7974,
+        "y": 0.6128
+      },
+      {
+        "x": 0.7974,
+        "y": 0.6269
+      },
+      {
+        "x": 0.6608,
+        "y": 0.6269
+      }
+    ],
+    "id": 258,
+    "page": 22
+  },
+  {
+    "category": "figure",
+    "content": {
+      "html": "<figure id='259'><img style='font-size:20px' alt=\"백종원의 Tip\" data-coord=\"top-left:(792,1057); bottom-right:(997,1140)\" /></figure>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.7375,
+        "y": 0.6955
+      },
+      {
+        "x": 0.928,
+        "y": 0.6955
+      },
+      {
+        "x": 0.928,
+        "y": 0.7505
+      },
+      {
+        "x": 0.7375,
+        "y": 0.7505
+      }
+    ],
+    "id": 259,
+    "page": 22
+  },
+  {
+    "category": "paragraph",
+    "content": {
+      "html": "<p id='260' data-category='paragraph' style='font-size:16px'>파전은 식용유를 넉넉히 둘러 튀기듯이 부쳐야 맛있다. 처음, 중간, 뒤집으면서 식용유를<br>추가로 둘러주도록 한다. 불은 처음에는 강불로 팬을 달군 뒤 밀가루를 올릴 때부터는 중<br>간불로 줄여준다. 파전은 자주 뒤집으면 부서지고 바삭한 맛이 떨어진다. 처음에 아랫면을<br>거의 다 익힌 뒤 뒤집어서 해물을 익히고, 다시 한 번 뒤집어 아랫면이 노릇노릇 익기 시<br>작할 때 꺼내면 된다.</p>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.3721,
+        "y": 0.7622
+      },
+      {
+        "x": 0.9266,
+        "y": 0.7622
+      },
+      {
+        "x": 0.9266,
+        "y": 0.8389
+      },
+      {
+        "x": 0.3721,
+        "y": 0.8389
+      }
+    ],
+    "id": 260,
+    "page": 22
+  },
+  {
+    "category": "footer",
+    "content": {
+      "html": "<footer id='261' style='font-size:14px'>99</footer>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.9039,
+        "y": 0.9697
+      },
+      {
+        "x": 0.928,
+        "y": 0.9697
+      },
+      {
+        "x": 0.928,
+        "y": 0.9834
+      },
+      {
+        "x": 0.9039,
+        "y": 0.9834
+      }
+    ],
+    "id": 261,
+    "page": 22
+  },
+  {
+    "category": "footer",
+    "content": {
+      "html": "<br><footer id='262' style='font-size:22px'>1<br>집밥메뉴<br>52</footer>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.957,
+        "y": 0.123
+      },
+      {
+        "x": 0.9865,
+        "y": 0.123
+      },
+      {
+        "x": 0.9865,
+        "y": 0.2382
+      },
+      {
+        "x": 0.957,
+        "y": 0.2382
+      }
+    ],
+    "id": 262,
+    "page": 22
+  },
+  {
+    "category": "figure",
+    "content": {
+      "html": "<figure id='263'><img style='font-size:18px' alt=\"백종원의 Tip\" data-coord=\"top-left:(77,121); bottom-right:(281,205)\" /></figure>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.0716,
+        "y": 0.0798
+      },
+      {
+        "x": 0.2621,
+        "y": 0.0798
+      },
+      {
+        "x": 0.2621,
+        "y": 0.1355
+      },
+      {
+        "x": 0.0716,
+        "y": 0.1355
+      }
+    ],
+    "id": 263,
+    "page": 23
+  },
+  {
+    "category": "paragraph",
+    "content": {
+      "html": "<p id='264' data-category='paragraph' style='font-size:16px'>해물파전에 넣는 해물은 지역<br>마다 계절마다 다른 제철 해<br>물을 사용해도 무방하다.<br>홍합살이나 낙지를 올리기도<br>한다.<br>반죽을 할 때 밀가루 대신 부<br>침가루를 쓰면 더 바삭한 파<br>전을 즐길 수 있다.</p>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.0727,
+        "y": 0.1461
+      },
+      {
+        "x": 0.2623,
+        "y": 0.1461
+      },
+      {
+        "x": 0.2623,
+        "y": 0.268
+      },
+      {
+        "x": 0.0727,
+        "y": 0.268
+      }
+    ],
+    "id": 264,
+    "page": 23
+  },
+  {
+    "category": "figure",
+    "content": {
+      "html": "<br><figure id='265'><img style='font-size:14px' alt=\"7\" data-coord=\"top-left:(387,125); bottom-right:(672,327)\" /></figure>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.3602,
+        "y": 0.0823
+      },
+      {
+        "x": 0.6258,
+        "y": 0.0823
+      },
+      {
+        "x": 0.6258,
+        "y": 0.2155
+      },
+      {
+        "x": 0.3602,
+        "y": 0.2155
+      }
+    ],
+    "id": 265,
+    "page": 23
+  },
+  {
+    "category": "heading1",
+    "content": {
+      "html": "<br><h1 id='266' style='font-size:16px'>팬을 불에 올리고 식용유 3큰술을 둘러 달<br>군 뒤, 밀가루반죽을 용정도 넣고 얇게 편다.</h1>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.3596,
+        "y": 0.2204
+      },
+      {
+        "x": 0.6273,
+        "y": 0.2204
+      },
+      {
+        "x": 0.6273,
+        "y": 0.2481
+      },
+      {
+        "x": 0.3596,
+        "y": 0.2481
+      }
+    ],
+    "id": 266,
+    "page": 23
+  },
+  {
+    "category": "figure",
+    "content": {
+      "html": "<br><figure id='267'><img alt=\"\" data-coord=\"top-left:(697,125); bottom-right:(982,327)\" /></figure>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.6484,
+        "y": 0.0825
+      },
+      {
+        "x": 0.9137,
+        "y": 0.0825
+      },
+      {
+        "x": 0.9137,
+        "y": 0.2153
+      },
+      {
+        "x": 0.6484,
+        "y": 0.2153
+      }
+    ],
+    "id": 267,
+    "page": 23
+  },
+  {
+    "category": "paragraph",
+    "content": {
+      "html": "<br><p id='268' data-category='paragraph' style='font-size:18px'>밀가루반죽 위에 파를 나란히 올린다.</p>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.6489,
+        "y": 0.2203
+      },
+      {
+        "x": 0.8754,
+        "y": 0.2203
+      },
+      {
+        "x": 0.8754,
+        "y": 0.2345
+      },
+      {
+        "x": 0.6489,
+        "y": 0.2345
+      }
+    ],
+    "id": 268,
+    "page": 23
+  },
+  {
+    "category": "figure",
+    "content": {
+      "html": "<figure id='269'><img alt=\"\" data-coord=\"top-left:(388,420); bottom-right:(673,622)\" /></figure>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.3613,
+        "y": 0.2767
+      },
+      {
+        "x": 0.626,
+        "y": 0.2767
+      },
+      {
+        "x": 0.626,
+        "y": 0.4093
+      },
+      {
+        "x": 0.3613,
+        "y": 0.4093
+      }
+    ],
+    "id": 269,
+    "page": 23
+  },
+  {
+    "category": "paragraph",
+    "content": {
+      "html": "<br><p id='270' data-category='paragraph' style='font-size:16px'>파 위에 해물(오징어, 새우살, 굴, 조갯살)을<br>놓는다.</p>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.3603,
+        "y": 0.4141
+      },
+      {
+        "x": 0.627,
+        "y": 0.4141
+      },
+      {
+        "x": 0.627,
+        "y": 0.4421
+      },
+      {
+        "x": 0.3603,
+        "y": 0.4421
+      }
+    ],
+    "id": 270,
+    "page": 23
+  },
+  {
+    "category": "figure",
+    "content": {
+      "html": "<br><figure id='271'><img style='font-size:22px' alt=\"10\" data-coord=\"top-left:(696,421); bottom-right:(981,622)\" /></figure>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.6483,
+        "y": 0.277
+      },
+      {
+        "x": 0.9129,
+        "y": 0.277
+      },
+      {
+        "x": 0.9129,
+        "y": 0.4093
+      },
+      {
+        "x": 0.6483,
+        "y": 0.4093
+      }
+    ],
+    "id": 271,
+    "page": 23
+  },
+  {
+    "category": "paragraph",
+    "content": {
+      "html": "<br><p id='272' data-category='paragraph' style='font-size:16px'>해물 위에 남은 밀가루반죽을 뿌리고 아랫면<br>을 익힌다.</p>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.6482,
+        "y": 0.4143
+      },
+      {
+        "x": 0.9144,
+        "y": 0.4143
+      },
+      {
+        "x": 0.9144,
+        "y": 0.4416
+      },
+      {
+        "x": 0.6482,
+        "y": 0.4416
+      }
+    ],
+    "id": 272,
+    "page": 23
+  },
+  {
+    "category": "figure",
+    "content": {
+      "html": "<figure id='273'><img style='font-size:18px' alt=\"11\" data-coord=\"top-left:(388,715); bottom-right:(672,916)\" /></figure>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.3615,
+        "y": 0.4704
+      },
+      {
+        "x": 0.6256,
+        "y": 0.4704
+      },
+      {
+        "x": 0.6256,
+        "y": 0.6031
+      },
+      {
+        "x": 0.3615,
+        "y": 0.6031
+      }
+    ],
+    "id": 273,
+    "page": 23
+  },
+  {
+    "category": "paragraph",
+    "content": {
+      "html": "<br><p id='274' data-category='paragraph' style='font-size:16px'>파전을 익히는 동안 팬 가장자리로 식용유<br>2큰술을 더 둘러준다.</p>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.3599,
+        "y": 0.6081
+      },
+      {
+        "x": 0.6273,
+        "y": 0.6081
+      },
+      {
+        "x": 0.6273,
+        "y": 0.6354
+      },
+      {
+        "x": 0.3599,
+        "y": 0.6354
+      }
+    ],
+    "id": 274,
+    "page": 23
+  },
+  {
+    "category": "figure",
+    "content": {
+      "html": "<br><figure id='275'><img style='font-size:22px' alt=\"12\" data-coord=\"top-left:(697,715); bottom-right:(982,916)\" /></figure>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.6487,
+        "y": 0.4707
+      },
+      {
+        "x": 0.9138,
+        "y": 0.4707
+      },
+      {
+        "x": 0.9138,
+        "y": 0.6031
+      },
+      {
+        "x": 0.6487,
+        "y": 0.6031
+      }
+    ],
+    "id": 275,
+    "page": 23
+  },
+  {
+    "category": "paragraph",
+    "content": {
+      "html": "<br><p id='276' data-category='paragraph' style='font-size:16px'>파전 가장자리가 익으면 달걀을 풀어놓았다<br>가 위에 뿌린다.</p>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.6481,
+        "y": 0.6081
+      },
+      {
+        "x": 0.9145,
+        "y": 0.6081
+      },
+      {
+        "x": 0.9145,
+        "y": 0.6353
+      },
+      {
+        "x": 0.6481,
+        "y": 0.6353
+      }
+    ],
+    "id": 276,
+    "page": 23
+  },
+  {
+    "category": "figure",
+    "content": {
+      "html": "<figure id='277'><img style='font-size:20px' alt=\"13\" data-coord=\"top-left:(78,1009); bottom-right:(361,1211)\" /></figure>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.0729,
+        "y": 0.6642
+      },
+      {
+        "x": 0.3366,
+        "y": 0.6642
+      },
+      {
+        "x": 0.3366,
+        "y": 0.7968
+      },
+      {
+        "x": 0.0729,
+        "y": 0.7968
+      }
+    ],
+    "id": 277,
+    "page": 23
+  },
+  {
+    "category": "paragraph",
+    "content": {
+      "html": "<br><p id='278' data-category='paragraph' style='font-size:16px'>달걀 위에 풋고추와 홍고추를 놓는다.</p>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.0725,
+        "y": 0.8018
+      },
+      {
+        "x": 0.3033,
+        "y": 0.8018
+      },
+      {
+        "x": 0.3033,
+        "y": 0.8159
+      },
+      {
+        "x": 0.0725,
+        "y": 0.8159
+      }
+    ],
+    "id": 278,
+    "page": 23
+  },
+  {
+    "category": "figure",
+    "content": {
+      "html": "<br><figure id='279'><img style='font-size:22px' alt=\"14\" data-coord=\"top-left:(388,1009); bottom-right:(672,1210)\" /></figure>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.3616,
+        "y": 0.664
+      },
+      {
+        "x": 0.6258,
+        "y": 0.664
+      },
+      {
+        "x": 0.6258,
+        "y": 0.7965
+      },
+      {
+        "x": 0.3616,
+        "y": 0.7965
+      }
+    ],
+    "id": 279,
+    "page": 23
+  },
+  {
+    "category": "paragraph",
+    "content": {
+      "html": "<br><p id='280' data-category='paragraph' style='font-size:16px'>가장자리가 익으면 파전이 부서지지 않게 주<br>의하며 뒤집고, 팬 가장자리로 식용유 1큰술<br>을 더 두른다.</p>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.3607,
+        "y": 0.802
+      },
+      {
+        "x": 0.6281,
+        "y": 0.802
+      },
+      {
+        "x": 0.6281,
+        "y": 0.8419
+      },
+      {
+        "x": 0.3607,
+        "y": 0.8419
+      }
+    ],
+    "id": 280,
+    "page": 23
+  },
+  {
+    "category": "figure",
+    "content": {
+      "html": "<br><figure id='281'><img style='font-size:20px' alt=\"15\" data-coord=\"top-left:(697,1009); bottom-right:(982,1211)\" /></figure>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.6485,
+        "y": 0.6643
+      },
+      {
+        "x": 0.9136,
+        "y": 0.6643
+      },
+      {
+        "x": 0.9136,
+        "y": 0.7968
+      },
+      {
+        "x": 0.6485,
+        "y": 0.7968
+      }
+    ],
+    "id": 281,
+    "page": 23
+  },
+  {
+    "category": "paragraph",
+    "content": {
+      "html": "<br><p id='282' data-category='paragraph' style='font-size:16px'>해물이 익으면 뒤집어 아랫면을 다시 한 번<br>익힌 뒤 꺼낸다.</p>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.6483,
+        "y": 0.8021
+      },
+      {
+        "x": 0.9148,
+        "y": 0.8021
+      },
+      {
+        "x": 0.9148,
+        "y": 0.8289
+      },
+      {
+        "x": 0.6483,
+        "y": 0.8289
+      }
+    ],
+    "id": 282,
+    "page": 23
+  },
+  {
+    "category": "footer",
+    "content": {
+      "html": "<footer id='283' style='font-size:16px'>100</footer>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.0717,
+        "y": 0.9688
+      },
+      {
+        "x": 0.105,
+        "y": 0.9688
+      },
+      {
+        "x": 0.105,
+        "y": 0.9826
+      },
+      {
+        "x": 0.0717,
+        "y": 0.9826
+      }
+    ],
+    "id": 283,
+    "page": 23
+  },
+  {
+    "category": "figure",
+    "content": {
+      "html": "<figure id='284'><img style='font-size:14px' alt=\"(Song Was\nBo\" data-coord=\"top-left:(230,118); bottom-right:(858,1033)\" /></figure>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.2145,
+        "y": 0.0781
+      },
+      {
+        "x": 0.7988,
+        "y": 0.0781
+      },
+      {
+        "x": 0.7988,
+        "y": 0.6798
+      },
+      {
+        "x": 0.2145,
+        "y": 0.6798
+      }
+    ],
+    "id": 284,
+    "page": 24
+  },
+  {
+    "category": "footer",
+    "content": {
+      "html": "<footer id='285' style='font-size:16px'>101</footer>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.8975,
+        "y": 0.9722
+      },
+      {
+        "x": 0.9288,
+        "y": 0.9722
+      },
+      {
+        "x": 0.9288,
+        "y": 0.9863
+      },
+      {
+        "x": 0.8975,
+        "y": 0.9863
+      }
+    ],
+    "id": 285,
+    "page": 24
+  },
+  {
+    "category": "footer",
+    "content": {
+      "html": "<br><footer id='286' style='font-size:20px'>1<br>집밥메뉴</footer>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.961,
+        "y": 0.1216
+      },
+      {
+        "x": 0.9897,
+        "y": 0.1216
+      },
+      {
+        "x": 0.9897,
+        "y": 0.2381
+      },
+      {
+        "x": 0.961,
+        "y": 0.2381
+      }
+    ],
+    "id": 286,
+    "page": 24
+  },
+  {
+    "category": "paragraph",
+    "content": {
+      "html": "<p id='287' data-category='paragraph' style='font-size:14px'>김치전은 김치와 밀가루를 반죽해 부치는 전으로 간식과 술안주로 즐겨먹는 소박한 서민음식이다.<br>김치전을 부칠 때 기름기가 적당히 있는 돼지고기를 넣으면 고소한 맛이 배가 된다.</p>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.0923,
+        "y": 0.0789
+      },
+      {
+        "x": 0.9072,
+        "y": 0.0789
+      },
+      {
+        "x": 0.9072,
+        "y": 0.1204
+      },
+      {
+        "x": 0.0923,
+        "y": 0.1204
+      }
+    ],
+    "id": 287,
+    "page": 25
+  },
+  {
+    "category": "paragraph",
+    "content": {
+      "html": "<p id='288' data-category='paragraph' style='font-size:18px'>김 치전</p>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.0905,
+        "y": 0.7639
+      },
+      {
+        "x": 0.3273,
+        "y": 0.7639
+      },
+      {
+        "x": 0.3273,
+        "y": 0.8295
+      },
+      {
+        "x": 0.0905,
+        "y": 0.8295
+      }
+    ],
+    "id": 288,
+    "page": 25
+  },
+  {
+    "category": "figure",
+    "content": {
+      "html": "<figure id='289'><img alt=\"\" data-coord=\"top-left:(95,125); bottom-right:(302,335)\" /></figure>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.0884,
+        "y": 0.0828
+      },
+      {
+        "x": 0.2809,
+        "y": 0.0828
+      },
+      {
+        "x": 0.2809,
+        "y": 0.2207
+      },
+      {
+        "x": 0.0884,
+        "y": 0.2207
+      }
+    ],
+    "id": 289,
+    "page": 26
+  },
+  {
+    "category": "paragraph",
+    "content": {
+      "html": "<p id='290' data-category='paragraph' style='font-size:18px'>재료 (4인분)</p>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.1434,
+        "y": 0.2422
+      },
+      {
+        "x": 0.2215,
+        "y": 0.2422
+      },
+      {
+        "x": 0.2215,
+        "y": 0.256
+      },
+      {
+        "x": 0.1434,
+        "y": 0.256
+      }
+    ],
+    "id": 290,
+    "page": 26
+  },
+  {
+    "category": "paragraph",
+    "content": {
+      "html": "<p id='291' data-category='paragraph' style='font-size:14px'>신김치 160g<br>양파 60g<br>대파 30g<br>청양고추 10g<br>돼지고기(목살) 40g<br>밀가루 70g<br>간 마늘 1/2큰술<br>꽃소금 약간<br>설탕 약간<br>물 12컵(약90ml)<br>식용유 5큰술<br>(처음 3큰술+중간 1큰술+마지<br>막 1큰술)</p>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.0891,
+        "y": 0.2677
+      },
+      {
+        "x": 0.2813,
+        "y": 0.2677
+      },
+      {
+        "x": 0.2813,
+        "y": 0.4719
+      },
+      {
+        "x": 0.0891,
+        "y": 0.4719
+      }
+    ],
+    "id": 291,
+    "page": 26
+  },
+  {
+    "category": "figure",
+    "content": {
+      "html": "<br><figure id='292'><img style='font-size:18px' alt=\"3\" data-coord=\"top-left:(405,425); bottom-right:(689,627)\" /></figure>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.3775,
+        "y": 0.2799
+      },
+      {
+        "x": 0.6412,
+        "y": 0.2799
+      },
+      {
+        "x": 0.6412,
+        "y": 0.4126
+      },
+      {
+        "x": 0.3775,
+        "y": 0.4126
+      }
+    ],
+    "id": 292,
+    "page": 26
+  },
+  {
+    "category": "paragraph",
+    "content": {
+      "html": "<br><p id='293' data-category='paragraph' style='font-size:16px'>넓은 그릇에 밀가루를 담고 김치와 채소, 돼<br>지고기를 넣고 간 마늘, 꽃소금, 설탕을 넣<br>는다.</p>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.3755,
+        "y": 0.4176
+      },
+      {
+        "x": 0.6435,
+        "y": 0.4176
+      },
+      {
+        "x": 0.6435,
+        "y": 0.4581
+      },
+      {
+        "x": 0.3755,
+        "y": 0.4581
+      }
+    ],
+    "id": 293,
+    "page": 26
+  },
+  {
+    "category": "figure",
+    "content": {
+      "html": "<br><figure id='294'><img style='font-size:14px' alt=\"1\" data-coord=\"top-left:(408,124); bottom-right:(689,326)\" /></figure>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.38,
+        "y": 0.0819
+      },
+      {
+        "x": 0.6416,
+        "y": 0.0819
+      },
+      {
+        "x": 0.6416,
+        "y": 0.2145
+      },
+      {
+        "x": 0.38,
+        "y": 0.2145
+      }
+    ],
+    "id": 294,
+    "page": 26
+  },
+  {
+    "category": "heading1",
+    "content": {
+      "html": "<br><h1 id='295' style='font-size:14px'>김치는 속을 털고 국물을 꼭 짠 뒤 1~2cm<br>길이로 썰고, 양파는 가늘게 채 썬다. 대파와<br>청양고추는 동그랗고 얇게 썬다.</h1>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.3774,
+        "y": 0.2192
+      },
+      {
+        "x": 0.6453,
+        "y": 0.2192
+      },
+      {
+        "x": 0.6453,
+        "y": 0.2605
+      },
+      {
+        "x": 0.3774,
+        "y": 0.2605
+      }
+    ],
+    "id": 295,
+    "page": 26
+  },
+  {
+    "category": "figure",
+    "content": {
+      "html": "<br><figure id='296'><img style='font-size:18px' alt=\"2\" data-coord=\"top-left:(716,124); bottom-right:(1000,324)\" /></figure>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.6666,
+        "y": 0.0817
+      },
+      {
+        "x": 0.931,
+        "y": 0.0817
+      },
+      {
+        "x": 0.931,
+        "y": 0.2138
+      },
+      {
+        "x": 0.6666,
+        "y": 0.2138
+      }
+    ],
+    "id": 296,
+    "page": 26
+  },
+  {
+    "category": "paragraph",
+    "content": {
+      "html": "<br><p id='297' data-category='paragraph' style='font-size:16px'>돼지고기는 기름기가 적당히 있는 목살로 준<br>비해 가늘게 채 썬다.</p>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.665,
+        "y": 0.2197
+      },
+      {
+        "x": 0.9313,
+        "y": 0.2197
+      },
+      {
+        "x": 0.9313,
+        "y": 0.2475
+      },
+      {
+        "x": 0.665,
+        "y": 0.2475
+      }
+    ],
+    "id": 297,
+    "page": 26
+  },
+  {
+    "category": "figure",
+    "content": {
+      "html": "<figure id='298'><img style='font-size:14px' alt=\"4\" data-coord=\"top-left:(714,426); bottom-right:(1000,627)\" /></figure>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.6648,
+        "y": 0.2807
+      },
+      {
+        "x": 0.9303,
+        "y": 0.2807
+      },
+      {
+        "x": 0.9303,
+        "y": 0.4127
+      },
+      {
+        "x": 0.6648,
+        "y": 0.4127
+      }
+    ],
+    "id": 298,
+    "page": 26
+  },
+  {
+    "category": "paragraph",
+    "content": {
+      "html": "<br><p id='299' data-category='paragraph' style='font-size:16px'>물을 붓고 고루 섞어 반죽을 한다.</p>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.6651,
+        "y": 0.4179
+      },
+      {
+        "x": 0.8713,
+        "y": 0.4179
+      },
+      {
+        "x": 0.8713,
+        "y": 0.432
+      },
+      {
+        "x": 0.6651,
+        "y": 0.432
+      }
+    ],
+    "id": 299,
+    "page": 26
+  },
+  {
+    "category": "figure",
+    "content": {
+      "html": "<figure id='300'><img style='font-size:16px' alt=\"5\" data-coord=\"top-left:(405,728); bottom-right:(688,930)\" /></figure>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.3768,
+        "y": 0.4795
+      },
+      {
+        "x": 0.6407,
+        "y": 0.4795
+      },
+      {
+        "x": 0.6407,
+        "y": 0.6118
+      },
+      {
+        "x": 0.3768,
+        "y": 0.6118
+      }
+    ],
+    "id": 300,
+    "page": 26
+  },
+  {
+    "category": "paragraph",
+    "content": {
+      "html": "<br><p id='301' data-category='paragraph' style='font-size:14px'>팬을 달군 뒤 식용유 3큰술을 두르고 반죽을<br>1~2국자 넣고 얇게 편다. 가장자리로 식용<br>유 1큰술을 두르고 아랫면을 익힌다.</p>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.3753,
+        "y": 0.617
+      },
+      {
+        "x": 0.6426,
+        "y": 0.617
+      },
+      {
+        "x": 0.6426,
+        "y": 0.6574
+      },
+      {
+        "x": 0.3753,
+        "y": 0.6574
+      }
+    ],
+    "id": 301,
+    "page": 26
+  },
+  {
+    "category": "figure",
+    "content": {
+      "html": "<br><figure id='302'><img alt=\"\" data-coord=\"top-left:(714,730); bottom-right:(999,930)\" /></figure>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.6647,
+        "y": 0.4803
+      },
+      {
+        "x": 0.9297,
+        "y": 0.4803
+      },
+      {
+        "x": 0.9297,
+        "y": 0.6122
+      },
+      {
+        "x": 0.6647,
+        "y": 0.6122
+      }
+    ],
+    "id": 302,
+    "page": 26
+  },
+  {
+    "category": "paragraph",
+    "content": {
+      "html": "<br><p id='303' data-category='paragraph' style='font-size:16px'>김치전 가장자리가 익기 시작하면 뒤집고 팬<br>가장자리로 식용유 1큰술을 두른다. 아랫면<br>이 완전히 익으면 다시 한 번 뒤집어 익힌<br>뒤 꺼낸다.</p>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.6637,
+        "y": 0.6176
+      },
+      {
+        "x": 0.9309,
+        "y": 0.6176
+      },
+      {
+        "x": 0.9309,
+        "y": 0.6708
+      },
+      {
+        "x": 0.6637,
+        "y": 0.6708
+      }
+    ],
+    "id": 303,
+    "page": 26
+  },
+  {
+    "category": "figure",
+    "content": {
+      "html": "<figure id='304'><img style='font-size:20px' alt=\"백종원의 Tip\" data-coord=\"top-left:(796,1086); bottom-right:(1001,1169)\" /></figure>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.7408,
+        "y": 0.7146
+      },
+      {
+        "x": 0.9314,
+        "y": 0.7146
+      },
+      {
+        "x": 0.9314,
+        "y": 0.7695
+      },
+      {
+        "x": 0.7408,
+        "y": 0.7695
+      }
+    ],
+    "id": 304,
+    "page": 26
+  },
+  {
+    "category": "paragraph",
+    "content": {
+      "html": "<br><p id='305' data-category='paragraph' style='font-size:16px'>김치전은 빨간색이 유난히 고운데, 김치만으로 색을 내기는 부족하다. 밀가루에 김치와 돼<br>지고기 등을 넣고 반죽을 할 때 고운 고춧가루 13큰술을 넣으면 붉은색이 곱고 선명해 훨<br>씬 먹음직스러운 김치전이 된다. 밀가루 대신 부침가루를 쓰면 더 바삭한 김치전을 부칠<br>수 있다.</p>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.3758,
+        "y": 0.779
+      },
+      {
+        "x": 0.9289,
+        "y": 0.779
+      },
+      {
+        "x": 0.9289,
+        "y": 0.8402
+      },
+      {
+        "x": 0.3758,
+        "y": 0.8402
+      }
+    ],
+    "id": 305,
+    "page": 26
+  },
+  {
+    "category": "footer",
+    "content": {
+      "html": "<footer id='306' style='font-size:16px'>103</footer>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.8982,
+        "y": 0.9736
+      },
+      {
+        "x": 0.9308,
+        "y": 0.9736
+      },
+      {
+        "x": 0.9308,
+        "y": 0.9873
+      },
+      {
+        "x": 0.8982,
+        "y": 0.9873
+      }
+    ],
+    "id": 306,
+    "page": 26
+  },
+  {
+    "category": "footer",
+    "content": {
+      "html": "<br><footer id='307' style='font-size:22px'>1<br>집밥메뉴<br>52</footer>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.9608,
+        "y": 0.1229
+      },
+      {
+        "x": 0.9893,
+        "y": 0.1229
+      },
+      {
+        "x": 0.9893,
+        "y": 0.2381
+      },
+      {
+        "x": 0.9608,
+        "y": 0.2381
+      }
+    ],
+    "id": 307,
+    "page": 26
+  },
+  {
+    "category": "heading1",
+    "content": {
+      "html": "<h1 id='308' style='font-size:14px'>봄부터 가을까지, 채소가 제철일 때 감자부터 고추까지 여러가지 채소를 넣어 부치는 별미전이다.<br>채소가 골고루 들어가 영양적으로도 훌륭하다. 간식과 반찬, 술안주로도 인기가 많으며, 특히 청양<br>고추를 빼면 매운맛이 덜해 아이들이 좋아한다.</h1>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.1005,
+        "y": 0.0792
+      },
+      {
+        "x": 0.9101,
+        "y": 0.0792
+      },
+      {
+        "x": 0.9101,
+        "y": 0.1414
+      },
+      {
+        "x": 0.1005,
+        "y": 0.1414
+      }
+    ],
+    "id": 308,
+    "page": 27
+  },
+  {
+    "category": "paragraph",
+    "content": {
+      "html": "<p id='309' data-category='paragraph' style='font-size:18px'>야채 전</p>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.1354,
+        "y": 0.3203
+      },
+      {
+        "x": 0.3698,
+        "y": 0.3203
+      },
+      {
+        "x": 0.3698,
+        "y": 0.3846
+      },
+      {
+        "x": 0.1354,
+        "y": 0.3846
+      }
+    ],
+    "id": 309,
+    "page": 27
+  },
+  {
+    "category": "figure",
+    "content": {
+      "html": "<figure id='310'><img alt=\"\" data-coord=\"top-left:(86,121); bottom-right:(294,317)\" /></figure>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.0807,
+        "y": 0.0801
+      },
+      {
+        "x": 0.2742,
+        "y": 0.0801
+      },
+      {
+        "x": 0.2742,
+        "y": 0.2091
+      },
+      {
+        "x": 0.0807,
+        "y": 0.2091
+      }
+    ],
+    "id": 310,
+    "page": 28
+  },
+  {
+    "category": "paragraph",
+    "content": {
+      "html": "<p id='311' data-category='paragraph' style='font-size:18px'>재료 (4인분)</p>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.1382,
+        "y": 0.2388
+      },
+      {
+        "x": 0.2163,
+        "y": 0.2388
+      },
+      {
+        "x": 0.2163,
+        "y": 0.2522
+      },
+      {
+        "x": 0.1382,
+        "y": 0.2522
+      }
+    ],
+    "id": 311,
+    "page": 28
+  },
+  {
+    "category": "paragraph",
+    "content": {
+      "html": "<p id='312' data-category='paragraph' style='font-size:16px'>감자 30g<br>당근 15g<br>주키니 호박(또는 애호박)· ·50g<br>양파 40g<br>부추 25g<br>청양고추 10g<br>홍고추 10g<br>밀가루 100g<br>꽃소금 큰술<br>설탕 큰술<br>물 융컵(약120ml)<br>달걀 1개<br>식용유 5큰술<br>(처음 3큰술+중간 1큰술 +마지<br>막 1큰술)</p>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.0847,
+        "y": 0.2645
+      },
+      {
+        "x": 0.2781,
+        "y": 0.2645
+      },
+      {
+        "x": 0.2781,
+        "y": 0.5006
+      },
+      {
+        "x": 0.0847,
+        "y": 0.5006
+      }
+    ],
+    "id": 312,
+    "page": 28
+  },
+  {
+    "category": "paragraph",
+    "content": {
+      "html": "<br><p id='313' data-category='paragraph' style='font-size:18px'>밀가루에 채소를 모두 넣고 섞는다. 채소가<br>부서지지 않게 젓가락으로 섞는다.</p>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.3718,
+        "y": 0.4425
+      },
+      {
+        "x": 0.6397,
+        "y": 0.4425
+      },
+      {
+        "x": 0.6397,
+        "y": 0.4695
+      },
+      {
+        "x": 0.3718,
+        "y": 0.4695
+      }
+    ],
+    "id": 313,
+    "page": 28
+  },
+  {
+    "category": "paragraph",
+    "content": {
+      "html": "<br><p id='314' data-category='paragraph' style='font-size:18px'>팬에 식용유 3큰술을 두르고 채소반죽을 한<br>숟가락씩 떠놓고 앞뒤로 부친다. 중간에 식<br>용유 1큰술을 두르고, 전을 뒤집으면 다시 1큰<br>술을 두르며 부친다.</p>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.6602,
+        "y": 0.442
+      },
+      {
+        "x": 0.9281,
+        "y": 0.442
+      },
+      {
+        "x": 0.9281,
+        "y": 0.4953
+      },
+      {
+        "x": 0.6602,
+        "y": 0.4953
+      }
+    ],
+    "id": 314,
+    "page": 28
+  },
+  {
+    "category": "figure",
+    "content": {
+      "html": "<br><figure id='315'><img alt=\"\" data-coord=\"top-left:(401,121); bottom-right:(683,321)\" /></figure>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.3732,
+        "y": 0.0801
+      },
+      {
+        "x": 0.6353,
+        "y": 0.0801
+      },
+      {
+        "x": 0.6353,
+        "y": 0.2118
+      },
+      {
+        "x": 0.3732,
+        "y": 0.2118
+      }
+    ],
+    "id": 315,
+    "page": 28
+  },
+  {
+    "category": "paragraph",
+    "content": {
+      "html": "<br><p id='316' data-category='paragraph' style='font-size:16px'>감자와 당근, 호박, 양파는 4~5cm 길이로<br>가늘게 채 썬다. 부추도 4~5cm 길이로 썰<br>고, 청양고추와 홍고추는 동그랗게 썰어 씨<br>를 턴다.</p>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.3717,
+        "y": 0.2178
+      },
+      {
+        "x": 0.6397,
+        "y": 0.2178
+      },
+      {
+        "x": 0.6397,
+        "y": 0.2714
+      },
+      {
+        "x": 0.3717,
+        "y": 0.2714
+      }
+    ],
+    "id": 316,
+    "page": 28
+  },
+  {
+    "category": "figure",
+    "content": {
+      "html": "<br><figure id='317'><img style='font-size:16px' alt=\"2\" data-coord=\"top-left:(709,119); bottom-right:(995,321)\" /></figure>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.6601,
+        "y": 0.0789
+      },
+      {
+        "x": 0.9256,
+        "y": 0.0789
+      },
+      {
+        "x": 0.9256,
+        "y": 0.2117
+      },
+      {
+        "x": 0.6601,
+        "y": 0.2117
+      }
+    ],
+    "id": 317,
+    "page": 28
+  },
+  {
+    "category": "paragraph",
+    "content": {
+      "html": "<br><p id='318' data-category='paragraph' style='font-size:16px'>넓은 볼에 밀가루와 꽃소금, 설탕, 물을 넣<br>고 달걀을 풀어 넣는다.</p>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.6604,
+        "y": 0.2173
+      },
+      {
+        "x": 0.9264,
+        "y": 0.2173
+      },
+      {
+        "x": 0.9264,
+        "y": 0.2447
+      },
+      {
+        "x": 0.6604,
+        "y": 0.2447
+      }
+    ],
+    "id": 318,
+    "page": 28
+  },
+  {
+    "category": "figure",
+    "content": {
+      "html": "<figure id='319'><img style='font-size:16px' alt=\"3\" data-coord=\"top-left:(400,462); bottom-right:(684,664)\" /></figure>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.3726,
+        "y": 0.3041
+      },
+      {
+        "x": 0.637,
+        "y": 0.3041
+      },
+      {
+        "x": 0.637,
+        "y": 0.4372
+      },
+      {
+        "x": 0.3726,
+        "y": 0.4372
+      }
+    ],
+    "id": 319,
+    "page": 28
+  },
+  {
+    "category": "figure",
+    "content": {
+      "html": "<br><figure id='320'><img alt=\"\" data-coord=\"top-left:(709,462); bottom-right:(994,663)\" /></figure>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.6602,
+        "y": 0.304
+      },
+      {
+        "x": 0.9252,
+        "y": 0.304
+      },
+      {
+        "x": 0.9252,
+        "y": 0.4368
+      },
+      {
+        "x": 0.6602,
+        "y": 0.4368
+      }
+    ],
+    "id": 320,
+    "page": 28
+  },
+  {
+    "category": "paragraph",
+    "content": {
+      "html": "<p id='321' data-category='paragraph' style='font-size:18px'>양념간장</p>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.1489,
+        "y": 0.5941
+      },
+      {
+        "x": 0.2093,
+        "y": 0.5941
+      },
+      {
+        "x": 0.2093,
+        "y": 0.6072
+      },
+      {
+        "x": 0.1489,
+        "y": 0.6072
+      }
+    ],
+    "id": 321,
+    "page": 28
+  },
+  {
+    "category": "paragraph",
+    "content": {
+      "html": "<p id='322' data-category='paragraph' style='font-size:14px'>재료 : 진간장 3큰술, 식초 1큰<br>술, 0.3cm로 동그랗게 썬 대파<br>1큰술, 간 마늘 1/2큰술, 굵은 고<br>춧가루 1/2큰술, 설탕 1/2큰술, 통<br>깨 1큰술</p>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.0859,
+        "y": 0.6168
+      },
+      {
+        "x": 0.2719,
+        "y": 0.6168
+      },
+      {
+        "x": 0.2719,
+        "y": 0.6902
+      },
+      {
+        "x": 0.0859,
+        "y": 0.6902
+      }
+    ],
+    "id": 322,
+    "page": 28
+  },
+  {
+    "category": "paragraph",
+    "content": {
+      "html": "<br><p id='323' data-category='paragraph' style='font-size:18px'>재료들을 모두 섞어서 양념간<br>장을 만든다. 전과 함께 내어<br>찍어 먹는다.</p>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.0861,
+        "y": 0.697
+      },
+      {
+        "x": 0.2721,
+        "y": 0.697
+      },
+      {
+        "x": 0.2721,
+        "y": 0.7412
+      },
+      {
+        "x": 0.0861,
+        "y": 0.7412
+      }
+    ],
+    "id": 323,
+    "page": 28
+  },
+  {
+    "category": "figure",
+    "content": {
+      "html": "<br><figure id='324'><img style='font-size:20px' alt=\"백종원의 Tip\" data-coord=\"top-left:(793,1093); bottom-right:(998,1176)\" /></figure>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.7384,
+        "y": 0.7193
+      },
+      {
+        "x": 0.9284,
+        "y": 0.7193
+      },
+      {
+        "x": 0.9284,
+        "y": 0.7737
+      },
+      {
+        "x": 0.7384,
+        "y": 0.7737
+      }
+    ],
+    "id": 324,
+    "page": 28
+  },
+  {
+    "category": "figure",
+    "content": {
+      "html": "<br><figure id='325'><img alt=\"\" data-coord=\"top-left:(91,1140); bottom-right:(293,1287)\" /></figure>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.0848,
+        "y": 0.7503
+      },
+      {
+        "x": 0.2727,
+        "y": 0.7503
+      },
+      {
+        "x": 0.2727,
+        "y": 0.8472
+      },
+      {
+        "x": 0.0848,
+        "y": 0.8472
+      }
+    ],
+    "id": 325,
+    "page": 28
+  },
+  {
+    "category": "paragraph",
+    "content": {
+      "html": "<br><p id='326' data-category='paragraph' style='font-size:18px'>야채전은 여러 가지 채소를 넣지만 한두 가지만 넣어도 별미다. 감자와 당근, 부추와 양파<br>만 넣고 부치면 색깔도 곱고 맛도 좋다. 호박은 그 하나만 넣어도 별미다. 야채전은 제철에<br>나는 쉽게 구할 수 있는 채소를 이용해 만들면 된다.</p>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.3741,
+        "y": 0.788
+      },
+      {
+        "x": 0.9273,
+        "y": 0.788
+      },
+      {
+        "x": 0.9273,
+        "y": 0.834
+      },
+      {
+        "x": 0.3741,
+        "y": 0.834
+      }
+    ],
+    "id": 326,
+    "page": 28
+  },
+  {
+    "category": "footer",
+    "content": {
+      "html": "<footer id='327' style='font-size:18px'>105</footer>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.8974,
+        "y": 0.9664
+      },
+      {
+        "x": 0.93,
+        "y": 0.9664
+      },
+      {
+        "x": 0.93,
+        "y": 0.9802
+      },
+      {
+        "x": 0.8974,
+        "y": 0.9802
+      }
+    ],
+    "id": 327,
+    "page": 28
+  },
+  {
+    "category": "footer",
+    "content": {
+      "html": "<br><footer id='328' style='font-size:22px'>1<br>집밥메뉴<br>52</footer>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.9555,
+        "y": 0.1192
+      },
+      {
+        "x": 0.9849,
+        "y": 0.1192
+      },
+      {
+        "x": 0.9849,
+        "y": 0.2349
+      },
+      {
+        "x": 0.9555,
+        "y": 0.2349
+      }
+    ],
+    "id": 328,
+    "page": 28
+  },
+  {
+    "category": "heading1",
+    "content": {
+      "html": "<h1 id='329' style='font-size:14px'>달걀에 물을 섞어 뚝배기에 끓인 요리로 부드러운 식감이 있어 어린 아이나 노인들이 특히 좋아한다.<br>달걀찜은 밥반찬으로 인기가 많으며, 부드럽고 영양이 풍부해 술안주로도 잘 어울린다. 달걀찜을 할<br>때, 채소나 해물을 다져넣기도 한다.</h1>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.0864,
+        "y": 0.0756
+      },
+      {
+        "x": 0.906,
+        "y": 0.0756
+      },
+      {
+        "x": 0.906,
+        "y": 0.1397
+      },
+      {
+        "x": 0.0864,
+        "y": 0.1397
+      }
+    ],
+    "id": 329,
+    "page": 29
+  },
+  {
+    "category": "paragraph",
+    "content": {
+      "html": "<p id='330' data-category='paragraph' style='font-size:18px'>달걀찜</p>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.1079,
+        "y": 0.3225
+      },
+      {
+        "x": 0.342,
+        "y": 0.3225
+      },
+      {
+        "x": 0.342,
+        "y": 0.3882
+      },
+      {
+        "x": 0.1079,
+        "y": 0.3882
+      }
+    ],
+    "id": 330,
+    "page": 29
+  },
+  {
+    "category": "figure",
+    "content": {
+      "html": "<figure id='331'><img alt=\"\" data-coord=\"top-left:(84,113); bottom-right:(294,326)\" /></figure>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.0784,
+        "y": 0.0747
+      },
+      {
+        "x": 0.2741,
+        "y": 0.0747
+      },
+      {
+        "x": 0.2741,
+        "y": 0.2149
+      },
+      {
+        "x": 0.0784,
+        "y": 0.2149
+      }
+    ],
+    "id": 331,
+    "page": 30
+  },
+  {
+    "category": "heading1",
+    "content": {
+      "html": "<h1 id='332' style='font-size:20px'>백종원의</h1>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.0873,
+        "y": 0.5722
+      },
+      {
+        "x": 0.1593,
+        "y": 0.5722
+      },
+      {
+        "x": 0.1593,
+        "y": 0.5896
+      },
+      {
+        "x": 0.0873,
+        "y": 0.5896
+      }
+    ],
+    "id": 332,
+    "page": 30
+  },
+  {
+    "category": "paragraph",
+    "content": {
+      "html": "<p id='333' data-category='paragraph' style='font-size:16px'>달걀찜에 물 대신 멸치국물이<br>나 다시마 우린 물을 넣으면<br>더 맛있는 찜이 된다. 불조절<br>이 관건인데, 처음에는 강불에<br>올리고, 달걀물이 끓기 시작하<br>면 약하게 줄인다.<br>달걀찜을 하는 동안 뚝배기에<br>달걀이 눌어붙어 타지 않게<br>계속 저어주고, 대파를 넣은<br>뒤에는 불을 끄고 잠시 뚝배<br>기 뚜껑을 덮어두면 달걀찜이<br>부풀어 오른다. 달걀이 부풀어<br>올랐을 때 참기름을 올려 뜨<br>거울 때 먹으면 아주 맛있는<br>달걀찜을 즐길 수 있다.</p>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.0862,
+        "y": 0.6055
+      },
+      {
+        "x": 0.2748,
+        "y": 0.6055
+      },
+      {
+        "x": 0.2748,
+        "y": 0.8335
+      },
+      {
+        "x": 0.0862,
+        "y": 0.8335
+      }
+    ],
+    "id": 333,
+    "page": 30
+  },
+  {
+    "category": "figure",
+    "content": {
+      "html": "<br><figure id='334'><img style='font-size:14px' alt=\"1\" data-coord=\"top-left:(399,118); bottom-right:(683,319)\" /></figure>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.3718,
+        "y": 0.0776
+      },
+      {
+        "x": 0.6358,
+        "y": 0.0776
+      },
+      {
+        "x": 0.6358,
+        "y": 0.2103
+      },
+      {
+        "x": 0.3718,
+        "y": 0.2103
+      }
+    ],
+    "id": 334,
+    "page": 30
+  },
+  {
+    "category": "paragraph",
+    "content": {
+      "html": "<p id='335' data-category='paragraph' style='font-size:18px'>재료 (2인분)</p>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.138,
+        "y": 0.2292
+      },
+      {
+        "x": 0.2157,
+        "y": 0.2292
+      },
+      {
+        "x": 0.2157,
+        "y": 0.2424
+      },
+      {
+        "x": 0.138,
+        "y": 0.2424
+      }
+    ],
+    "id": 335,
+    "page": 30
+  },
+  {
+    "category": "paragraph",
+    "content": {
+      "html": "<p id='336' data-category='paragraph' style='font-size:16px'>달걀 2개<br>물 컵(약60ml)<br>대파 10g<br>새우젓 1/3큰술<br>설탕 큰술<br>참기름 큰술</p>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.0844,
+        "y": 0.2546
+      },
+      {
+        "x": 0.2753,
+        "y": 0.2546
+      },
+      {
+        "x": 0.2753,
+        "y": 0.3491
+      },
+      {
+        "x": 0.0844,
+        "y": 0.3491
+      }
+    ],
+    "id": 336,
+    "page": 30
+  },
+  {
+    "category": "figure",
+    "content": {
+      "html": "<br><figure id='337'><img style='font-size:16px' alt=\"3\" data-coord=\"top-left:(400,418); bottom-right:(683,620)\" /></figure>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.3725,
+        "y": 0.2751
+      },
+      {
+        "x": 0.6358,
+        "y": 0.2751
+      },
+      {
+        "x": 0.6358,
+        "y": 0.4083
+      },
+      {
+        "x": 0.3725,
+        "y": 0.4083
+      }
+    ],
+    "id": 337,
+    "page": 30
+  },
+  {
+    "category": "heading1",
+    "content": {
+      "html": "<br><h1 id='338' style='font-size:18px'>달걀 푼 것에 새우젓과 설탕을 넣는다.</h1>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.3727,
+        "y": 0.4129
+      },
+      {
+        "x": 0.6068,
+        "y": 0.4129
+      },
+      {
+        "x": 0.6068,
+        "y": 0.4278
+      },
+      {
+        "x": 0.3727,
+        "y": 0.4278
+      }
+    ],
+    "id": 338,
+    "page": 30
+  },
+  {
+    "category": "figure",
+    "content": {
+      "html": "<figure id='339'><img style='font-size:16px' alt=\"Tip\" data-coord=\"top-left:(176,816); bottom-right:(295,898)\" /></figure>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.1646,
+        "y": 0.5373
+      },
+      {
+        "x": 0.2748,
+        "y": 0.5373
+      },
+      {
+        "x": 0.2748,
+        "y": 0.5912
+      },
+      {
+        "x": 0.1646,
+        "y": 0.5912
+      }
+    ],
+    "id": 339,
+    "page": 30
+  },
+  {
+    "category": "paragraph",
+    "content": {
+      "html": "<br><p id='340' data-category='paragraph' style='font-size:18px'>새우젓은 잘게 다진다.</p>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.372,
+        "y": 0.2159
+      },
+      {
+        "x": 0.5088,
+        "y": 0.2159
+      },
+      {
+        "x": 0.5088,
+        "y": 0.2304
+      },
+      {
+        "x": 0.372,
+        "y": 0.2304
+      }
+    ],
+    "id": 340,
+    "page": 30
+  },
+  {
+    "category": "figure",
+    "content": {
+      "html": "<br><figure id='341'><img style='font-size:16px' alt=\"2\" data-coord=\"top-left:(709,117); bottom-right:(993,319)\" /></figure>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.6596,
+        "y": 0.0771
+      },
+      {
+        "x": 0.9245,
+        "y": 0.0771
+      },
+      {
+        "x": 0.9245,
+        "y": 0.21
+      },
+      {
+        "x": 0.6596,
+        "y": 0.21
+      }
+    ],
+    "id": 341,
+    "page": 30
+  },
+  {
+    "category": "heading1",
+    "content": {
+      "html": "<br><h1 id='342' style='font-size:16px'>달걀은 뚝배기에 깨뜨려 넣고 젓가락으로 저<br>어 푼다.</h1>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.6587,
+        "y": 0.2151
+      },
+      {
+        "x": 0.9266,
+        "y": 0.2151
+      },
+      {
+        "x": 0.9266,
+        "y": 0.2429
+      },
+      {
+        "x": 0.6587,
+        "y": 0.2429
+      }
+    ],
+    "id": 342,
+    "page": 30
+  },
+  {
+    "category": "figure",
+    "content": {
+      "html": "<figure id='343'><img style='font-size:18px' alt=\"4\" data-coord=\"top-left:(709,417); bottom-right:(993,619)\" /></figure>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.6599,
+        "y": 0.2747
+      },
+      {
+        "x": 0.9239,
+        "y": 0.2747
+      },
+      {
+        "x": 0.9239,
+        "y": 0.4073
+      },
+      {
+        "x": 0.6599,
+        "y": 0.4073
+      }
+    ],
+    "id": 343,
+    "page": 30
+  },
+  {
+    "category": "heading1",
+    "content": {
+      "html": "<br><h1 id='344' style='font-size:18px'>물을 붓고 달걀과 물이 잘 섞이게 저어준다.</h1>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.66,
+        "y": 0.412
+      },
+      {
+        "x": 0.9252,
+        "y": 0.412
+      },
+      {
+        "x": 0.9252,
+        "y": 0.4269
+      },
+      {
+        "x": 0.66,
+        "y": 0.4269
+      }
+    ],
+    "id": 344,
+    "page": 30
+  },
+  {
+    "category": "figure",
+    "content": {
+      "html": "<figure id='345'><img style='font-size:18px' alt=\"5\" data-coord=\"top-left:(401,717); bottom-right:(685,919)\" /></figure>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.3736,
+        "y": 0.472
+      },
+      {
+        "x": 0.6378,
+        "y": 0.472
+      },
+      {
+        "x": 0.6378,
+        "y": 0.6047
+      },
+      {
+        "x": 0.3736,
+        "y": 0.6047
+      }
+    ],
+    "id": 345,
+    "page": 30
+  },
+  {
+    "category": "heading1",
+    "content": {
+      "html": "<br><h1 id='346' style='font-size:18px'>뚝배기를 불에 올리고 달걀이 뚝배기 바닥과<br>가장자리에 눌어붙지 않도록 숟가락으로 저<br>어가며 끓인다.</h1>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.3728,
+        "y": 0.6099
+      },
+      {
+        "x": 0.6404,
+        "y": 0.6099
+      },
+      {
+        "x": 0.6404,
+        "y": 0.6507
+      },
+      {
+        "x": 0.3728,
+        "y": 0.6507
+      }
+    ],
+    "id": 346,
+    "page": 30
+  },
+  {
+    "category": "figure",
+    "content": {
+      "html": "<br><figure id='347'><img alt=\"\" data-coord=\"top-left:(711,717); bottom-right:(995,918)\" /></figure>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.6615,
+        "y": 0.4719
+      },
+      {
+        "x": 0.9261,
+        "y": 0.4719
+      },
+      {
+        "x": 0.9261,
+        "y": 0.6041
+      },
+      {
+        "x": 0.6615,
+        "y": 0.6041
+      }
+    ],
+    "id": 347,
+    "page": 30
+  },
+  {
+    "category": "paragraph",
+    "content": {
+      "html": "<br><p id='348' data-category='paragraph' style='font-size:18px'>끓어오르면 중불로 줄이고, 달걀이 반쯤 익<br>으면 대파를 넣는다. 대파는 얇고 동그랗게<br>썰어 넣어야 빨리 익는다.</p>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.6614,
+        "y": 0.6093
+      },
+      {
+        "x": 0.9278,
+        "y": 0.6093
+      },
+      {
+        "x": 0.9278,
+        "y": 0.6495
+      },
+      {
+        "x": 0.6614,
+        "y": 0.6495
+      }
+    ],
+    "id": 348,
+    "page": 30
+  },
+  {
+    "category": "figure",
+    "content": {
+      "html": "<figure id='349'><img style='font-size:18px' alt=\"7\" data-coord=\"top-left:(402,1016); bottom-right:(686,1218)\" /></figure>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.3742,
+        "y": 0.6685
+      },
+      {
+        "x": 0.6389,
+        "y": 0.6685
+      },
+      {
+        "x": 0.6389,
+        "y": 0.8013
+      },
+      {
+        "x": 0.3742,
+        "y": 0.8013
+      }
+    ],
+    "id": 349,
+    "page": 30
+  },
+  {
+    "category": "paragraph",
+    "content": {
+      "html": "<br><p id='350' data-category='paragraph' style='font-size:16px'>다시 숟가락으로 가장자리와 바닥을 긁어가<br>며 중불로 끓인다.</p>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.3741,
+        "y": 0.8068
+      },
+      {
+        "x": 0.6417,
+        "y": 0.8068
+      },
+      {
+        "x": 0.6417,
+        "y": 0.834
+      },
+      {
+        "x": 0.3741,
+        "y": 0.834
+      }
+    ],
+    "id": 350,
+    "page": 30
+  },
+  {
+    "category": "figure",
+    "content": {
+      "html": "<br><figure id='351'><img style='font-size:16px' alt=\"8\" data-coord=\"top-left:(711,1015); bottom-right:(997,1216)\" /></figure>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.6622,
+        "y": 0.668
+      },
+      {
+        "x": 0.9275,
+        "y": 0.668
+      },
+      {
+        "x": 0.9275,
+        "y": 0.8005
+      },
+      {
+        "x": 0.6622,
+        "y": 0.8005
+      }
+    ],
+    "id": 351,
+    "page": 30
+  },
+  {
+    "category": "paragraph",
+    "content": {
+      "html": "<br><p id='352' data-category='paragraph' style='font-size:16px'>달걀이 거의 다 익으면 불을 끄고 참기름을<br>넣는다.</p>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.6627,
+        "y": 0.8059
+      },
+      {
+        "x": 0.9286,
+        "y": 0.8059
+      },
+      {
+        "x": 0.9286,
+        "y": 0.8334
+      },
+      {
+        "x": 0.6627,
+        "y": 0.8334
+      }
+    ],
+    "id": 352,
+    "page": 30
+  },
+  {
+    "category": "footer",
+    "content": {
+      "html": "<footer id='353' style='font-size:18px'>107</footer>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.898,
+        "y": 0.9689
+      },
+      {
+        "x": 0.9314,
+        "y": 0.9689
+      },
+      {
+        "x": 0.9314,
+        "y": 0.9824
+      },
+      {
+        "x": 0.898,
+        "y": 0.9824
+      }
+    ],
+    "id": 353,
+    "page": 30
+  },
+  {
+    "category": "footer",
+    "content": {
+      "html": "<br><footer id='354' style='font-size:22px'>1<br>집밥메뉴<br>52</footer>",
+      "markdown": "",
+      "text": ""
+    },
+    "coordinates": [
+      {
+        "x": 0.9546,
+        "y": 0.1174
+      },
+      {
+        "x": 0.9845,
+        "y": 0.1174
+      },
+      {
+        "x": 0.9845,
+        "y": 0.2332
+      },
+      {
+        "x": 0.9546,
+        "y": 0.2332
+      }
+    ],
+    "id": 354,
+    "page": 30
+  }
+]

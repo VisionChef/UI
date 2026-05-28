@@ -1,0 +1,7 @@
+node_modules/
+build/
+dist/
+.env
+
+src/App1.js
+src/App1.css
