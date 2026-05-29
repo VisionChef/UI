@@ -15,9 +15,23 @@ for stream in (sys.stdout, sys.stderr):
         stream.reconfigure(encoding="utf-8", errors="replace")
 
 # ⚠️ Hugging Face / Transformers 캐시는 관련 라이브러리 import 전에 잡아둔다.
-DEFAULT_LOCAL_MODEL_DIR = r"D:\models\skt_A.X-4.0-Light"
-DEFAULT_HF_HOME = r"D:\models\hf_cache"
+# 기존 코드는 D:\models를 사용했지만, D 드라이브가 없는 PC에서는 서버 시작이 실패한다.
+# 현재 server.py 기준으로 프로젝트 루트(UI)를 계산하고, UI/models 아래에 LLM 캐시/모델을 저장한다.
+_THIS_FILE = Path(__file__).resolve()
+MODULE_DIR = _THIS_FILE.parent                  # UI/WEB/Backend
+PROJECT_DIR = MODULE_DIR.parent                # UI/WEB
+VISIONCHEF_ROOT = PROJECT_DIR.parent           # UI
+
+DEFAULT_MODELS_DIR = VISIONCHEF_ROOT / "models"
+DEFAULT_LOCAL_MODEL_DIR = str(DEFAULT_MODELS_DIR / "skt_A.X-4.0-Light")
+DEFAULT_HF_HOME = str(DEFAULT_MODELS_DIR / "hf_cache")
+
+Path(DEFAULT_HF_HOME).mkdir(parents=True, exist_ok=True)
+Path(DEFAULT_LOCAL_MODEL_DIR).parent.mkdir(parents=True, exist_ok=True)
+
 os.environ.setdefault("HF_HOME", DEFAULT_HF_HOME)
+os.environ.setdefault("HUGGINGFACE_HUB_CACHE", str(Path(DEFAULT_HF_HOME) / "hub"))
+os.environ.setdefault("TRANSFORMERS_CACHE", str(Path(DEFAULT_HF_HOME) / "transformers"))
 os.environ.setdefault("HF_HUB_DISABLE_EXPERIMENTAL_XET", "1")
 os.environ.setdefault("HF_HUB_DISABLE_XET", "1")
 
@@ -51,7 +65,7 @@ try:
         import mediapipe as mp
         from mediapipe.tasks import python as _mp_python
         from mediapipe.tasks.python import vision as _mp_vision
-        _mp_model_path = "/tmp/hand_landmarker.task"
+        _mp_model_path = str(Path(tempfile.gettempdir()) / "hand_landmarker.task")
         if not Path(_mp_model_path).exists():
             print("⬇️ MediaPipe 손 랜드마크 모델 다운로드 중...")
             _urllib_req.urlretrieve(
@@ -394,7 +408,7 @@ app = FastAPI(lifespan=lifespan)
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000", "http://127.0.0.1:3000"],
+    allow_origins=["http://localhost:3000", "http://127.0.0.1:3000", "http://localhost:3001", "http://127.0.0.1:3001"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -407,7 +421,7 @@ chat_history = []
 cached_rag_matches = []
 community_posts: list[dict] = []
 yolo_model = None
-YOLO_MODEL_PATH = Path(os.getenv("YOLO_MODEL_PATH", str(VISIONCHEF_ROOT / "CV" / "model" / "best.pt")))
+YOLO_MODEL_PATH = Path(os.getenv("YOLO_MODEL_PATH", str(VISIONCHEF_ROOT / "CV" / "best.pt")))
 FRONTEND_BUILD_DIR = PROJECT_DIR / "Frontend" / "build"
 
 

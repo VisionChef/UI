@@ -117,6 +117,186 @@ const recommendedRecipes = [
   },
 ];
 
+const recipeImageQueries = [
+  "korean-fried-rice",
+  "spicy-rice-bowl",
+  "egg-rice-bowl",
+  "shrimp-garlic-pasta",
+];
+
+const globalIngredientList = [
+  { name: "가리비", category: "해산물", note: "구이, 찜, 파스타에 잘 맞는 조개류" },
+  { name: "가지", category: "채소", note: "볶음, 구이, 무침에 쓰는 보라색 채소" },
+  { name: "감자", category: "채소", note: "전분이 많아 찜, 볶음, 수프에 활용" },
+  { name: "강황", category: "향신료", note: "카레와 밥 색을 내는 노란 향신료" },
+  { name: "계란", category: "단백질", note: "볶음밥, 찜, 부침에 두루 쓰는 기본 재료" },
+  { name: "고구마", category: "채소", note: "단맛이 강한 구황작물" },
+  { name: "고수", category: "허브", note: "동남아, 멕시코 요리에 쓰는 향채" },
+  { name: "고추", category: "채소", note: "매운맛과 향을 더하는 재료" },
+  { name: "고추장", category: "소스", note: "한국식 매운 양념장" },
+  { name: "귀리", category: "곡물", note: "오트밀, 죽, 베이킹에 활용" },
+  { name: "김", category: "해조류", note: "밥, 국수, 주먹밥에 곁들이는 해조류" },
+  { name: "김치", category: "발효식품", note: "찌개, 볶음밥, 면 요리에 활용" },
+  { name: "깻잎", category: "채소", note: "쌈, 절임, 튀김에 좋은 향채" },
+  { name: "꿀", category: "감미료", note: "소스, 차, 디저트에 단맛을 더함" },
+  { name: "낫토", category: "발효식품", note: "일본식 발효 콩 식품" },
+  { name: "냉이", category: "채소", note: "국과 무침에 쓰는 봄나물" },
+  { name: "녹두", category: "콩류", note: "빈대떡, 죽, 숙주 재배에 활용" },
+  { name: "느타리버섯", category: "버섯", note: "볶음, 전골, 국에 쓰기 좋은 버섯" },
+  { name: "다시마", category: "해조류", note: "육수 감칠맛을 내는 해조류" },
+  { name: "단호박", category: "채소", note: "찜, 수프, 샐러드에 좋은 단맛 재료" },
+  { name: "달래", category: "채소", note: "양념장과 무침에 쓰는 봄나물" },
+  { name: "닭고기", category: "육류", note: "구이, 볶음, 찜, 국물 요리에 활용" },
+  { name: "당근", category: "채소", note: "단맛과 색을 더하는 기본 채소" },
+  { name: "대구", category: "해산물", note: "탕, 찜, 구이에 쓰는 흰살생선" },
+  { name: "대파", category: "채소", note: "향을 내는 한국 요리 기본 재료" },
+  { name: "된장", category: "소스", note: "찌개, 무침, 양념에 쓰는 발효장" },
+  { name: "두부", category: "단백질", note: "찌개, 부침, 샐러드에 좋은 콩 식품" },
+  { name: "딜", category: "허브", note: "생선, 피클, 요거트 소스에 잘 맞음" },
+  { name: "땅콩", category: "견과류", note: "소스, 볶음, 디저트에 활용" },
+  { name: "라임", category: "과일", note: "산미와 향을 더하는 감귤류" },
+  { name: "렌틸콩", category: "콩류", note: "수프, 커리, 샐러드에 좋은 콩" },
+  { name: "로즈마리", category: "허브", note: "고기, 감자, 구이에 잘 맞는 허브" },
+  { name: "리코타치즈", category: "유제품", note: "샐러드, 파스타, 디저트에 활용" },
+  { name: "마늘", category: "채소", note: "향과 감칠맛을 내는 핵심 향신채" },
+  { name: "마요네즈", category: "소스", note: "샐러드, 샌드위치, 소스 베이스" },
+  { name: "망고", category: "과일", note: "디저트, 샐러드, 소스에 활용" },
+  { name: "메밀", category: "곡물", note: "국수, 전병, 죽에 쓰는 곡물" },
+  { name: "멸치", category: "해산물", note: "육수와 볶음에 쓰는 작은 생선" },
+  { name: "모차렐라치즈", category: "유제품", note: "피자, 오븐 요리에 녹여 쓰기 좋음" },
+  { name: "무", category: "채소", note: "국, 조림, 김치, 생채에 활용" },
+  { name: "문어", category: "해산물", note: "숙회, 볶음, 샐러드에 활용" },
+  { name: "미나리", category: "채소", note: "탕, 무침, 전골에 향을 더함" },
+  { name: "바나나", category: "과일", note: "스무디, 베이킹, 간식에 활용" },
+  { name: "바질", category: "허브", note: "파스타, 피자, 페스토에 쓰는 허브" },
+  { name: "밥", category: "곡물", note: "볶음밥, 덮밥, 주먹밥의 기본" },
+  { name: "배추", category: "채소", note: "김치, 국, 찜에 쓰는 잎채소" },
+  { name: "버터", category: "유제품", note: "구이, 베이킹, 소스에 풍미를 더함" },
+  { name: "베이컨", category: "육류", note: "훈연 향과 짠맛을 더하는 가공육" },
+  { name: "병아리콩", category: "콩류", note: "후무스, 샐러드, 커리에 활용" },
+  { name: "보리", category: "곡물", note: "밥, 차, 죽에 활용하는 곡물" },
+  { name: "복숭아", category: "과일", note: "디저트, 샐러드, 소스에 활용" },
+  { name: "브로콜리", category: "채소", note: "데침, 볶음, 수프에 좋은 녹색 채소" },
+  { name: "사과", category: "과일", note: "샐러드, 소스, 디저트에 활용" },
+  { name: "삼겹살", category: "육류", note: "구이와 볶음에 쓰는 돼지고기 부위" },
+  { name: "상추", category: "채소", note: "쌈, 샐러드에 쓰는 잎채소" },
+  { name: "새우", category: "해산물", note: "볶음, 튀김, 파스타에 활용" },
+  { name: "생강", category: "향신료", note: "잡내 제거와 향을 위한 뿌리 향신료" },
+  { name: "소고기", category: "육류", note: "구이, 국, 볶음, 스튜에 활용" },
+  { name: "소금", category: "조미료", note: "간을 맞추는 가장 기본 조미료" },
+  { name: "숙주", category: "채소", note: "볶음, 쌀국수, 무침에 쓰는 아삭한 채소" },
+  { name: "시금치", category: "채소", note: "무침, 국, 파스타에 활용" },
+  { name: "식초", category: "조미료", note: "산미를 더하는 기본 조미료" },
+  { name: "식용유", category: "오일", note: "볶음과 튀김에 쓰는 기본 기름" },
+  { name: "쌀", category: "곡물", note: "밥, 죽, 떡의 기본 곡물" },
+  { name: "아보카도", category: "과일", note: "샐러드, 토스트, 과카몰리에 활용" },
+  { name: "애호박", category: "채소", note: "찌개, 볶음, 전 요리에 활용" },
+  { name: "양배추", category: "채소", note: "샐러드, 볶음, 찜에 활용" },
+  { name: "양상추", category: "채소", note: "샐러드와 샌드위치용 잎채소" },
+  { name: "양송이버섯", category: "버섯", note: "수프, 볶음, 구이에 쓰는 버섯" },
+  { name: "양파", category: "채소", note: "단맛과 향을 내는 기본 채소" },
+  { name: "연어", category: "해산물", note: "구이, 회, 샐러드에 활용" },
+  { name: "오레가노", category: "허브", note: "피자, 토마토 소스에 잘 맞는 허브" },
+  { name: "오이", category: "채소", note: "샐러드, 냉국, 피클에 활용" },
+  { name: "오징어", category: "해산물", note: "볶음, 튀김, 무침에 활용" },
+  { name: "올리브유", category: "오일", note: "파스타, 샐러드, 구이에 활용" },
+  { name: "우유", category: "유제품", note: "소스, 수프, 베이킹에 활용" },
+  { name: "월계수잎", category: "허브", note: "스튜와 육수에 향을 더함" },
+  { name: "유자", category: "과일", note: "청, 소스, 드레싱에 향을 더함" },
+  { name: "잣", category: "견과류", note: "죽, 소스, 고명에 활용" },
+  { name: "전복", category: "해산물", note: "죽, 구이, 찜에 활용하는 조개류" },
+  { name: "조개", category: "해산물", note: "탕, 찜, 파스타에 감칠맛을 더함" },
+  { name: "참기름", category: "오일", note: "고소한 향을 더하는 한국식 기름" },
+  { name: "청경채", category: "채소", note: "볶음, 국물 요리에 쓰는 잎채소" },
+  { name: "치킨스톡", category: "조미료", note: "국물과 소스의 감칠맛 베이스" },
+  { name: "카레가루", category: "향신료", note: "카레와 볶음 요리에 쓰는 혼합 향신료" },
+  { name: "코코넛밀크", category: "소스", note: "커리, 수프, 디저트에 활용" },
+  { name: "콩나물", category: "채소", note: "국, 무침, 찜에 쓰는 콩 싹" },
+  { name: "퀴노아", category: "곡물", note: "샐러드, 밥 대체식에 활용" },
+  { name: "타임", category: "허브", note: "고기, 스튜, 구이에 향을 더함" },
+  { name: "토마토", category: "채소", note: "소스, 샐러드, 스튜에 활용" },
+  { name: "파", category: "채소", note: "향을 내는 기본 채소" },
+  { name: "파르메산치즈", category: "유제품", note: "파스타, 샐러드에 감칠맛을 더함" },
+  { name: "파스타면", category: "곡물", note: "이탈리아식 면 요리 기본 재료" },
+  { name: "파프리카", category: "채소", note: "단맛과 색감을 더하는 채소" },
+  { name: "팥", category: "콩류", note: "죽, 앙금, 떡에 활용" },
+  { name: "표고버섯", category: "버섯", note: "육수, 볶음, 조림에 감칠맛을 더함" },
+  { name: "피망", category: "채소", note: "볶음, 피자, 샐러드에 활용" },
+  { name: "피스타치오", category: "견과류", note: "디저트, 샐러드, 소스에 활용" },
+  { name: "한천", category: "가공식품", note: "젤리와 디저트 응고제로 활용" },
+  { name: "호두", category: "견과류", note: "베이킹, 샐러드, 소스에 활용" },
+  { name: "호박씨", category: "견과류", note: "샐러드, 그래놀라, 고명에 활용" },
+  { name: "홍합", category: "해산물", note: "탕, 찜, 파스타에 활용" },
+  { name: "후추", category: "향신료", note: "매운 향을 더하는 기본 향신료" },
+].sort((a, b) => a.name.localeCompare(b.name, "ko"));
+
+const ingredientCategories = ["전체", ...Array.from(new Set(globalIngredientList.map((item) => item.category))).sort((a, b) => a.localeCompare(b, "ko"))];
+const ingredientInitials = [
+  "전체",
+  "가",
+  "나",
+  "다",
+  "라",
+  "마",
+  "바",
+  "사",
+  "아",
+  "자",
+  "차",
+  "카",
+  "타",
+  "파",
+  "하",
+];
+
+const getKoreanInitialGroup = (text = "") => {
+  const char = text.charCodeAt(0);
+  if (char < 0xac00 || char > 0xd7a3) return text[0] || "";
+  const initials = ["가", "까", "나", "다", "따", "라", "마", "바", "빠", "사", "싸", "아", "자", "짜", "차", "카", "타", "파", "하"];
+  const initial = initials[Math.floor((char - 0xac00) / 588)];
+  if (["까"].includes(initial)) return "가";
+  if (["따"].includes(initial)) return "다";
+  if (["빠"].includes(initial)) return "바";
+  if (["싸"].includes(initial)) return "사";
+  if (["짜"].includes(initial)) return "자";
+  return initial;
+};
+
+const getIngredientBuyLinks = (name) => {
+  const q = encodeURIComponent(name);
+  return [
+    { label: "네이버쇼핑", url: `https://search.shopping.naver.com/search/all?query=${q}` },
+    { label: "쿠팡", url: `https://www.coupang.com/np/search?q=${q}` },
+    { label: "마켓컬리", url: `https://www.kurly.com/search?sword=${q}` },
+    { label: "SSG", url: `https://www.ssg.com/search.ssg?target=all&query=${q}` },
+  ];
+};
+
+const getRecipeImageUrl = (recipe, index = 0) => {
+  if (recipe.image) return recipe.image;
+
+  const searchableText = [
+    recipe.name,
+    recipe.type,
+    ...(recipe.ingredients || []),
+  ]
+    .join(" ")
+    .toLowerCase();
+
+  let query = recipeImageQueries[index % recipeImageQueries.length];
+  if (searchableText.includes("pasta") || searchableText.includes("파스타")) {
+    query = "shrimp-garlic-pasta";
+  } else if (searchableText.includes("rice") || searchableText.includes("밥")) {
+    query = "korean-rice-bowl";
+  } else if (searchableText.includes("egg") || searchableText.includes("계란")) {
+    query = "egg-rice-bowl";
+  } else if (searchableText.includes("shrimp") || searchableText.includes("새우")) {
+    query = "shrimp-dish";
+  }
+
+  return `https://source.unsplash.com/640x420/?${query},food`;
+};
+
 const initialFavoriteRecipes = [
   { ...recommendedRecipes[0], savedAt: "기본 저장" },
   { ...recommendedRecipes[1], savedAt: "기본 저장" },
@@ -308,6 +488,7 @@ function App() {
   const [ingredientExpiries, setIngredientExpiries] = useState({});
   const [detectedIngredients, setDetectedIngredients] = useState([]);
   const [newIngredient, setNewIngredient] = useState("");
+  const [showRecognizedList, setShowRecognizedList] = useState(false);
   const [page, setPage] = useState("home");
   const [selectedRecipe, setSelectedRecipe] = useState(null);
 
@@ -326,12 +507,24 @@ function App() {
   const [postAuthor, setPostAuthor] = useState("testuser");
   const [postTitle, setPostTitle] = useState("");
   const [postContent, setPostContent] = useState("");
+  const [ingredientSearch, setIngredientSearch] = useState("");
+  const [ingredientCategory, setIngredientCategory] = useState("전체");
+  const [ingredientInitial, setIngredientInitial] = useState("전체");
 
   const [recognitionStatus, setRecognitionStatus] = useState(
     "AI 셰프가 설계 중입니다..."
   );
   const [chatInput, setChatInput] = useState("");
   const [chatMessages, setChatMessages] = useState([]);
+  const [recipeInteractionInput, setRecipeInteractionInput] = useState("");
+  const [recipeVoicePreview, setRecipeVoicePreview] = useState("");
+  const [recipeInteractionMessages, setRecipeInteractionMessages] = useState([
+    {
+      id: 1,
+      role: "assistant",
+      text: "추천받은 레시피나 재료에 대해 궁금한 점을 물어보세요.",
+    },
+  ]);
   const [currentCookingStep, setCurrentCookingStep] = useState(0);
 
   const [homeHelpOpen, setHomeHelpOpen] = useState(false);
@@ -339,6 +532,7 @@ function App() {
   const [backendRecipes, setBackendRecipes] = useState([]);
   const [isRecipeLoading, setIsRecipeLoading] = useState(false);
   const [isChatLoading, setIsChatLoading] = useState(false);
+  const [isRecipeInteractionLoading, setIsRecipeInteractionLoading] = useState(false);
 
   const [videoRecommendation, setVideoRecommendation] = useState(null);
   const [isTTSEnabled, setIsTTSEnabled] = useState(false);
@@ -347,9 +541,11 @@ function App() {
   const [currentGesture, setCurrentGesture] = useState(null);
 
   const webcamGestureRef = useRef(null);
+  const inputCameraRef = useRef(null);
   const gestureActionRef = useRef(null);
   const gestureCooldownRef = useRef({});
   const gestureBusyRef = useRef(false);
+  const cameraDetectBusyRef = useRef(false);
   const speechRecRef = useRef(null);
   const ttsAudioRef = useRef(null);
 
@@ -381,6 +577,60 @@ function App() {
       setCurrentGesture(null);
     }
   }, [page, selectedRecipe]);
+
+  useEffect(() => {
+    if (page !== "inputChoice") return;
+
+    const canvas = document.createElement("canvas");
+    let timeoutId;
+
+    const pollCameraIngredients = async () => {
+      const video = inputCameraRef.current?.video;
+      if (
+        !cameraDetectBusyRef.current &&
+        video?.readyState === 4 &&
+        video.videoWidth > 0
+      ) {
+        cameraDetectBusyRef.current = true;
+        try {
+          canvas.width = 640;
+          canvas.height = 480;
+          canvas.getContext("2d").drawImage(video, 0, 0, 640, 480);
+          const blob = await new Promise((resolve) =>
+            canvas.toBlob(resolve, "image/jpeg", 0.7)
+          );
+
+          if (blob) {
+            const form = new FormData();
+            form.append("file", blob, "camera-frame.jpg");
+            const res = await fetch(`${API_BASE}/detect`, {
+              method: "POST",
+              body: form,
+            });
+
+            if (res.ok) {
+              const data = await res.json();
+              const nextIngredients = data.ingredients || [];
+              if (nextIngredients.length > 0) {
+                setDetectedIngredients((prev) =>
+                  Array.from(new Set([...prev, ...nextIngredients]))
+                );
+              }
+            }
+          }
+        } catch (err) {
+          console.error("camera ingredient detection failed:", err);
+        } finally {
+          cameraDetectBusyRef.current = false;
+        }
+      }
+
+      timeoutId = setTimeout(pollCameraIngredients, 1600);
+    };
+
+    timeoutId = setTimeout(pollCameraIngredients, 1000);
+    return () => clearTimeout(timeoutId);
+  }, [page]);
 
   const speakText = useCallback(async (text) => {
     if (!isTTSEnabled || !text?.trim()) return;
@@ -416,6 +666,45 @@ function App() {
     };
     rec.onend = () => setIsListening(false);
     rec.onerror = () => setIsListening(false);
+    speechRecRef.current = rec;
+    setIsListening(true);
+    rec.start();
+  };
+
+  const toggleRecipeInteractionListening = () => {
+    if (isListening) {
+      speechRecRef.current?.abort();
+      setIsListening(false);
+      return;
+    }
+
+    const SpeechRec = window.SpeechRecognition || window.webkitSpeechRecognition;
+    if (!SpeechRec) {
+      alert("음성 인식을 지원하지 않는 브라우저입니다.");
+      return;
+    }
+
+    const rec = new SpeechRec();
+    rec.lang = "ko-KR";
+    rec.interimResults = true;
+    rec.maxAlternatives = 1;
+    rec.onresult = (e) => {
+      const result = e.results[e.results.length - 1];
+      const text = result[0].transcript;
+      setRecipeVoicePreview(text);
+      if (result.isFinal) {
+        setRecipeVoicePreview("");
+        handleSendRecipeInteractionChat(text);
+      }
+    };
+    rec.onend = () => {
+      setRecipeVoicePreview("");
+      setIsListening(false);
+    };
+    rec.onerror = () => {
+      setRecipeVoicePreview("");
+      setIsListening(false);
+    };
     speechRecRef.current = rec;
     setIsListening(true);
     rec.start();
@@ -475,11 +764,7 @@ function App() {
   };
 
   const showStepper = [
-    "userInfo",
-    "inputChoice",
     "recognizing",
-    "recognition",
-    "recipe",
     "recipeDetail",
   ].includes(page);
 
@@ -558,6 +843,27 @@ function App() {
     new Set([...detectedIngredients, ...textIngredientList])
   );
 
+  const recognitionRecommendedRecipes = (
+    backendRecipes.length > 0 ? backendRecipes : recommendedRecipes
+  ).slice(0, 4);
+
+  const activeInteractionRecipe =
+    selectedRecipe || recognitionRecommendedRecipes[0] || recommendedRecipes[0];
+  const filteredIngredientList = globalIngredientList.filter((ingredient) => {
+    const matchesCategory =
+      ingredientCategory === "전체" || ingredient.category === ingredientCategory;
+    const matchesInitial =
+      ingredientInitial === "전체" ||
+      getKoreanInitialGroup(ingredient.name) === ingredientInitial;
+    const query = ingredientSearch.trim().toLowerCase();
+    const matchesSearch =
+      !query ||
+      ingredient.name.toLowerCase().includes(query) ||
+      ingredient.category.toLowerCase().includes(query) ||
+      ingredient.note.toLowerCase().includes(query);
+    return matchesCategory && matchesInitial && matchesSearch;
+  });
+
   const handleExpiryChange = (ingredient, value) => {
     setIngredientExpiries((prev) => ({
       ...prev,
@@ -625,6 +931,20 @@ function App() {
     goPage("recipeDetail");
   };
 
+  const handleStartRecipeInteraction = (recipe) => {
+    setSelectedRecipe(recipe);
+    setCurrentCookingStep(0);
+    addToRecentHistory(recipe);
+    setRecipeInteractionMessages([
+      {
+        id: Date.now(),
+        role: "assistant",
+        text: `${recipe.name} 조리를 시작할게요. 화면의 현재 단계를 보면서 궁금한 점은 텍스트나 음성으로 물어보세요.`,
+      },
+    ]);
+    goPage("recipe");
+  };
+
   const handleOpenRecentRecipe = (recipe) => {
     setSelectedRecentRecipe(recipe);
     goPage("recentDetail");
@@ -670,6 +990,44 @@ function App() {
     } finally {
       setIsRecipeLoading(false);
       goPage("recipe");
+    }
+  };
+
+  const handleSendRecipeInteractionChat = async (presetQuestion = "") => {
+    if (isRecipeInteractionLoading) return;
+
+    const question = (presetQuestion || recipeInteractionInput).trim();
+    if (!question) return;
+
+    setRecipeInteractionMessages((prev) => [
+      ...prev,
+      { id: Date.now(), role: "user", text: question },
+    ]);
+    setRecipeInteractionInput("");
+    setIsRecipeInteractionLoading(true);
+
+    try {
+      const res = await axios.post(`${API_BASE}/ask`, {
+        user_text: question,
+        ingredients: currentIngredientClasses,
+      });
+      const answer = res.data.answer || "응답을 받지 못했습니다.";
+      setRecipeInteractionMessages((prev) => [
+        ...prev,
+        { id: Date.now() + 1, role: "assistant", text: answer },
+      ]);
+      speakText(answer);
+    } catch {
+      setRecipeInteractionMessages((prev) => [
+        ...prev,
+        {
+          id: Date.now() + 1,
+          role: "assistant",
+          text: "AI와 연결하지 못했습니다. 잠시 후 다시 시도해 주세요.",
+        },
+      ]);
+    } finally {
+      setIsRecipeInteractionLoading(false);
     }
   };
 
@@ -842,7 +1200,7 @@ function App() {
               <div className="loading-emoji e1">🥕</div>
               <div className="loading-emoji e2">🧅</div>
               <div className="loading-emoji e3">🥩</div>
-              <div className="loading-emoji e4">🫑</div>
+              <div className="loading-emoji e4">🌶️</div>
               <div className="loading-emoji e5">🧄</div>
               <div className="loading-emoji e6">🍅</div>
               <div className="loading-emoji e7">🥦</div>
@@ -911,57 +1269,80 @@ function App() {
             <div className="recognition-header">
               <div>
                 <p className="sub-title">USER INFO</p>
-                <h2>개인정보 / 취향 입력</h2>
+                <h2>체크 항목</h2>
                 <p>
                   사용자의 식습관, 선호도, 알레르기 정보를 바탕으로 더 적합한
                   레시피를 추천합니다.
                 </p>
               </div>
-
-              <button className="outline-btn small-btn" onClick={() => goPage("home")}>
-                홈으로 돌아가기
-              </button>
             </div>
 
-            <div className="user-info-form">
-              <label className="input-label">선호 및 목표</label>
-              <input
-                className="dark-input"
-                placeholder="예: 다이어트, 근육 증가, 간단한 요리"
-                value={dietGoal}
-                onChange={(e) => setDietGoal(e.target.value)}
-              />
-
-              <label className="input-label">알레르기 정보</label>
-              <input
-                className="dark-input"
-                placeholder="예: 새우, 땅콩, 우유"
-                value={allergy}
-                onChange={(e) => setAllergy(e.target.value)}
-              />
-
-              <label className="input-label">선호 취향</label>
-              <div className="chip-list">
-                {tasteOptions.map((taste) => (
-                  <button
-                    key={taste}
-                    className={selectedTastes.includes(taste) ? "chip active" : "chip"}
-                    onClick={() =>
-                      toggleItem(taste, selectedTastes, setSelectedTastes)
-                    }
-                  >
-                    {taste}
-                  </button>
-                ))}
+            <div className="user-info-layout">
+              <div className="basic-ingredient-check">
+                <div className="basic-section-head">
+                  <p className="sub-title">BASIC INGREDIENTS</p>
+                  <h3>기본 재료 체크</h3>
+                  <p>
+                    요리 시작 전, 아래 기본 재료가 준비되었는지 확인하세요.
+                    부족한 재료가 있으면 먼저 준비한 뒤 다음 단계로 이동합니다.
+                  </p>
+                </div>
+                <div className="ingredient-check-list">
+                  <label className="ingredient-check-item">
+                    <input type="checkbox" /> 소금
+                  </label>
+                  <label className="ingredient-check-item">
+                    <input type="checkbox" /> 식용유
+                  </label>
+                  <label className="ingredient-check-item">
+                    <input type="checkbox" /> 양파
+                  </label>
+                  <label className="ingredient-check-item">
+                    <input type="checkbox" /> 마늘
+                  </label>
+                </div>
               </div>
 
-              <div className="button-row user-info-actions">
-                <button className="outline-btn" onClick={() => goPage("home")}>
-                  이전
-                </button>
-                <button className="primary-btn" onClick={() => goPage("inputChoice")}>
-                  다음 단계로 이동
-                </button>
+              <div className="user-info-form">
+                <label className="input-label">선호 및 목표</label>
+                <input
+                  className="dark-input"
+                  placeholder="예: 다이어트, 근육 증가, 간단한 요리"
+                  value={dietGoal}
+                  onChange={(e) => setDietGoal(e.target.value)}
+                />
+
+                <label className="input-label">알레르기 정보</label>
+                <input
+                  className="dark-input"
+                  placeholder="예: 새우, 땅콩, 우유"
+                  value={allergy}
+                  onChange={(e) => setAllergy(e.target.value)}
+                />
+
+                <label className="input-label">선호 취향</label>
+                <div className="chip-list">
+                  {tasteOptions.map((taste) => (
+                    <button
+                      key={taste}
+                      className={selectedTastes.includes(taste) ? "chip active" : "chip"}
+                      onClick={() =>
+                        toggleItem(taste, selectedTastes, setSelectedTastes)
+                      }
+                    >
+                      {taste}
+                    </button>
+                  ))}
+                </div>
+
+                <div className="button-row user-info-actions">
+                  <button className="outline-btn" onClick={() => goPage("home")}>
+                    이전
+                  </button>
+                  <button className="primary-btn" onClick={() => goPage("inputChoice") }>
+                    다음 단계로 이동
+                  </button>
+                </div>
               </div>
             </div>
           </section>
@@ -972,10 +1353,10 @@ function App() {
             <div className="recognition-header">
               <div>
                 <p className="sub-title">INGREDIENT INPUT</p>
-                <h2>재료 입력 방식 선택</h2>
+                <h2>재료 인식</h2>
                 <p>
-                  카메라 촬영, 이미지 업로드, 텍스트 입력 중 원하는 방식으로
-                  보유 재료를 등록하세요.
+                  카메라, 이미지 업로드, 텍스트로 재료를 추가하고 아래에서
+                  인식된 재료를 확인하세요.
                 </p>
               </div>
 
@@ -987,14 +1368,86 @@ function App() {
               </button>
             </div>
 
-            <div className="input-choice-grid">
-              <div className="input-choice-card">
-                <div className="input-choice-icon">📷</div>
-                <h3>카메라로 인식</h3>
-                <p>카메라를 열어 식재료를 바로 촬영합니다.</p>
+            <div className="input-choice-page">
+              <div className="camera-section">
+                <h3>카메라 화면</h3>
+                <div className="camera-preview-box-large">
+                  <Webcam
+                    ref={inputCameraRef}
+                    className="input-camera-webcam"
+                    audio={false}
+                    mirrored={false}
+                    screenshotFormat="image/jpeg"
+                    videoConstraints={{ facingMode: "environment" }}
+                  />
 
-                <label className="primary-btn full input-file-label">
-                  카메라 열기
+                  <div className="camera-detected-layer">
+                    <span className="camera-live-pill">대기중</span>
+                    <div className="camera-chip-list">
+                      {currentIngredientClasses.length > 0 ? (
+                        currentIngredientClasses.map((ingredient) => (
+                          <button
+                            className="camera-ingredient-chip"
+                            key={ingredient}
+                            onClick={() => handleDeleteIngredient(ingredient)}
+                            title="삭제"
+                          >
+                            {ingredient}
+                          </button>
+                        ))
+                      ) : (
+                        <span className="camera-empty-chip">
+                          재료를 비추면 인식 결과가 표시됩니다
+                        </span>
+                      )}
+                    </div>
+                  </div>
+
+                  <div className="camera-mode-panel">
+                    <label className="mode-action-btn">
+                      이미지 업로드
+                      <input
+                        type="file"
+                        accept="image/*"
+                        onChange={handleImageUpload}
+                      />
+                    </label>
+
+                    <div className="mode-text-entry">
+                      <input
+                        className="dark-input"
+                        placeholder="텍스트 입력"
+                        value={newIngredient}
+                        onChange={(e) => setNewIngredient(e.target.value)}
+                        onKeyPress={(e) => {
+                          if (e.key === 'Enter') {
+                            handleAddIngredient();
+                          }
+                        }}
+                      />
+                      <button className="mode-add-btn" onClick={handleAddIngredient}>
+                        추가
+                      </button>
+                    </div>
+                  </div>
+                  {imagePreview ? (
+                    <img
+                      className="camera-preview-img"
+                      src={imagePreview}
+                      alt="camera preview"
+                    />
+                  ) : (
+                    <div className="camera-placeholder">
+                      <span>📷</span>
+                      <p>카메라 또는 이미지를 선택하면 미리보기가 나타납니다.</p>
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              <div className="input-choice-bottom-bar">
+                <label className="small-action-btn">
+                  이미지 업로드
                   <input
                     type="file"
                     accept="image/*"
@@ -1002,33 +1455,94 @@ function App() {
                     onChange={handleImageUpload}
                   />
                 </label>
-              </div>
 
-              <div className="input-choice-card">
-                <div className="input-choice-icon">🖼️</div>
-                <h3>이미지로 인식</h3>
-                <p>갤러리 또는 저장된 식재료 사진을 업로드합니다.</p>
-
-                <label className="outline-btn full input-file-label">
-                  이미지 업로드
-                  <input type="file" accept="image/*" onChange={handleImageUpload} />
+                <label className="small-action-btn">
+                  카메라 열기
+                  <input
+                    type="file"
+                    accept="image/*"
+                    onChange={handleImageUpload}
+                  />
                 </label>
+
+                <button
+                  className={`small-action-btn recognized-toggle ${showRecognizedList ? 'active' : ''}`}
+                  onClick={() => setShowRecognizedList(!showRecognizedList)}
+                >
+                  인식된 재료
+                  {currentIngredientClasses.length > 0 && (
+                    <span className="ingredient-badge">{currentIngredientClasses.length}</span>
+                  )}
+                </button>
               </div>
 
-              <div className="input-choice-card">
-                <div className="input-choice-icon">⌨️</div>
-                <h3>텍스트로 입력</h3>
-                <p>가지고 있는 재료를 직접 입력합니다.</p>
+              <div className="text-input-section">
+                <div className="text-input-group">
+                  <input
+                    className="dark-input"
+                    placeholder="직접 추가할 재료 입력"
+                    value={newIngredient}
+                    onChange={(e) => setNewIngredient(e.target.value)}
+                    onKeyPress={(e) => {
+                      if (e.key === 'Enter') {
+                        handleAddIngredient();
+                      }
+                    }}
+                  />
+                  <button className="primary-btn" onClick={handleAddIngredient}>
+                    추가
+                  </button>
+                </div>
+              </div>
 
-                <textarea
-                  className="text-area"
-                  placeholder="예: 양파, 계란, 고추장, 삼겹살, 밥"
-                  value={textIngredients}
-                  onChange={(e) => setTextIngredients(e.target.value)}
-                />
+              {showRecognizedList && (
+                <div className="recognized-modal-overlay">
+                  <div className="recognized-modal">
+                    <div className="modal-header">
+                      <h3>인식된 재료</h3>
+                      <button className="close-btn" onClick={() => setShowRecognizedList(false)}>
+                        ✕
+                      </button>
+                    </div>
+                    <div className="modal-content">
+                      {currentIngredientClasses.length > 0 ? (
+                        <div className="modal-ingredients-list">
+                          {currentIngredientClasses.map((ingredient) => (
+                            <div className="modal-ingredient-item" key={ingredient}>
+                              <div className="ingredient-info">
+                                <strong>{ingredient}</strong>
+                                <span>유통기한: {ingredientExpiries[ingredient] || "미정"}</span>
+                              </div>
+                              <button
+                                className="delete-btn-modal"
+                                onClick={() => handleDeleteIngredient(ingredient)}
+                              >
+                                삭제
+                              </button>
+                            </div>
+                          ))}
+                        </div>
+                      ) : (
+                        <div className="empty-state">
+                          아직 등록된 재료가 없습니다.
+                        </div>
+                      )}
+                    </div>
+                    <div className="modal-actions">
+                      <button className="outline-btn" onClick={() => setShowRecognizedList(false)}>
+                        닫기
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              )}
 
-                <button className="primary-btn full" onClick={handleTextIngredientNext}>
-                  입력 완료
+              <div className="input-choice-nav-buttons">
+                <button className="outline-btn" onClick={() => goPage("userInfo")}>
+                  이전
+                </button>
+                <button className="primary-btn" onClick={() => goPage("recognition")}>
+                  다음 단계로 이동
                 </button>
               </div>
             </div>
@@ -1049,7 +1563,36 @@ function App() {
           </section>
         )}
 
-        {page === "service" && (
+                {page === "service" && (
+          <section className="service-detail glass-card readable-card">
+            <div className="service-detail-header">
+              <div>
+                <p className="sub-title">GUIDE</p>
+                <h2>가이드 메뉴</h2>
+                <p className="service-main-desc">
+                  서비스 소개와 제스처 기능을 각각 선택하여 자세한 안내를
+                  확인할 수 있습니다.
+                </p>
+              </div>
+            </div>
+
+            <div className="guide-menu-grid">
+              <button className="guide-menu-card" onClick={() => goPage("serviceIntro") }>
+                <div className="guide-menu-icon">💡</div>
+                <h3>서비스 소개</h3>
+                <p>AI 레시피 추천 서비스가 어떤 과정을 거쳐 동작하는지 확인합니다.</p>
+              </button>
+
+              <button className="guide-menu-card" onClick={() => goPage("gesture") }>
+                <div className="guide-menu-icon">🖐️</div>
+                <h3>제스처 기능</h3>
+                <p>손 제스처로 요리 단계를 제어하는 방법과 사용 예시를 확인합니다.</p>
+              </button>
+            </div>
+          </section>
+        )}
+
+        {page === "serviceIntro" && (
           <section className="service-detail glass-card readable-card">
             <div className="service-detail-header">
               <div>
@@ -1062,8 +1605,8 @@ function App() {
                 </p>
               </div>
 
-              <button className="outline-btn small-btn" onClick={() => goPage("home")}>
-                홈으로 돌아가기
+              <button className="outline-btn small-btn" onClick={() => goPage("service") }>
+                가이드 메뉴로 돌아가기
               </button>
             </div>
 
@@ -1076,14 +1619,21 @@ function App() {
             </div>
 
             <div className="gesture-actions">
-              <button className="primary-btn" onClick={() => goPage("gesture")}>
-                제스처 상호작용 자세히 보기
+              <button className="primary-btn" onClick={() => goPage("service") }>
+                제스처 기능 보기
+              </button>
+              <button className="primary-btn" onClick={() => goPage("userInfo")}>
+                AI ?덉떆??異붿쿇 ?쒖옉
+              </button>
+              <button className="outline-btn" onClick={() => goPage("home") }>
+                홈으로 돌아가기
               </button>
             </div>
           </section>
         )}
 
         {page === "gesture" && (
+
           <section className="gesture-page glass-card readable-card">
             <div className="gesture-header">
               <div>
@@ -1096,9 +1646,6 @@ function App() {
                 </p>
               </div>
 
-              <button className="outline-btn small-btn" onClick={() => goPage("home")}>
-                홈으로 돌아가기
-              </button>
             </div>
 
             <div className="gesture-intro-card">
@@ -1199,18 +1746,56 @@ function App() {
             <div className="recognition-header">
               <div>
                 <p className="sub-title">INGREDIENT RECOGNITION</p>
-                <h2>재료 인식 화면</h2>
+                <h2>추천레시피</h2>
                 <p>
-                  업로드한 이미지에서 인식된 재료를 확인하고, 잘못 인식된 재료는
-                  삭제하거나 필요한 재료를 직접 추가할 수 있습니다.
+                  인식된 재료를 바탕으로 지금 만들 수 있는 추천레시피 4가지를
+                  확인하고 바로 조리를 시작할 수 있습니다.
                 </p>
               </div>
+            </div>
 
-              <button
-                className="outline-btn small-btn"
-                onClick={() => goPage("inputChoice")}
-              >
-                입력 방식 다시 선택
+            <div className="recognition-recipe-grid">
+              {recognitionRecommendedRecipes.map((recipe, index) => (
+                <div className="recognition-recipe-card" key={recipe.id || recipe.name}>
+                  <div className="recognition-recipe-image">
+                    <img
+                      src={getRecipeImageUrl(recipe, index)}
+                      alt={recipe.name}
+                      loading="lazy"
+                    />
+                  </div>
+                  <div className="recipe-rank">TOP {index + 1}</div>
+                  <h3>{recipe.name}</h3>
+                  <div className="recognition-recipe-meta">
+                    <span>{recipe.time}</span>
+                    <span>{recipe.level}</span>
+                  </div>
+                  <p className="recognition-recipe-type">{recipe.type}</p>
+                  <div className="recognition-recipe-section">
+                    <strong>사용 재료</strong>
+                    <p>{recipe.ingredients.join(", ")}</p>
+                  </div>
+                  <div className="recipe-card-actions">
+                    <button
+                      className="recipe-select-btn"
+                      onClick={() => handleStartRecipeInteraction(recipe)}
+                    >
+                      레시피로 요리하기
+                    </button>
+                    <button
+                      className="recipe-favorite-btn"
+                      onClick={() => addToFavorites(recipe)}
+                    >
+                      즐겨찾기
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="recommendation-bottom-nav">
+              <button className="outline-btn" onClick={() => goPage("inputChoice")}>
+                이전
               </button>
             </div>
 
@@ -1349,9 +1934,6 @@ function App() {
                 </p>
               </div>
 
-              <button className="outline-btn small-btn" onClick={() => goPage("home")}>
-                홈으로 돌아가기
-              </button>
             </div>
 
             <div className="today-main-card">
@@ -1400,6 +1982,124 @@ function App() {
 
         {page === "recipe" && (
           <section className="recipe-page recipe-page-bright">
+            <div className="recipe-interaction-screen">
+              <button
+                className="interaction-back-btn"
+                onClick={() => goPage("recognition")}
+              >
+                이전 단계
+              </button>
+
+              <div className="recipe-live-camera">
+                <Webcam
+                  className="recipe-live-webcam"
+                  audio={false}
+                  mirrored={false}
+                  screenshotFormat="image/jpeg"
+                  videoConstraints={{ facingMode: "environment" }}
+                />
+                <div className="recipe-live-overlay">
+                  <span>카메라 화면</span>
+                  <div>
+                    {currentIngredientClasses.slice(0, 4).map((ingredient) => (
+                      <b key={ingredient}>{ingredient}</b>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              <div className="recipe-ai-chat-panel">
+                <div className="recipe-ai-chat-head">
+                  <div>
+                    <p className="sub-title">AI COOKING CHAT</p>
+                    <h2>AI 상호작용</h2>
+                  </div>
+                  <button
+                    className={`toolbar-btn${isTTSEnabled ? " active" : ""}`}
+                    onClick={() => setIsTTSEnabled((prev) => !prev)}
+                  >
+                    TTS
+                  </button>
+                </div>
+
+                <div className="interaction-step-card">
+                  <div className="interaction-step-top">
+                    <div>
+                      <p>현재 조리 단계</p>
+                      <h3>
+                        STEP {currentCookingStep + 1} / {activeInteractionRecipe.steps.length}
+                      </h3>
+                    </div>
+                    <div className="interaction-step-buttons">
+                      <button onClick={() => handleMoveCookingStep(-1)}>이전</button>
+                      <button onClick={() => handleMoveCookingStep(1)}>다음</button>
+                    </div>
+                  </div>
+
+                  <p className="interaction-step-text">
+                    {activeInteractionRecipe.steps[currentCookingStep]?.text}
+                  </p>
+
+                  {activeInteractionRecipe.steps[currentCookingStep]?.minutes > 0 && (
+                    <TimerBox
+                      key={`${activeInteractionRecipe.name}-${currentCookingStep}`}
+                      minutes={activeInteractionRecipe.steps[currentCookingStep].minutes}
+                      label={`${activeInteractionRecipe.steps[currentCookingStep].minutes}분 타이머`}
+                    />
+                  )}
+                </div>
+
+                <div className="chat-message-list recipe-interaction-messages">
+                  {recipeInteractionMessages.map((message) => (
+                    <div key={message.id} className={`chat-bubble ${message.role}`}>
+                      <div>{message.text}</div>
+                    </div>
+                  ))}
+                  {isRecipeInteractionLoading && (
+                    <div className="chat-bubble assistant">AI가 응답 중입니다...</div>
+                  )}
+                </div>
+
+                {isListening && (
+                  <div className="voice-live-preview">
+                    <div className="voice-wave-mini" aria-hidden="true">
+                      <span />
+                      <span />
+                      <span />
+                      <span />
+                    </div>
+                    <span>{recipeVoicePreview || "음성을 듣고 있습니다..."}</span>
+                  </div>
+                )}
+
+                <div className="recipe-composer-row">
+                  <button
+                    className={`mic-btn${isListening ? " listening" : ""}`}
+                    onClick={toggleRecipeInteractionListening}
+                    title="음성으로 질문"
+                  >
+                    {isListening ? "●" : "🎤"}
+                  </button>
+                  <input
+                    className="dark-input"
+                    placeholder="추천 레시피, 재료, 조리 방법을 물어보세요"
+                    value={recipeInteractionInput}
+                    onChange={(e) => setRecipeInteractionInput(e.target.value)}
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter") handleSendRecipeInteractionChat();
+                    }}
+                  />
+                  <button
+                    className="primary-btn"
+                    onClick={() => handleSendRecipeInteractionChat()}
+                    disabled={isRecipeInteractionLoading}
+                  >
+                    전송
+                  </button>
+                </div>
+              </div>
+            </div>
+
             <div className="recipe-header">
               <div>
                 <p className="sub-title">RECIPE RECOMMENDATION</p>
@@ -1718,9 +2418,6 @@ function App() {
                 <p>이전에 추천받았거나 확인했던 레시피를 다시 볼 수 있습니다.</p>
               </div>
 
-              <button className="outline-btn small-btn" onClick={() => goPage("home")}>
-                홈으로 돌아가기
-              </button>
             </div>
 
             <div className="recent-grid">
@@ -1812,9 +2509,6 @@ function App() {
                 <p>저장해 둔 레시피를 다시 확인하고 바로 조리할 수 있습니다.</p>
               </div>
 
-              <button className="outline-btn small-btn" onClick={() => goPage("home")}>
-                홈으로 돌아가기
-              </button>
             </div>
 
             <div className="recent-grid">
@@ -1846,6 +2540,83 @@ function App() {
                   </button>
                 ))
               )}
+            </div>
+          </section>
+        )}
+
+        {page === "ingredientLibrary" && (
+          <section className="ingredient-library-page recipe-page-bright">
+            <div className="recent-page-header">
+              <div>
+                <p className="sub-title">INGREDIENT LIBRARY</p>
+                <h2>재료 도감</h2>
+                <p>
+                  세계 요리에 자주 쓰이는 재료를 가나다 순으로 확인하고,
+                  구매가 필요하면 주요 장보기 사이트 검색 링크로 바로 이동할 수 있습니다.
+                </p>
+              </div>
+            </div>
+
+            <div className="ingredient-library-tools">
+              <input
+                className="dark-input"
+                placeholder="재료명, 카테고리, 설명 검색"
+                value={ingredientSearch}
+                onChange={(e) => setIngredientSearch(e.target.value)}
+              />
+              <div className="ingredient-category-row">
+                {ingredientCategories.map((category) => (
+                  <button
+                    key={category}
+                    className={ingredientCategory === category ? "active" : ""}
+                    onClick={() => setIngredientCategory(category)}
+                  >
+                    {category}
+                  </button>
+                ))}
+              </div>
+
+              <div className="ingredient-initial-row">
+                {ingredientInitials.map((initial) => (
+                  <button
+                    key={initial}
+                    className={ingredientInitial === initial ? "active" : ""}
+                    onClick={() => setIngredientInitial(initial)}
+                  >
+                    {initial}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            <div className="ingredient-library-summary">
+              <strong>{filteredIngredientList.length}</strong>
+              <span>개 재료 표시 중</span>
+            </div>
+
+            <div className="ingredient-library-list">
+              {filteredIngredientList.map((ingredient) => (
+                <article className="ingredient-library-card" key={ingredient.name}>
+                  <div>
+                    <span className="ingredient-letter">{ingredient.name[0]}</span>
+                    <h3>{ingredient.name}</h3>
+                    <p>{ingredient.note}</p>
+                  </div>
+                  <span className="ingredient-category-pill">{ingredient.category}</span>
+                  <div className="ingredient-buy-links">
+                    {getIngredientBuyLinks(ingredient.name).map((link) => (
+                      <a
+                        key={link.label}
+                        href={link.url}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        {link.label}
+                      </a>
+                    ))}
+                  </div>
+                </article>
+              ))}
             </div>
           </section>
         )}
@@ -1928,9 +2699,6 @@ function App() {
                 </p>
               </div>
 
-              <button className="outline-btn small-btn" onClick={() => goPage("home")}>
-                홈으로 돌아가기
-              </button>
             </div>
 
             <div className="community-layout">
@@ -2009,8 +2777,8 @@ function App() {
         </button>
 
         <button
-          className={["inputChoice","recognizing","recognition"].includes(page) ? "nav-active" : ""}
-          onClick={() => goPage("inputChoice")}
+          className={page === "ingredientLibrary" ? "nav-active" : ""}
+          onClick={() => goPage("ingredientLibrary")}
         >
           <span className="nav-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
@@ -2043,7 +2811,7 @@ function App() {
         </button>
 
         <button
-          className={["service","gesture"].includes(page) ? "nav-active" : ""}
+          className={["service","serviceIntro","gesture"].includes(page) ? "nav-active" : ""}
           onClick={() => goPage("service")}
         >
           <span className="nav-icon">
