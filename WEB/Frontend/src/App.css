@@ -605,12 +605,13 @@ select:focus {
 .camera-ingredient-chip {
   pointer-events: auto;
   padding: 10px 13px;
-  background: rgba(46, 139, 87, 0.88);
+  background: rgba(100, 100, 100, 0.85);
   cursor: pointer;
 }
 
-.camera-ingredient-chip:nth-child(4n) {
-  background: rgba(255, 140, 34, 0.9);
+.camera-ingredient-chip.yolo-detected {
+  background: rgba(34, 160, 80, 0.95);
+  box-shadow: 0 0 12px rgba(34, 200, 80, 0.5);
 }
 
 .camera-empty-chip {
@@ -1943,6 +1944,13 @@ select:focus {
   border-bottom: none;
 }
 
+.recipe-rank-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
 .recipe-rank {
   width: 66px;
   height: 66px;
@@ -1953,6 +1961,25 @@ select:focus {
   color: var(--white);
   font-size: 13px;
   font-weight: 1000;
+}
+
+.recipe-card-img {
+  width: 80px;
+  height: 80px;
+  border-radius: 12px;
+  object-fit: cover;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.recipe-card-img-placeholder {
+  width: 80px;
+  height: 80px;
+  border-radius: 12px;
+  background: #f5f5f5;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  display: grid;
+  place-items: center;
+  font-size: 28px;
 }
 
 .recipe-main-info h3 {
@@ -4027,6 +4054,21 @@ select:focus {
 .listening-hint {
   font-size: 14px;
   color: rgba(0, 0, 0, 0.5);
+}
+
+.gesture-countdown {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 96px;
+  font-weight: 900;
+  color: #ffffff;
+  text-shadow: 0 0 30px rgba(0,0,0,0.8);
+  pointer-events: none;
+  background: rgba(0,0,0,0.3);
 }
 
 /* ================================

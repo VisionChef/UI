@@ -35,7 +35,11 @@ os.environ.setdefault("TRANSFORMERS_CACHE", str(Path(DEFAULT_HF_HOME) / "transfo
 os.environ.setdefault("HF_HUB_DISABLE_EXPERIMENTAL_XET", "1")
 os.environ.setdefault("HF_HUB_DISABLE_XET", "1")
 
-from fastapi import FastAPI, BackgroundTasks, HTTPException, File, UploadFile
+import base64
+from dotenv import load_dotenv
+load_dotenv(dotenv_path=Path(__file__).parent / ".env")
+from fastapi import FastAPI, BackgroundTasks, HTTPException, File, UploadFile, Query
+from openai import OpenAI as RunYourClient
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse, StreamingResponse
 from fastapi.staticfiles import StaticFiles
@@ -408,7 +412,7 @@ app = FastAPI(lifespan=lifespan)
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000", "http://127.0.0.1:3000", "http://localhost:3001", "http://127.0.0.1:3001"],
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -422,6 +426,18 @@ cached_rag_matches = []
 community_posts: list[dict] = []
 yolo_model = None
 YOLO_MODEL_PATH = Path(os.getenv("YOLO_MODEL_PATH", str(VISIONCHEF_ROOT / "CV" / "best.pt")))
+
+# 레퍼런스 이미지 캐시 (서버 시작 시 1회 로드)
+_ref_image_contents: list[dict] = []
+for _p, _m in [
+    (VISIONCHEF_ROOT / "WEB" / "food1.jpg", "image/jpeg"),
+    (VISIONCHEF_ROOT / "WEB" / "food2.png", "image/png"),
+]:
+    if _p.exists():
+        with open(_p, "rb") as _f:
+            _b64 = base64.b64encode(_f.read()).decode()
+        _ref_image_contents.append({"inline_data": {"mime_type": _m, "data": _b64}})
+print(f"✅ 레퍼런스 이미지 {len(_ref_image_contents)}장 캐시 완료")
 FRONTEND_BUILD_DIR = PROJECT_DIR / "Frontend" / "build"
 
 
@@ -1075,6 +1091,41 @@ async def like_community_post(post_id: int):
             post["likes"] += 1
             return post
     raise HTTPException(status_code=404, detail="Post not found")
+
+
+@app.get("/generate-image")
+async def generate_recipe_image(recipe: str = Query(...)):
+    from google import genai as _genai
+
+    gemini_api_key = get_runtime_env("GEMINI_API_KEY")
+    if not gemini_api_key:
+        raise HTTPException(status_code=503, detail="GEMINI_API_KEY가 설정되지 않았습니다.")
+
+    g_client = _genai.Client(api_key=gemini_api_key)
+
+    contents = list(_ref_image_contents) + [{"text": (
+        f"위 사진의 느낌으로 {recipe} 요리 사진을 만들어줘. "
+        "다음 조건을 반드시 지켜줘: "
+        "1. 음식은 프레임 정중앙에 배치하고 전체 화면의 60~70%를 차지하게 해줘. "
+        "2. 촬영 각도는 위에서 약 45도 내려다보는 앵글로 통일해줘. "
+        "3. 음식 사진만 나와야 하고 텍스트나 사람은 없어야 해."
+    )}]
+
+    try:
+        resp = await run_in_threadpool(
+            lambda: g_client.models.generate_content(
+                model="gemini-2.5-flash-image",
+                contents=contents,
+            )
+        )
+        for part in resp.parts:
+            if part.inline_data is not None:
+                b64 = base64.b64encode(part.inline_data.data).decode()
+                mime = part.inline_data.mime_type or "image/jpeg"
+                return {"image_url": f"data:{mime};base64,{b64}"}
+        return {"image_url": None}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
 
 
 # React 빌드 파일 서빙 (npm run build 후 사용)

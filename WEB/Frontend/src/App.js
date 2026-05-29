@@ -473,11 +473,9 @@ function App() {
   const [splashPhase, setSplashPhase] = useState('show');
 
   useEffect(() => {
-    const t1 = setTimeout(() => setSplashPhase('logo-exit'),     2200);
-    const t2 = setTimeout(() => setSplashPhase('loading'),       2600);
-    const t3 = setTimeout(() => setSplashPhase('screen-exit'),   4600);
-    const t4 = setTimeout(() => setSplashPhase('done'),          5100);
-    return () => [t1, t2, t3, t4].forEach(clearTimeout);
+    const t1 = setTimeout(() => setSplashPhase('screen-exit'),   2200);
+    const t2 = setTimeout(() => setSplashPhase('done'),          2800);
+    return () => [t1, t2].forEach(clearTimeout);
   }, []);
 
   const [selectedTastes, setSelectedTastes] = useState([]);
@@ -487,6 +485,8 @@ function App() {
   const [imagePreview, setImagePreview] = useState(null);
   const [ingredientExpiries, setIngredientExpiries] = useState({});
   const [detectedIngredients, setDetectedIngredients] = useState([]);
+  const [yoloIngredients, setYoloIngredients] = useState(new Set());
+  const [checkedBasicIngredients, setCheckedBasicIngredients] = useState([]);
   const [newIngredient, setNewIngredient] = useState("");
   const [showRecognizedList, setShowRecognizedList] = useState(false);
   const [page, setPage] = useState("home");
@@ -530,6 +530,17 @@ function App() {
   const [homeHelpOpen, setHomeHelpOpen] = useState(false);
 
   const [backendRecipes, setBackendRecipes] = useState([]);
+  const [recipeImages, setRecipeImages] = useState({});
+
+  const fetchRecipeImage = async (recipeName) => {
+    if (recipeImages[recipeName]) return;
+    try {
+      const res = await axios.get(`${API_BASE}/generate-image`, { params: { recipe: recipeName } });
+      if (res.data.image_url) {
+        setRecipeImages(prev => ({ ...prev, [recipeName]: res.data.image_url }));
+      }
+    } catch {}
+  };
   const [isRecipeLoading, setIsRecipeLoading] = useState(false);
   const [isChatLoading, setIsChatLoading] = useState(false);
   const [isRecipeInteractionLoading, setIsRecipeInteractionLoading] = useState(false);
@@ -543,6 +554,12 @@ function App() {
   const webcamGestureRef = useRef(null);
   const inputCameraRef = useRef(null);
   const gestureActionRef = useRef(null);
+  const inputGestureBusyRef = useRef(false);
+  const inputGestureCooldownRef = useRef({});
+  const handleGetRecipesRef = useRef(null);
+  const currentIngredientsRef = useRef([]);
+  const [inputGestureLabel, setInputGestureLabel] = useState("대기중");
+  const [inputCountdown, setInputCountdown] = useState(null);
   const gestureCooldownRef = useRef({});
   const gestureBusyRef = useRef(false);
   const cameraDetectBusyRef = useRef(false);
@@ -579,7 +596,148 @@ function App() {
   }, [page, selectedRecipe]);
 
   useEffect(() => {
+    if (page === "recognition") {
+      const recipes = backendRecipes.length > 0 ? backendRecipes : recommendedRecipes;
+      recipes.slice(0, 4).forEach(r => fetchRecipeImage(r.name));
+    }
+  }, [page, backendRecipes]);
+
+  // inputChoice 페이지 제스처 폴링 (SE 프로젝트 pollGestureMain 참고)
+  useEffect(() => {
     if (page !== "inputChoice") return;
+    inputGestureBusyRef.current = false;
+    inputGestureCooldownRef.current = {};
+    const canvas = document.createElement("canvas");
+    let timeoutId;
+
+    const gestureIcons = { THUMBS_UP: "👍 확정", PEACE: "✌️ 인식중", FIST: "✊ 초기화", OPEN_HAND: "🖐 대기중", NONE: "대기중" };
+
+    const canTrigger = (name) => {
+      const now = Date.now();
+      if ((now - (inputGestureCooldownRef.current[name] || 0)) < 2500) return false;
+      inputGestureCooldownRef.current[name] = now;
+      return true;
+    };
+
+    const startCountdown = (cb) => {
+      let count = 3;
+      setInputCountdown(count);
+      const timer = setInterval(() => {
+        count--;
+        if (count <= 0) {
+          clearInterval(timer);
+          setInputCountdown(null);
+          cb();
+        } else {
+          setInputCountdown(count);
+        }
+      }, 1000);
+    };
+
+    const poll = async () => {
+      const video = inputCameraRef.current?.video;
+      if (!inputGestureBusyRef.current && video?.readyState === 4 && video.videoWidth > 0) {
+        inputGestureBusyRef.current = true;
+        try {
+          canvas.width = 320;
+          canvas.height = 240;
+          canvas.getContext("2d").drawImage(video, 0, 0, 320, 240);
+          const blob = await new Promise(r => canvas.toBlob(r, "image/jpeg", 0.5));
+          const form = new FormData();
+          form.append("file", blob, "gesture.jpg");
+          const res = await fetch(`${API_BASE}/gesture`, { method: "POST", body: form });
+          const data = await res.json();
+          const g = data.gesture || "NONE";
+          setInputGestureLabel(gestureIcons[g] || "대기중");
+          if (g === "THUMBS_UP" && canTrigger("confirm") && currentIngredientsRef.current.length > 0) {
+            handleGetRecipesRef.current?.();
+          } else if (g === "PEACE" && canTrigger("detect")) {
+            startCountdown(async () => {
+              const v = inputCameraRef.current?.video;
+              if (!v) return;
+              const c = document.createElement("canvas");
+              c.width = 640; c.height = 480;
+              c.getContext("2d").drawImage(v, 0, 0, 640, 480);
+              c.toBlob(async (b) => {
+                if (!b) return;
+                const fd = new FormData();
+                fd.append("file", b, "snap.jpg");
+                try {
+                  const r = await fetch(`${API_BASE}/detect`, { method: "POST", body: fd });
+                  const d = await r.json();
+                  const newIngs = d.ingredients || [];
+                  setDetectedIngredients(prev => Array.from(new Set([...prev, ...newIngs])));
+                  setYoloIngredients(prev => new Set([...prev, ...newIngs]));
+                } catch {}
+              }, "image/jpeg", 0.85);
+            });
+          } else if (g === "FIST" && canTrigger("clear")) {
+            setDetectedIngredients([]);
+          }
+        } catch {}
+        inputGestureBusyRef.current = false;
+      }
+      timeoutId = setTimeout(poll, 400);
+    };
+
+    timeoutId = setTimeout(poll, 400);
+    return () => { clearTimeout(timeoutId); setInputGestureLabel("대기중"); setInputCountdown(null); };
+  }, [page]);
+
+  // 레시피 이미지 로딩 대기 후 recognition 페이지로 전환
+  useEffect(() => {
+    if (page !== "recipeLoading") return;
+    const recipes = backendRecipes.length > 0 ? backendRecipes : [];
+    const maxWait = setTimeout(() => goPage("recognition"), 20000);
+    const check = setInterval(() => {
+      const loaded = recipes.filter(r => recipeImages[r.name]).length;
+      if (recipes.length > 0 && loaded >= recipes.length) {
+        clearTimeout(maxWait);
+        clearInterval(check);
+        goPage("recognition");
+      }
+    }, 500);
+    return () => { clearTimeout(maxWait); clearInterval(check); };
+  }, [page, backendRecipes, recipeImages]);
+
+  // vision_worker.py 폴링: confirm 신호 감지 시 자동으로 재료/레시피 로드
+  const _visionIngKeyRef = useRef("");
+  useEffect(() => {
+    const earlyPages = ["home", "userInfo", "inputChoice"];
+    if (!earlyPages.includes(page)) return;
+
+    const interval = setInterval(async () => {
+      try {
+        const res = await axios.get(`${API_BASE}/health`);
+        const ings = res.data.current_ingredients || [];
+        const key = [...ings].sort().join(",");
+        if (ings.length > 0 && key !== _visionIngKeyRef.current) {
+          _visionIngKeyRef.current = key;
+          setDetectedIngredients(ings);
+          setIsRecipeLoading(true);
+          goPage("recognizing");
+          try {
+            const r = await axios.post(`${API_BASE}/vision`, { ingredients: ings, action: "confirm" });
+            const raw = r.data.recipes || [];
+            if (raw.length > 0) {
+              const transformed = raw.map(transformBackendRecipe);
+              setBackendRecipes(transformed);
+              transformed.forEach(recipe => fetchRecipeImage(recipe.name));
+            }
+          } catch {}
+          setIsRecipeLoading(false);
+          goPage("recognition");
+        }
+      } catch {}
+    }, 2500);
+
+    return () => clearInterval(interval);
+  }, [page]);
+
+  useEffect(() => {
+    // SE 프로젝트 흐름: YOLO는 ✌️ PEACE 제스처로만 실행 (자동 폴링 비활성화)
+    if (page !== "inputChoice") return;
+    return; // 자동 폴링 중단
 
     const canvas = document.createElement("canvas");
     let timeoutId;
@@ -770,6 +928,14 @@ function App() {
 
   const goPage = (nextPage) => {
     setHomeHelpOpen(false);
+    if (nextPage === "home") {
+      setDetectedIngredients([]);
+      setYoloIngredients(new Set());
+      setCheckedBasicIngredients([]);
+      setBackendRecipes([]);
+      setTextIngredients("");
+      setImagePreview(null);
+    }
     setPage(nextPage);
 
     setTimeout(() => {
@@ -842,6 +1008,7 @@ function App() {
   const currentIngredientClasses = Array.from(
     new Set([...detectedIngredients, ...textIngredientList])
   );
+  currentIngredientsRef.current = currentIngredientClasses;
 
   const recognitionRecommendedRecipes = (
     backendRecipes.length > 0 ? backendRecipes : recommendedRecipes
@@ -974,24 +1141,29 @@ function App() {
   };
 
   const handleGetRecipes = async () => {
-    if (currentIngredientClasses.length === 0) return;
+    const ings = currentIngredientsRef.current;
+    if (ings.length === 0) return;
     setIsRecipeLoading(true);
     try {
       const res = await axios.post(`${API_BASE}/vision`, {
-        ingredients: currentIngredientClasses,
+        ingredients: currentIngredientsRef.current,
         action: "confirm",
       });
       const raw = res.data.recipes || [];
       if (raw.length > 0) {
-        setBackendRecipes(raw.map(transformBackendRecipe));
+        const transformed = raw.map(transformBackendRecipe);
+        setBackendRecipes(transformed);
+        transformed.forEach(r => fetchRecipeImage(r.name));
       }
     } catch (err) {
       console.error("레시피 요청 실패:", err);
     } finally {
       setIsRecipeLoading(false);
-      goPage("recipe");
+      goPage("recipeLoading");
     }
   };
+
+  handleGetRecipesRef.current = handleGetRecipes;
 
   const handleSendRecipeInteractionChat = async (presetQuestion = "") => {
     if (isRecipeInteractionLoading) return;
@@ -1288,18 +1460,21 @@ function App() {
                   </p>
                 </div>
                 <div className="ingredient-check-list">
-                  <label className="ingredient-check-item">
-                    <input type="checkbox" /> 소금
-                  </label>
-                  <label className="ingredient-check-item">
-                    <input type="checkbox" /> 식용유
-                  </label>
-                  <label className="ingredient-check-item">
-                    <input type="checkbox" /> 양파
-                  </label>
-                  <label className="ingredient-check-item">
-                    <input type="checkbox" /> 마늘
-                  </label>
+                  {["소금", "식용유", "양파", "마늘"].map(item => (
+                    <label className="ingredient-check-item" key={item}>
+                      <input
+                        type="checkbox"
+                        checked={checkedBasicIngredients.includes(item)}
+                        onChange={(e) => {
+                          if (e.target.checked) {
+                            setCheckedBasicIngredients(prev => [...prev, item]);
+                          } else {
+                            setCheckedBasicIngredients(prev => prev.filter(i => i !== item));
+                          }
+                        }}
+                      /> {item}
+                    </label>
+                  ))}
                 </div>
               </div>
 
@@ -1339,7 +1514,12 @@ function App() {
                   <button className="outline-btn" onClick={() => goPage("home")}>
                     이전
                   </button>
-                  <button className="primary-btn" onClick={() => goPage("inputChoice") }>
+                  <button className="primary-btn" onClick={() => {
+                    if (checkedBasicIngredients.length > 0) {
+                      setDetectedIngredients(prev => Array.from(new Set([...prev, ...checkedBasicIngredients])));
+                    }
+                    goPage("inputChoice");
+                  }}>
                     다음 단계로 이동
                   </button>
                 </div>
@@ -1381,13 +1561,16 @@ function App() {
                     videoConstraints={{ facingMode: "environment" }}
                   />
 
+                  {inputCountdown !== null && (
+                    <div className="gesture-countdown">{inputCountdown}</div>
+                  )}
                   <div className="camera-detected-layer">
-                    <span className="camera-live-pill">대기중</span>
+                    <span className="camera-live-pill">{inputGestureLabel}</span>
                     <div className="camera-chip-list">
                       {currentIngredientClasses.length > 0 ? (
                         currentIngredientClasses.map((ingredient) => (
                           <button
-                            className="camera-ingredient-chip"
+                            className={`camera-ingredient-chip${yoloIngredients.has(ingredient) ? ' yolo-detected' : ''}`}
                             key={ingredient}
                             onClick={() => handleDeleteIngredient(ingredient)}
                             title="삭제"
@@ -1545,6 +1728,24 @@ function App() {
                   다음 단계로 이동
                 </button>
               </div>
+            </div>
+          </section>
+        )}
+
+        {page === "recipeLoading" && (
+          <section className="recognizing-page">
+            <div className="recognizing-overlay-card">
+              <div className="loading-orbit" style={{marginBottom: '28px'}}>
+                <div className="loading-emoji e1">🥕</div>
+                <div className="loading-emoji e2">🧅</div>
+                <div className="loading-emoji e3">🥩</div>
+                <div className="loading-emoji e4">🫑</div>
+                <div className="loading-emoji e5">🧄</div>
+                <div className="loading-emoji e6">🍅</div>
+                <div className="loading-emoji e7">🥦</div>
+              </div>
+              <h2>지글지글 맛있는 레시피 생성중</h2>
+              <span>잠시만 기다려주세요...</span>
             </div>
           </section>
         )}
@@ -1758,11 +1959,11 @@ function App() {
               {recognitionRecommendedRecipes.map((recipe, index) => (
                 <div className="recognition-recipe-card" key={recipe.id || recipe.name}>
                   <div className="recognition-recipe-image">
-                    <img
-                      src={getRecipeImageUrl(recipe, index)}
-                      alt={recipe.name}
-                      loading="lazy"
-                    />
+                    {recipeImages[recipe.name] ? (
+                      <img src={recipeImages[recipe.name]} alt={recipe.name} loading="lazy" />
+                    ) : (
+                      <div className="recipe-card-img-placeholder">🍽️</div>
+                    )}
                   </div>
                   <div className="recipe-rank">TOP {index + 1}</div>
                   <h3>{recipe.name}</h3>
@@ -2124,7 +2325,19 @@ function App() {
               <div className="recipe-summary-list">
                 {(backendRecipes.length > 0 ? backendRecipes : recommendedRecipes).map((recipe) => (
                   <div className="recipe-summary-item" key={recipe.id}>
-                    <div className="recipe-rank">TOP {recipe.id}</div>
+                    <div className="recipe-rank-col">
+                      <div className="recipe-rank">TOP {recipe.id}</div>
+                      {recipeImages[recipe.name] && (
+                        <img
+                          src={recipeImages[recipe.name]}
+                          alt={recipe.name}
+                          className="recipe-card-img"
+                        />
+                      )}
+                      {!recipeImages[recipe.name] && (
+                        <div className="recipe-card-img-placeholder">🍽️</div>
+                      )}
+                    </div>
 
                     <div className="recipe-main-info">
                       <h3>{recipe.name}</h3>
