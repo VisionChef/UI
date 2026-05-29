@@ -5,6 +5,8 @@ import "./App.css";
 import logoImg from "./로고.jpg";
 
 const API_BASE = process.env.REACT_APP_API_URL ?? "http://localhost:8000";
+const topSlideImage = "/top-slide.png";
+const bottomSlideImage = "/bottom-slide.png";
 
 const tasteOptions = [
   "매운맛",
@@ -122,6 +124,18 @@ const recipeImageQueries = [
   "spicy-rice-bowl",
   "egg-rice-bowl",
   "shrimp-garlic-pasta",
+];
+
+const homeFoodSlides = [
+  { image: topSlideImage },
+  { image: topSlideImage },
+  { image: topSlideImage },
+];
+
+const homeBrandSlides = [
+  { image: bottomSlideImage },
+  { image: bottomSlideImage },
+  { image: bottomSlideImage },
 ];
 
 const globalIngredientList = [
@@ -469,6 +483,72 @@ function TimerBox({ minutes, label }) {
   );
 }
 
+function SimpleTimer({ minutes = 1, setMinutes = () => {}, label = "타이머" }) {
+  const [inputMinutes, setInputMinutesLocal] = useState(minutes);
+  const initialSeconds = Math.max(0, Number(inputMinutes) || 0) * 60;
+  const [seconds, setSeconds] = useState(initialSeconds);
+  const [running, setRunning] = useState(false);
+
+  useEffect(() => {
+    if (!running || seconds <= 0) return;
+    const timer = setInterval(() => setSeconds((prev) => prev - 1), 1000);
+    return () => clearInterval(timer);
+  }, [running, seconds]);
+
+  useEffect(() => {
+    setSeconds(initialSeconds);
+    setRunning(false);
+  }, [initialSeconds]);
+
+  const mm = String(Math.floor(seconds / 60)).padStart(2, "0");
+  const ss = String(seconds % 60).padStart(2, "0");
+
+  return (
+    <div className="timer-box">
+      <div>
+        <p className="timer-label">{label}</p>
+        <h4>
+          {mm}:{ss}
+        </h4>
+      </div>
+
+      <div style={{display: 'flex', flexDirection: 'column', gap: 8}}>
+        <div style={{display: 'flex', gap: 8}}>
+          <input
+            type="number"
+            min={0}
+            value={inputMinutes}
+            onChange={(e) => setInputMinutesLocal(Number(e.target.value))}
+            style={{width: 72, padding: 6, borderRadius: 8, border: '1px solid #ddd'}}
+          />
+          <button
+            onClick={() => {
+              setMinutes(Number(inputMinutes) || 0);
+              setSeconds((Number(inputMinutes) || 0) * 60);
+            }}
+            className="toolbar-btn"
+          >
+            설정
+          </button>
+        </div>
+
+        <div className="timer-actions">
+          <button onClick={() => setRunning(true)}>시작</button>
+          <button onClick={() => setRunning(false)}>일시정지</button>
+          <button
+            onClick={() => {
+              setRunning(false);
+              setSeconds((Number(inputMinutes) || 0) * 60);
+            }}
+          >
+            초기화
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function App() {
   const [splashPhase, setSplashPhase] = useState('show');
 
@@ -526,6 +606,7 @@ function App() {
     },
   ]);
   const [currentCookingStep, setCurrentCookingStep] = useState(0);
+  const [showFavoritePrompt, setShowFavoritePrompt] = useState(false);
 
   const [homeHelpOpen, setHomeHelpOpen] = useState(false);
 
@@ -536,6 +617,8 @@ function App() {
 
   const [videoRecommendation, setVideoRecommendation] = useState(null);
   const [isTTSEnabled, setIsTTSEnabled] = useState(false);
+  const [showTimer, setShowTimer] = useState(false);
+  const [timerMinutes, setTimerMinutes] = useState(2);
   const [isListening, setIsListening] = useState(false);
   const [isGestureActive, setIsGestureActive] = useState(false);
   const [currentGesture, setCurrentGesture] = useState(null);
@@ -788,6 +871,13 @@ function App() {
     }, 0);
   };
 
+  const handleCameraDone = () => {
+    try {
+      console.log("[UI] camera done clicked");
+    } catch {}
+    goPage("confirmFavorite");
+  };
+
   const toggleItem = (item, list, setList) => {
     if (list.includes(item)) {
       setList(list.filter((x) => x !== item));
@@ -973,6 +1063,29 @@ function App() {
     setTodayMenu(next);
   };
 
+  const isCompletionPhrase = (text) => {
+    const normalized = text
+      .toLowerCase()
+      .replace(/\s+/g, "")
+      .replace(/\./g, "");
+    const completionWords = [
+      "완료",
+      "완성",
+      "다했어",
+      "다 했어",
+      "종료",
+      "그만",
+      "끝",
+      "끝났어",
+      "끝냈어",
+      "finish",
+      "done",
+      "complete",
+      "finished",
+    ];
+    return completionWords.some((word) => normalized.includes(word));
+  };
+
   const handleGetRecipes = async () => {
     if (currentIngredientClasses.length === 0) return;
     setIsRecipeLoading(true);
@@ -1127,6 +1240,20 @@ function App() {
       { id: Date.now(), role: "user", text: question },
     ]);
     setChatInput("");
+
+    if (isCompletionPhrase(question)) {
+      setShowFavoritePrompt(true);
+      setChatMessages((prev) => [
+        ...prev,
+        {
+          id: Date.now() + 1,
+          role: "assistant",
+          text: "요리를 마치셨나요? 완료 후에 이 레시피를 즐겨찾기에 추가할 수 있어요.",
+        },
+      ]);
+      return;
+    }
+
     setIsChatLoading(true);
 
     try {
@@ -1194,6 +1321,8 @@ function App() {
             <div className="splash-bar"><div className="splash-bar-fill" /></div>
           </div>
         )}
+
+        
         {(splashPhase === 'loading' || splashPhase === 'screen-exit') && (
           <div className="loading-content">
             <div className="loading-orbit">
@@ -1216,25 +1345,39 @@ function App() {
 
         {page === "home" && (
           <section className="hero-section home-only-hero">
-            <div className="logo-mark">BW</div>
-            <p className="sub-title">BLACK & WHITE CHEF AI</p>
-            <h1>
-              검은 입력에서 시작,
-              <br />
-              하얀 접시 위 완성
-            </h1>
-            <p className="hero-desc">
-              사진, 카메라, 텍스트 입력으로 재료를 등록하면 AI가 선호도와
-              알레르기를 고려해 레시피를 추천합니다.
-            </p>
+            <div className="hero-marquee-top">
+              <div className="marquee-track marquee-track-right">
+                {homeFoodSlides.concat(homeFoodSlides).map((slide, index) => (
+                  <div
+                    className="marquee-item"
+                    key={`${slide.title}-${index}`}
+                    style={{ backgroundImage: `url(${slide.image})` }}
+                  />
+                ))}
+              </div>
+            </div>
 
-            <div className="hero-buttons hero-main-button-only">
-              <button
-                className="primary-btn hero-start-btn"
-                onClick={() => goPage("userInfo")}
-              >
-                AI 레시피 추천 시작
-              </button>
+            <div className="hero-copy hero-copy-centered">
+              <div className="hero-buttons hero-main-button-only">
+                <button
+                  className="primary-btn hero-start-btn"
+                  onClick={() => goPage("userInfo")}
+                >
+                  AI 레시피 추천 시작
+                </button>
+              </div>
+            </div>
+
+            <div className="hero-marquee-bottom">
+              <div className="brand-marquee-track marquee-track-right slow">
+                {homeBrandSlides.concat(homeBrandSlides).map((item, index) => (
+                  <div
+                    className="brand-marquee-item"
+                    key={`${item.label}-${index}`}
+                    style={{ backgroundImage: `url(${item.image})` }}
+                  />
+                ))}
+              </div>
             </div>
 
             <div
@@ -1782,12 +1925,6 @@ function App() {
                     >
                       레시피로 요리하기
                     </button>
-                    <button
-                      className="recipe-favorite-btn"
-                      onClick={() => addToFavorites(recipe)}
-                    >
-                      즐겨찾기
-                    </button>
                   </div>
                 </div>
               ))}
@@ -1922,6 +2059,48 @@ function App() {
           </section>
         )}
 
+        {page === "confirmFavorite" && (
+          <section className="confirm-fav-page glass-card readable-card">
+            <div className="recognition-header">
+              <div>
+                <p className="sub-title">CONFIRM</p>
+                <h2>요리 완료</h2>
+                <p>
+                  {selectedRecipe
+                    ? `${selectedRecipe.name}을(를) 즐겨찾기에 추가할까요?`
+                    : `현재 보고 계신 내용을 즐겨찾기에 추가할까요?`}
+                </p>
+              </div>
+            </div>
+
+            <div className="confirm-fav-actions">
+              <button
+                className="primary-btn"
+                onClick={() => {
+                  if (selectedRecipe) addToFavorites(selectedRecipe);
+                  goPage("home");
+                }}
+              >
+                YES
+              </button>
+
+              <button
+                className="outline-btn"
+                onClick={() => goPage("home")}
+              >
+                NO
+              </button>
+
+              <button
+                className="outline-btn"
+                onClick={() => goPage("home")}
+              >
+                홈으로 가기
+              </button>
+            </div>
+          </section>
+        )}
+
         {page === "today" && (
           <section className="today-page recipe-page-bright">
             <div className="recent-page-header">
@@ -2006,48 +2185,52 @@ function App() {
                     ))}
                   </div>
                 </div>
+                  <button
+                    className="camera-done-btn"
+                    onClick={handleCameraDone}
+                    title="완료"
+                    aria-label="카메라 완료"
+                  >
+                    완료
+                  </button>
               </div>
 
               <div className="recipe-ai-chat-panel">
-                <div className="recipe-ai-chat-head">
-                  <div>
-                    <p className="sub-title">AI COOKING CHAT</p>
-                    <h2>AI 상호작용</h2>
-                  </div>
-                  <button
-                    className={`toolbar-btn${isTTSEnabled ? " active" : ""}`}
-                    onClick={() => setIsTTSEnabled((prev) => !prev)}
-                  >
-                    TTS
-                  </button>
-                </div>
-
-                <div className="interaction-step-card">
-                  <div className="interaction-step-top">
+                  <div className="recipe-ai-chat-head">
                     <div>
-                      <p>현재 조리 단계</p>
-                      <h3>
-                        STEP {currentCookingStep + 1} / {activeInteractionRecipe.steps.length}
-                      </h3>
+                      <p className="sub-title">AI COOKING CHAT</p>
+                      <h2>AI 상호작용</h2>
                     </div>
-                    <div className="interaction-step-buttons">
-                      <button onClick={() => handleMoveCookingStep(-1)}>이전</button>
-                      <button onClick={() => handleMoveCookingStep(1)}>다음</button>
+
+                    <div style={{display: 'flex', gap: 8, alignItems: 'center'}}>
+                      <button
+                        className={`toolbar-btn${isTTSEnabled ? " active" : ""}`}
+                        onClick={() => setIsTTSEnabled((prev) => !prev)}
+                        title={isTTSEnabled ? "음성 출력 끄기" : "음성 출력 켜기"}
+                        aria-label={isTTSEnabled ? "음성 출력 켜짐" : "음성 출력 꺼짐"}
+                      >
+                        {isTTSEnabled ? "🔊" : "🔇"}
+                      </button>
+
+                      <button
+                        className={`toolbar-btn${showTimer ? " active" : ""}`}
+                        onClick={() => setShowTimer((v) => !v)}
+                        title="타이머 열기"
+                      >
+                        타이머
+                      </button>
                     </div>
                   </div>
 
-                  <p className="interaction-step-text">
-                    {activeInteractionRecipe.steps[currentCookingStep]?.text}
-                  </p>
-
-                  {activeInteractionRecipe.steps[currentCookingStep]?.minutes > 0 && (
-                    <TimerBox
-                      key={`${activeInteractionRecipe.name}-${currentCookingStep}`}
-                      minutes={activeInteractionRecipe.steps[currentCookingStep].minutes}
-                      label={`${activeInteractionRecipe.steps[currentCookingStep].minutes}분 타이머`}
+                {showTimer && (
+                  <div style={{marginTop: 10}}>
+                    <SimpleTimer
+                      minutes={timerMinutes}
+                      setMinutes={(m) => setTimerMinutes(m)}
+                      label={timerMinutes > 0 ? `${timerMinutes}분 타이머` : "타이머"}
                     />
-                  )}
-                </div>
+                  </div>
+                )}
 
                 <div className="chat-message-list recipe-interaction-messages">
                   {recipeInteractionMessages.map((message) => (
@@ -2153,12 +2336,6 @@ function App() {
                           onClick={() => handleSelectRecipe(recipe)}
                         >
                           이 레시피로 요리하기
-                        </button>
-                        <button
-                          className="recipe-favorite-btn"
-                          onClick={() => addToFavorites(recipe)}
-                        >
-                          즐겨찾기
                         </button>
                       </div>
                     </div>
@@ -2386,6 +2563,17 @@ function App() {
             <div className="cooking-guide-actions">
               <button className="outline-btn" onClick={() => goPage("recipe")}>
                 다른 레시피 보기
+              </button>
+              <button
+                className="outline-btn"
+                onClick={() => {
+                  if (selectedRecipe) {
+                    addToFavorites(selectedRecipe);
+                  }
+                  goPage("home");
+                }}
+              >
+                완료 후 즐겨찾기
               </button>
               <button className="primary-btn" onClick={() => goPage("home")}>
                 요리 완료
@@ -2823,6 +3011,50 @@ function App() {
           <span className="nav-label">가이드</span>
         </button>
       </nav>
+
+      {showFavoritePrompt && (
+        <div className="recognized-modal-overlay">
+          <div className="recognized-modal">
+            <div className="modal-header">
+              <h3>요리 완료 확인</h3>
+              <button
+                className="close-btn"
+                onClick={() => setShowFavoritePrompt(false)}
+                aria-label="닫기"
+              >
+                ×
+              </button>
+            </div>
+            <div className="modal-content">
+              <p>요리를 완료하셨나요? 완료 후 이 레시피를 즐겨찾기에 추가할 수 있습니다.</p>
+              <p>원하시면 바로 즐겨찾기에 저장하거나, 저장 없이 종료할 수 있어요.</p>
+            </div>
+            <div className="modal-actions">
+              <button
+                className="outline-btn"
+                onClick={() => {
+                  setShowFavoritePrompt(false);
+                  goPage("home");
+                }}
+              >
+                완료만 하기
+              </button>
+              <button
+                className="primary-btn"
+                onClick={() => {
+                  if (selectedRecipe) {
+                    addToFavorites(selectedRecipe);
+                  }
+                  setShowFavoritePrompt(false);
+                  goPage("home");
+                }}
+              >
+                즐겨찾기 추가
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
       {isListening && (
         <div className="listening-overlay">
