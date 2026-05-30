@@ -1265,6 +1265,9 @@ function App() {
   };
   handleGetRecipesRef.current = handleGetRecipes;
 
+  const isNextStepText = (text) => /(다음|넘어가|계속|그다음|next)/i.test(text);
+  const stripMarkdown = (text) => text.replace(/[*#\-_`>]/g, "").replace(/\n{2,}/g, "\n").trim();
+
   const handleSendRecipeInteractionChat = async (presetQuestion = "") => {
     if (isRecipeInteractionLoading) return;
 
@@ -1276,17 +1279,42 @@ function App() {
       { id: Date.now(), role: "user", text: question },
     ]);
     setRecipeInteractionInput("");
-    setIsRecipeInteractionLoading(true);
 
+    // SE 로직: "다음" 음성 명령 → 단계 진행
+    if (selectedRecipe && isNextStepText(question)) {
+      const nextStep = Math.min(currentCookingStep + 1, selectedRecipe.steps.length - 1);
+      if (nextStep !== currentCookingStep) {
+        setCurrentCookingStep(nextStep);
+        const stepText = selectedRecipe.steps[nextStep].text;
+        const msg = `${nextStep + 1}단계입니다. ${stepText}`;
+        setRecipeInteractionMessages((prev) => [
+          ...prev,
+          { id: Date.now() + 1, role: "assistant", text: msg },
+        ]);
+        speakText(msg);
+      } else {
+        const doneMsg = "마지막 단계입니다. 맛있게 드세요!";
+        setRecipeInteractionMessages((prev) => [
+          ...prev,
+          { id: Date.now() + 1, role: "assistant", text: doneMsg },
+        ]);
+        speakText(doneMsg);
+      }
+      return;
+    }
+
+    setIsRecipeInteractionLoading(true);
     try {
       const res = await axios.post(`${API_BASE}/ask`, {
         user_text: question,
         ingredients: currentIngredientClasses,
       });
-      const answer = res.data.answer || "응답을 받지 못했습니다.";
+      const rawAnswer = res.data.answer || "응답을 받지 못했습니다.";
+      const answer = stripMarkdown(rawAnswer);
+      const video = res.data.video_recommendation || null;
       setRecipeInteractionMessages((prev) => [
         ...prev,
-        { id: Date.now() + 1, role: "assistant", text: answer },
+        { id: Date.now() + 1, role: "assistant", text: answer, video },
       ]);
       speakText(answer);
     } catch {
@@ -2358,33 +2386,22 @@ function App() {
                 이전 단계
               </button>
 
-              <div className="recipe-live-camera">
-                <Webcam
-                  ref={webcamGestureRef}
-                  className="recipe-live-webcam"
-                  audio={false}
-                  mirrored={false}
-                  screenshotFormat="image/jpeg"
-                  videoConstraints={{ facingMode: "environment" }}
-                />
-                <div className="recipe-live-overlay">
-                  <span>카메라 화면</span>
-                  <div>
-                    {currentIngredientClasses.slice(0, 4).map((ingredient) => (
-                      <b key={ingredient}>{ingredient}</b>
-                    ))}
+              <div className="recipe-cam-chat-row">
+                <div className="recipe-live-camera">
+                  <Webcam
+                    ref={webcamGestureRef}
+                    className="recipe-live-webcam"
+                    audio={false}
+                    mirrored={false}
+                    screenshotFormat="image/jpeg"
+                    videoConstraints={{ facingMode: "environment" }}
+                  />
+                  <div className="recipe-gesture-hint">
+                    {currentGesture === "OPEN_HAND" ? "🎤 듣는 중..." : "🖐 손바닥 = 음성 입력"}
                   </div>
                 </div>
-                  <button
-                    className="camera-done-btn"
-                    onClick={handleCameraDone}
-                    title="완료"
-                    aria-label="카메라 완료"
-                  >
-                    완료
-                  </button>
-              </div>
 
+              <div className="recipe-chat-panel">
               <div className="recipe-ai-chat-panel">
                   <div className="recipe-ai-chat-head">
                     <div>
@@ -2471,6 +2488,8 @@ function App() {
                   </button>
                 </div>
               </div>
+            </div>
+            </div>
             </div>
 
             <div className="recipe-header">

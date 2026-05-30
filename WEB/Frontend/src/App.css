@@ -2012,8 +2012,8 @@ select:focus {
 
 .recipe-interaction-screen {
   position: relative;
-  display: grid;
-  grid-template-rows: minmax(300px, 1fr) minmax(300px, 1fr);
+  display: flex;
+  flex-direction: column;
   gap: 18px;
   min-height: calc(100vh - 190px);
 }
@@ -2036,11 +2036,14 @@ select:focus {
 
 .recipe-live-camera {
   position: relative;
-  min-height: 320px;
+  width: 30%;
+  aspect-ratio: 4/3;
+  min-height: 0;
   overflow: hidden;
-  border-radius: 24px;
+  border-radius: 16px;
   background: #000000;
   border: 1px solid rgba(0, 0, 0, 0.12);
+  flex-shrink: 0;
 }
 
 .recipe-live-webcam {
@@ -2054,6 +2057,35 @@ select:focus {
 /* ensure webcam is below overlays/buttons */
 .recipe-live-webcam {
   z-index: 0;
+}
+
+.recipe-cam-chat-row {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  flex: 1;
+}
+
+.recipe-gesture-hint {
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0,0,0,0.55);
+  color: #fff;
+  font-size: 11px;
+  padding: 3px 10px;
+  border-radius: 20px;
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.recipe-chat-panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
 }
 
 .recipe-live-overlay {
