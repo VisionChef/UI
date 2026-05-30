@@ -2185,10 +2185,10 @@ select:focus {
 .recipe-ai-chat-panel {
   min-height: 0;
   overflow: hidden;
-  display: grid;
-  grid-template-rows: auto auto minmax(0, 1fr) auto auto;
-  gap: 14px;
-  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 16px;
   border-radius: 24px;
   background: #ffffff;
   border: 1px solid rgba(0, 0, 0, 0.1);
@@ -2286,8 +2286,8 @@ select:focus {
 }
 
 .recipe-interaction-messages {
+  flex: 1;
   min-height: 0;
-  max-height: none;
   overflow-y: auto;
 }
 
