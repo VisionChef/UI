@@ -765,19 +765,16 @@ function App() {
     return () => { clearTimeout(timeoutId); setInputGestureLabel("대기중"); setInputCountdown(null); };
   }, [page]);
 
-  // recipeLoading 페이지: 이미지 완료 시 recognition으로 이동 (최대 30초 대기)
+  // recipeLoading 페이지: backendRecipes가 채워지면 즉시 recognition으로 이동
   useEffect(() => {
     if (page !== "recipeLoading") return;
-    const recipes = backendRecipes.length > 0 ? backendRecipes : [];
-    const maxWait = setTimeout(() => goPage("recognition"), 20000);
-    const check = setInterval(() => {
-      const loaded = recipes.filter(r => recipeImages[r.name]).length;
-      if (recipes.length > 0 && loaded >= recipes.length) {
-        clearTimeout(maxWait); clearInterval(check); goPage("recognition");
-      }
-    }, 500);
-    return () => { clearTimeout(maxWait); clearInterval(check); };
-  }, [page, backendRecipes, recipeImages]);
+    if (backendRecipes.length > 0) {
+      goPage("recognition");
+      return;
+    }
+    const maxWait = setTimeout(() => goPage("recognition"), 90000);
+    return () => clearTimeout(maxWait);
+  }, [page, backendRecipes]);
 
   // vision_worker.py 폴링
   const _visionIngKeyRef = useRef("");
