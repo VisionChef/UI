@@ -14,7 +14,7 @@ yt-dlp
 faster-whisper
 SpeechRecognition
 PyAudio
-opencv-python
+opencv-python-headless
 ultralytics
 mediapipe
 langchain
@@ -23,3 +23,7 @@ langchain-huggingface
 chromadb
 sentence-transformers
 python-dotenv
+openai
+accelerate
+google-generativeai
+bitsandbytes>=0.46.1
