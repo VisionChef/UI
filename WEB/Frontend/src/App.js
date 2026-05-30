@@ -633,6 +633,7 @@ function App() {
   const gestureActionRef = useRef(null);
   const inputGestureBusyRef = useRef(false);
   const fetchingImagesRef = useRef({});
+  const recipeInteractionChatRef = useRef(null);
   const inputGestureCooldownRef = useRef({});
   const handleGetRecipesRef = useRef(null);
   const currentIngredientsRef = useRef([]);
@@ -677,6 +678,12 @@ function App() {
       .then((res) => setCommunityPosts(res.data.posts || []))
       .catch(() => {});
   }, []);
+
+  useEffect(() => {
+    if (recipeInteractionChatRef.current) {
+      recipeInteractionChatRef.current.scrollTop = recipeInteractionChatRef.current.scrollHeight;
+    }
+  }, [recipeInteractionMessages]);
 
   useEffect(() => {
     if ((page === "recipeDetail" || page === "recipe") && selectedRecipe) {
@@ -790,7 +797,7 @@ function App() {
           _visionIngKeyRef.current = key;
           setDetectedIngredients(ings);
           setIsRecipeLoading(true);
-          goPage("recognizing");
+          goPage("recipeLoading");
           try {
             const r = await axios.post(`${API_BASE}/vision`, { ingredients: ings, action: "confirm" });
             const raw = r.data.recipes || [];
@@ -996,7 +1003,6 @@ function App() {
   };
 
   const showStepper = [
-    "recognizing",
     "recipeDetail",
   ].includes(page);
 
@@ -1009,6 +1015,11 @@ function App() {
       setBackendRecipes([]);
       setTextIngredients("");
       setImagePreview(null);
+      setSelectedRecipe(null);
+      setChatMessages([]);
+      setRecipeInteractionMessages([{ id: 1, role: "assistant", text: "추천받은 레시피나 재료에 대해 궁금한 점을 물어보세요." }]);
+      setVideoRecommendation(null);
+      axios.post(`${API_BASE}/reset`).catch(() => {});
     }
     setPage(nextPage);
 
@@ -1045,14 +1056,9 @@ function App() {
 
   const startRecognitionFlow = ({ preview = null, items = [] }) => {
     setBackendRecipes([]);
-    setRecognitionStatus("AI 셰프가 설계 중입니다...");
-    setPage("recognizing");
-
-    setTimeout(() => {
-      setImagePreview(preview);
-      setDetectedIngredients(items);
-      goPage("recognition");
-    }, 2200);
+    setImagePreview(preview);
+    setDetectedIngredients(items);
+    goPage("recognition");
   };
 
   const handleImageUpload = async (e) => {
@@ -1061,8 +1067,6 @@ function App() {
 
     const previewUrl = URL.createObjectURL(file);
     setBackendRecipes([]);
-    setRecognitionStatus("AI가 재료를 인식하는 중입니다...");
-    setPage("recognizing");
 
     try {
       const formData = new FormData();
@@ -1185,7 +1189,7 @@ function App() {
     addToRecentHistory(recipe);
     const firstStep = recipe.steps?.[0]?.text || "";
     const initialText = firstStep
-      ? `${recipe.name} 조리를 시작할게요. 1단계입니다. ${firstStep}`
+      ? `${recipe.name} 조리를 시작할게요. 먼저 1단계부터 해볼게요. ${firstStep}`
       : `${recipe.name} 조리를 시작할게요. 궁금한 점은 음성으로 물어보세요.`;
     setRecipeInteractionMessages([
       {
@@ -1195,7 +1199,7 @@ function App() {
       },
     ]);
     goPage("recipe");
-    speakText(initialText);
+    speakText(stripMarkdown(initialText));
   };
 
   const handleOpenRecentRecipe = (recipe) => {
@@ -1918,19 +1922,6 @@ function App() {
           </section>
         )}
 
-        {page === "recognizing" && (
-          <section className="recognizing-page">
-            <div className="recognizing-overlay-card">
-              <div className="recognizing-loader-ring" />
-              <h2>{recognitionStatus}</h2>
-              <p>
-                재료를 분석하고, 사용할 수 있는 식재료를 분류한 뒤 다음 단계로
-                이동하고 있습니다.
-              </p>
-              <span>잠시만 기다려주세요...</span>
-            </div>
-          </section>
-        )}
 
                 {page === "service" && (
           <section className="service-detail glass-card readable-card">
@@ -2446,10 +2437,10 @@ function App() {
                   </div>
                 )}
 
-                <div className="chat-message-list recipe-interaction-messages">
+                <div className="chat-message-list recipe-interaction-messages" ref={recipeInteractionChatRef}>
                   {recipeInteractionMessages.map((message) => (
                     <div key={message.id} className={`chat-bubble ${message.role}`}>
-                      {message.video?.embed_url && (
+                      {message.video?.embed_url ? (
                         <div className="chat-video-card">
                           <iframe
                             src={message.video.embed_url}
@@ -2461,8 +2452,9 @@ function App() {
                             {message.video.title || "YouTube 영상 보기"}
                           </a>
                         </div>
+                      ) : (
+                        <div>{message.text}</div>
                       )}
-                      <div>{message.text}</div>
                     </div>
                   ))}
                   {isRecipeInteractionLoading && (

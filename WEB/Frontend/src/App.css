@@ -2013,7 +2013,7 @@ select:focus {
 .recipe-interaction-screen {
   position: relative;
   display: grid;
-  grid-template-rows: 200px 1fr;
+  grid-template-rows: 3fr 7fr;
   gap: 18px;
   min-height: calc(100vh - 190px);
 }

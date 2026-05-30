@@ -879,6 +879,19 @@ async def youtube_preview(query: str = ""):
         }
 
 
+@app.post("/reset")
+async def reset_session():
+    global chat_history, current_ingredients, pending_ingredients, cached_rag_context, cached_rag_matches
+    generation_cancel_event.set()
+    chat_history = []
+    current_ingredients = []
+    pending_ingredients = []
+    cached_rag_context = "없음"
+    cached_rag_matches = []
+    print("🔄 [Server] 세션 초기화 완료")
+    return {"status": "reset"}
+
+
 @app.post("/cancel")
 async def cancel_generation():
     was_active = is_generation_active()
