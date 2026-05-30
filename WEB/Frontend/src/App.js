@@ -632,6 +632,7 @@ function App() {
   const inputCameraRef = useRef(null);
   const gestureActionRef = useRef(null);
   const inputGestureBusyRef = useRef(false);
+  const fetchingImagesRef = useRef({});
   const inputGestureCooldownRef = useRef({});
   const handleGetRecipesRef = useRef(null);
   const currentIngredientsRef = useRef([]);
@@ -640,13 +641,19 @@ function App() {
   const cameraDetectBusyRef = useRef(false);
 
   const fetchRecipeImage = async (recipeName) => {
-    if (recipeImages[recipeName]) return;
+    // TODO: Gemini 이미지 생성 임시 비활성화 — 나중에 아래 return 제거하면 다시 활성화
+    return;
+    // eslint-disable-next-line no-unreachable
+    if (recipeImages[recipeName] || fetchingImagesRef.current[recipeName]) return;
+    fetchingImagesRef.current[recipeName] = true;
     try {
       const res = await axios.get(`${API_BASE}/generate-image`, { params: { recipe: recipeName } });
       if (res.data.image_url) {
         setRecipeImages(prev => ({ ...prev, [recipeName]: res.data.image_url }));
       }
-    } catch {}
+    } catch {} finally {
+      delete fetchingImagesRef.current[recipeName];
+    }
   };
   const speechRecRef = useRef(null);
   const ttsAudioRef = useRef(null);
@@ -683,7 +690,7 @@ function App() {
   // recognition 페이지 진입 시 이미지 로드
   useEffect(() => {
     if (page === "recognition") {
-      const recipes = backendRecipes.length > 0 ? backendRecipes : recommendedRecipes;
+      const recipes = backendRecipes;
       recipes.slice(0, 4).forEach(r => fetchRecipeImage(r.name));
     }
   }, [page, backendRecipes]);
@@ -1088,7 +1095,7 @@ function App() {
   currentIngredientsRef.current = currentIngredientClasses;
 
   const recognitionRecommendedRecipes = (
-    backendRecipes.length > 0 ? backendRecipes : recommendedRecipes
+    backendRecipes
   ).slice(0, 4);
 
   const activeInteractionRecipe =
@@ -2386,22 +2393,20 @@ function App() {
                 이전 단계
               </button>
 
-              <div className="recipe-cam-chat-row">
-                <div className="recipe-live-camera">
-                  <Webcam
-                    ref={webcamGestureRef}
-                    className="recipe-live-webcam"
-                    audio={false}
-                    mirrored={false}
-                    screenshotFormat="image/jpeg"
-                    videoConstraints={{ facingMode: "environment" }}
-                  />
-                  <div className="recipe-gesture-hint">
-                    {currentGesture === "OPEN_HAND" ? "🎤 듣는 중..." : "🖐 손바닥 = 음성 입력"}
-                  </div>
+              <div className="recipe-live-camera">
+                <Webcam
+                  ref={webcamGestureRef}
+                  className="recipe-live-webcam"
+                  audio={false}
+                  mirrored={false}
+                  screenshotFormat="image/jpeg"
+                  videoConstraints={{ facingMode: "environment" }}
+                />
+                <div className="recipe-gesture-hint">
+                  {currentGesture === "OPEN_HAND" ? "🎤 듣는 중..." : "🖐 손바닥 = 음성 입력"}
                 </div>
+              </div>
 
-              <div className="recipe-chat-panel">
               <div className="recipe-ai-chat-panel">
                   <div className="recipe-ai-chat-head">
                     <div>
@@ -2489,8 +2494,6 @@ function App() {
                 </div>
               </div>
             </div>
-            </div>
-            </div>
 
             <div className="recipe-header">
               <div>
@@ -2514,7 +2517,7 @@ function App() {
               <div className="recipe-paper-title">레시피</div>
 
               <div className="recipe-summary-list">
-                {(backendRecipes.length > 0 ? backendRecipes : recommendedRecipes).map((recipe) => (
+                {(backendRecipes).map((recipe) => (
                   <div className="recipe-summary-item" key={recipe.id}>
                     <div className="recipe-rank">TOP {recipe.id}</div>
 
