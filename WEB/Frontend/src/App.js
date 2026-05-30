@@ -1926,9 +1926,17 @@ function App() {
         {page === "recipeLoading" && (
           <section className="recognizing-page">
             <div className="recognizing-overlay-card">
-              <div className="recognizing-loader-ring" />
-              <h2>레시피 생성 중...</h2>
-              <span>잠시만 기다려주세요</span>
+              <div className="loading-orbit" style={{marginBottom: '28px'}}>
+                <div className="loading-emoji e1">🥕</div>
+                <div className="loading-emoji e2">🧅</div>
+                <div className="loading-emoji e3">🥩</div>
+                <div className="loading-emoji e4">🫑</div>
+                <div className="loading-emoji e5">🧄</div>
+                <div className="loading-emoji e6">🍅</div>
+                <div className="loading-emoji e7">🥦</div>
+              </div>
+              <h2>지글지글 맛있는 레시피 생성중</h2>
+              <span>잠시만 기다려주세요...</span>
             </div>
           </section>
         )}
