@@ -1183,14 +1183,16 @@ function App() {
     setSelectedRecipe(recipe);
     setCurrentCookingStep(0);
     addToRecentHistory(recipe);
+    const initialText = `${recipe.name} 조리를 시작할게요. 궁금한 점은 텍스트나 음성으로 물어보세요.`;
     setRecipeInteractionMessages([
       {
         id: Date.now(),
         role: "assistant",
-        text: `${recipe.name} 조리를 시작할게요. 화면의 현재 단계를 보면서 궁금한 점은 텍스트나 음성으로 물어보세요.`,
+        text: initialText,
       },
     ]);
     goPage("recipe");
+    speakText(initialText);
   };
 
   const handleOpenRecentRecipe = (recipe) => {

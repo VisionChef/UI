@@ -2012,8 +2012,8 @@ select:focus {
 
 .recipe-interaction-screen {
   position: relative;
-  display: grid;
-  grid-template-rows: minmax(300px, 1fr) minmax(300px, 1fr);
+  display: flex;
+  flex-direction: column;
   gap: 18px;
   min-height: calc(100vh - 190px);
 }
@@ -2185,6 +2185,7 @@ select:focus {
 }
 
 .recipe-ai-chat-panel {
+  flex: 1;
   min-height: 0;
   display: grid;
   grid-template-rows: auto auto minmax(0, 1fr) auto auto;
