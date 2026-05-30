@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/static/css/main.c8e3b1d2.css",
-    "main.js": "/static/js/main.0080cf01.js",
+    "main.css": "/static/css/main.227bed68.css",
+    "main.js": "/static/js/main.d9f43d7c.js",
     "static/media/로고.jpg": "/static/media/로고.ebe326654c7d0a4f54c2.jpg",
     "index.html": "/index.html",
-    "main.c8e3b1d2.css.map": "/static/css/main.c8e3b1d2.css.map",
-    "main.0080cf01.js.map": "/static/js/main.0080cf01.js.map"
+    "main.227bed68.css.map": "/static/css/main.227bed68.css.map",
+    "main.d9f43d7c.js.map": "/static/js/main.d9f43d7c.js.map"
   },
   "entrypoints": [
-    "static/css/main.c8e3b1d2.css",
-    "static/js/main.0080cf01.js"
+    "static/css/main.227bed68.css",
+    "static/js/main.d9f43d7c.js"
   ]
 }
