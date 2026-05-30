@@ -672,7 +672,7 @@ function App() {
   }, []);
 
   useEffect(() => {
-    if (page === "recipeDetail" && selectedRecipe) {
+    if ((page === "recipeDetail" || page === "recipe") && selectedRecipe) {
       setIsGestureActive(true);
     } else {
       setIsGestureActive(false);
@@ -1458,7 +1458,11 @@ function App() {
   };
 
   gestureActionRef.current = (gesture) => {
-    if (gesture === "THUMBS_UP") handleMoveCookingStep(1);
+    if (gesture === "OPEN_HAND") {
+      if (page === "recipe") toggleRecipeInteractionListening();
+      else if (page === "recipeDetail") toggleListening();
+    }
+    else if (gesture === "THUMBS_UP") handleMoveCookingStep(1);
     else if (gesture === "FIST") handleMoveCookingStep(-1);
     else if (gesture === "PEACE") {
       const text = selectedRecipe?.steps[currentCookingStep]?.text;

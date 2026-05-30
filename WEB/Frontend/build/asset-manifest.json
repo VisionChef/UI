@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/static/css/main.4288d76b.css",
+    "main.js": "/static/js/main.2de428a1.js",
+    "static/media/로고.jpg": "/static/media/로고.ebe326654c7d0a4f54c2.jpg",
+    "index.html": "/index.html",
+    "main.4288d76b.css.map": "/static/css/main.4288d76b.css.map",
+    "main.2de428a1.js.map": "/static/js/main.2de428a1.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.4288d76b.css",
+    "static/js/main.2de428a1.js"
+  ]
+}

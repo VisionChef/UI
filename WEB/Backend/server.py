@@ -112,6 +112,8 @@ def detect_hand_gesture(image_bytes: bytes) -> str:
     for tip, pip, mcp in [(8, 6, 5), (12, 10, 9), (16, 14, 13), (20, 18, 17)]:
         fingers.append(1 if lm[tip].y < lm[pip].y and lm[tip].y < lm[mcp].y else 0)
     thumb_up = lm[4].y < lm[3].y and lm[4].y < lm[5].y
+    if fingers == [1, 1, 1, 1] and thumb_up:
+        return "OPEN_HAND"
     if fingers == [0, 0, 0, 0] and thumb_up:
         return "THUMBS_UP"
     if fingers[0] == 1 and fingers[1] == 1 and fingers[2] == 0 and fingers[3] == 0:
