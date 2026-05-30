@@ -2287,6 +2287,7 @@ select:focus {
 .recipe-interaction-messages {
   min-height: 0;
   max-height: none;
+  overflow-y: auto;
 }
 
 .recipe-composer-row {
@@ -3699,7 +3700,7 @@ select:focus {
 
   .recipe-interaction-screen {
     min-height: calc(100dvh - 88px);
-    grid-template-rows: minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-rows: 3fr 7fr;
     gap: 10px;
   }
 

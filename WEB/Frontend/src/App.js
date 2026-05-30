@@ -1010,8 +1010,17 @@ function App() {
     "recipeDetail",
   ].includes(page);
 
+  const stopTTS = () => {
+    if (ttsAudioRef.current) {
+      ttsAudioRef.current.pause();
+      if (ttsAudioRef.current._url) URL.revokeObjectURL(ttsAudioRef.current._url);
+      ttsAudioRef.current = null;
+    }
+  };
+
   const goPage = (nextPage) => {
     setHomeHelpOpen(false);
+    stopTTS();
     if (nextPage === "home") {
       setDetectedIngredients([]);
       setYoloIngredients(new Set());
@@ -1510,6 +1519,7 @@ function App() {
 
   gestureActionRef.current = (gesture) => {
     if (gesture === "OPEN_HAND") {
+      stopTTS();
       if (page === "recipe") toggleRecipeInteractionListening();
       else if (page === "recipeDetail") toggleListening();
     }
