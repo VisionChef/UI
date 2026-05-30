@@ -2360,6 +2360,7 @@ function App() {
 
               <div className="recipe-live-camera">
                 <Webcam
+                  ref={webcamGestureRef}
                   className="recipe-live-webcam"
                   audio={false}
                   mirrored={false}
