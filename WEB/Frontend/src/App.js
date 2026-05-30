@@ -1339,7 +1339,7 @@ function App() {
         ...prev,
         { id: Date.now() + 1, role: "assistant", text: answer, video },
       ]);
-      speakText(answer);
+      if (!video) speakText(answer);
     } catch {
       setRecipeInteractionMessages((prev) => [
         ...prev,
