@@ -357,8 +357,12 @@ function transformBackendRecipe(recipe, index) {
       : [];
 
   const stepsRaw = typeof recipe.steps === "string" ? recipe.steps : "";
-  const stepsList = stepsRaw
-    .split(/\n+/)
+  // 줄바꿈으로 먼저 나누고, 한 줄이면 "1. ... 2. ..." 형식으로 재분리
+  let rawLines = stepsRaw.split(/\n+/).filter(Boolean);
+  if (rawLines.length <= 1 && stepsRaw) {
+    rawLines = stepsRaw.split(/(?=\d+[.)]\s)/).filter(Boolean);
+  }
+  const stepsList = rawLines
     .map((s) => s.replace(/^\d+[\.\)]\s*/, "").trim())
     .filter(Boolean)
     .map((text) => ({ text, minutes: 0 }));
@@ -550,7 +554,7 @@ function SimpleTimer({ minutes = 1, setMinutes = () => {}, label = "타이머" }
 }
 
 function App() {
-  const [splashPhase, setSplashPhase] = useState('show');
+  const [splashPhase, setSplashPhase] = useState('done');
 
   useEffect(() => {
     const t1 = setTimeout(() => setSplashPhase('logo-exit'),     2200);
