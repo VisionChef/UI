@@ -804,7 +804,7 @@ async def update_vision(data: VisionData, background_tasks: BackgroundTasks):
     if action == "confirm":
         confirmed = ingredients or pending_ingredients
         pending_ingredients = []
-        return _handle_confirmed_ingredients(confirmed, background_tasks)
+        return await run_in_threadpool(_handle_confirmed_ingredients, confirmed, background_tasks)
 
     if action == "reject":
         current_ingredients = []
@@ -817,7 +817,7 @@ async def update_vision(data: VisionData, background_tasks: BackgroundTasks):
         return {"status": "rejected", "message": rejection_line}
 
     pending_ingredients = []
-    return _handle_confirmed_ingredients(ingredients, background_tasks)
+    return await run_in_threadpool(_handle_confirmed_ingredients, ingredients, background_tasks)
 
 
 @app.get("/youtube-preview")
