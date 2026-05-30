@@ -634,6 +634,7 @@ function App() {
   const inputGestureBusyRef = useRef(false);
   const fetchingImagesRef = useRef({});
   const recipeInteractionChatRef = useRef(null);
+  const generationIdRef = useRef(0);
   const inputGestureCooldownRef = useRef({});
   const handleGetRecipesRef = useRef(null);
   const currentIngredientsRef = useRef([]);
@@ -797,9 +798,11 @@ function App() {
           _visionIngKeyRef.current = key;
           setDetectedIngredients(ings);
           setIsRecipeLoading(true);
+          const genId = ++generationIdRef.current;
           goPage("recipeLoading");
           try {
             const r = await axios.post(`${API_BASE}/vision`, { ingredients: ings, action: "confirm" });
+            if (generationIdRef.current !== genId) return;
             const raw = r.data.recipes || [];
             if (raw.length > 0) {
               const transformed = raw.map(transformBackendRecipe);
@@ -807,6 +810,7 @@ function App() {
               transformed.forEach(recipe => fetchRecipeImage(recipe.name));
             }
           } catch {}
+          if (generationIdRef.current !== genId) return;
           setIsRecipeLoading(false);
           goPage("recognition");
         }
@@ -1019,6 +1023,8 @@ function App() {
       setChatMessages([]);
       setRecipeInteractionMessages([{ id: 1, role: "assistant", text: "추천받은 레시피나 재료에 대해 궁금한 점을 물어보세요." }]);
       setVideoRecommendation(null);
+      generationIdRef.current += 1;
+      _visionIngKeyRef.current = "";
       axios.post(`${API_BASE}/reset`).catch(() => {});
     }
     setPage(nextPage);
@@ -1257,12 +1263,14 @@ function App() {
     const ings = currentIngredientsRef.current;
     if (ings.length === 0) return;
     setIsRecipeLoading(true);
+    const genId = ++generationIdRef.current;
     goPage("recipeLoading");
     try {
       const res = await axios.post(`${API_BASE}/vision`, {
         ingredients: ings,
         action: "confirm",
       });
+      if (generationIdRef.current !== genId) return;
       const raw = res.data.recipes || [];
       if (raw.length > 0) {
         const transformed = raw.map(transformBackendRecipe);
@@ -1272,8 +1280,10 @@ function App() {
     } catch (err) {
       console.error("레시피 요청 실패:", err);
     } finally {
-      setIsRecipeLoading(false);
-      goPage("recognition");
+      if (generationIdRef.current === genId) {
+        setIsRecipeLoading(false);
+        goPage("recognition");
+      }
     }
   };
   handleGetRecipesRef.current = handleGetRecipes;
