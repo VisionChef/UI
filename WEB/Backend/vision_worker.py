@@ -37,7 +37,7 @@ LLM_BASE_URL = os.getenv("LLM_BASE_URL", f"http://127.0.0.1:{LLM_PORT}").rstrip(
 LLM_SERVER_URL = f"{LLM_BASE_URL}/vision"
 
 # 🧠 YOLO 모델 설정
-YOLO_MODEL_PATH = Path(os.getenv("YOLO_MODEL_PATH", str(MODULE_DIR / "best.pt")))
+YOLO_MODEL_PATH = Path(os.getenv("YOLO_MODEL_PATH", str(MODULE_DIR.parent.parent / "CV" / "model" / "best.pt")))
 
 # 📷 카메라 설정 (0: 기본 웹캠)
 CAMERA_INDEX = _env_int("VISION_CAMERA_INDEX", 0)

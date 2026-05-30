@@ -3,6 +3,7 @@ import re
 import sys
 import json
 import io
+import base64
 from getpass import getpass
 from pathlib import Path
 from contextlib import asynccontextmanager
@@ -22,24 +23,26 @@ MODULE_DIR = _THIS_FILE.parent                  # UI/WEB/Backend
 PROJECT_DIR = MODULE_DIR.parent                # UI/WEB
 VISIONCHEF_ROOT = PROJECT_DIR.parent           # UI
 
-DEFAULT_MODELS_DIR = VISIONCHEF_ROOT / "models"
-DEFAULT_LOCAL_MODEL_DIR = str(DEFAULT_MODELS_DIR / "skt_A.X-4.0-Light")
-DEFAULT_HF_HOME = str(DEFAULT_MODELS_DIR / "hf_cache")
+DEFAULT_HF_HOME = VISIONCHEF_ROOT / ".hf_cache"
+DEFAULT_HF_HUB_CACHE = DEFAULT_HF_HOME / "hub"
+DEFAULT_TRANSFORMERS_CACHE = DEFAULT_HF_HOME / "transformers"
+DEFAULT_LOCAL_MODEL_DIR = DEFAULT_HF_HOME / "skt_A.X-4.0-Light"
 
-Path(DEFAULT_HF_HOME).mkdir(parents=True, exist_ok=True)
-Path(DEFAULT_LOCAL_MODEL_DIR).parent.mkdir(parents=True, exist_ok=True)
+DEFAULT_HF_HOME.mkdir(parents=True, exist_ok=True)
+DEFAULT_HF_HUB_CACHE.mkdir(parents=True, exist_ok=True)
+DEFAULT_TRANSFORMERS_CACHE.mkdir(parents=True, exist_ok=True)
 
-os.environ.setdefault("HF_HOME", DEFAULT_HF_HOME)
-os.environ.setdefault("HUGGINGFACE_HUB_CACHE", str(Path(DEFAULT_HF_HOME) / "hub"))
-os.environ.setdefault("TRANSFORMERS_CACHE", str(Path(DEFAULT_HF_HOME) / "transformers"))
-os.environ.setdefault("HF_HUB_DISABLE_EXPERIMENTAL_XET", "1")
-os.environ.setdefault("HF_HUB_DISABLE_XET", "1")
+os.environ["HF_HOME"] = str(DEFAULT_HF_HOME)
+os.environ["HF_HUB_CACHE"] = str(DEFAULT_HF_HUB_CACHE)
+os.environ["HUGGINGFACE_HUB_CACHE"] = str(DEFAULT_HF_HUB_CACHE)
+os.environ["TRANSFORMERS_CACHE"] = str(DEFAULT_TRANSFORMERS_CACHE)
+os.environ["HF_HUB_DISABLE_EXPERIMENTAL_XET"] = "1"
+os.environ["HF_HUB_DISABLE_XET"] = "1"
 
-import base64
 from dotenv import load_dotenv
 load_dotenv(dotenv_path=Path(__file__).parent / ".env")
-from fastapi import FastAPI, BackgroundTasks, HTTPException, File, UploadFile, Query
 from openai import OpenAI as RunYourClient
+from fastapi import FastAPI, BackgroundTasks, HTTPException, File, UploadFile, Query
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse, StreamingResponse
 from fastapi.staticfiles import StaticFiles
@@ -258,6 +261,16 @@ def generate_llm_answer(prompt: str) -> str:
         set_generation_active(False)
         generation_lock.release()
 
+def has_hf_hub_cache(repo_id: str) -> bool:
+    """
+    예: skt/A.X-4.0-Light -> UI/.hf_cache/hub/models--skt--A.X-4.0-Light
+    """
+    if "/" not in repo_id:
+        return False
+
+    namespace, model_name = repo_id.split("/", 1)
+    cache_dir = DEFAULT_HF_HUB_CACHE / f"models--{namespace}--{model_name}"
+    return cache_dir.exists()
 
 def has_local_model(model_dir: str) -> bool:
     path = Path(model_dir)
@@ -285,23 +298,25 @@ def get_hf_token(required: bool) -> Optional[str]:
 
 
 def resolve_model_source() -> str:
-    local_model_dir = os.getenv("LLM_LOCAL_MODEL_DIR", LLM_LOCAL_MODEL_DIR)
+    local_model_dir = os.getenv("LLM_LOCAL_MODEL_DIR", str(DEFAULT_LOCAL_MODEL_DIR))
+
+    # 1. 직접 풀린 로컬 모델 폴더가 있으면 그걸 사용
     if has_local_model(local_model_dir):
         print(f"📦 로컬 A.X 모델 사용: {local_model_dir}")
         get_hf_token(required=False)
         return local_model_dir
 
+    # 2. HuggingFace hub 캐시가 있으면 repo_id로 불러오되, 캐시 폴더를 사용
+    if has_hf_hub_cache(LLM_MODEL_ID):
+        print(f"📦 HuggingFace 캐시 모델 사용: {DEFAULT_HF_HUB_CACHE}")
+        get_hf_token(required=False)
+        return LLM_MODEL_ID
+
+    # 3. 둘 다 없으면 다운로드 필요
     print(f"📦 로컬 모델 없음: {local_model_dir}")
-    print(f"⬇️ Hugging Face에서 {LLM_MODEL_ID} 다운로드를 시작합니다.")
-    token = get_hf_token(required=True)
-    Path(local_model_dir).mkdir(parents=True, exist_ok=True)
-    snapshot_download(
-        repo_id=LLM_MODEL_ID,
-        local_dir=local_model_dir,
-        token=token,
-    )
-    print(f"✅ 모델 다운로드 완료: {local_model_dir}")
-    return local_model_dir
+    print(f"⬇️ Hugging Face 캐시에 {LLM_MODEL_ID} 다운로드를 시작합니다.")
+    get_hf_token(required=True)
+    return LLM_MODEL_ID
 
 
 def build_quantization_config():
@@ -331,14 +346,24 @@ def load_llm_pipeline(model_source: str):
     quantization_config = build_quantization_config()
     torch_dtype = torch.float16 if torch.cuda.is_available() else torch.float32
 
+    # 모델 소스가 repo_id이면 HF hub 캐시를 사용
+    use_hf_repo_id = "/" in model_source
+
     tokenizer = AutoTokenizer.from_pretrained(
         model_source,
         trust_remote_code=True,
+        cache_dir=str(DEFAULT_HF_HUB_CACHE) if use_hf_repo_id else None,
+        token=os.getenv("HF_TOKEN") or os.getenv("HUGGINGFACE_HUB_TOKEN"),
     )
+
     model_kwargs = {
         "device_map": "auto",
         "trust_remote_code": True,
     }
+
+    if use_hf_repo_id:
+        model_kwargs["cache_dir"] = str(DEFAULT_HF_HUB_CACHE)
+        model_kwargs["token"] = os.getenv("HF_TOKEN") or os.getenv("HUGGINGFACE_HUB_TOKEN")
 
     if quantization_config is not None:
         model_kwargs["quantization_config"] = quantization_config
@@ -425,7 +450,8 @@ chat_history = []
 cached_rag_matches = []
 community_posts: list[dict] = []
 yolo_model = None
-YOLO_MODEL_PATH = Path(os.getenv("YOLO_MODEL_PATH", str(VISIONCHEF_ROOT / "CV" / "best.pt")))
+YOLO_MODEL_PATH = Path(os.getenv("YOLO_MODEL_PATH", str(VISIONCHEF_ROOT / "CV" / "model" / "best.pt")))
+FRONTEND_BUILD_DIR = PROJECT_DIR / "Frontend" / "build"
 
 # 레퍼런스 이미지 캐시 (서버 시작 시 1회 로드)
 _ref_image_contents: list[dict] = []
@@ -438,7 +464,6 @@ for _p, _m in [
             _b64 = base64.b64encode(_f.read()).decode()
         _ref_image_contents.append({"inline_data": {"mime_type": _m, "data": _b64}})
 print(f"✅ 레퍼런스 이미지 {len(_ref_image_contents)}장 캐시 완료")
-FRONTEND_BUILD_DIR = PROJECT_DIR / "Frontend" / "build"
 
 
 @app.get("/health")
@@ -1102,13 +1127,12 @@ async def generate_recipe_image(recipe: str = Query(...)):
         raise HTTPException(status_code=503, detail="GEMINI_API_KEY가 설정되지 않았습니다.")
 
     g_client = _genai.Client(api_key=gemini_api_key)
-
-    contents = list(_ref_image_contents) + [{"text": (
-        f"위 사진의 느낌으로 {recipe} 요리 사진을 만들어줘. "
-        "다음 조건을 반드시 지켜줘: "
-        "1. 음식은 프레임 정중앙에 배치하고 전체 화면의 60~70%를 차지하게 해줘. "
-        "2. 촬영 각도는 위에서 약 45도 내려다보는 앵글로 통일해줘. "
-        "3. 음식 사진만 나와야 하고 텍스트나 사람은 없어야 해."
+    contents = [{"text": (
+        f"A highly realistic, crisp corporate food photography of {recipe}. "
+        "Consistent composition: always shot from a 45-degree overhead angle, food perfectly centered and filling 65% of the frame. "
+        "High-end DSLR camera with a 50mm lens, f/2.8, showcasing vivid textures and natural glossy sheen of the food. "
+        "Natural studio softbox lighting, clean micro-details, warm color temperature, subtle depth of field with a softly blurred neutral background. "
+        "Every image must use the exact same framing, angle, and lighting style. No text, no people, no hands, no props."
     )}]
 
     try:

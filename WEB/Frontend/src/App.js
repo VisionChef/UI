@@ -4,7 +4,9 @@ import Webcam from "react-webcam";
 import "./App.css";
 import logoImg from "./로고.jpg";
 
-const API_BASE = process.env.REACT_APP_API_URL ?? "http://localhost:8000";
+const API_BASE = process.env.REACT_APP_API_URL ?? "";
+const topSlideImage = "/top-slide.png";
+const bottomSlideImage = "/bottom-slide.png";
 
 const tasteOptions = [
   "매운맛",
@@ -122,6 +124,18 @@ const recipeImageQueries = [
   "spicy-rice-bowl",
   "egg-rice-bowl",
   "shrimp-garlic-pasta",
+];
+
+const homeFoodSlides = [
+  { image: topSlideImage },
+  { image: topSlideImage },
+  { image: topSlideImage },
+];
+
+const homeBrandSlides = [
+  { image: bottomSlideImage },
+  { image: bottomSlideImage },
+  { image: bottomSlideImage },
 ];
 
 const globalIngredientList = [
@@ -469,13 +483,81 @@ function TimerBox({ minutes, label }) {
   );
 }
 
+function SimpleTimer({ minutes = 1, setMinutes = () => {}, label = "타이머" }) {
+  const [inputMinutes, setInputMinutesLocal] = useState(minutes);
+  const initialSeconds = Math.max(0, Number(inputMinutes) || 0) * 60;
+  const [seconds, setSeconds] = useState(initialSeconds);
+  const [running, setRunning] = useState(false);
+
+  useEffect(() => {
+    if (!running || seconds <= 0) return;
+    const timer = setInterval(() => setSeconds((prev) => prev - 1), 1000);
+    return () => clearInterval(timer);
+  }, [running, seconds]);
+
+  useEffect(() => {
+    setSeconds(initialSeconds);
+    setRunning(false);
+  }, [initialSeconds]);
+
+  const mm = String(Math.floor(seconds / 60)).padStart(2, "0");
+  const ss = String(seconds % 60).padStart(2, "0");
+
+  return (
+    <div className="timer-box">
+      <div>
+        <p className="timer-label">{label}</p>
+        <h4>
+          {mm}:{ss}
+        </h4>
+      </div>
+
+      <div style={{display: 'flex', flexDirection: 'column', gap: 8}}>
+        <div style={{display: 'flex', gap: 8}}>
+          <input
+            type="number"
+            min={0}
+            value={inputMinutes}
+            onChange={(e) => setInputMinutesLocal(Number(e.target.value))}
+            style={{width: 72, padding: 6, borderRadius: 8, border: '1px solid #ddd'}}
+          />
+          <button
+            onClick={() => {
+              setMinutes(Number(inputMinutes) || 0);
+              setSeconds((Number(inputMinutes) || 0) * 60);
+            }}
+            className="toolbar-btn"
+          >
+            설정
+          </button>
+        </div>
+
+        <div className="timer-actions">
+          <button onClick={() => setRunning(true)}>시작</button>
+          <button onClick={() => setRunning(false)}>일시정지</button>
+          <button
+            onClick={() => {
+              setRunning(false);
+              setSeconds((Number(inputMinutes) || 0) * 60);
+            }}
+          >
+            초기화
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function App() {
   const [splashPhase, setSplashPhase] = useState('show');
 
   useEffect(() => {
-    const t1 = setTimeout(() => setSplashPhase('screen-exit'),   2200);
-    const t2 = setTimeout(() => setSplashPhase('done'),          2800);
-    return () => [t1, t2].forEach(clearTimeout);
+    const t1 = setTimeout(() => setSplashPhase('logo-exit'),     2200);
+    const t2 = setTimeout(() => setSplashPhase('loading'),       2600);
+    const t3 = setTimeout(() => setSplashPhase('screen-exit'),   4600);
+    const t4 = setTimeout(() => setSplashPhase('done'),          5100);
+    return () => [t1, t2, t3, t4].forEach(clearTimeout);
   }, []);
 
   const [selectedTastes, setSelectedTastes] = useState([]);
@@ -526,11 +608,36 @@ function App() {
     },
   ]);
   const [currentCookingStep, setCurrentCookingStep] = useState(0);
+  const [showFavoritePrompt, setShowFavoritePrompt] = useState(false);
 
   const [homeHelpOpen, setHomeHelpOpen] = useState(false);
 
   const [backendRecipes, setBackendRecipes] = useState([]);
   const [recipeImages, setRecipeImages] = useState({});
+  const [isRecipeLoading, setIsRecipeLoading] = useState(false);
+  const [isChatLoading, setIsChatLoading] = useState(false);
+  const [isRecipeInteractionLoading, setIsRecipeInteractionLoading] = useState(false);
+
+  const [videoRecommendation, setVideoRecommendation] = useState(null);
+  const [isTTSEnabled, setIsTTSEnabled] = useState(false);
+  const [showTimer, setShowTimer] = useState(false);
+  const [timerMinutes, setTimerMinutes] = useState(2);
+  const [isListening, setIsListening] = useState(false);
+  const [isGestureActive, setIsGestureActive] = useState(false);
+  const [currentGesture, setCurrentGesture] = useState(null);
+  const [inputGestureLabel, setInputGestureLabel] = useState("대기중");
+  const [inputCountdown, setInputCountdown] = useState(null);
+
+  const webcamGestureRef = useRef(null);
+  const inputCameraRef = useRef(null);
+  const gestureActionRef = useRef(null);
+  const inputGestureBusyRef = useRef(false);
+  const inputGestureCooldownRef = useRef({});
+  const handleGetRecipesRef = useRef(null);
+  const currentIngredientsRef = useRef([]);
+  const gestureCooldownRef = useRef({});
+  const gestureBusyRef = useRef(false);
+  const cameraDetectBusyRef = useRef(false);
 
   const fetchRecipeImage = async (recipeName) => {
     if (recipeImages[recipeName]) return;
@@ -541,28 +648,6 @@ function App() {
       }
     } catch {}
   };
-  const [isRecipeLoading, setIsRecipeLoading] = useState(false);
-  const [isChatLoading, setIsChatLoading] = useState(false);
-  const [isRecipeInteractionLoading, setIsRecipeInteractionLoading] = useState(false);
-
-  const [videoRecommendation, setVideoRecommendation] = useState(null);
-  const [isTTSEnabled, setIsTTSEnabled] = useState(false);
-  const [isListening, setIsListening] = useState(false);
-  const [isGestureActive, setIsGestureActive] = useState(false);
-  const [currentGesture, setCurrentGesture] = useState(null);
-
-  const webcamGestureRef = useRef(null);
-  const inputCameraRef = useRef(null);
-  const gestureActionRef = useRef(null);
-  const inputGestureBusyRef = useRef(false);
-  const inputGestureCooldownRef = useRef({});
-  const handleGetRecipesRef = useRef(null);
-  const currentIngredientsRef = useRef([]);
-  const [inputGestureLabel, setInputGestureLabel] = useState("대기중");
-  const [inputCountdown, setInputCountdown] = useState(null);
-  const gestureCooldownRef = useRef({});
-  const gestureBusyRef = useRef(false);
-  const cameraDetectBusyRef = useRef(false);
   const speechRecRef = useRef(null);
   const ttsAudioRef = useRef(null);
 
@@ -595,6 +680,7 @@ function App() {
     }
   }, [page, selectedRecipe]);
 
+  // recognition 페이지 진입 시 이미지 로드
   useEffect(() => {
     if (page === "recognition") {
       const recipes = backendRecipes.length > 0 ? backendRecipes : recommendedRecipes;
@@ -602,45 +688,35 @@ function App() {
     }
   }, [page, backendRecipes]);
 
-  // inputChoice 페이지 제스처 폴링 (SE 프로젝트 pollGestureMain 참고)
+  // inputChoice 제스처 폴링
   useEffect(() => {
     if (page !== "inputChoice") return;
     inputGestureBusyRef.current = false;
     inputGestureCooldownRef.current = {};
     const canvas = document.createElement("canvas");
     let timeoutId;
-
     const gestureIcons = { THUMBS_UP: "👍 확정", PEACE: "✌️ 인식중", FIST: "✊ 초기화", OPEN_HAND: "🖐 대기중", NONE: "대기중" };
-
     const canTrigger = (name) => {
       const now = Date.now();
       if ((now - (inputGestureCooldownRef.current[name] || 0)) < 2500) return false;
       inputGestureCooldownRef.current[name] = now;
       return true;
     };
-
     const startCountdown = (cb) => {
       let count = 3;
       setInputCountdown(count);
       const timer = setInterval(() => {
         count--;
-        if (count <= 0) {
-          clearInterval(timer);
-          setInputCountdown(null);
-          cb();
-        } else {
-          setInputCountdown(count);
-        }
+        if (count <= 0) { clearInterval(timer); setInputCountdown(null); cb(); }
+        else setInputCountdown(count);
       }, 1000);
     };
-
     const poll = async () => {
       const video = inputCameraRef.current?.video;
-      if (!inputGestureBusyRef.current && video?.readyState === 4 && video.videoWidth > 0) {
+      if (!inputGestureBusyRef.current && video && video.readyState >= 2 && video.srcObject) {
         inputGestureBusyRef.current = true;
         try {
-          canvas.width = 320;
-          canvas.height = 240;
+          canvas.width = 320; canvas.height = 240;
           canvas.getContext("2d").drawImage(video, 0, 0, 320, 240);
           const blob = await new Promise(r => canvas.toBlob(r, "image/jpeg", 0.5));
           const form = new FormData();
@@ -660,8 +736,7 @@ function App() {
               c.getContext("2d").drawImage(v, 0, 0, 640, 480);
               c.toBlob(async (b) => {
                 if (!b) return;
-                const fd = new FormData();
-                fd.append("file", b, "snap.jpg");
+                const fd = new FormData(); fd.append("file", b, "snap.jpg");
                 try {
                   const r = await fetch(`${API_BASE}/detect`, { method: "POST", body: fd });
                   const d = await r.json();
@@ -679,12 +754,11 @@ function App() {
       }
       timeoutId = setTimeout(poll, 400);
     };
-
     timeoutId = setTimeout(poll, 400);
     return () => { clearTimeout(timeoutId); setInputGestureLabel("대기중"); setInputCountdown(null); };
   }, [page]);
 
-  // 레시피 이미지 로딩 대기 후 recognition 페이지로 전환
+  // recipeLoading 페이지: 이미지 완료 시 recognition으로 이동 (최대 30초 대기)
   useEffect(() => {
     if (page !== "recipeLoading") return;
     const recipes = backendRecipes.length > 0 ? backendRecipes : [];
@@ -692,20 +766,17 @@ function App() {
     const check = setInterval(() => {
       const loaded = recipes.filter(r => recipeImages[r.name]).length;
       if (recipes.length > 0 && loaded >= recipes.length) {
-        clearTimeout(maxWait);
-        clearInterval(check);
-        goPage("recognition");
+        clearTimeout(maxWait); clearInterval(check); goPage("recognition");
       }
     }, 500);
     return () => { clearTimeout(maxWait); clearInterval(check); };
   }, [page, backendRecipes, recipeImages]);
 
-  // vision_worker.py 폴링: confirm 신호 감지 시 자동으로 재료/레시피 로드
+  // vision_worker.py 폴링
   const _visionIngKeyRef = useRef("");
   useEffect(() => {
     const earlyPages = ["home", "userInfo", "inputChoice"];
     if (!earlyPages.includes(page)) return;
-
     const interval = setInterval(async () => {
       try {
         const res = await axios.get(`${API_BASE}/health`);
@@ -730,14 +801,13 @@ function App() {
         }
       } catch {}
     }, 2500);
-
     return () => clearInterval(interval);
   }, [page]);
 
   useEffect(() => {
-    // SE 프로젝트 흐름: YOLO는 ✌️ PEACE 제스처로만 실행 (자동 폴링 비활성화)
+    // YOLO 자동 폴링 비활성화 (SE 흐름: PEACE 제스처로만 실행)
     if (page !== "inputChoice") return;
-    return; // 자동 폴링 중단
+    return;
 
     const canvas = document.createElement("canvas");
     let timeoutId;
@@ -954,6 +1024,13 @@ function App() {
     }, 0);
   };
 
+  const handleCameraDone = () => {
+    try {
+      console.log("[UI] camera done clicked");
+    } catch {}
+    goPage("confirmFavorite");
+  };
+
   const toggleItem = (item, list, setList) => {
     if (list.includes(item)) {
       setList(list.filter((x) => x !== item));
@@ -1140,29 +1217,52 @@ function App() {
     setTodayMenu(next);
   };
 
+  const isCompletionPhrase = (text) => {
+    const normalized = text
+      .toLowerCase()
+      .replace(/\s+/g, "")
+      .replace(/\./g, "");
+    const completionWords = [
+      "완료",
+      "완성",
+      "다했어",
+      "다 했어",
+      "종료",
+      "그만",
+      "끝",
+      "끝났어",
+      "끝냈어",
+      "finish",
+      "done",
+      "complete",
+      "finished",
+    ];
+    return completionWords.some((word) => normalized.includes(word));
+  };
+
   const handleGetRecipes = async () => {
     const ings = currentIngredientsRef.current;
     if (ings.length === 0) return;
     setIsRecipeLoading(true);
+    goPage("recipeLoading");
     try {
       const res = await axios.post(`${API_BASE}/vision`, {
-        ingredients: currentIngredientsRef.current,
+        ingredients: ings,
         action: "confirm",
       });
       const raw = res.data.recipes || [];
       if (raw.length > 0) {
         const transformed = raw.map(transformBackendRecipe);
         setBackendRecipes(transformed);
-        transformed.forEach(r => fetchRecipeImage(r.name));
+        await Promise.all(transformed.map(r => fetchRecipeImage(r.name)));
       }
     } catch (err) {
       console.error("레시피 요청 실패:", err);
     } finally {
       setIsRecipeLoading(false);
-      goPage("recipeLoading");
+      goPage("recognition");
     }
   };
-
   handleGetRecipesRef.current = handleGetRecipes;
 
   const handleSendRecipeInteractionChat = async (presetQuestion = "") => {
@@ -1299,6 +1399,20 @@ function App() {
       { id: Date.now(), role: "user", text: question },
     ]);
     setChatInput("");
+
+    if (isCompletionPhrase(question)) {
+      setShowFavoritePrompt(true);
+      setChatMessages((prev) => [
+        ...prev,
+        {
+          id: Date.now() + 1,
+          role: "assistant",
+          text: "요리를 마치셨나요? 완료 후에 이 레시피를 즐겨찾기에 추가할 수 있어요.",
+        },
+      ]);
+      return;
+    }
+
     setIsChatLoading(true);
 
     try {
@@ -1366,6 +1480,8 @@ function App() {
             <div className="splash-bar"><div className="splash-bar-fill" /></div>
           </div>
         )}
+
+        
         {(splashPhase === 'loading' || splashPhase === 'screen-exit') && (
           <div className="loading-content">
             <div className="loading-orbit">
@@ -1388,25 +1504,39 @@ function App() {
 
         {page === "home" && (
           <section className="hero-section home-only-hero">
-            <div className="logo-mark">BW</div>
-            <p className="sub-title">BLACK & WHITE CHEF AI</p>
-            <h1>
-              검은 입력에서 시작,
-              <br />
-              하얀 접시 위 완성
-            </h1>
-            <p className="hero-desc">
-              사진, 카메라, 텍스트 입력으로 재료를 등록하면 AI가 선호도와
-              알레르기를 고려해 레시피를 추천합니다.
-            </p>
+            <div className="hero-marquee-top">
+              <div className="marquee-track marquee-track-right">
+                {homeFoodSlides.concat(homeFoodSlides).map((slide, index) => (
+                  <div
+                    className="marquee-item"
+                    key={`${slide.title}-${index}`}
+                    style={{ backgroundImage: `url(${slide.image})` }}
+                  />
+                ))}
+              </div>
+            </div>
 
-            <div className="hero-buttons hero-main-button-only">
-              <button
-                className="primary-btn hero-start-btn"
-                onClick={() => goPage("userInfo")}
-              >
-                AI 레시피 추천 시작
-              </button>
+            <div className="hero-copy hero-copy-centered">
+              <div className="hero-buttons hero-main-button-only">
+                <button
+                  className="primary-btn hero-start-btn"
+                  onClick={() => goPage("userInfo")}
+                >
+                  AI 레시피 추천 시작
+                </button>
+              </div>
+            </div>
+
+            <div className="hero-marquee-bottom">
+              <div className="brand-marquee-track marquee-track-right slow">
+                {homeBrandSlides.concat(homeBrandSlides).map((item, index) => (
+                  <div
+                    className="brand-marquee-item"
+                    key={`${item.label}-${index}`}
+                    style={{ backgroundImage: `url(${item.image})` }}
+                  />
+                ))}
+              </div>
             </div>
 
             <div
@@ -1466,11 +1596,8 @@ function App() {
                         type="checkbox"
                         checked={checkedBasicIngredients.includes(item)}
                         onChange={(e) => {
-                          if (e.target.checked) {
-                            setCheckedBasicIngredients(prev => [...prev, item]);
-                          } else {
-                            setCheckedBasicIngredients(prev => prev.filter(i => i !== item));
-                          }
+                          if (e.target.checked) setCheckedBasicIngredients(prev => [...prev, item]);
+                          else setCheckedBasicIngredients(prev => prev.filter(i => i !== item));
                         }}
                       /> {item}
                     </label>
@@ -1962,7 +2089,7 @@ function App() {
                     {recipeImages[recipe.name] ? (
                       <img src={recipeImages[recipe.name]} alt={recipe.name} loading="lazy" />
                     ) : (
-                      <div className="recipe-card-img-placeholder">🍽️</div>
+                      <img src={getRecipeImageUrl(recipe, index)} alt={recipe.name} loading="lazy" />
                     )}
                   </div>
                   <div className="recipe-rank">TOP {index + 1}</div>
@@ -1982,12 +2109,6 @@ function App() {
                       onClick={() => handleStartRecipeInteraction(recipe)}
                     >
                       레시피로 요리하기
-                    </button>
-                    <button
-                      className="recipe-favorite-btn"
-                      onClick={() => addToFavorites(recipe)}
-                    >
-                      즐겨찾기
                     </button>
                   </div>
                 </div>
@@ -2123,6 +2244,48 @@ function App() {
           </section>
         )}
 
+        {page === "confirmFavorite" && (
+          <section className="confirm-fav-page glass-card readable-card">
+            <div className="recognition-header">
+              <div>
+                <p className="sub-title">CONFIRM</p>
+                <h2>요리 완료</h2>
+                <p>
+                  {selectedRecipe
+                    ? `${selectedRecipe.name}을(를) 즐겨찾기에 추가할까요?`
+                    : `현재 보고 계신 내용을 즐겨찾기에 추가할까요?`}
+                </p>
+              </div>
+            </div>
+
+            <div className="confirm-fav-actions">
+              <button
+                className="primary-btn"
+                onClick={() => {
+                  if (selectedRecipe) addToFavorites(selectedRecipe);
+                  goPage("home");
+                }}
+              >
+                YES
+              </button>
+
+              <button
+                className="outline-btn"
+                onClick={() => goPage("home")}
+              >
+                NO
+              </button>
+
+              <button
+                className="outline-btn"
+                onClick={() => goPage("home")}
+              >
+                홈으로 가기
+              </button>
+            </div>
+          </section>
+        )}
+
         {page === "today" && (
           <section className="today-page recipe-page-bright">
             <div className="recent-page-header">
@@ -2207,48 +2370,52 @@ function App() {
                     ))}
                   </div>
                 </div>
+                  <button
+                    className="camera-done-btn"
+                    onClick={handleCameraDone}
+                    title="완료"
+                    aria-label="카메라 완료"
+                  >
+                    완료
+                  </button>
               </div>
 
               <div className="recipe-ai-chat-panel">
-                <div className="recipe-ai-chat-head">
-                  <div>
-                    <p className="sub-title">AI COOKING CHAT</p>
-                    <h2>AI 상호작용</h2>
-                  </div>
-                  <button
-                    className={`toolbar-btn${isTTSEnabled ? " active" : ""}`}
-                    onClick={() => setIsTTSEnabled((prev) => !prev)}
-                  >
-                    TTS
-                  </button>
-                </div>
-
-                <div className="interaction-step-card">
-                  <div className="interaction-step-top">
+                  <div className="recipe-ai-chat-head">
                     <div>
-                      <p>현재 조리 단계</p>
-                      <h3>
-                        STEP {currentCookingStep + 1} / {activeInteractionRecipe.steps.length}
-                      </h3>
+                      <p className="sub-title">AI COOKING CHAT</p>
+                      <h2>AI 상호작용</h2>
                     </div>
-                    <div className="interaction-step-buttons">
-                      <button onClick={() => handleMoveCookingStep(-1)}>이전</button>
-                      <button onClick={() => handleMoveCookingStep(1)}>다음</button>
+
+                    <div style={{display: 'flex', gap: 8, alignItems: 'center'}}>
+                      <button
+                        className={`toolbar-btn${isTTSEnabled ? " active" : ""}`}
+                        onClick={() => setIsTTSEnabled((prev) => !prev)}
+                        title={isTTSEnabled ? "음성 출력 끄기" : "음성 출력 켜기"}
+                        aria-label={isTTSEnabled ? "음성 출력 켜짐" : "음성 출력 꺼짐"}
+                      >
+                        {isTTSEnabled ? "🔊" : "🔇"}
+                      </button>
+
+                      <button
+                        className={`toolbar-btn${showTimer ? " active" : ""}`}
+                        onClick={() => setShowTimer((v) => !v)}
+                        title="타이머 열기"
+                      >
+                        타이머
+                      </button>
                     </div>
                   </div>
 
-                  <p className="interaction-step-text">
-                    {activeInteractionRecipe.steps[currentCookingStep]?.text}
-                  </p>
-
-                  {activeInteractionRecipe.steps[currentCookingStep]?.minutes > 0 && (
-                    <TimerBox
-                      key={`${activeInteractionRecipe.name}-${currentCookingStep}`}
-                      minutes={activeInteractionRecipe.steps[currentCookingStep].minutes}
-                      label={`${activeInteractionRecipe.steps[currentCookingStep].minutes}분 타이머`}
+                {showTimer && (
+                  <div style={{marginTop: 10}}>
+                    <SimpleTimer
+                      minutes={timerMinutes}
+                      setMinutes={(m) => setTimerMinutes(m)}
+                      label={timerMinutes > 0 ? `${timerMinutes}분 타이머` : "타이머"}
                     />
-                  )}
-                </div>
+                  </div>
+                )}
 
                 <div className="chat-message-list recipe-interaction-messages">
                   {recipeInteractionMessages.map((message) => (
@@ -2325,19 +2492,7 @@ function App() {
               <div className="recipe-summary-list">
                 {(backendRecipes.length > 0 ? backendRecipes : recommendedRecipes).map((recipe) => (
                   <div className="recipe-summary-item" key={recipe.id}>
-                    <div className="recipe-rank-col">
-                      <div className="recipe-rank">TOP {recipe.id}</div>
-                      {recipeImages[recipe.name] && (
-                        <img
-                          src={recipeImages[recipe.name]}
-                          alt={recipe.name}
-                          className="recipe-card-img"
-                        />
-                      )}
-                      {!recipeImages[recipe.name] && (
-                        <div className="recipe-card-img-placeholder">🍽️</div>
-                      )}
-                    </div>
+                    <div className="recipe-rank">TOP {recipe.id}</div>
 
                     <div className="recipe-main-info">
                       <h3>{recipe.name}</h3>
@@ -2366,12 +2521,6 @@ function App() {
                           onClick={() => handleSelectRecipe(recipe)}
                         >
                           이 레시피로 요리하기
-                        </button>
-                        <button
-                          className="recipe-favorite-btn"
-                          onClick={() => addToFavorites(recipe)}
-                        >
-                          즐겨찾기
                         </button>
                       </div>
                     </div>
@@ -2599,6 +2748,17 @@ function App() {
             <div className="cooking-guide-actions">
               <button className="outline-btn" onClick={() => goPage("recipe")}>
                 다른 레시피 보기
+              </button>
+              <button
+                className="outline-btn"
+                onClick={() => {
+                  if (selectedRecipe) {
+                    addToFavorites(selectedRecipe);
+                  }
+                  goPage("home");
+                }}
+              >
+                완료 후 즐겨찾기
               </button>
               <button className="primary-btn" onClick={() => goPage("home")}>
                 요리 완료
@@ -3036,6 +3196,50 @@ function App() {
           <span className="nav-label">가이드</span>
         </button>
       </nav>
+
+      {showFavoritePrompt && (
+        <div className="recognized-modal-overlay">
+          <div className="recognized-modal">
+            <div className="modal-header">
+              <h3>요리 완료 확인</h3>
+              <button
+                className="close-btn"
+                onClick={() => setShowFavoritePrompt(false)}
+                aria-label="닫기"
+              >
+                ×
+              </button>
+            </div>
+            <div className="modal-content">
+              <p>요리를 완료하셨나요? 완료 후 이 레시피를 즐겨찾기에 추가할 수 있습니다.</p>
+              <p>원하시면 바로 즐겨찾기에 저장하거나, 저장 없이 종료할 수 있어요.</p>
+            </div>
+            <div className="modal-actions">
+              <button
+                className="outline-btn"
+                onClick={() => {
+                  setShowFavoritePrompt(false);
+                  goPage("home");
+                }}
+              >
+                완료만 하기
+              </button>
+              <button
+                className="primary-btn"
+                onClick={() => {
+                  if (selectedRecipe) {
+                    addToFavorites(selectedRecipe);
+                  }
+                  setShowFavoritePrompt(false);
+                  goPage("home");
+                }}
+              >
+                즐겨찾기 추가
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
       {isListening && (
         <div className="listening-overlay">
