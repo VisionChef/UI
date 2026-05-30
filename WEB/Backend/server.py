@@ -531,6 +531,9 @@ class VisionData(BaseModel):
 class STTData(BaseModel):
     user_text: str
     ingredients: list[str] = Field(default_factory=list)
+    current_step: int = 0
+    total_steps: int = 0
+    recipe_name: str = ""
 
 
 class CommunityPostData(BaseModel):
@@ -954,10 +957,19 @@ async def ask_chef(data: STTData, background_tasks: BackgroundTasks):
             "사람 셰프처럼 자연스럽게 지금 필요한 조리 포인트 한 단계만 설명하고 '아래 영상도 같이 확인해보세요'라고 말하세요."
         )
 
+    step_context = ""
+    if data.current_step > 0 and data.total_steps > 0:
+        step_context = (
+            f"\n현재 조리 중인 레시피: {data.recipe_name}."
+            f" 지금은 {data.current_step}/{data.total_steps} 단계입니다."
+            f" 반드시 현재 단계에 대한 안내만 하고, 사용자가 완료 신호를 줄 때까지 다음 단계로 넘어가지 마세요."
+        )
+
     prompt = (
         f"<|im_start|>system\n{prompt_template}\n"
         f"현재 사용 가능한 재료: {ing_str}\n"
         "위 재료 목록에 없는 식재료는 추천하거나 조리 단계에 넣지 마세요."
+        f"{step_context}"
         f"{youtube_instruction}<|im_end|>\n"
     )
     

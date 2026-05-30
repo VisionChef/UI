@@ -2184,6 +2184,7 @@ select:focus {
 
 .recipe-ai-chat-panel {
   min-height: 0;
+  overflow: hidden;
   display: grid;
   grid-template-rows: auto auto minmax(0, 1fr) auto auto;
   gap: 14px;

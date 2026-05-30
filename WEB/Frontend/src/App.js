@@ -681,8 +681,9 @@ function App() {
   }, []);
 
   useEffect(() => {
-    if (recipeInteractionChatRef.current) {
-      recipeInteractionChatRef.current.scrollTop = recipeInteractionChatRef.current.scrollHeight;
+    const el = recipeInteractionChatRef.current;
+    if (el) {
+      setTimeout(() => { el.scrollTop = el.scrollHeight; }, 50);
     }
   }, [recipeInteractionMessages]);
 
@@ -1340,6 +1341,9 @@ function App() {
       const res = await axios.post(`${API_BASE}/ask`, {
         user_text: question,
         ingredients: currentIngredientClasses,
+        current_step: currentCookingStep + 1,
+        total_steps: selectedRecipe?.steps?.length || 0,
+        recipe_name: selectedRecipe?.name || "",
       });
       const rawAnswer = res.data.answer || "응답을 받지 못했습니다.";
       const answer = stripMarkdown(rawAnswer);
@@ -2463,7 +2467,7 @@ function App() {
                       {message.video?.embed_url ? (
                         <div className="chat-video-card">
                           <iframe
-                            src={message.video.embed_url}
+                            src={`${message.video.embed_url}?autoplay=1`}
                             title={message.video.title || "YouTube 영상"}
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                             allowFullScreen
