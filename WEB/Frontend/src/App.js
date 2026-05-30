@@ -638,6 +638,7 @@ function App() {
   const inputGestureBusyRef = useRef(false);
   const fetchingImagesRef = useRef({});
   const recipeInteractionChatRef = useRef(null);
+  const chatBottomRef = useRef(null);
   const generationIdRef = useRef(0);
   const inputGestureCooldownRef = useRef({});
   const handleGetRecipesRef = useRef(null);
@@ -685,10 +686,9 @@ function App() {
   }, []);
 
   useEffect(() => {
-    const el = recipeInteractionChatRef.current;
-    if (el) {
-      setTimeout(() => { el.scrollTop = el.scrollHeight; }, 50);
-    }
+    setTimeout(() => {
+      chatBottomRef.current?.scrollIntoView({ behavior: 'smooth', block: 'end' });
+    }, 50);
   }, [recipeInteractionMessages]);
 
   useEffect(() => {
@@ -1557,16 +1557,7 @@ function App() {
         
         {(splashPhase === 'loading' || splashPhase === 'screen-exit') && (
           <div className="loading-content">
-            <div className="loading-orbit">
-              <div className="loading-emoji e1">🥕</div>
-              <div className="loading-emoji e2">🧅</div>
-              <div className="loading-emoji e3">🥩</div>
-              <div className="loading-emoji e4">🌶️</div>
-              <div className="loading-emoji e5">🧄</div>
-              <div className="loading-emoji e6">🍅</div>
-              <div className="loading-emoji e7">🥦</div>
-            </div>
-            <div className="loading-text">지글지글... 맛있는 앱 로딩 중 🍲</div>
+            <div className="loading-text">로딩 중...</div>
           </div>
         )}
       </div>
@@ -1935,17 +1926,9 @@ function App() {
         {page === "recipeLoading" && (
           <section className="recognizing-page">
             <div className="recognizing-overlay-card">
-              <div className="loading-orbit" style={{marginBottom: '28px'}}>
-                <div className="loading-emoji e1">🥕</div>
-                <div className="loading-emoji e2">🧅</div>
-                <div className="loading-emoji e3">🥩</div>
-                <div className="loading-emoji e4">🫑</div>
-                <div className="loading-emoji e5">🧄</div>
-                <div className="loading-emoji e6">🍅</div>
-                <div className="loading-emoji e7">🥦</div>
-              </div>
-              <h2>지글지글 맛있는 레시피 생성중</h2>
-              <span>잠시만 기다려주세요...</span>
+              <div className="recognizing-loader-ring" />
+              <h2>레시피 생성 중...</h2>
+              <span>잠시만 기다려주세요</span>
             </div>
           </section>
         )}
@@ -2488,6 +2471,7 @@ function App() {
                   {isRecipeInteractionLoading && (
                     <div className="chat-bubble assistant">AI가 응답 중입니다...</div>
                   )}
+                  <div ref={chatBottomRef} />
                 </div>
 
                 {isListening && (
