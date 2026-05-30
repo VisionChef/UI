@@ -554,7 +554,7 @@ function SimpleTimer({ minutes = 1, setMinutes = () => {}, label = "타이머" }
 }
 
 function App() {
-  const [splashPhase, setSplashPhase] = useState('done');
+  const [splashPhase, setSplashPhase] = useState('show');
 
   useEffect(() => {
     const t1 = setTimeout(() => setSplashPhase('logo-exit'),     2200);
@@ -1545,9 +1545,6 @@ function App() {
       <div className={`splash-screen${splashPhase === 'screen-exit' ? ' splash-exiting' : ''}`}>
         {(splashPhase === 'show' || splashPhase === 'logo-exit') && (
           <div className={`splash-content${splashPhase === 'logo-exit' ? ' splash-exiting' : ''}`}>
-            <div className="splash-coin">
-              <img src={logoImg} alt="VisionChef" className="splash-logo-img" />
-            </div>
             <div className="splash-title">VISIONCHEF</div>
             <div className="splash-sub">AI 요리 가이드</div>
             <div className="splash-bar"><div className="splash-bar-fill" /></div>
