@@ -619,7 +619,7 @@ function App() {
   const [isRecipeInteractionLoading, setIsRecipeInteractionLoading] = useState(false);
 
   const [videoRecommendation, setVideoRecommendation] = useState(null);
-  const [isTTSEnabled, setIsTTSEnabled] = useState(false);
+  const [isTTSEnabled, setIsTTSEnabled] = useState(true);
   const [showTimer, setShowTimer] = useState(false);
   const [timerMinutes, setTimerMinutes] = useState(2);
   const [isListening, setIsListening] = useState(false);
@@ -2447,6 +2447,19 @@ function App() {
                 <div className="chat-message-list recipe-interaction-messages">
                   {recipeInteractionMessages.map((message) => (
                     <div key={message.id} className={`chat-bubble ${message.role}`}>
+                      {message.video?.embed_url && (
+                        <div className="chat-video-card">
+                          <iframe
+                            src={message.video.embed_url}
+                            title={message.video.title || "YouTube 영상"}
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowFullScreen
+                          />
+                          <a href={message.video.url} target="_blank" rel="noreferrer">
+                            {message.video.title || "YouTube 영상 보기"}
+                          </a>
+                        </div>
+                      )}
                       <div>{message.text}</div>
                     </div>
                   ))}
