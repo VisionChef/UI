@@ -25,5 +25,5 @@ sentence-transformers
 python-dotenv
 openai
 accelerate
-google-generativeai
+google-genai
 bitsandbytes>=0.46.1

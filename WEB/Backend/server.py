@@ -730,7 +730,7 @@ def _handle_confirmed_ingredients(
             f"<|im_start|>assistant\n"
         )
         try:
-            out = pipe(ax_prompt, max_new_tokens=500, do_sample=False)
+            out = pipe(ax_prompt, max_new_tokens=500, do_sample=False, max_length=None)
             raw = out[0]["generated_text"].split("<|im_start|>assistant\n")[-1].split("<|im_end|>")[0].strip()
             match = re.search(r"\[.*\]", raw, re.DOTALL)
             if match:
