@@ -526,6 +526,9 @@ def queue_tts(background_tasks: BackgroundTasks, text: str) -> None:
 class VisionData(BaseModel):
     ingredients: list[str] = Field(default_factory=list)
     action: str = "update"
+    allergy: str = ""
+    diet_goal: str = ""
+    tastes: list[str] = Field(default_factory=list)
 
 
 class STTData(BaseModel):
@@ -679,6 +682,9 @@ def _llm_wants_youtube_video(user_text: str) -> tuple[bool, str]:
 def _handle_confirmed_ingredients(
     ingredients: list[str],
     background_tasks: BackgroundTasks,
+    allergy: str = "",
+    diet_goal: str = "",
+    tastes: list[str] = [],
 ) -> dict:
     global current_ingredients, cached_rag_context, cached_rag_matches, chat_history
 
@@ -719,6 +725,15 @@ def _handle_confirmed_ingredients(
     if pipe and needed_count > 0:
         ing_str = ", ".join(current_ingredients)
         print(f"🪄 LLM으로 {needed_count}개 레시피 추가 생성 중...")
+        user_context_lines = []
+        if allergy:
+            user_context_lines.append(f"- 알레르기: {allergy} (이 재료가 포함된 요리는 제안하지 마.)")
+        if diet_goal:
+            user_context_lines.append(f"- 식단 목표: {diet_goal}")
+        if tastes:
+            user_context_lines.append(f"- 선호 취향: {', '.join(tastes)}")
+        user_context = "\n".join(user_context_lines)
+
         ax_prompt = (
             f"<|im_start|>system\n너는 창의적이고 엄격한 전문 요리사야.\n"
             f"제한 조건:\n"
@@ -727,7 +742,9 @@ def _handle_confirmed_ingredients(
             f"3. 주어진 재료만으로 요리가 불가능하면 가장 간단한 요리라도 제안해.\n"
             f"4. 답변은 반드시 JSON 리스트 형식으로만 해: "
             f'[{{"title": "..", "ingredients": "..", "steps": ".."}}, ...]\n'
-            f"5. 모든 텍스트는 한국어로 작성해.<|im_end|>\n"
+            f"5. 모든 텍스트는 한국어로 작성해.\n"
+            + (f"6. 사용자 정보를 반드시 반영해:\n{user_context}\n" if user_context else "")
+            + f"<|im_end|>\n"
             f"<|im_start|>user\n재료 리스트: {ing_str}\n"
             f"이 재료들만 사용해서 만들 수 있는 요리 {needed_count}개를 추천해줘.<|im_end|>\n"
             f"<|im_start|>assistant\n"
@@ -809,7 +826,7 @@ async def update_vision(data: VisionData, background_tasks: BackgroundTasks):
     if action == "confirm":
         confirmed = ingredients or pending_ingredients
         pending_ingredients = []
-        return await run_in_threadpool(_handle_confirmed_ingredients, confirmed, background_tasks)
+        return await run_in_threadpool(_handle_confirmed_ingredients, confirmed, background_tasks, data.allergy, data.diet_goal, data.tastes)
 
     if action == "reject":
         current_ingredients = []
@@ -822,7 +839,7 @@ async def update_vision(data: VisionData, background_tasks: BackgroundTasks):
         return {"status": "rejected", "message": rejection_line}
 
     pending_ingredients = []
-    return await run_in_threadpool(_handle_confirmed_ingredients, ingredients, background_tasks)
+    return await run_in_threadpool(_handle_confirmed_ingredients, ingredients, background_tasks, data.allergy, data.diet_goal, data.tastes)
 
 
 @app.get("/youtube-preview")

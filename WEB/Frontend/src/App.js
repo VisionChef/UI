@@ -646,6 +646,7 @@ function App() {
   const gestureCooldownRef = useRef({});
   const gestureBusyRef = useRef(false);
   const cameraDetectBusyRef = useRef(false);
+  const fileInputRef = useRef(null);
 
   const fetchRecipeImage = async (recipeName) => {
     // TODO: Gemini 이미지 생성 임시 비활성화 — 나중에 아래 return 제거하면 다시 활성화
@@ -700,13 +701,6 @@ function App() {
     }
   }, [page, selectedRecipe]);
 
-  // recognition 페이지 진입 시 이미지 로드
-  useEffect(() => {
-    if (page === "recognition") {
-      const recipes = backendRecipes;
-      recipes.slice(0, 4).forEach(r => fetchRecipeImage(r.name));
-    }
-  }, [page, backendRecipes]);
 
   // inputChoice 제스처 폴링
   useEffect(() => {
@@ -1085,7 +1079,6 @@ function App() {
     const file = e.target.files[0];
     if (!file) return;
 
-    const previewUrl = URL.createObjectURL(file);
     setBackendRecipes([]);
 
     try {
@@ -1094,14 +1087,11 @@ function App() {
       const res = await axios.post(`${API_BASE}/detect`, formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
-      setImagePreview(previewUrl);
-      setDetectedIngredients(res.data.ingredients || []);
+      const found = res.data.ingredients || [];
+      setDetectedIngredients(prev => Array.from(new Set([...prev, ...found])));
+      setYoloIngredients(new Set(found));
     } catch (err) {
       console.error("재료 인식 실패:", err);
-      setImagePreview(previewUrl);
-      setDetectedIngredients([]);
-    } finally {
-      goPage("recognition");
     }
   };
 
@@ -1283,6 +1273,9 @@ function App() {
       const res = await axios.post(`${API_BASE}/vision`, {
         ingredients: ings,
         action: "confirm",
+        allergy: allergy || "",
+        diet_goal: dietGoal || "",
+        tastes: selectedTastes || [],
       });
       if (generationIdRef.current !== genId) return;
       const raw = res.data.recipes || [];
@@ -1654,7 +1647,7 @@ function App() {
                   </p>
                 </div>
                 <div className="ingredient-check-list">
-                  {["소금", "식용유", "양파", "마늘"].map(item => (
+                  {["진간장", "국간장", "설탕", "소금", "후추", "참기름", "식초", "밥", "식용유", "깨"].map(item => (
                     <label className="ingredient-check-item" key={item}>
                       <input
                         type="checkbox"
@@ -1777,45 +1770,39 @@ function App() {
                     </div>
                   </div>
 
-                  <div className="camera-mode-panel">
-                    <label className="mode-action-btn">
-                      이미지 업로드
-                      <input
-                        type="file"
-                        accept="image/*"
-                        onChange={handleImageUpload}
-                      />
-                    </label>
-
-                    <div className="mode-text-entry">
-                      <input
-                        className="dark-input"
-                        placeholder="텍스트 입력"
-                        value={newIngredient}
-                        onChange={(e) => setNewIngredient(e.target.value)}
-                        onKeyPress={(e) => {
-                          if (e.key === 'Enter') {
-                            handleAddIngredient();
-                          }
-                        }}
-                      />
-                      <button className="mode-add-btn" onClick={handleAddIngredient}>
-                        추가
-                      </button>
-                    </div>
+                  <div className="input-choice-nav-buttons">
+                    <button className="outline-btn" onClick={() => goPage("userInfo")}>
+                      이전
+                    </button>
+                    <button className="primary-btn" onClick={handleGetRecipes}>
+                      다음 단계로 이동
+                    </button>
                   </div>
-                  {imagePreview ? (
-                    <img
-                      className="camera-preview-img"
-                      src={imagePreview}
-                      alt="camera preview"
+                </div>
+
+                <div className="camera-bottom-controls">
+                  <label className="mode-action-btn">
+                    이미지 업로드
+                    <input
+                      type="file"
+                      accept="image/*"
+                      onChange={handleImageUpload}
                     />
-                  ) : (
-                    <div className="camera-placeholder">
-                      <span>📷</span>
-                      <p>카메라 또는 이미지를 선택하면 미리보기가 나타납니다.</p>
-                    </div>
-                  )}
+                  </label>
+                  <div className="mode-text-entry">
+                    <input
+                      className="dark-input"
+                      placeholder="재료 직접 입력"
+                      value={newIngredient}
+                      onChange={(e) => setNewIngredient(e.target.value)}
+                      onKeyPress={(e) => {
+                        if (e.key === 'Enter') handleAddIngredient();
+                      }}
+                    />
+                    <button className="mode-add-btn" onClick={handleAddIngredient}>
+                      추가
+                    </button>
+                  </div>
                 </div>
               </div>
 
@@ -1911,14 +1898,6 @@ function App() {
                 </div>
               )}
 
-              <div className="input-choice-nav-buttons">
-                <button className="outline-btn" onClick={() => goPage("userInfo")}>
-                  이전
-                </button>
-                <button className="primary-btn" onClick={() => goPage("recognition")}>
-                  다음 단계로 이동
-                </button>
-              </div>
             </div>
           </section>
         )}
