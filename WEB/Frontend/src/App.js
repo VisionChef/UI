@@ -1780,29 +1780,30 @@ function App() {
                   </div>
                 </div>
 
-                <div className="camera-bottom-controls">
-                  <label className="mode-action-btn">
-                    이미지 업로드
-                    <input
-                      type="file"
-                      accept="image/*"
-                      onChange={handleImageUpload}
-                    />
-                  </label>
-                  <div className="mode-text-entry">
-                    <input
-                      className="dark-input"
-                      placeholder="재료 직접 입력"
-                      value={newIngredient}
-                      onChange={(e) => setNewIngredient(e.target.value)}
-                      onKeyPress={(e) => {
-                        if (e.key === 'Enter') handleAddIngredient();
-                      }}
-                    />
-                    <button className="mode-add-btn" onClick={handleAddIngredient}>
-                      추가
-                    </button>
-                  </div>
+              </div>
+
+              <div className="camera-bottom-controls">
+                <label className="mode-action-btn">
+                  이미지 업로드
+                  <input
+                    type="file"
+                    accept="image/*"
+                    onChange={handleImageUpload}
+                  />
+                </label>
+                <div className="mode-text-entry">
+                  <input
+                    className="dark-input"
+                    placeholder="재료 직접 입력"
+                    value={newIngredient}
+                    onChange={(e) => setNewIngredient(e.target.value)}
+                    onKeyPress={(e) => {
+                      if (e.key === 'Enter') handleAddIngredient();
+                    }}
+                  />
+                  <button className="mode-add-btn" onClick={handleAddIngredient}>
+                    추가
+                  </button>
                 </div>
               </div>
 

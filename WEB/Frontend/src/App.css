@@ -906,9 +906,25 @@ select:focus {
   display: flex;
   flex-direction: column;
   height: calc(100vh - 210px);
-  gap: 16px;
+  gap: 8px;
   margin-top: 24px;
   margin-bottom: 24px;
+  overflow: hidden;
+}
+
+.page-inputChoice .camera-section {
+  flex: 1;
+  min-height: 0;
+}
+
+.page-inputChoice .camera-preview-box-large {
+  flex: 1;
+  min-height: 0;
+}
+
+.page-inputChoice .camera-bottom-controls {
+  flex-shrink: 0;
+  padding: 0 2px;
 }
 
 .page-inputChoice .recognition-header .small-btn,
@@ -1023,9 +1039,9 @@ select:focus {
 
 .camera-bottom-controls {
   display: flex;
-  gap: 10px;
+  gap: 4px;
   align-items: center;
-  margin-top: 10px;
+  margin-top: 0;
 }
 
 .camera-bottom-controls .mode-action-btn {
@@ -1061,7 +1077,7 @@ select:focus {
 .mode-text-entry {
   display: grid;
   grid-template-columns: 1fr auto;
-  gap: 8px;
+  gap: 4px;
 }
 
 .mode-text-entry .dark-input {
