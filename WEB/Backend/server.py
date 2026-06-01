@@ -23,7 +23,7 @@ MODULE_DIR = _THIS_FILE.parent                  # UI/WEB/Backend
 PROJECT_DIR = MODULE_DIR.parent                # UI/WEB
 VISIONCHEF_ROOT = PROJECT_DIR.parent           # UI
 
-DEFAULT_HF_HOME = VISIONCHEF_ROOT / ".hf_cache"
+DEFAULT_HF_HOME = Path(os.environ.get("HF_HOME", str(VISIONCHEF_ROOT / ".hf_cache")))
 DEFAULT_HF_HUB_CACHE = DEFAULT_HF_HOME / "hub"
 DEFAULT_TRANSFORMERS_CACHE = DEFAULT_HF_HOME / "transformers"
 DEFAULT_LOCAL_MODEL_DIR = DEFAULT_HF_HOME / "skt_A.X-4.0-Light"
@@ -191,7 +191,9 @@ LLM_LOCAL_MODEL_DIR = os.getenv("LLM_LOCAL_MODEL_DIR", DEFAULT_LOCAL_MODEL_DIR)
 LLM_LOAD_IN_8BIT = os.getenv("LLM_LOAD_IN_8BIT", "0").strip().lower() in {"1", "true", "yes", "on"}
 SYSTEM_PROMPT = """너는 사용자 옆에서 같이 요리하는 만능 셰프야.
 말투는 사람과 대화하듯 자연스럽고 친근하게 해. 사용자를 가르치는 설명서가 아니라, 지금 주방에서 같이 조리하는 셰프처럼 반응해.
-항상 존댓말로 말해. 반말, 친구 말투, 명령조는 절대 쓰지 말고 "~요", "~세요", "~습니다" 형태로 답해.
+항상 존댓말로 말해. 반말, 친구 말투, 명령조는 절대 쓰지 말고 "~요", "~세요", "~합니다" 형태로만 답해.
+절대로 "~다", "~한다", "~준다", "~담는다" 같은 서술형 원문을 그대로 말하지 마. 이런 문체가 나오면 반드시 "~해주세요", "~하시면 돼요", "~하시면 됩니다"로 바꿔서 말해.
+예시: "그릇에 밥을 담는다" → "그릇에 밥을 담아주세요", "볶아서 식힌다" → "볶아서 식혀주세요"
 재료 손질, 조리 순서, 대체 재료, 간 맞추기, 실패 수습, 보관법, 플레이팅까지 폭넓게 도와줘.
 사용자의 말이 짧거나 애매하면 먼저 상황을 짚고, 필요한 질문은 한 가지만 물어봐.
 레시피 추천은 먼저 참고 문서의 RAG 결과를 우선해. RAG 결과가 없으면 네 일반 요리 지식으로 답해도 된다.
@@ -743,6 +745,7 @@ def _handle_confirmed_ingredients(
             f"4. 답변은 반드시 JSON 리스트 형식으로만 해: "
             f'[{{"title": "..", "ingredients": "..", "steps": ".."}}, ...]\n'
             f"5. 모든 텍스트는 한국어로 작성해.\n"
+            f"6. steps는 반드시 '~해주세요', '~하시면 됩니다', '~해요' 형태의 존댓말로 작성해. '~한다', '~는다', '~담는다' 같은 서술형은 절대 쓰지 마.\n"
             + (f"6. 사용자 정보를 반드시 반영해:\n{user_context}\n" if user_context else "")
             + f"<|im_end|>\n"
             f"<|im_start|>user\n재료 리스트: {ing_str}\n"
@@ -980,6 +983,7 @@ async def ask_chef(data: STTData, background_tasks: BackgroundTasks):
             f"\n현재 조리 중인 레시피: {data.recipe_name}."
             f" 지금은 {data.current_step}/{data.total_steps} 단계입니다."
             f" 반드시 현재 단계에 대한 안내만 하고, 사용자가 완료 신호를 줄 때까지 다음 단계로 넘어가지 마세요."
+            f" 단계 텍스트를 원문 그대로 말하지 말고 반드시 '~해주세요', '~하시면 돼요' 형태의 존댓말로 바꿔서 안내해."
         )
 
     prompt = (
@@ -1117,6 +1121,12 @@ async def detect_ingredients_from_image(file: UploadFile = File(...)):
 
     if img is None:
         raise HTTPException(status_code=400, detail="이미지를 읽을 수 없습니다.")
+
+    h, w = img.shape[:2]
+    max_dim = 640
+    if max(h, w) > max_dim:
+        scale = max_dim / max(h, w)
+        img = cv2.resize(img, (int(w * scale), int(h * scale)), interpolation=cv2.INTER_AREA)
 
     results = await run_in_threadpool(lambda: yolo_model(img, verbose=False))
 

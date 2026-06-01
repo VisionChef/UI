@@ -2039,12 +2039,19 @@ select:focus {
   display: none;
 }
 
+.page-recipe .main {
+  overflow: hidden;
+  height: 100dvh;
+  padding-bottom: 0;
+}
+
 .recipe-interaction-screen {
   position: relative;
   display: grid;
   grid-template-rows: 3fr 7fr;
   gap: 18px;
-  min-height: calc(100vh - 190px);
+  height: calc(100dvh - 190px);
+  overflow: hidden;
 }
 
 .interaction-back-btn {
@@ -2222,6 +2229,7 @@ select:focus {
   background: #ffffff;
   border: 1px solid rgba(0, 0, 0, 0.1);
   box-shadow: 0 24px 70px rgba(0, 0, 0, 0.07);
+  align-self: stretch;
 }
 
 .recipe-ai-chat-head {
@@ -3729,7 +3737,9 @@ select:focus {
   }
 
   .recipe-interaction-screen {
-    min-height: calc(100dvh - 88px);
+    height: calc(100dvh - 88px);
+    max-height: calc(100dvh - 88px);
+    overflow: hidden;
     grid-template-rows: 3fr 7fr;
     gap: 10px;
   }

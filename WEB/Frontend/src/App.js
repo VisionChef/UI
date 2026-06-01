@@ -1,4 +1,5 @@
 import { useEffect, useState, useRef, useCallback } from "react";
+import { flushSync } from "react-dom";
 import axios from "axios";
 import Webcam from "react-webcam";
 import "./App.css";
@@ -647,11 +648,9 @@ function App() {
   const gestureBusyRef = useRef(false);
   const cameraDetectBusyRef = useRef(false);
   const fileInputRef = useRef(null);
+  const youtubeRef = useRef(null);
 
   const fetchRecipeImage = async (recipeName) => {
-    // TODO: Gemini 이미지 생성 임시 비활성화 — 나중에 아래 return 제거하면 다시 활성화
-    return;
-    // eslint-disable-next-line no-unreachable
     if (recipeImages[recipeName] || fetchingImagesRef.current[recipeName]) return;
     fetchingImagesRef.current[recipeName] = true;
     try {
@@ -709,7 +708,7 @@ function App() {
     inputGestureCooldownRef.current = {};
     const canvas = document.createElement("canvas");
     let timeoutId;
-    const gestureIcons = { THUMBS_UP: "👍 확정", PEACE: "✌️ 인식중", FIST: "✊ 초기화", OPEN_HAND: "🖐 대기중", NONE: "대기중" };
+    const gestureIcons = { THUMBS_UP: "👍 확정", PEACE: "✌️ 인식중", OPEN_HAND: "🖐 대기중", NONE: "대기중" };
     const canTrigger = (name) => {
       const now = Date.now();
       if ((now - (inputGestureCooldownRef.current[name] || 0)) < 2500) return false;
@@ -760,8 +759,6 @@ function App() {
                 } catch {}
               }, "image/jpeg", 0.85);
             });
-          } else if (g === "FIST" && canTrigger("clear")) {
-            setDetectedIngredients([]);
           }
         } catch {}
         inputGestureBusyRef.current = false;
@@ -772,16 +769,6 @@ function App() {
     return () => { clearTimeout(timeoutId); setInputGestureLabel("대기중"); setInputCountdown(null); };
   }, [page]);
 
-  // recipeLoading 페이지: backendRecipes가 채워지면 즉시 recognition으로 이동
-  useEffect(() => {
-    if (page !== "recipeLoading") return;
-    if (backendRecipes.length > 0) {
-      goPage("recognition");
-      return;
-    }
-    const maxWait = setTimeout(() => goPage("recognition"), 90000);
-    return () => clearTimeout(maxWait);
-  }, [page, backendRecipes]);
 
   // vision_worker.py 폴링
   const _visionIngKeyRef = useRef("");
@@ -896,8 +883,13 @@ function App() {
     }
   }, [isTTSEnabled]);
 
+  const pauseYoutube = () => {
+    youtubeRef.current?.contentWindow?.postMessage('{"event":"command","func":"stopVideo","args":""}', '*');
+  };
+
   const toggleListening = () => {
     if (isListening) { speechRecRef.current?.abort(); setIsListening(false); return; }
+    pauseYoutube();
     const SpeechRec = window.SpeechRecognition || window.webkitSpeechRecognition;
     if (!SpeechRec) { alert("음성 인식을 지원하지 않는 브라우저입니다."); return; }
     const rec = new SpeechRec();
@@ -919,6 +911,7 @@ function App() {
       setIsListening(false);
       return;
     }
+    pauseYoutube();
 
     const SpeechRec = window.SpeechRecognition || window.webkitSpeechRecognition;
     if (!SpeechRec) {
@@ -1080,6 +1073,7 @@ function App() {
     if (!file) return;
 
     setBackendRecipes([]);
+    inputGestureBusyRef.current = true;
 
     try {
       const formData = new FormData();
@@ -1092,6 +1086,8 @@ function App() {
       setYoloIngredients(new Set(found));
     } catch (err) {
       console.error("재료 인식 실패:", err);
+    } finally {
+      inputGestureBusyRef.current = false;
     }
   };
 
@@ -1282,7 +1278,19 @@ function App() {
       if (raw.length > 0) {
         const transformed = raw.map(transformBackendRecipe);
         setBackendRecipes(transformed);
-        await Promise.all(transformed.map(r => fetchRecipeImage(r.name)));
+        const imageResults = await Promise.all(
+          transformed.map(async (r) => {
+            try {
+              const res = await axios.get(`${API_BASE}/generate-image`, { params: { recipe: r.name } });
+              return { name: r.name, url: res.data.image_url || null };
+            } catch {
+              return { name: r.name, url: null };
+            }
+          })
+        );
+        const imageMap = {};
+        imageResults.forEach(({ name, url }) => { if (url) imageMap[name] = url; });
+        flushSync(() => setRecipeImages(prev => ({ ...prev, ...imageMap })));
       }
     } catch (err) {
       console.error("레시피 요청 실패:", err);
@@ -1525,7 +1533,6 @@ function App() {
       else if (page === "recipeDetail") toggleListening();
     }
     else if (gesture === "THUMBS_UP") handleMoveCookingStep(1);
-    else if (gesture === "FIST") handleMoveCookingStep(-1);
     else if (gesture === "PEACE") {
       const text = selectedRecipe?.steps[currentCookingStep]?.text;
       if (text) speakText(text);
@@ -2442,7 +2449,7 @@ function App() {
                       {message.video?.embed_url ? (
                         <div className="chat-video-card">
                           <iframe
-                            src={`${message.video.embed_url}?autoplay=1`}
+                            src={`${message.video.embed_url}${message.video.embed_url.includes('?') ? '&' : '?'}autoplay=1&playsinline=1&enablejsapi=1`}
                             title={message.video.title || "YouTube 영상"}
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                             allowFullScreen
@@ -2672,7 +2679,8 @@ function App() {
                   <div className="youtube-embed-box">
                     <div className="youtube-embed-title">{videoRecommendation.title}</div>
                     <iframe
-                      src={videoRecommendation.embed_url}
+                      ref={youtubeRef}
+                      src={`${videoRecommendation.embed_url}${videoRecommendation.embed_url.includes('?') ? '&' : '?'}autoplay=1&playsinline=1&enablejsapi=1`}
                       title={videoRecommendation.title}
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                       allowFullScreen
@@ -2733,7 +2741,7 @@ function App() {
                     {message.video?.embed_url && (
                       <div className="chat-video-card">
                         <iframe
-                          src={message.video.embed_url}
+                          src={`${message.video.embed_url}?autoplay=1&mute=1`}
                           title={message.video.title || "YouTube 영상"}
                           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                           allowFullScreen
@@ -2809,7 +2817,6 @@ function App() {
               <div className={`gesture-label${currentGesture ? " detected" : ""}`}>
                 {currentGesture === "THUMBS_UP" && "👍 다음 단계"}
                 {currentGesture === "PEACE" && "✌️ 다시 읽기"}
-                {currentGesture === "FIST" && "✊ 이전 단계"}
                 {!currentGesture && "제스처 대기 중..."}
               </div>
             </div>
