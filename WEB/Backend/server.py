@@ -1169,7 +1169,7 @@ async def detect_ingredients_from_image(file: UploadFile = File(...)):
         scale = max_dim / max(h, w)
         img = cv2.resize(img, (int(w * scale), int(h * scale)), interpolation=cv2.INTER_AREA)
 
-    CONF_THRES = 0.001
+    CONF_THRES = 0.05
     results = await run_in_threadpool(lambda: yolo_model.predict(img, conf=CONF_THRES, imgsz=640, verbose=False))
 
     detected = []
