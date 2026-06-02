@@ -10,6 +10,7 @@ from contextlib import asynccontextmanager
 from typing import Optional
 import tempfile
 import threading
+import requests
 
 for stream in (sys.stdout, sys.stderr):
     if hasattr(stream, "reconfigure"):
@@ -50,7 +51,6 @@ from pydantic import BaseModel, Field
 import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer, StoppingCriteria, StoppingCriteriaList, pipeline
 from huggingface_hub import login, snapshot_download
-from gtts import gTTS
 import pygame
 import time
 from starlette.concurrency import run_in_threadpool
@@ -186,6 +186,8 @@ generation_state_lock = threading.Lock()
 generation_cancel_event = threading.Event()
 generation_active = False
 SERVER_TTS_ENABLED = os.getenv("ENABLE_SERVER_TTS", "0").strip().lower() in {"1", "true", "yes", "on"}
+VARCO_TTS_KEY = os.getenv("VARCO_TTS_KEY", "")
+VARCO_TTS_VOICE: Optional[str] = "ed410f69-37fc-5da0-844d-42c9fe2e10a7"  # 그리핀(데이비드)
 LLM_MODEL_ID = os.getenv("LLM_MODEL_ID", "skt/A.X-4.0-Light")
 LLM_LOCAL_MODEL_DIR = os.getenv("LLM_LOCAL_MODEL_DIR", DEFAULT_LOCAL_MODEL_DIR)
 LLM_LOAD_IN_8BIT = os.getenv("LLM_LOAD_IN_8BIT", "0").strip().lower() in {"1", "true", "yes", "on"}
@@ -394,6 +396,11 @@ async def lifespan(app: FastAPI):
     global pipe, vectorstore, recipe_documents, loaded_model_source, rag_error, rag_mode, yolo_model
     print("🚀 서버 시작...")
 
+    if VARCO_TTS_KEY:
+        print(f"✅ VARCO TTS 준비 완료 (그리핀/데이비드: {VARCO_TTS_VOICE})")
+    else:
+        print("⚠️ VARCO_TTS_KEY 없음 — TTS 비활성화")
+
     # LLM 모델 로드 (SKIP_LLM=1 이면 건너뜀)
     skip_llm = os.getenv("SKIP_LLM", "0").strip().lower() in {"1", "true", "yes"}
     if skip_llm:
@@ -487,22 +494,61 @@ async def health():
     }
 
 # ==========================================
-# 🔊 TTS 재생 함수
+# 🔊 VARCO TTS 함수
 # ==========================================
+def _fetch_varco_voice(keyword: str) -> Optional[str]:
+    try:
+        res = requests.get(
+            "https://openapi.ai.nc.com/tts/lite/v1/api/voices/varco",
+            headers={"OPENAPI_KEY": VARCO_TTS_KEY},
+            timeout=10,
+        )
+        voices = res.json()
+        for v in voices:
+            if keyword and keyword in v.get("speaker_name", ""):
+                return v["speaker_uuid"]
+        if voices:
+            return voices[0]["speaker_uuid"]
+    except Exception as e:
+        print(f"⚠️ [VARCO] 화자 목록 조회 실패: {e}")
+    return None
+
+
+def _varco_tts_bytes(text: str) -> bytes:
+    data = {
+        "text": text[:400],
+        "language": "korean",
+        "voice": VARCO_TTS_VOICE,
+        "properties": {"speed": 0.7, "pitch": 1.0},
+        "return_metadata": False,
+    }
+    res = requests.post(
+        "https://openapi.ai.nc.com/tts/lite/v1/api/synthesize",
+        headers={"OPENAPI_KEY": VARCO_TTS_KEY},
+        json=data,
+        timeout=15,
+    )
+    audio_b64 = res.json().get("audio")
+    return base64.b64decode(audio_b64)
+
+
 def play_tts(text: str):
+    if not VARCO_TTS_KEY or not VARCO_TTS_VOICE:
+        return
     clean_text = re.sub(r'[^\w\s가-힣?.!]', '', text)
     if not clean_text:
         return
 
     filename = os.path.join(
         tempfile.gettempdir(),
-        f"cooking_agent_voice_{os.getpid()}_{time.time_ns()}.mp3",
+        f"cooking_agent_voice_{os.getpid()}_{time.time_ns()}.wav",
     )
     mixer_initialized = False
     try:
         with tts_lock:
-            tts = gTTS(text=clean_text, lang='ko')
-            tts.save(filename)
+            wav_bytes = _varco_tts_bytes(clean_text)
+            with open(filename, "wb") as f:
+                f.write(wav_bytes)
             pygame.mixer.init()
             mixer_initialized = True
             pygame.mixer.music.load(filename)
@@ -1077,24 +1123,19 @@ async def ask_chef(data: STTData, background_tasks: BackgroundTasks):
 
 @app.post("/tts")
 async def synthesize_speech(data: TTSData):
+    if not VARCO_TTS_KEY or not VARCO_TTS_VOICE:
+        raise HTTPException(status_code=503, detail="VARCO TTS가 설정되지 않았습니다.")
     text = data.text.strip()
     if not text:
         raise HTTPException(status_code=400, detail="텍스트가 비어있습니다.")
-    clean = re.sub(r"[^\w\s가-힣?.!,]", " ", text)[:300].strip()
+    clean = re.sub(r"[^\w\s가-힣?.!,]", " ", text)[:400].strip()
     if not clean:
         raise HTTPException(status_code=400, detail="유효한 텍스트가 없습니다.")
 
-    def _make_mp3():
-        tts = gTTS(text=clean, lang="ko", slow=False)
-        buf = io.BytesIO()
-        tts.write_to_fp(buf)
-        buf.seek(0)
-        return buf.read()
-
-    audio_bytes = await run_in_threadpool(_make_mp3)
+    wav_bytes = await run_in_threadpool(_varco_tts_bytes, clean)
     return StreamingResponse(
-        io.BytesIO(audio_bytes),
-        media_type="audio/mpeg",
+        io.BytesIO(wav_bytes),
+        media_type="audio/wav",
         headers={"Cache-Control": "no-store"},
     )
 
@@ -1128,20 +1169,21 @@ async def detect_ingredients_from_image(file: UploadFile = File(...)):
         scale = max_dim / max(h, w)
         img = cv2.resize(img, (int(w * scale), int(h * scale)), interpolation=cv2.INTER_AREA)
 
-    results = await run_in_threadpool(lambda: yolo_model(img, verbose=False))
+    CONF_THRES = 0.001
+    results = await run_in_threadpool(lambda: yolo_model.predict(img, conf=CONF_THRES, imgsz=640, verbose=False))
 
     detected = []
     seen = set()
     for box in results[0].boxes:
         confidence = float(box.conf[0])
-        if confidence > 0.4:
-            class_id = int(box.cls[0])
-            class_name = yolo_model.names[class_id]
-            if class_name not in seen:
-                detected.append(class_name)
-                seen.add(class_name)
+        class_id = int(box.cls[0])
+        class_name = yolo_model.names[class_id]
+        print(f"📸 [YOLO] {class_name}: {confidence:.4f}")
+        if class_name not in seen:
+            detected.append(class_name)
+            seen.add(class_name)
 
-    print(f"📸 [YOLO] 인식된 재료: {detected}")
+    print(f"📸 [YOLO] 최종 인식된 재료: {detected}")
     return {"ingredients": detected, "count": len(detected)}
 
 

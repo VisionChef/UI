@@ -664,6 +664,23 @@ function App() {
   };
   const speechRecRef = useRef(null);
   const ttsAudioRef = useRef(null);
+  const ttsAbortRef = useRef(null);
+  const bgmRef = useRef(null);
+
+  useEffect(() => {
+    if (page === "recipeLoading") {
+      const audio = new Audio("/cooking_bgm.mp3");
+      audio.loop = true;
+      audio.volume = 0.5;
+      bgmRef.current = audio;
+      audio.play().catch(() => {});
+    } else {
+      if (bgmRef.current) {
+        bgmRef.current.pause();
+        bgmRef.current = null;
+      }
+    }
+  }, [page]);
 
   useEffect(() => {
     if (!selectedRecipe) return;
@@ -708,7 +725,7 @@ function App() {
     inputGestureCooldownRef.current = {};
     const canvas = document.createElement("canvas");
     let timeoutId;
-    const gestureIcons = { THUMBS_UP: "👍 확정", PEACE: "✌️ 인식중", OPEN_HAND: "🖐 대기중", NONE: "대기중" };
+    const gestureIcons = { PEACE: "✌️ 인식중", OPEN_HAND: "🖐 대기중", NONE: "대기중" };
     const canTrigger = (name) => {
       const now = Date.now();
       if ((now - (inputGestureCooldownRef.current[name] || 0)) < 2500) return false;
@@ -738,9 +755,7 @@ function App() {
           const data = await res.json();
           const g = data.gesture || "NONE";
           setInputGestureLabel(gestureIcons[g] || "대기중");
-          if (g === "THUMBS_UP" && canTrigger("confirm") && currentIngredientsRef.current.length > 0) {
-            handleGetRecipesRef.current?.();
-          } else if (g === "PEACE" && canTrigger("detect")) {
+          if (g === "PEACE" && canTrigger("detect")) {
             startCountdown(async () => {
               const v = inputCameraRef.current?.video;
               if (!v) return;
@@ -861,25 +876,41 @@ function App() {
     return () => clearTimeout(timeoutId);
   }, [page]);
 
-  const speakText = useCallback(async (text) => {
-    if (!isTTSEnabled || !text?.trim()) return;
+  const speakText = useCallback(async (text, onReady = null) => {
+    // 진행 중인 TTS 요청 취소
+    if (ttsAbortRef.current) { ttsAbortRef.current.abort(); ttsAbortRef.current = null; }
+    // 재생 중인 오디오 정지
     if (ttsAudioRef.current) { ttsAudioRef.current.pause(); URL.revokeObjectURL(ttsAudioRef.current._url); ttsAudioRef.current = null; }
+
+    if (!isTTSEnabled || !text?.trim()) { onReady?.(); return; }
+
+    const controller = new AbortController();
+    ttsAbortRef.current = controller;
     try {
-      const res = await axios.post(`${API_BASE}/tts`, { text }, { responseType: "blob" });
+      const res = await axios.post(`${API_BASE}/tts`, { text }, {
+        responseType: "blob",
+        signal: controller.signal,
+      });
+      if (controller.signal.aborted) return;
       const url = URL.createObjectURL(res.data);
       const audio = new Audio(url);
       audio.playbackRate = 1.3;
       audio._url = url;
       ttsAudioRef.current = audio;
       audio.onended = () => { URL.revokeObjectURL(url); ttsAudioRef.current = null; };
+      onReady?.();
       audio.play();
-    } catch {
+    } catch (e) {
+      if (axios.isCancel?.(e) || controller.signal.aborted) return;
+      onReady?.();
       if ("speechSynthesis" in window) {
         window.speechSynthesis.cancel();
         const u = new SpeechSynthesisUtterance(text);
         u.lang = "ko-KR"; u.rate = 1.2;
         window.speechSynthesis.speak(u);
       }
+    } finally {
+      if (ttsAbortRef.current === controller) ttsAbortRef.current = null;
     }
   }, [isTTSEnabled]);
 
@@ -1353,6 +1384,10 @@ function App() {
       const rawAnswer = res.data.answer || "응답을 받지 못했습니다.";
       const answer = stripMarkdown(rawAnswer);
       const video = res.data.video_recommendation || null;
+      if (video) {
+        if (ttsAbortRef.current) { ttsAbortRef.current.abort(); ttsAbortRef.current = null; }
+        if (ttsAudioRef.current) { ttsAudioRef.current.pause(); URL.revokeObjectURL(ttsAudioRef.current._url); ttsAudioRef.current = null; }
+      }
       setRecipeInteractionMessages((prev) => [
         ...prev,
         { id: Date.now() + 1, role: "assistant", text: answer, video },

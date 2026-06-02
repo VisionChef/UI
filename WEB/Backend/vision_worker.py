@@ -159,20 +159,20 @@ def run_vision():
         # ------------------------------------------
         if STATE == "DETECTING":
             # YOLO 객체 탐지
-            results = model(frame, verbose=False)
+            CONF_THRES = 0.001
+            results = model.predict(frame, conf=CONF_THRES, imgsz=640, verbose=False)
             current_ingredients = []
-            
+
             for box in results[0].boxes:
                 confidence = float(box.conf[0])
-                if confidence > 0.4:
-                    class_id = int(box.cls[0])
-                    class_name = model.names[class_id]
-                    current_ingredients.append(class_name)
+                class_id = int(box.cls[0])
+                class_name = model.names[class_id]
+                current_ingredients.append(class_name)
 
-                    x1, y1, x2, y2 = map(int, box.xyxy[0])
-                    cv2.rectangle(frame, (x1, y1), (x2, y2), (0, 255, 0), 2)
-                    cv2.putText(frame, f"{class_name} {confidence:.2f}", (x1, y1 - 10), 
-                                cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
+                x1, y1, x2, y2 = map(int, box.xyxy[0])
+                cv2.rectangle(frame, (x1, y1), (x2, y2), (0, 255, 0), 2)
+                cv2.putText(frame, f"{class_name} {confidence:.2f}", (x1, y1 - 10),
+                            cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
 
             current_ingredients_set = set(current_ingredients)
 
