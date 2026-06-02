@@ -159,7 +159,7 @@ def run_vision():
         # ------------------------------------------
         if STATE == "DETECTING":
             # YOLO 객체 탐지
-            CONF_THRES = 0.05
+            CONF_THRES = 0.15
             results = model.predict(frame, conf=CONF_THRES, imgsz=640, verbose=False)
             current_ingredients = []
 
