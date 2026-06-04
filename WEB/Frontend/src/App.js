@@ -669,7 +669,7 @@ function App() {
 
   useEffect(() => {
     if (page === "recipeLoading") {
-      const audio = new Audio("/cooking_bgm.mp3");
+      const audio = new Audio("/cooking_bgm.wav");
       audio.loop = true;
       audio.volume = 0.5;
       bgmRef.current = audio;
@@ -876,41 +876,29 @@ function App() {
     return () => clearTimeout(timeoutId);
   }, [page]);
 
-  const speakText = useCallback(async (text, onReady = null) => {
-    // 진행 중인 TTS 요청 취소
-    if (ttsAbortRef.current) { ttsAbortRef.current.abort(); ttsAbortRef.current = null; }
-    // 재생 중인 오디오 정지
-    if (ttsAudioRef.current) { ttsAudioRef.current.pause(); URL.revokeObjectURL(ttsAudioRef.current._url); ttsAudioRef.current = null; }
-
-    if (!isTTSEnabled || !text?.trim()) { onReady?.(); return; }
-
-    const controller = new AbortController();
-    ttsAbortRef.current = controller;
+  const speakText = useCallback(async (text) => {
+    if (!isTTSEnabled || !text?.trim()) return;
+    if (ttsAudioRef.current) {
+      ttsAudioRef.current.pause();
+      URL.revokeObjectURL(ttsAudioRef.current._url);
+      ttsAudioRef.current = null;
+    }
     try {
-      const res = await axios.post(`${API_BASE}/tts`, { text }, {
-        responseType: "blob",
-        signal: controller.signal,
-      });
-      if (controller.signal.aborted) return;
+      const res = await axios.post(`${API_BASE}/tts`, { text }, { responseType: "blob" });
       const url = URL.createObjectURL(res.data);
       const audio = new Audio(url);
       audio.playbackRate = 1.3;
       audio._url = url;
       ttsAudioRef.current = audio;
       audio.onended = () => { URL.revokeObjectURL(url); ttsAudioRef.current = null; };
-      onReady?.();
-      audio.play();
-    } catch (e) {
-      if (axios.isCancel?.(e) || controller.signal.aborted) return;
-      onReady?.();
+      audio.play().catch(() => {});
+    } catch {
       if ("speechSynthesis" in window) {
         window.speechSynthesis.cancel();
         const u = new SpeechSynthesisUtterance(text);
         u.lang = "ko-KR"; u.rate = 1.2;
         window.speechSynthesis.speak(u);
       }
-    } finally {
-      if (ttsAbortRef.current === controller) ttsAbortRef.current = null;
     }
   }, [isTTSEnabled]);
 
@@ -1385,7 +1373,6 @@ function App() {
       const answer = stripMarkdown(rawAnswer);
       const video = res.data.video_recommendation || null;
       if (video) {
-        if (ttsAbortRef.current) { ttsAbortRef.current.abort(); ttsAbortRef.current = null; }
         if (ttsAudioRef.current) { ttsAudioRef.current.pause(); URL.revokeObjectURL(ttsAudioRef.current._url); ttsAudioRef.current = null; }
       }
       setRecipeInteractionMessages((prev) => [
