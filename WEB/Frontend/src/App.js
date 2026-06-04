@@ -666,6 +666,24 @@ function App() {
   const ttsAudioRef = useRef(null);
   const ttsAbortRef = useRef(null);
   const bgmRef = useRef(null);
+  const audioCtxRef = useRef(null);
+  const ttsSourceRef = useRef(null);
+  const ttsSeqRef = useRef(0);
+
+  useEffect(() => {
+    const unlock = () => {
+      if (!audioCtxRef.current) {
+        audioCtxRef.current = new (window.AudioContext || window.webkitAudioContext)();
+      }
+      audioCtxRef.current.resume().catch(() => {});
+    };
+    document.addEventListener('click', unlock, { once: true });
+    document.addEventListener('touchstart', unlock, { once: true });
+    return () => {
+      document.removeEventListener('click', unlock);
+      document.removeEventListener('touchstart', unlock);
+    };
+  }, []);
 
   useEffect(() => {
     if (page === "recipeLoading") {
@@ -878,27 +896,36 @@ function App() {
 
   const speakText = useCallback(async (text) => {
     if (!isTTSEnabled || !text?.trim()) return;
-    if (ttsAudioRef.current) {
-      ttsAudioRef.current.pause();
-      URL.revokeObjectURL(ttsAudioRef.current._url);
-      ttsAudioRef.current = null;
+
+    // 이전 재생 중단
+    if (ttsSourceRef.current) {
+      try { ttsSourceRef.current.stop(); } catch {}
+      ttsSourceRef.current = null;
     }
+
+    const mySeq = ++ttsSeqRef.current;
+
     try {
-      const res = await axios.post(`${API_BASE}/tts`, { text }, { responseType: "blob" });
-      const url = URL.createObjectURL(res.data);
-      const audio = new Audio(url);
-      audio.playbackRate = 1.3;
-      audio._url = url;
-      ttsAudioRef.current = audio;
-      audio.onended = () => { URL.revokeObjectURL(url); ttsAudioRef.current = null; };
-      audio.play().catch(() => {});
-    } catch {
-      if ("speechSynthesis" in window) {
-        window.speechSynthesis.cancel();
-        const u = new SpeechSynthesisUtterance(text);
-        u.lang = "ko-KR"; u.rate = 1.2;
-        window.speechSynthesis.speak(u);
+      const res = await axios.post(`${API_BASE}/tts`, { text }, { responseType: "arraybuffer" });
+      if (mySeq !== ttsSeqRef.current) return; // 더 최신 요청 있으면 무시
+
+      if (!audioCtxRef.current || audioCtxRef.current.state === "closed") {
+        audioCtxRef.current = new (window.AudioContext || window.webkitAudioContext)();
       }
+      await audioCtxRef.current.resume();
+
+      const buffer = await audioCtxRef.current.decodeAudioData(res.data.slice(0));
+      if (mySeq !== ttsSeqRef.current) return;
+
+      const source = audioCtxRef.current.createBufferSource();
+      source.buffer = buffer;
+      source.playbackRate.value = 1.3;
+      source.connect(audioCtxRef.current.destination);
+      ttsSourceRef.current = source;
+      source.onended = () => { if (ttsSourceRef.current === source) ttsSourceRef.current = null; };
+      source.start(0);
+    } catch (err) {
+      console.error("TTS play failed:", err);
     }
   }, [isTTSEnabled]);
 
@@ -1022,6 +1049,10 @@ function App() {
   ].includes(page);
 
   const stopTTS = () => {
+    if (ttsSourceRef.current) {
+      try { ttsSourceRef.current.stop(); } catch {}
+      ttsSourceRef.current = null;
+    }
     if (ttsAudioRef.current) {
       ttsAudioRef.current.pause();
       if (ttsAudioRef.current._url) URL.revokeObjectURL(ttsAudioRef.current._url);
@@ -1372,14 +1403,11 @@ function App() {
       const rawAnswer = res.data.answer || "응답을 받지 못했습니다.";
       const answer = stripMarkdown(rawAnswer);
       const video = res.data.video_recommendation || null;
-      if (video) {
-        if (ttsAudioRef.current) { ttsAudioRef.current.pause(); URL.revokeObjectURL(ttsAudioRef.current._url); ttsAudioRef.current = null; }
-      }
       setRecipeInteractionMessages((prev) => [
         ...prev,
         { id: Date.now() + 1, role: "assistant", text: answer, video },
       ]);
-      if (!video) speakText(answer);
+      speakText(answer);
     } catch {
       setRecipeInteractionMessages((prev) => [
         ...prev,
