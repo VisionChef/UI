@@ -142,8 +142,9 @@ MODULE_DIR       = _THIS_FILE.parent                          # C:\VisionChef\WE
 PROJECT_DIR      = MODULE_DIR.parent                          # C:\VisionChef\WEB
 VISIONCHEF_ROOT  = PROJECT_DIR.parent                         # C:\VisionChef
 RAG_DATA_DIR     = VISIONCHEF_ROOT / "LLM" / "RAG" / "data"
-BOOK_RECIPES_FILE    = str(RAG_DATA_DIR / "baek_book_recipes.json")
+BOOK_RECIPES_FILE     = str(RAG_DATA_DIR / "baek_book_recipes.json")
 TRENDING_RECIPES_FILE = str(RAG_DATA_DIR / "trending_recipes.json")
+CUSTOM_RECIPES_FILE   = str(RAG_DATA_DIR / "custom_recipes.json")
 CHROMA_PATH      = str(VISIONCHEF_ROOT / "LLM" / "RAG" / "chroma_db")
 
 
@@ -416,7 +417,8 @@ async def lifespan(app: FastAPI):
 
     book_docs = load_recipes(BOOK_RECIPES_FILE, source_type="Baek_Book")
     trending_docs = load_recipes(TRENDING_RECIPES_FILE, source_type="trending")
-    recipe_documents = book_docs + trending_docs
+    custom_docs = load_recipes(CUSTOM_RECIPES_FILE, source_type="custom") if Path(CUSTOM_RECIPES_FILE).exists() else []
+    recipe_documents = book_docs + trending_docs + custom_docs
 
     try:
         vectorstore = build_vectorstore(recipe_documents, chroma_path)
@@ -1169,7 +1171,7 @@ async def detect_ingredients_from_image(file: UploadFile = File(...)):
         scale = max_dim / max(h, w)
         img = cv2.resize(img, (int(w * scale), int(h * scale)), interpolation=cv2.INTER_AREA)
 
-    CONF_THRES = 0.15
+    CONF_THRES = 0.05
     results = await run_in_threadpool(lambda: yolo_model.predict(img, conf=CONF_THRES, imgsz=640, verbose=False))
 
     detected = []

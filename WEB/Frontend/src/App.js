@@ -201,7 +201,7 @@ const globalIngredientList = [
   { name: "소금", category: "조미료", note: "간을 맞추는 가장 기본 조미료" },
   { name: "숙주", category: "채소", note: "볶음, 쌀국수, 무침에 쓰는 아삭한 채소" },
   { name: "시금치", category: "채소", note: "무침, 국, 파스타에 활용" },
-  { name: "식초", category: "조미료", note: "산미를 더하는 기본 조미료" },
+  { name: "드레싱", category: "조미료", note: "샐러드에 곁들이는 소스" },
   { name: "식용유", category: "오일", note: "볶음과 튀김에 쓰는 기본 기름" },
   { name: "쌀", category: "곡물", note: "밥, 죽, 떡의 기본 곡물" },
   { name: "아보카도", category: "과일", note: "샐러드, 토스트, 과카몰리에 활용" },
@@ -1689,7 +1689,7 @@ function App() {
                   </p>
                 </div>
                 <div className="ingredient-check-list">
-                  {["진간장", "국간장", "설탕", "소금", "후추", "참기름", "식초", "밥", "식용유", "깨"].map(item => (
+                  {["진간장", "국간장", "설탕", "소금", "후추", "참기름", "드레싱", "밥", "식용유", "깨"].map(item => (
                     <label className="ingredient-check-item" key={item}>
                       <input
                         type="checkbox"
