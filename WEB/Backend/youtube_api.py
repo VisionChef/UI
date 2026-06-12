@@ -225,6 +225,7 @@ def search_youtube_videos(
     query: str,
     api_key: str,
     config: YouTubeRecommendationConfig = DEFAULT_CONFIG,
+    search_query: Optional[str] = None,
 ) -> list[dict[str, Any]]:
     global _LAST_YOUTUBE_ERROR
     _LAST_YOUTUBE_ERROR = ""
@@ -232,7 +233,8 @@ def search_youtube_videos(
     if not api_key:
         return []
 
-    search_query = build_youtube_search_query(query)
+    # search_query가 주어지면(예: LLM 에이전트가 직접 만든 검색어) 규칙 기반 변환을 건너뛴다.
+    search_query = (search_query or "").strip() or build_youtube_search_query(query)
     params = {
         "part": "snippet",
         "q": search_query,
@@ -662,11 +664,12 @@ def find_best_youtube_segment(
     query: str,
     api_key: str,
     config: YouTubeRecommendationConfig = DEFAULT_CONFIG,
+    search_query: Optional[str] = None,
 ) -> Optional[dict[str, Any]]:
     if not api_key:
         return None
 
-    videos = search_youtube_videos(query, api_key, config=config)
+    videos = search_youtube_videos(query, api_key, config=config, search_query=search_query)
     if not videos:
         return None
 

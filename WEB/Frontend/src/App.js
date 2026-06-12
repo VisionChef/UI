@@ -554,6 +554,86 @@ function SimpleTimer({ minutes = 1, setMinutes = () => {}, label = "타이머" }
   );
 }
 
+const AGENT_TOOL_LABELS = {
+  search_youtube_video: { icon: "🔎", label: "유튜브 영상 검색" },
+  search_recipe: { icon: "📖", label: "레시피 문서 검색" },
+};
+
+function AgentActionChips({ actions }) {
+  if (!actions || actions.length === 0) return null;
+  return (
+    <div className="agent-action-chips">
+      {actions.map((action, index) => {
+        const meta = AGENT_TOOL_LABELS[action.tool] || { icon: "🤖", label: action.tool };
+        return (
+          <span
+            key={index}
+            className={`agent-chip${action.success ? "" : " failed"}`}
+            title={action.source === "agent" ? "AI 셰프가 스스로 판단해서 호출한 도구입니다." : "영상 요청을 감지해서 자동 실행했습니다."}
+          >
+            <span className="agent-chip-icon">{meta.icon}</span>
+            {action.source === "agent" ? "AI 셰프가 직접 " : ""}
+            {meta.label}
+            {action.query ? ` · "${action.query}"` : ""}
+            {action.success ? "" : " (결과 없음)"}
+          </span>
+        );
+      })}
+    </div>
+  );
+}
+
+function formatSegmentTime(totalSeconds) {
+  const s = Math.max(0, Math.floor(Number(totalSeconds) || 0));
+  const mm = Math.floor(s / 60);
+  const ss = String(s % 60).padStart(2, "0");
+  return `${mm}:${ss}`;
+}
+
+function ChatVideoCard({ video, muted = false }) {
+  const [embedSrc, setEmbedSrc] = useState(video?.embed_url || "");
+
+  useEffect(() => {
+    setEmbedSrc(video?.embed_url || "");
+  }, [video]);
+
+  if (!video?.embed_url) return null;
+
+  const segments = (video.best_segments || []).filter((seg) => seg.embed_url).slice(0, 3);
+  const buildSrc = (url) =>
+    `${url}${url.includes("?") ? "&" : "?"}autoplay=1&playsinline=1&enablejsapi=1${muted ? "&mute=1" : ""}`;
+
+  return (
+    <div className="chat-video-card">
+      <iframe
+        key={embedSrc}
+        src={buildSrc(embedSrc)}
+        title={video.title || "YouTube 영상"}
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowFullScreen
+      />
+      {segments.length > 1 && (
+        <div className="video-segment-chips">
+          {segments.map((seg, index) => (
+            <button
+              key={index}
+              type="button"
+              className={`segment-chip${seg.embed_url === embedSrc ? " active" : ""}`}
+              onClick={() => setEmbedSrc(seg.embed_url)}
+              title={seg.raw_text || seg.text || ""}
+            >
+              ▶ {formatSegmentTime(seg.start_seconds)} 구간
+            </button>
+          ))}
+        </div>
+      )}
+      <a href={video.url} target="_blank" rel="noreferrer">
+        {video.title || "YouTube 영상 보기"}
+      </a>
+    </div>
+  );
+}
+
 function App() {
   const [splashPhase, setSplashPhase] = useState('show');
 
@@ -1403,9 +1483,10 @@ function App() {
       const rawAnswer = res.data.answer || "응답을 받지 못했습니다.";
       const answer = stripMarkdown(rawAnswer);
       const video = res.data.video_recommendation || null;
+      const agentActions = res.data.agent_actions || [];
       setRecipeInteractionMessages((prev) => [
         ...prev,
-        { id: Date.now() + 1, role: "assistant", text: answer, video },
+        { id: Date.now() + 1, role: "assistant", text: answer, video, agentActions },
       ]);
       speakText(answer);
     } catch {
@@ -1541,10 +1622,11 @@ function App() {
       });
       const answer = res.data.answer || "응답을 받지 못했습니다.";
       const video = res.data.video_recommendation || null;
+      const agentActions = res.data.agent_actions || [];
       if (video) setVideoRecommendation(video);
       setChatMessages((prev) => [
         ...prev,
-        { id: Date.now() + 1, role: "assistant", text: answer, video },
+        { id: Date.now() + 1, role: "assistant", text: answer, video, agentActions },
       ]);
       speakText(answer);
     } catch {
@@ -2496,25 +2578,22 @@ function App() {
                 <div className="chat-message-list recipe-interaction-messages" ref={recipeInteractionChatRef}>
                   {recipeInteractionMessages.map((message) => (
                     <div key={message.id} className={`chat-bubble ${message.role}`}>
-                      {message.video?.embed_url ? (
-                        <div className="chat-video-card">
-                          <iframe
-                            src={`${message.video.embed_url}${message.video.embed_url.includes('?') ? '&' : '?'}autoplay=1&playsinline=1&enablejsapi=1`}
-                            title={message.video.title || "YouTube 영상"}
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowFullScreen
-                          />
-                          <a href={message.video.url} target="_blank" rel="noreferrer">
-                            {message.video.title || "YouTube 영상 보기"}
-                          </a>
-                        </div>
-                      ) : (
-                        <div>{message.text}</div>
+                      {message.role === "assistant" && (
+                        <AgentActionChips actions={message.agentActions} />
                       )}
+                      {(!message.video?.embed_url || message.text) && <div>{message.text}</div>}
+                      {message.video?.embed_url && <ChatVideoCard video={message.video} />}
                     </div>
                   ))}
                   {isRecipeInteractionLoading && (
-                    <div className="chat-bubble assistant">AI가 응답 중입니다...</div>
+                    <div className="chat-bubble assistant agent-thinking">
+                      <span className="agent-thinking-dots" aria-hidden="true">
+                        <span />
+                        <span />
+                        <span />
+                      </span>
+                      AI 셰프가 생각하고 있어요. 필요하면 영상과 레시피도 직접 찾아요.
+                    </div>
                   )}
                   <div ref={chatBottomRef} />
                 </div>
@@ -2739,7 +2818,10 @@ function App() {
                 ) : (
                   <div className="video-placeholder-box">
                     <div className="play-icon">▶</div>
-                    <p>요리 관련 유튜브 영상을 보고 싶으면 채팅에서 "영상 보여줘"라고 입력하세요.</p>
+                    <p>
+                      말로 설명하기 어려운 단계가 나오면 AI 셰프가 유튜브 영상을 직접 찾아서
+                      여기에 띄워드려요. "영상 보여줘"라고 말해도 됩니다.
+                    </p>
                   </div>
                 )}
               </div>
@@ -2787,25 +2869,23 @@ function App() {
               <div className="chat-message-list">
                 {chatMessages.map((message) => (
                   <div key={message.id} className={`chat-bubble ${message.role}`}>
+                    {message.role === "assistant" && (
+                      <AgentActionChips actions={message.agentActions} />
+                    )}
                     <div>{message.text}</div>
                     {message.video?.embed_url && (
-                      <div className="chat-video-card">
-                        <iframe
-                          src={`${message.video.embed_url}?autoplay=1&mute=1`}
-                          title={message.video.title || "YouTube 영상"}
-                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                          allowFullScreen
-                        />
-                        <a href={message.video.url} target="_blank" rel="noreferrer">
-                          {message.video.title || "YouTube 영상"}
-                        </a>
-                      </div>
+                      <ChatVideoCard video={message.video} muted />
                     )}
                   </div>
                 ))}
                 {isChatLoading && (
-                  <div className="chat-bubble assistant">
-                    AI 셰프가 답변 중입니다...
+                  <div className="chat-bubble assistant agent-thinking">
+                    <span className="agent-thinking-dots" aria-hidden="true">
+                      <span />
+                      <span />
+                      <span />
+                    </span>
+                    AI 셰프가 생각하고 있어요. 필요하면 영상과 레시피도 직접 찾아요.
                   </div>
                 )}
               </div>

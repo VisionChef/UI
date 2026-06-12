@@ -217,6 +217,132 @@ SYSTEM_PROMPT = """너는 사용자 옆에서 같이 요리하는 만능 셰프�
 """
 
 
+# ==========================================
+# 🤖 에이전트 도구 (LLM이 스스로 호출)
+# ==========================================
+_YOUTUBE_TOOL_DESC = (
+    "- search_youtube_video — 유튜브 요리 영상 검색.\n"
+    "  사용자가 영상, 유튜브, 시연을 직접 보고 싶다고 하거나, "
+    "칼질·재료 손질·반죽·플레이팅처럼 말로만 설명하기 어려워서 영상이 확실히 도움이 될 때 호출해.\n"
+)
+_RECIPE_TOOL_DESC = (
+    "- search_recipe — 보유한 레시피 문서를 요리 이름으로 검색.\n"
+    "  사용자가 특정 요리의 만드는 법을 묻는데 위 참고 문서에 그 레시피가 없을 때만 호출해. "
+    "참고 문서에 이미 있으면 호출하지 마.\n"
+)
+
+
+def build_agent_tool_prompt(youtube_enabled: bool) -> str:
+    tool_descs = (_YOUTUBE_TOOL_DESC if youtube_enabled else "") + _RECIPE_TOOL_DESC
+    return (
+        "\n[도구 사용 안내]\n"
+        "너는 아래 도구들을 스스로 판단해서 호출할 수 있어.\n"
+        f"{tool_descs}"
+        "도구를 호출할 때는 다른 말은 하나도 하지 말고 아래 형식 한 줄만 정확히 출력해:\n"
+        '<tool_call>{"tool": "도구이름", "query": "검색어"}</tool_call>\n'
+        "query에는 네가 직접 만든 짧은 한국어 검색어를 넣어. "
+        "사용자의 말을 그대로 복사하지 말고 핵심 요리 이름이나 기술 위주로 다듬어.\n"
+        "도구가 필요 없는 일반 질문에는 절대 도구를 호출하지 말고 평소처럼 말로만 답해.\n"
+    )
+
+TOOL_CALL_RE = re.compile(r"<tool_call>\s*(\{.*?\})\s*</tool_call>", re.DOTALL)
+AGENT_TOOL_NAMES = {"search_youtube_video", "search_recipe"}
+MAX_AGENT_STEPS = 3
+
+
+def parse_tool_call(text: str) -> Optional[dict]:
+    match = TOOL_CALL_RE.search(text)
+    if not match:
+        return None
+
+    try:
+        payload = json.loads(match.group(1))
+    except ValueError:
+        return None
+
+    tool = payload.get("tool")
+    if tool not in AGENT_TOOL_NAMES:
+        return None
+
+    query = str(payload.get("query", "")).strip()
+    if not query:
+        return None
+    return {"tool": tool, "query": query}
+
+
+def strip_tool_calls(text: str) -> str:
+    return TOOL_CALL_RE.sub("", text).strip()
+
+
+def _format_tool_result(video: Optional[dict]) -> str:
+    if not video:
+        return "검색 결과 없음: 관련 영상을 찾지 못했습니다."
+
+    lines = [
+        f"영상 제목: {video.get('title', '')}",
+        f"채널: {video.get('channel_title', '')}",
+    ]
+    segments = video.get("best_segments") or []
+    if video.get("timeline_found") and segments:
+        first = segments[0]
+        snippet = (first.get("raw_text") or first.get("text") or "")[:120]
+        lines.append(f"추천 구간: {first.get('start_seconds', 0)}초부터 (내용: {snippet})")
+    return "\n".join(lines)
+
+
+def _search_recipe_by_name(dish: str, top_k: int = 2) -> list[dict]:
+    dish_norm = re.sub(r"\s+", "", dish).lower()
+    if not dish_norm:
+        return []
+
+    def _grams(text: str) -> set[str]:
+        if len(text) < 2:
+            return {text} if text else set()
+        return {text[i : i + 2] for i in range(len(text) - 1)}
+
+    dish_grams = _grams(dish_norm)
+    scored = []
+    for doc in recipe_documents:
+        title = doc.metadata.get("title", "")
+        title_norm = re.sub(r"\s+", "", title).lower()
+        if not title_norm:
+            continue
+
+        if dish_norm in title_norm or title_norm in dish_norm:
+            score = 2.0
+        else:
+            score = len(dish_grams & _grams(title_norm)) / max(1, len(dish_grams))
+            if score < 0.5:
+                continue
+        scored.append((score, doc))
+
+    scored.sort(key=lambda item: -item[0])
+    return [
+        {
+            "title": doc.metadata.get("title", ""),
+            "ingredients": doc.metadata.get("ingredients", ""),
+            "steps": doc.metadata.get("steps", ""),
+            "source_type": doc.metadata.get("source_type", ""),
+        }
+        for _, doc in scored[:top_k]
+    ]
+
+
+def _format_recipe_tool_result(recipes: list[dict]) -> str:
+    if not recipes:
+        return "검색 결과 없음: 해당 요리의 레시피 문서를 찾지 못했습니다."
+
+    lines = []
+    for recipe in recipes:
+        steps = recipe.get("steps", "")
+        if len(steps) > 600:
+            steps = steps[:600] + "..."
+        lines.append(f"레시피: {recipe.get('title', '')}")
+        lines.append(f"재료: {recipe.get('ingredients', '')}")
+        lines.append(f"조리 순서: {steps}")
+    return "\n".join(lines)
+
+
 class GenerationCancelled(Exception):
     pass
 
@@ -695,40 +821,6 @@ def _refresh_cached_rag_for_ingredients(ingredients: list[str]) -> list[dict]:
     return recipes
 
 
-def _llm_wants_youtube_video(user_text: str) -> tuple[bool, str]:
-    if is_cooking_video_query(user_text):
-        return True, "rule"
-
-    if pipe is None:
-        return False, "none"
-
-    classifier_prompt = (
-        "<|im_start|>system\n"
-        "너는 사용자의 요청이 유튜브 요리 영상 추천을 필요로 하는지 판단한다. "
-        "사용자가 영상, 유튜브, 시연, 화면으로 보기, 조리법을 실제로 보고 싶다는 의도를 보이면 YES만 답해. "
-        "일반적인 요리 질문이나 텍스트 설명만 원하는 질문이면 NO만 답해."
-        "<|im_end|>\n"
-        f"<|im_start|>user\n{user_text}<|im_end|>\n"
-        "<|im_start|>assistant\n"
-    )
-
-    try:
-        outputs = pipe(
-            classifier_prompt,
-            max_new_tokens=8,
-            do_sample=False,
-            eos_token_id=pipe.tokenizer.eos_token_id,
-            pad_token_id=pipe.tokenizer.pad_token_id,
-        )
-    except Exception as exc:
-        print(f"⚠️ [YouTube] 영상 의도 판단 실패: {exc}")
-        return False, "error"
-
-    generated = outputs[0]["generated_text"]
-    decision = generated.split("<|im_start|>assistant\n")[-1].strip().upper()
-    return decision.startswith("YES"), "llm"
-
-
 def _handle_confirmed_ingredients(
     ingredients: list[str],
     background_tasks: BackgroundTasks,
@@ -1006,24 +1098,16 @@ async def ask_chef(data: STTData, background_tasks: BackgroundTasks):
         _refresh_cached_rag_for_ingredients(payload_ingredients)
 
     youtube_api_key = get_runtime_env("YOUTUBE_API_KEY")
-    wants_youtube, youtube_intent_source = _llm_wants_youtube_video(data.user_text)
-    
+
     # 💡 저장된 RAG 검색 결과를 가져와 사용합니다.
     rag_context = cached_rag_context
 
     effective_ingredients = payload_ingredients or current_ingredients
     ing_str = ", ".join(effective_ingredients) if effective_ingredients else "없음"
-    
-    # 프롬프트 구성
+
+    # 프롬프트 구성 — 유튜브 도구는 API 키가 있을 때만 노출하고, 레시피 검색 도구는 항상 노출한다.
     prompt_template = SYSTEM_PROMPT.format(rag_context=rag_context)
-    youtube_instruction = ""
-    if wants_youtube:
-        youtube_instruction = (
-            "\n사용자가 유튜브 영상 또는 시연 영상을 요청했습니다. "
-            "시스템이 별도로 유튜브 영상을 검색해서 화면에 붙일 예정이니, "
-            "절대 '영상은 제공할 수 없습니다'라고 말하지 마세요. "
-            "사람 셰프처럼 자연스럽게 지금 필요한 조리 포인트 한 단계만 설명하고 '아래 영상도 같이 확인해보세요'라고 말하세요."
-        )
+    tool_instruction = build_agent_tool_prompt(youtube_enabled=bool(youtube_api_key))
 
     step_context = ""
     if data.current_step > 0 and data.total_steps > 0:
@@ -1039,34 +1123,137 @@ async def ask_chef(data: STTData, background_tasks: BackgroundTasks):
         f"현재 사용 가능한 재료: {ing_str}\n"
         "위 재료 목록에 없는 식재료는 추천하거나 조리 단계에 넣지 마세요."
         f"{step_context}"
-        f"{youtube_instruction}<|im_end|>\n"
+        f"{tool_instruction}<|im_end|>\n"
     )
-    
+
     # 이전 대화 추가
     for hist in chat_history[-4:]:
         prompt += f"<|im_start|>{hist['role']}\n{hist['content']}<|im_end|>\n"
-    
+
     # 현재 질문 추가
     prompt += f"<|im_start|>user\n{data.user_text}<|im_end|>\n<|im_start|>assistant\n"
-    
-    try:
-        llm_answer = await run_in_threadpool(generate_llm_answer, prompt)
-    except GenerationCancelled:
+
+    youtube_status = {
+        "requested": False,
+        "intent_source": "none",
+        "enabled": bool(youtube_api_key),
+        "message": "",
+    }
+    video_recommendation = None
+
+    def _cancelled_response():
         return {
             "answer": "응답 생성을 중단했습니다.",
             "cancelled": True,
             "video_recommendation": None,
-            "youtube_status": {
-                "requested": wants_youtube,
-                "intent_source": youtube_intent_source,
-                "enabled": bool(youtube_api_key),
-                "message": "",
-            },
+            "youtube_status": youtube_status,
         }
+
+    # 에이전트 루프: LLM이 도구 호출을 출력하면 실행 결과를 돌려주고 다시 생성한다. (최대 MAX_AGENT_STEPS회)
+    agent_actions = []
+    current_prompt = prompt
+    try:
+        llm_answer = await run_in_threadpool(generate_llm_answer, current_prompt)
+    except GenerationCancelled:
+        return _cancelled_response()
     except RuntimeError as exc:
         raise HTTPException(status_code=409, detail=str(exc)) from exc
 
-    if wants_youtube and any(
+    for agent_step in range(MAX_AGENT_STEPS):
+        tool_call = parse_tool_call(llm_answer)
+
+        if tool_call is None and agent_step == 0 and is_cooking_video_query(data.user_text):
+            # 안전망: 사용자가 명시적으로 영상을 요청했는데 모델이 도구를 안 불렀으면 보정한다.
+            tool_call = {"tool": "search_youtube_video", "query": "", "source": "rule_fallback"}
+
+        if tool_call is None:
+            break
+
+        tool_name = tool_call["tool"]
+        tool_source = tool_call.get("source", "agent")
+        if tool_source == "agent":
+            print(f"🤖 [Agent] 도구 호출({agent_step + 1}/{MAX_AGENT_STEPS}): {tool_name} query={tool_call['query']!r}")
+
+        if tool_name == "search_youtube_video":
+            youtube_status["requested"] = True
+            if youtube_status["intent_source"] == "none":
+                youtube_status["intent_source"] = tool_source
+
+            if not youtube_api_key:
+                youtube_status["message"] = "YouTube API 키가 설정되지 않아 영상을 가져오지 못했습니다."
+            else:
+                try:
+                    video_recommendation = await run_in_threadpool(
+                        find_best_youtube_segment,
+                        data.user_text,
+                        youtube_api_key,
+                        search_query=tool_call["query"] or None,
+                    )
+                    if video_recommendation:
+                        youtube_status["message"] = "관련 유튜브 영상을 찾았습니다."
+                    else:
+                        youtube_error = get_last_youtube_error()
+                        youtube_status["message"] = (
+                            f"YouTube API 호출 실패: {youtube_error}"
+                            if youtube_error
+                            else "유튜브에서 관련 영상을 찾지 못했습니다."
+                        )
+                except Exception as e:
+                    print(f"⚠️ [YouTube] 추천 생성 실패: {e}")
+                    youtube_status["message"] = f"YouTube 추천 생성 실패: {e}"
+
+            tool_result_text = _format_tool_result(video_recommendation)
+            tool_followup_instruction = (
+                "영상을 찾았으니 시스템이 화면 아래에 영상을 붙일 예정입니다. "
+                "절대 '영상은 제공할 수 없습니다'라고 말하지 말고, "
+                "지금 필요한 조리 포인트 한 단계만 짧게 안내한 뒤 아래 영상도 같이 확인해보라고 말해주세요."
+                if video_recommendation
+                else "영상을 찾지 못했습니다. 영상 언급 없이 말로 지금 필요한 조리 포인트 한 단계만 짧게 안내해주세요."
+            )
+            tool_success = video_recommendation is not None
+        else:  # search_recipe
+            found_recipes = _search_recipe_by_name(tool_call["query"])
+            tool_result_text = _format_recipe_tool_result(found_recipes)
+            tool_followup_instruction = (
+                "위 레시피를 참고하되 전체 순서를 나열하지 말고, 지금 시작할 첫 단계 한 가지만 존댓말로 짧게 안내해주세요."
+                if found_recipes
+                else "레시피 문서를 찾지 못했습니다. 네 일반 요리 지식으로, 현재 사용 가능한 재료 안에서 지금 필요한 안내 한 가지만 짧게 해주세요."
+            )
+            tool_success = bool(found_recipes)
+
+        agent_actions.append(
+            {
+                "tool": tool_name,
+                "query": tool_call["query"],
+                "source": tool_source,
+                "success": tool_success,
+            }
+        )
+
+        # 도구 실행 결과를 대화에 이어붙이고 다음 답변을 생성한다.
+        current_prompt += (
+            f"{llm_answer}<|im_end|>\n"
+            "<|im_start|>user\n"
+            f"[도구 실행 결과: {tool_name}]\n{tool_result_text}\n{tool_followup_instruction}<|im_end|>\n"
+            "<|im_start|>assistant\n"
+        )
+        try:
+            llm_answer = await run_in_threadpool(generate_llm_answer, current_prompt)
+        except GenerationCancelled:
+            return _cancelled_response()
+        except RuntimeError as exc:
+            raise HTTPException(status_code=409, detail=str(exc)) from exc
+
+    # 모델이 도구 호출 마커를 또 출력했으면 제거하고, 비어 있으면 안내 문구로 대체한다.
+    llm_answer = strip_tool_calls(llm_answer)
+    if not llm_answer:
+        llm_answer = (
+            "요청하신 조리 영상도 같이 찾아볼게요. 아래 영상이 뜨면 같이 확인해보세요."
+            if video_recommendation
+            else "다시 한번 말씀해 주시겠어요?"
+        )
+
+    if youtube_status["requested"] and any(
         phrase in llm_answer
         for phrase in (
             "영상은 제공할 수 없습니다",
@@ -1076,7 +1263,7 @@ async def ask_chef(data: STTData, background_tasks: BackgroundTasks):
         )
     ):
         llm_answer = "요청하신 조리 영상도 같이 찾아볼게요. 아래 영상이 뜨면 같이 확인해보세요. 다 하셨으면 말씀해 주세요."
-    
+
     # 대화 기록 업데이트
     chat_history.append({"role": "user", "content": data.user_text})
     chat_history.append({"role": "assistant", "content": llm_answer})
@@ -1084,42 +1271,12 @@ async def ask_chef(data: STTData, background_tasks: BackgroundTasks):
     print(f"🔥 [A.X Chef]: {llm_answer}")
     queue_tts(background_tasks, llm_answer)
 
-    youtube_status = {
-        "requested": wants_youtube,
-        "intent_source": youtube_intent_source,
-        "enabled": bool(youtube_api_key),
-        "message": "",
-    }
-    video_recommendation = None
-
-    if wants_youtube and not youtube_api_key:
-        youtube_status["message"] = "YouTube API 키가 설정되지 않아 영상을 가져오지 못했습니다."
-
-    if wants_youtube and youtube_api_key:
-        try:
-            video_recommendation = await run_in_threadpool(
-                find_best_youtube_segment,
-                data.user_text,
-                youtube_api_key,
-            )
-            if video_recommendation:
-                youtube_status["message"] = "관련 유튜브 영상을 찾았습니다."
-            else:
-                youtube_error = get_last_youtube_error()
-                youtube_status["message"] = (
-                    f"YouTube API 호출 실패: {youtube_error}"
-                    if youtube_error
-                    else "유튜브에서 관련 영상을 찾지 못했습니다."
-                )
-        except Exception as e:
-            print(f"⚠️ [YouTube] 추천 생성 실패: {e}")
-            youtube_status["message"] = f"YouTube 추천 생성 실패: {e}"
-
     return {
         "answer": llm_answer,
         "rag_matches": cached_rag_matches,
         "video_recommendation": video_recommendation,
         "youtube_status": youtube_status,
+        "agent_actions": agent_actions,
     }
 
 
