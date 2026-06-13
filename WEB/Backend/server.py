@@ -136,7 +136,12 @@ from RAG.rag import (
     search_recipes,
     normalize_ingredient,
 )
-from youtube_api import find_best_youtube_segment, get_last_youtube_error, is_cooking_video_query
+from youtube_api import (
+    find_best_youtube_segment,
+    get_last_youtube_error,
+    get_video_transcript,
+    is_cooking_video_query,
+)
 
 MODULE_DIR       = _THIS_FILE.parent                          # C:\VisionChef\WEB\Backend
 PROJECT_DIR      = MODULE_DIR.parent                          # C:\VisionChef\WEB
@@ -181,6 +186,7 @@ loaded_model_source = None
 loaded_quantization = "none"
 rag_error = None
 rag_mode = "none"
+last_video_recommendation = None  # 가장 최근 추천된 유튜브 영상 (자막 질의응답용)
 tts_lock = threading.Lock()
 generation_lock = threading.Lock()
 generation_state_lock = threading.Lock()
@@ -188,7 +194,7 @@ generation_cancel_event = threading.Event()
 generation_active = False
 SERVER_TTS_ENABLED = os.getenv("ENABLE_SERVER_TTS", "0").strip().lower() in {"1", "true", "yes", "on"}
 VARCO_TTS_KEY = os.getenv("VARCO_TTS_KEY", "")
-VARCO_TTS_VOICE: Optional[str] = "ed410f69-37fc-5da0-844d-42c9fe2e10a7"  # 그리핀(데이비드)
+VARCO_TTS_VOICE: Optional[str] = "32f824eb-3a9b-5964-b48f-c926d4b835ab"
 LLM_MODEL_ID = os.getenv("LLM_MODEL_ID", "skt/A.X-4.0-Light")
 LLM_LOCAL_MODEL_DIR = os.getenv("LLM_LOCAL_MODEL_DIR", DEFAULT_LOCAL_MODEL_DIR)
 LLM_LOAD_IN_8BIT = os.getenv("LLM_LOAD_IN_8BIT", "0").strip().lower() in {"1", "true", "yes", "on"}
@@ -230,23 +236,55 @@ _RECIPE_TOOL_DESC = (
     "  사용자가 특정 요리의 만드는 법을 묻는데 위 참고 문서에 그 레시피가 없을 때만 호출해. "
     "참고 문서에 이미 있으면 호출하지 마.\n"
 )
+_TIMER_TOOL_DESC = (
+    "- set_timer — 조리 타이머 설정 (화면에서 자동 시작됨).\n"
+    "  사용자가 타이머를 부탁하거나, 지금 안내하는 단계에 몇 분간 삶기·끓이기·굽기처럼 "
+    "시간이 정해진 조리가 있으면 호출해. query에는 분 단위 숫자만 넣어. 예: \"8\"\n"
+)
+_STEP_TOOL_DESC = (
+    "- goto_step — 조리 단계 화면 이동.\n"
+    "  사용자가 '양파 볶는 단계로 돌아가줘', '두 단계 건너뛰어', '3단계로 가자'처럼 "
+    "다른 단계로 이동하길 원하면 호출해. query에는 이동할 단계 번호 숫자만 넣어. 예: \"3\"\n"
+)
+_TRANSCRIPT_TOOL_DESC = (
+    "- read_video_transcript — 방금 추천한 유튜브 영상의 자막 읽기.\n"
+    "  사용자가 추천된 영상의 내용(불 세기, 시간, 양념 비율 등)을 물어보면 호출해. "
+    "query에는 사용자가 궁금해하는 내용을 짧게 넣어.\n"
+)
 
 
-def build_agent_tool_prompt(youtube_enabled: bool) -> str:
-    tool_descs = (_YOUTUBE_TOOL_DESC if youtube_enabled else "") + _RECIPE_TOOL_DESC
+def build_agent_tool_prompt(
+    youtube_enabled: bool,
+    steps_enabled: bool = False,
+    transcript_enabled: bool = False,
+) -> str:
+    tool_descs = (
+        (_YOUTUBE_TOOL_DESC if youtube_enabled else "")
+        + _RECIPE_TOOL_DESC
+        + _TIMER_TOOL_DESC
+        + (_STEP_TOOL_DESC if steps_enabled else "")
+        + (_TRANSCRIPT_TOOL_DESC if transcript_enabled else "")
+    )
     return (
         "\n[도구 사용 안내]\n"
         "너는 아래 도구들을 스스로 판단해서 호출할 수 있어.\n"
         f"{tool_descs}"
         "도구를 호출할 때는 다른 말은 하나도 하지 말고 아래 형식 한 줄만 정확히 출력해:\n"
         '<tool_call>{"tool": "도구이름", "query": "검색어"}</tool_call>\n'
-        "query에는 네가 직접 만든 짧은 한국어 검색어를 넣어. "
-        "사용자의 말을 그대로 복사하지 말고 핵심 요리 이름이나 기술 위주로 다듬어.\n"
+        "검색 도구의 query에는 네가 직접 만든 짧은 한국어 검색어를 넣어. "
+        "사용자의 말을 그대로 복사하지 말고 핵심 요리 이름이나 기술 위주로 다듬어. "
+        "set_timer와 goto_step의 query에는 숫자만 넣어.\n"
         "도구가 필요 없는 일반 질문에는 절대 도구를 호출하지 말고 평소처럼 말로만 답해.\n"
     )
 
 TOOL_CALL_RE = re.compile(r"<tool_call>\s*(\{.*?\})\s*</tool_call>", re.DOTALL)
-AGENT_TOOL_NAMES = {"search_youtube_video", "search_recipe"}
+AGENT_TOOL_NAMES = {
+    "search_youtube_video",
+    "search_recipe",
+    "set_timer",
+    "goto_step",
+    "read_video_transcript",
+}
 MAX_AGENT_STEPS = 3
 
 
@@ -341,6 +379,28 @@ def _format_recipe_tool_result(recipes: list[dict]) -> str:
         lines.append(f"재료: {recipe.get('ingredients', '')}")
         lines.append(f"조리 순서: {steps}")
     return "\n".join(lines)
+
+
+def _extract_first_number(text: str) -> int:
+    match = re.search(r"\d+(?:\.\d+)?", text)
+    if not match:
+        return 0
+    return int(float(match.group()))
+
+
+def _fetch_transcript_text(video: Optional[dict], max_chars: int = 1800) -> str:
+    video_id = (video or {}).get("video_id", "")
+    if not video_id:
+        return ""
+    transcript = get_video_transcript(video_id)
+    if not transcript:
+        return ""
+    joined = " ".join(
+        str(segment.get("text", "")).strip()
+        for segment in transcript
+        if str(segment.get("text", "")).strip()
+    )
+    return joined[:max_chars]
 
 
 class GenerationCancelled(Exception):
@@ -647,7 +707,7 @@ def _varco_tts_bytes(text: str) -> bytes:
         "text": text[:400],
         "language": "korean",
         "voice": VARCO_TTS_VOICE,
-        "properties": {"speed": 0.7, "pitch": 1.0},
+        "properties": {"speed": 1.0, "pitch": 1.0},
         "return_metadata": False,
     }
     res = requests.post(
@@ -987,6 +1047,7 @@ async def update_vision(data: VisionData, background_tasks: BackgroundTasks):
 
 @app.get("/youtube-preview")
 async def youtube_preview(query: str = ""):
+    global last_video_recommendation
     text = query.strip()
     youtube_api_key = get_runtime_env("YOUTUBE_API_KEY")
     wants_youtube = is_cooking_video_query(text) if text else False
@@ -1019,6 +1080,7 @@ async def youtube_preview(query: str = ""):
             youtube_api_key,
         )
         if video_recommendation:
+            last_video_recommendation = video_recommendation
             youtube_status["message"] = "관련 유튜브 영상을 찾았습니다."
         else:
             youtube_error = get_last_youtube_error()
@@ -1089,7 +1151,7 @@ async def shutdown_llm():
 
 @app.post("/ask")
 async def ask_chef(data: STTData, background_tasks: BackgroundTasks):
-    global chat_history, cached_rag_context
+    global chat_history, cached_rag_context, last_video_recommendation
     if pipe is None:
         raise HTTPException(status_code=503, detail="LLM model is not loaded yet.")
 
@@ -1107,7 +1169,11 @@ async def ask_chef(data: STTData, background_tasks: BackgroundTasks):
 
     # 프롬프트 구성 — 유튜브 도구는 API 키가 있을 때만 노출하고, 레시피 검색 도구는 항상 노출한다.
     prompt_template = SYSTEM_PROMPT.format(rag_context=rag_context)
-    tool_instruction = build_agent_tool_prompt(youtube_enabled=bool(youtube_api_key))
+    tool_instruction = build_agent_tool_prompt(
+        youtube_enabled=bool(youtube_api_key),
+        steps_enabled=data.total_steps > 0,
+        transcript_enabled=bool(youtube_api_key) or last_video_recommendation is not None,
+    )
 
     step_context = ""
     if data.current_step > 0 and data.total_steps > 0:
@@ -1174,6 +1240,7 @@ async def ask_chef(data: STTData, background_tasks: BackgroundTasks):
         if tool_source == "agent":
             print(f"🤖 [Agent] 도구 호출({agent_step + 1}/{MAX_AGENT_STEPS}): {tool_name} query={tool_call['query']!r}")
 
+        action_extra = {}
         if tool_name == "search_youtube_video":
             youtube_status["requested"] = True
             if youtube_status["intent_source"] == "none":
@@ -1190,6 +1257,7 @@ async def ask_chef(data: STTData, background_tasks: BackgroundTasks):
                         search_query=tool_call["query"] or None,
                     )
                     if video_recommendation:
+                        last_video_recommendation = video_recommendation
                         youtube_status["message"] = "관련 유튜브 영상을 찾았습니다."
                     else:
                         youtube_error = get_last_youtube_error()
@@ -1204,13 +1272,61 @@ async def ask_chef(data: STTData, background_tasks: BackgroundTasks):
 
             tool_result_text = _format_tool_result(video_recommendation)
             tool_followup_instruction = (
-                "영상을 찾았으니 시스템이 화면 아래에 영상을 붙일 예정입니다. "
-                "절대 '영상은 제공할 수 없습니다'라고 말하지 말고, "
-                "지금 필요한 조리 포인트 한 단계만 짧게 안내한 뒤 아래 영상도 같이 확인해보라고 말해주세요."
-                if video_recommendation
-                else "영상을 찾지 못했습니다. 영상 언급 없이 말로 지금 필요한 조리 포인트 한 단계만 짧게 안내해주세요."
+                "영상을 찾지 못했습니다. 영상 언급 없이 말로 지금 필요한 조리 포인트 한 단계만 짧게 안내해주세요."
             )
             tool_success = video_recommendation is not None
+        elif tool_name == "set_timer":
+            timer_minutes = _extract_first_number(tool_call["query"])
+            action_extra["minutes"] = timer_minutes
+            if timer_minutes > 0:
+                tool_result_text = f"{timer_minutes}분 타이머가 설정되어 화면에서 자동으로 시작됩니다."
+                tool_followup_instruction = (
+                    f"{timer_minutes}분 타이머를 시작했다고 한 문장으로 알려주고, "
+                    "타이머가 도는 동안 할 일이 있으면 한 가지만 짧게 덧붙여주세요."
+                )
+                tool_success = True
+            else:
+                tool_result_text = "타이머 시간을 알 수 없어 설정하지 못했습니다."
+                tool_followup_instruction = "몇 분 타이머가 필요한지 한 문장으로 되물어주세요."
+                tool_success = False
+        elif tool_name == "goto_step":
+            target_step = _extract_first_number(tool_call["query"])
+            if data.total_steps > 0 and target_step > 0:
+                target_step = max(1, min(target_step, data.total_steps))
+            action_extra["step"] = target_step
+            if target_step > 0:
+                tool_result_text = f"화면이 {target_step}단계로 이동합니다."
+                tool_followup_instruction = (
+                    f"화면이 {target_step}단계로 이동했습니다. "
+                    f"{target_step}단계에서 지금 할 일 한 가지만 존댓말로 짧게 안내해주세요."
+                )
+                tool_success = True
+            else:
+                tool_result_text = "이동할 단계 번호를 알 수 없습니다."
+                tool_followup_instruction = "몇 단계로 이동할지 한 문장으로 되물어주세요."
+                tool_success = False
+        elif tool_name == "read_video_transcript":
+            transcript_video = video_recommendation or last_video_recommendation
+            transcript_text = await run_in_threadpool(_fetch_transcript_text, transcript_video)
+            if transcript_text:
+                video_title = (transcript_video or {}).get("title", "")
+                tool_result_text = f"영상 '{video_title}' 자막 내용:\n{transcript_text}"
+                tool_followup_instruction = (
+                    "위 자막 내용만 근거로 사용자의 질문에 두세 문장으로 답해주세요. "
+                    "자막에 없는 내용은 지어내지 마세요."
+                )
+                tool_success = True
+            else:
+                tool_result_text = (
+                    "자막을 가져오지 못했습니다."
+                    if transcript_video
+                    else "최근 추천된 영상이 없습니다."
+                )
+                tool_followup_instruction = (
+                    "영상 자막을 확인할 수 없다고 짧게 양해를 구하고, "
+                    "네 요리 지식으로 사용자의 질문에 두세 문장으로 답해주세요."
+                )
+                tool_success = False
         else:  # search_recipe
             found_recipes = _search_recipe_by_name(tool_call["query"])
             tool_result_text = _format_recipe_tool_result(found_recipes)
@@ -1221,14 +1337,19 @@ async def ask_chef(data: STTData, background_tasks: BackgroundTasks):
             )
             tool_success = bool(found_recipes)
 
-        agent_actions.append(
-            {
-                "tool": tool_name,
-                "query": tool_call["query"],
-                "source": tool_source,
-                "success": tool_success,
-            }
-        )
+        action_entry = {
+            "tool": tool_name,
+            "query": tool_call["query"],
+            "source": tool_source,
+            "success": tool_success,
+        }
+        action_entry.update(action_extra)
+        agent_actions.append(action_entry)
+
+        # 영상을 찾았으면 LLM 추가 답변 없이 영상만 보여준다.
+        if tool_name == "search_youtube_video" and video_recommendation:
+            llm_answer = ""
+            break
 
         # 도구 실행 결과를 대화에 이어붙이고 다음 답변을 생성한다.
         current_prompt += (
@@ -1244,32 +1365,27 @@ async def ask_chef(data: STTData, background_tasks: BackgroundTasks):
         except RuntimeError as exc:
             raise HTTPException(status_code=409, detail=str(exc)) from exc
 
-    # 모델이 도구 호출 마커를 또 출력했으면 제거하고, 비어 있으면 안내 문구로 대체한다.
+    # 모델이 도구 호출 마커를 또 출력했으면 제거한다.
     llm_answer = strip_tool_calls(llm_answer)
-    if not llm_answer:
-        llm_answer = (
-            "요청하신 조리 영상도 같이 찾아볼게요. 아래 영상이 뜨면 같이 확인해보세요."
-            if video_recommendation
-            else "다시 한번 말씀해 주시겠어요?"
-        )
+    if video_recommendation:
+        # 영상을 보여줄 때는 텍스트/음성 답변 없이 영상만 표시한다.
+        llm_answer = ""
+    elif not llm_answer:
+        llm_answer = "다시 한번 말씀해 주시겠어요?"
 
-    if youtube_status["requested"] and any(
-        phrase in llm_answer
-        for phrase in (
-            "영상은 제공할 수 없습니다",
-            "영상을 제공할 수 없습니다",
-            "동영상은 제공할 수 없습니다",
-            "동영상을 제공할 수 없습니다",
-        )
-    ):
-        llm_answer = "요청하신 조리 영상도 같이 찾아볼게요. 아래 영상이 뜨면 같이 확인해보세요. 다 하셨으면 말씀해 주세요."
-
-    # 대화 기록 업데이트
+    # 대화 기록 업데이트 (영상만 보여준 경우에도 맥락은 남긴다)
     chat_history.append({"role": "user", "content": data.user_text})
-    chat_history.append({"role": "assistant", "content": llm_answer})
+    chat_history.append({
+        "role": "assistant",
+        "content": llm_answer
+        or f"[유튜브 영상 추천: {video_recommendation.get('title', '')}]",
+    })
 
-    print(f"🔥 [A.X Chef]: {llm_answer}")
-    queue_tts(background_tasks, llm_answer)
+    if llm_answer:
+        print(f"🔥 [A.X Chef]: {llm_answer}")
+        queue_tts(background_tasks, llm_answer)
+    else:
+        print(f"🎬 [A.X Chef]: 영상만 표시 — {video_recommendation.get('title', '')}")
 
     return {
         "answer": llm_answer,

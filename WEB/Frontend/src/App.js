@@ -488,11 +488,12 @@ function TimerBox({ minutes, label }) {
   );
 }
 
-function SimpleTimer({ minutes = 1, setMinutes = () => {}, label = "타이머" }) {
+function SimpleTimer({ minutes = 1, setMinutes = () => {}, label = "타이머", autoStart = null }) {
   const [inputMinutes, setInputMinutesLocal] = useState(minutes);
   const initialSeconds = Math.max(0, Number(inputMinutes) || 0) * 60;
   const [seconds, setSeconds] = useState(initialSeconds);
   const [running, setRunning] = useState(false);
+  const skipResetRef = useRef(false);
 
   useEffect(() => {
     if (!running || seconds <= 0) return;
@@ -501,9 +502,23 @@ function SimpleTimer({ minutes = 1, setMinutes = () => {}, label = "타이머" }
   }, [running, seconds]);
 
   useEffect(() => {
+    if (skipResetRef.current) {
+      skipResetRef.current = false;
+      return;
+    }
     setSeconds(initialSeconds);
     setRunning(false);
   }, [initialSeconds]);
+
+  // AI 셰프(set_timer 도구)가 타이머를 걸면 자동으로 설정 + 시작
+  useEffect(() => {
+    const m = Math.max(0, Number(autoStart?.minutes) || 0);
+    if (!autoStart?.token || m <= 0) return;
+    skipResetRef.current = true;
+    setInputMinutesLocal(m);
+    setSeconds(m * 60);
+    setRunning(true);
+  }, [autoStart]);
 
   const mm = String(Math.floor(seconds / 60)).padStart(2, "0");
   const ss = String(seconds % 60).padStart(2, "0");
@@ -557,6 +572,9 @@ function SimpleTimer({ minutes = 1, setMinutes = () => {}, label = "타이머" }
 const AGENT_TOOL_LABELS = {
   search_youtube_video: { icon: "🔎", label: "유튜브 영상 검색" },
   search_recipe: { icon: "📖", label: "레시피 문서 검색" },
+  set_timer: { icon: "⏱️", label: "타이머 설정" },
+  goto_step: { icon: "🧭", label: "조리 단계 이동" },
+  read_video_transcript: { icon: "📜", label: "영상 자막 확인" },
 };
 
 function AgentActionChips({ actions }) {
@@ -707,6 +725,7 @@ function App() {
   const [isTTSEnabled, setIsTTSEnabled] = useState(true);
   const [showTimer, setShowTimer] = useState(false);
   const [timerMinutes, setTimerMinutes] = useState(2);
+  const [timerAutoStart, setTimerAutoStart] = useState(null);
   const [isListening, setIsListening] = useState(false);
   const [isGestureActive, setIsGestureActive] = useState(false);
   const [currentGesture, setCurrentGesture] = useState(null);
@@ -999,7 +1018,7 @@ function App() {
 
       const source = audioCtxRef.current.createBufferSource();
       source.buffer = buffer;
-      source.playbackRate.value = 1.3;
+      source.playbackRate.value = 1.0;
       source.connect(audioCtxRef.current.destination);
       ttsSourceRef.current = source;
       source.onended = () => { if (ttsSourceRef.current === source) ttsSourceRef.current = null; };
@@ -1436,6 +1455,21 @@ function App() {
   const isNextStepText = (text) => /(다음|넘어가|계속|그다음|next)/i.test(text);
   const stripMarkdown = (text) => text.replace(/[*#\-_`>]/g, "").replace(/\n{2,}/g, "\n").trim();
 
+  // 백엔드 agent_actions를 화면 동작으로 반영 (타이머 자동 시작, 조리 단계 이동)
+  const applyAgentActions = (actions) => {
+    (actions || []).forEach((action) => {
+      if (action.tool === "set_timer" && action.success && action.minutes > 0) {
+        setTimerMinutes(action.minutes);
+        setShowTimer(true);
+        setTimerAutoStart({ minutes: action.minutes, token: Date.now() });
+      }
+      if (action.tool === "goto_step" && action.success && action.step > 0 && selectedRecipe?.steps?.length) {
+        const idx = Math.max(0, Math.min(action.step - 1, selectedRecipe.steps.length - 1));
+        setCurrentCookingStep(idx);
+      }
+    });
+  };
+
   const handleSendRecipeInteractionChat = async (presetQuestion = "") => {
     if (isRecipeInteractionLoading) return;
 
@@ -1480,10 +1514,12 @@ function App() {
         total_steps: selectedRecipe?.steps?.length || 0,
         recipe_name: selectedRecipe?.name || "",
       });
-      const rawAnswer = res.data.answer || "응답을 받지 못했습니다.";
-      const answer = stripMarkdown(rawAnswer);
       const video = res.data.video_recommendation || null;
       const agentActions = res.data.agent_actions || [];
+      // 영상만 보여주는 응답(answer가 빈 문자열)은 텍스트/음성 없이 영상 카드만 표시
+      const rawAnswer = res.data.answer || (video ? "" : "응답을 받지 못했습니다.");
+      const answer = stripMarkdown(rawAnswer);
+      applyAgentActions(agentActions);
       setRecipeInteractionMessages((prev) => [
         ...prev,
         { id: Date.now() + 1, role: "assistant", text: answer, video, agentActions },
@@ -1620,10 +1656,12 @@ function App() {
         user_text: question,
         ingredients: selectedRecipe.ingredients || [],
       });
-      const answer = res.data.answer || "응답을 받지 못했습니다.";
       const video = res.data.video_recommendation || null;
       const agentActions = res.data.agent_actions || [];
+      // 영상만 보여주는 응답(answer가 빈 문자열)은 텍스트/음성 없이 영상 카드만 표시
+      const answer = res.data.answer || (video ? "" : "응답을 받지 못했습니다.");
       if (video) setVideoRecommendation(video);
+      applyAgentActions(agentActions);
       setChatMessages((prev) => [
         ...prev,
         { id: Date.now() + 1, role: "assistant", text: answer, video, agentActions },
@@ -2571,6 +2609,7 @@ function App() {
                       minutes={timerMinutes}
                       setMinutes={(m) => setTimerMinutes(m)}
                       label={timerMinutes > 0 ? `${timerMinutes}분 타이머` : "타이머"}
+                      autoStart={timerAutoStart}
                     />
                   </div>
                 )}

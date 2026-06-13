@@ -143,37 +143,49 @@ def search_recipes(
     normalized_user = set(normalize_ingredient(i) for i in user_ingredients)
 
     query = f"재료: {', '.join(sorted(normalized_user))}"
-    results = vectorstore.similarity_search_with_score(query, k=top_k)
+    # 부분집합 레시피(내 재료가 더 많은 경우)는 벡터 유사도가 낮게 나와 묻힐 수 있으므로
+    # 후보를 넉넉히 가져온 뒤 집합 관계 기반으로 다시 점수를 매긴다.
+    fetch_k = max(top_k * 5, 20)
+    results = vectorstore.similarity_search_with_score(query, k=fetch_k)
 
-    recipes_found = []
+    scored = []
     for doc, score in results:
-        similarity = round(1 - score, 3)
+        vector_similarity = round(1 - score, 3)
 
-        # 유사도 필터
-        if similarity < min_score:
-            print(f"유사도 미달 제외 ({similarity} < {min_score}): {doc.metadata['title']}")
-            continue
-
-        # 재료 완전 보유 여부 체크
+        # 재료 완전 보유 여부 체크 (레시피 재료 ⊆ 내 재료 여야 만들 수 있음)
         recipe_ingredients = set(
             i.strip()
             for i in doc.metadata["normalized_ingredients"].split(",")
             if i.strip()
         )
+        if not recipe_ingredients:
+            continue
+
         missing = recipe_ingredients - normalized_user
         if missing:
             print(f"재료 부족 제외 (없는 재료: {missing}): {doc.metadata['title']}")
             continue
 
-        recipes_found.append({
+        # 집합 기반 점수: 완전 일치 = 0.9, 부분집합(내 재료에 여분이 있음) = 0.9 초과
+        extra_ratio = len(normalized_user - recipe_ingredients) / max(1, len(normalized_user))
+        similarity = round(min(0.99, 0.9 + 0.1 * extra_ratio), 3)
+
+        if similarity < min_score:
+            print(f"유사도 미달 제외 ({similarity} < {min_score}): {doc.metadata['title']}")
+            continue
+
+        # 내 재료를 더 많이 활용하는 레시피 우선, 동률이면 벡터 유사도 순
+        rank_key = (-len(recipe_ingredients), -vector_similarity)
+        scored.append((rank_key, {
             "title":       doc.metadata["title"],
             "ingredients": doc.metadata["ingredients"],
             "steps":       doc.metadata["steps"],
             "source_type": doc.metadata["source_type"],
             "similarity":  similarity,
-        })
+        }))
 
-    return recipes_found
+    scored.sort(key=lambda item: item[0])
+    return [recipe for _, recipe in scored[:top_k]]
 
 
 # ─────────────────────────────────────
